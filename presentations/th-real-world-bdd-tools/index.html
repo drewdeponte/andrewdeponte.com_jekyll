@@ -148,7 +148,18 @@
     <div class="slide" id="spec_helper_3">
       <h2>The spec/spec_helper.rb</h2>
       <p>The RSpec configuration block</p>
-      <pre><code> config.mock_with :rspec<br/>  config.fixture_path = &quot;#{::Rails.root}/spec/fixtures&quot;<br/>  config.use_transactional_fixtures = false<br/><br/>  config.before(:suite) do<br/>    DatabaseCleaner[:active_record, {:connection =&gt; :cucumber}].strategy = :truncation, {<br/>      :except =&gt; [<br/>        &quot;mm_tracking_source_types&quot;, &quot;pm_project_statuses&quot;,<br/>        &quot;us_subscription_expiration_reasons&quot;, &quot;sm_component_types&quot;,<br/>        &quot;sm_component_types_sm_regions&quot;, &quot;sm_default_pages&quot;, <br/>        &quot;sm_packages&quot;, &quot;sm_page_layouts&quot;, &quot;sm_page_layouts_sm_regions&quot;, <br/>        &quot;sm_page_types&quot;, &quot;sm_regions&quot;, &quot;sm_site_templates&quot;,<br/>        &quot;sm_themes&quot;]<br/>    }<br/>    DatabaseCleaner.clean<br/>  end</code></pre>
+      <pre><code>  config.mock_with :rspec
+  config.fixture_path = &quot;#{::Rails.root}/spec/fixtures&quot;
+  config.use_transactional_fixtures = false
+
+  config.before(:suite) do
+    DatabaseCleaner[:active_record, {:connection =&gt; :cucumber}].strategy = :truncation, {
+      :except =&gt; [
+        &quot;products&quot;, &quot;product_statuses&quot;, &quot;components&quot;, &quot;component_types&quot;,
+        &quot;blogs&quot;, &quot;posts&quot;]
+    }
+    DatabaseCleaner.clean
+  end</code></pre>
     </div>
 
     <div class="slide" id="spec_helper_4">

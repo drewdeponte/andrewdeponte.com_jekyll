@@ -6,6 +6,7 @@ body {
   color: #444;
   line-height: 1.25;
   background-color: #eeeeee;
+  background: url('noise.gif');
 }
 
 .deck-container {

@@ -46,15 +46,6 @@
     	<h2 style="font-size: 20px;">Andrew De Ponte - OC Rails Group</br>Sept 14th 2011</h2>
     </div>
     
-    <div class="slide" id="viewing-presentation">
-      <h2>Viewing this Presentation</h2>
-      <pre style="margin-top: 165px;">
-        <code>
-          http://cyphactor.github.com/presentations/th-real-world-bdd-tools/
-        </code>
-      </pre>
-    </div>
-    
     <div class="slide" id="who-am-i">
       <h2>Who Am I?</h2>
       <h2 style="text-align: center; margin-top: 70px; color: black; margin-bottom: 80px;">Andrew De Ponte</h2>
@@ -166,10 +157,51 @@
       <pre><code>Spork.each_run do<br/>  # Load the fatories each time<br/>  load_factory_girl_factories<br/>end if Spork.using_spork?</code></pre>
     </div>
 
+    <div class="slide" id="guardfile_1">
+      <h2>The Guardfile</h2>
+      <p>The Guard spork block</p>
+      <pre><code>guard 'spork', :cucumber => false, :bundler => true, :wait => 120, :all_after_pass => false do
+  watch('config/application.rb')
+  watch('config/environment.rb')
+  watch(%r{^config/environments/.*\.rb$})
+  watch(%r{^config/initializers/.*\.rb$})
+  watch('spec/spec_helper.rb')
+end</code></pre>
+    </div>
+
+    <div class="slide" id="guardfile_2">
+      <h2>The Guardfile</h2>
+      <p>The Guard rspec block</p>
+      <pre><code>guard 'rspec', :version => 2, :cli => '--color --drb', :bundler => true, :all_after_pass => false do
+  watch(%r{^spec/.+_spec\.rb$})
+  watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
+  watch('spec/spec_helper.rb')  { "spec/" }
+  watch(%r{^spec/.+_spec\.rb$})
+  watch(%r{^app/(.+)\.rb$}) { |m| "spec/#{m[1]}_spec.rb" }
+  watch(%r{^lib/(.+)\.rb$}) { |m| "spec/lib/#{m[1]}_spec.rb" }
+  watch(%r{^app/controllers/(.+)_(controller)\.rb$})  { |m| ["spec/routing/#{m[1]}_routing_spec.rb", "spec/#{m[2]}s/#{m[1]}_#{m[2]}_spec.rb", "spec/acceptance/#{m[1]}_spec.rb"] }
+  watch(%r{^spec/support/(.+)\.rb$}) { "spec/" }
+  watch('spec/spec_helper.rb') { "spec/" }
+  watch('config/routes.rb') { "spec/routing" }
+  watch('app/controllers/application_controller.rb') { "spec/controllers" }
+  # Capybara request specs
+  watch(%r{^app/views/(.+)/.*\.(erb|haml)$}) { |m| "spec/requests/#{m[1]}_spec.rb" }
+end</code></pre>
+    </div>
+
     <div class="slide" id="questions">
       <h1>Questions?</h1>
     </div>
-      
+          
+    <div class="slide" id="viewing-presentation">
+      <h2>Viewing this Presentation</h2>
+      <pre style="margin-top: 165px;">
+        <code>
+          http://cyphactor.github.com/presentations/th-real-world-bdd-tools/
+        </code>
+      </pre>
+    </div>
+
     <div class="slide" id="the-end">
       <h1>The End</h1>
     </div>

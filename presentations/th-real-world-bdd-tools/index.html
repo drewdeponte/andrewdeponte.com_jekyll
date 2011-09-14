@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
 	<!-- REPLACE THE TITLE WITH THE TITLE FOR YOUR SLIDES -->
-	<title>A Real World BDD Tools Setup</title>
+	<title>Real World BDD Tools</title>
 	
 	<meta name="description" content="A ThoughtHatchery template for slides using deck.js">
 	<meta name="author" content="Andrew De Ponte">
@@ -42,8 +42,8 @@
          Oh, you should probably also update the title tag in HTML head. -->
     
     <div class="slide" id="title-slide">
-    	<h1>A Real World BDD Tools Setup</h1>
-    	<h2>Andrew De Ponte - OC Rails Group</br>Sept 14th 2011</h2>
+    	<h1>Real World BDD</br>Tools</h1>
+    	<h2 style="font-size: 20px;">Andrew De Ponte - OC Rails Group</br>Sept 14th 2011</h2>
     </div>
     
     <div class="slide" id="viewing-presentation">
@@ -67,46 +67,112 @@
       <h2>What to Expect</h2>
       <ul style="font-size: 30px;">
         <li>The Tools</li>
-        <li>Why these Tools?</li>
-        <li>Setup Gotchas</li>
+        <li>Why?</li>
+        <li>Setup Explained</li>
+        <li>Questions?</li>
+        <li>The End</li>
       </ul>
     </div>
     
     <div class="slide" id="the-tools">
-      <h2 style="text-align: center; color: #08455F;">The Tools</h2>
+      <h1>The Tools</h1>
+    </div>
+    
+    <div class="slide" id="the-tools-rspec">
       <h2>RSpec 2</h2>
-      <p>auoe au aeuaeu aeuaeou aeou aeu aeuaeu aeou aeuaoeu oeu aoeu </p>
-      <h2>Guard</h2>
-      <p>aeuae aeou aeu aeuae uaeu aeu aeouaeouaeou aeou aeou aeou auo </p>
-      <h2>Spork</h2>
-      <p>aeua uaeua euaeua aeu aeouaeou aeo a oeuaoeu aeou aoeu aeuaeua aoe</p>
+      <blockquote cite="http://www.relishapp.com/rspec">
+        <p>RSpec is a Behaviour-Driven Development tool for Ruby programmers.</p>
+        <p><cite>Relish</cite></p>
+      </blockquote>
+      <h3>Why?</h3>
+      <ul style="font-size: 20px;">
+        <li>Leading test framework in the BDD space</li>
+        <li>Supports numerous types of testing</li>
+        <li>Tests are readable</li>
+        <li>A Complete Package</li>
+      </ul>
     </div>
-    
-    <div class="slide" id="why-these-tools">
-    </div>
-    
-    <div class="slide" id="setup-gotchas">
-    </div>
-    
-    <div class="slide" id="what-is-this">
-      <h2>What is this?</h2>
-      <p>This is ThoughtHatchery template for <a href="http://imakewebthings.github.com/deck.js/">deck.js</a>. It is designed to be used as the clean and simple template so that our speakers may easily create their slides and share them.</p>
-      
-      <div class="slide" id="where-to-from-here">
-        <h2>Where to from here?</h2>
-        <p><a href="http://imakewebthings.github.com/deck.js/">deck.js</a> is amazingly simple to use. Your slides are simply HTML content and therefore it should be a markup language we all know and interact with regularly. For more details on <a href="http://imakewebthings.github.com/deck.js/">deck.js</a> please checkout out the website at <a href="http://imakewebthings.github.com/deck.js/">http://imakewebthings.github.com/deck.js</a></p>
-      </div>
 
-      <div class="slide" id="why-is-this-so-short">
-        <h2>Why is this so short?</h2>
-        <p>Simple, because <a href="http://imakewebthings.github.com/deck.js/">deck.js</a> is simple. Beyond, that it is really just here as ThoughtHatchery template and theme so that all the ThoughtHatchery presentations are consistent. For examples I strongly recommend looking at the <a href="http://imakewebthings.github.com/deck.js/">deck.js</a> Introduction.html for examples of how to create different types of slides.</p>
-      </div>
+    <div class="slide" id="the-tools-factory-girl">
+      <h2>Factory Girl</h2>
+      <blockquote cite="http://github.com/thoughtbot/factory_girl">
+        <p>Fixture replacement for focused and readable tests.</p>
+        <p><cite>thoughtbot on GitHub</cite></p>
+      </blockquote>
+      <h3>Why?</h3>
+      <ul style="font-size: 20px;">
+        <li>More Maintainable Fixtures</li>
+        <li>Readable</li>
+        <li>Sequences</li>
+      </ul>
     </div>
-  
+    
+    <div class="slide" id="the-tools-spork">
+      <h2>Spork</h2>
+      <blockquote cite="http://github.com/timcharper/spork">
+        <p>A DRb server for testing frameworks (RSpec / Cucumber currently) that forks before each run to ensure a clean testing state.</p>
+        <p><cite>timcharper on GitHub</cite></p>
+      </blockquote>
+      <h3>Why?</h3>
+      <ul style="font-size: 20px;">
+        <li>Quicker load time for repeated calls</li>
+        <li>Get fresh copy each run</li>
+        <li>Supported and works with RSpec &amp; Cucumber</li>
+      </ul>
+    </div>
+
+    <div class="slide" id="the-tools-guard">
+      <h2>Guard</h2>
+      <blockquote cite="http://github.com/guard/guard">
+        <p>Guard is a command line tool to easily handle events on files modifications (FSEvent / Inotify / Polling support).</p>
+        <p><cite>guard on GitHub</cite></p>
+      </blockquote>
+      <h3>Why?</h3>
+      <ul style="font-size: 20px;">
+        <li>Simplifies manual steps required for BDD cycle</li>
+        <li>Configurable enough &amp; intelligent enough to be useful</li>
+        <li>Well supported, architected, and easily extensible</li>
+        <li>Well defined plugin framework with a decent number of plugins</li>
+      </ul>
+    </div>
+    
+    <div class="slide" id="setup-explained">
+      <h1>Setup Explained</h1>
+    </div>
+
+    <div class="slide" id="spec_helper_1">
+      <h2>The spec/spec_helper.rb</h2>
+      <p>The requires</p>
+      <pre><code>require 'spork'</code></pre>
+      <p>A helper method for loading factory girl factories. Necessary for Spork.</p>
+      <pre><code>def load_factory_girl_factories<br/>  FactoryGirl.definition_file_paths = [<br/>    File.join(Rails.root, 'spec', 'factories')<br/>  ]<br/>  FactoryGirl.find_definitions<br/>end</code></pre>
+    </div>
+
+    <div class="slide" id="spec_helper_2">
+      <h2>The spec/spec_helper.rb</h2>
+      <p>The Spork prefork block is the block that is loaded into memory and copied over on each run.</p>
+      <pre><code>Spork.prefork do<br/>  ENV[&quot;RAILS_ENV&quot;] ||= 'test'<br/>  require File.expand_path(&quot;../../config/environment&quot;, __FILE__)<br/>  require 'rspec/rails'<br/>  require &quot;authlogic/test_case&quot;<br/>  include Authlogic::TestCase<br/><br/>  if !Spork.using_spork?<br/>    load_factory_girl_factories<br/>  end<br/>  <br/>  Dir[Rails.root.join(&quot;spec/support/**/*.rb&quot;)].each {|f| require f}<br/><br/>  RSpec.configure do |config|<br/>    ...<br/>  end<br/>end</code></pre>
+    </div>
+
+    <div class="slide" id="spec_helper_3">
+      <h2>The spec/spec_helper.rb</h2>
+      <p>The RSpec configuration block</p>
+      <pre><code> config.mock_with :rspec<br/>  config.fixture_path = &quot;#{::Rails.root}/spec/fixtures&quot;<br/>  config.use_transactional_fixtures = false<br/><br/>  config.before(:suite) do<br/>    DatabaseCleaner[:active_record, {:connection =&gt; :cucumber}].strategy = :truncation, {<br/>      :except =&gt; [<br/>        &quot;mm_tracking_source_types&quot;, &quot;pm_project_statuses&quot;,<br/>        &quot;us_subscription_expiration_reasons&quot;, &quot;sm_component_types&quot;,<br/>        &quot;sm_component_types_sm_regions&quot;, &quot;sm_default_pages&quot;, <br/>        &quot;sm_packages&quot;, &quot;sm_page_layouts&quot;, &quot;sm_page_layouts_sm_regions&quot;, <br/>        &quot;sm_page_types&quot;, &quot;sm_regions&quot;, &quot;sm_site_templates&quot;,<br/>        &quot;sm_themes&quot;]<br/>    }<br/>    DatabaseCleaner.clean<br/>  end</code></pre>
+    </div>
+
+    <div class="slide" id="spec_helper_4">
+      <h2>The spec/spec_helper.rb</h2>
+      <p>The Spork each_run block is run in the context of the copied version on each run.</p>
+      <pre><code>Spork.each_run do<br/>  # Load the fatories each time<br/>  load_factory_girl_factories<br/>end if Spork.using_spork?</code></pre>
+    </div>
+
+    <div class="slide" id="questions">
+      <h1>Questions?</h1>
+    </div>
+      
     <div class="slide" id="the-end">
       <h1>The End</h1>
     </div>
-
 
     <!-- ThoughtHatchery stuff DON'T change below this line -->
     <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>

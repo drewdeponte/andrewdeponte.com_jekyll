@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# This script is intended to be run from the project root directory.
+
+num_uncommited=$(git status --porcelain 2>/dev/null | wc -l)
+
+if [[ $num_uncommited -ne 0 ]]; then
+  echo "There are uncommitted changes. Test them and commit them before publishing."
+  exit 1
+fi
+
+# Generate the site into _site
+jekyll
+

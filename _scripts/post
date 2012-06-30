@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# Config
+editor="vim"
+format="markdown"
+
+if [ ! -z "$1" ]; then
+  title=$1
+else
+  read -p "Enter the title: " title
+fi
+
+if [ ! -z "$2" ]; then
+  dateString="$2"
+else
+  dateString=`date +%Y-%m-%d`
+fi
+
+# Turn spaces into dashes
+# --
+# http://stackoverflow.com/questions/1469849/how-to-split-one-string-into-multiple-strings-in-bash-shell
+for word in $title
+do
+    dashedTitle=${dashedTitle}-${word}
+done
+
+# Convert title to lowercase
+# --
+# http://stackoverflow.com/questions/2264428/converting-string-to-lower-case-in-bash-shell-scripting
+# http://www.kclug.org/pipermail/kclug/2003-April/015084.html
+
+dashedTitle="`echo ${dashedTitle} | tr '[A-Z]' '[a-z]'`"
+
+# Create a filename with the date, dashed title, and format 
+filename="${dateString}${dashedTitle}.${format}"
+
+post_path="_posts/${filename}"
+
+touch $post_path
+
+# Add initial YAML to the top of the new bit
+echo "---" >> $post_path
+echo "layout: post" >> $post_path
+echo "title: ${title}" >> $post_path
+echo "date: ${dateString}" >> $post_path
+echo "tags: []" >> $post_path
+echo "---" >> $post_path
+echo "" >> $post_path
+
+# Open in vim and go to the end of the file ( + )
+# --
+# http://stackoverflow.com/questions/268123/vim-how-to-start-inserting-at-the-end-of-the-file-in-one-step
+
+${editor} + $post_path

@@ -62,6 +62,121 @@
 </article>
 
 
+  <article class='blog-post'>
+  <header>
+    <h2 class='title'><a href="/2010/09/14/Copper-Repipe-Started.html">Copper Repipe Started</a></h2>
+    <div class='posted-info'>
+      <time datetime='2010-09-14T00:00:00Z' pubdate='pubdate' class='published-datetime'>September 14, 2010</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>Hey All, I know it has a been a while since I made a post on my progress with the house. But, that is because I have been crazy busy with me new job and have also been sick for a decent amount of that time. Anyways, my parents were visiting from Virginia this past weekend so my Dad came over to my house and helped me on Saturday and Sunday for bit with the copper repipe I recently started. Prior to my Dad getting here I ran all the copper for the cold water mainline in the attic up to the wall right before the new tankless water heater.</p>
+
+<p>On Saturday and Sunday my Dad and I finished running the cold through that wall, connecting the cold to the tankless water heater, running the hot into the attic, and wiring the electrical for the tankless and connecting it. This leaves me with needing to finish running the hot mainline with the rest of the valves in the attic and then doing room drops as necessary for the new laundry room, kitchen, and bathroom. If you are interested in seeing you can checkout the clip below.</p>
+<iframe allowFullScreen='allowFullScreen' frameborder='0' height='382' mozallowfullscreen='mozallowfullscreen' src='http://player.vimeo.com/video/14916693 ' webkitAllowFullScreen='webkitAllowFullScreen' width='680'>useless text to fix fail to render rest of post issue</iframe>
+  </section>
+
+  <footer>
+    
+    <span class="tag">Copper</span>
+    
+    <span class="tag">Repipe</span>
+    
+    <span class="tag">House</span>
+    
+    <span class="tag">Personal</span>
+    
+  </footer>
+</article>
+
+
+  <article class='blog-post'>
+  <header>
+    <h2 class='title'><a href="/2010/08/26/Rails-friendly_id-Plugin.html">Rails friendly_id Plugin</a></h2>
+    <div class='posted-info'>
+      <time datetime='2010-08-26T00:00:00Z' pubdate='pubdate' class='published-datetime'>August 26, 2010</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>Hey all. I recently discovered the friendly_id plugin for Rails at a Orange Country Ruby Group meetup. It basically provides a bunch of awesome functionality with respect to permalinking and slugging. Anyways, I very much recommend that you all check it out and play around with it. You can get to the projects GitHub page <a href='http://github.com/norman/friendly_id'>here</a> and its documentation <a href='http://norman.github.com/friendly_id/'>here</a>.</p>
+  </section>
+
+  <footer>
+    
+    <span class="tag">Ruby</span>
+    
+    <span class="tag">Ruby on Rails</span>
+    
+    <span class="tag">Software Develompent</span>
+    
+  </footer>
+</article>
+
+
+  <article class='blog-post'>
+  <header>
+    <h2 class='title'><a href="/2010/08/13/Ruby-Class-vs-Instance-Diagram.html">Ruby Class vs. Instance Diagram</a></h2>
+    <div class='posted-info'>
+      <time datetime='2010-08-13T00:00:00Z' pubdate='pubdate' class='published-datetime'>August 13, 2010</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>One of the many things that I have changed on my new team is the language. They were originally all PHP developers and my boss and I who have been using Ruby and Rails for years now decided to develop the new products in Ruby and Rails where fitting. Anyways, as a part of the process I have been educating (and being educated) by my engineers on Ruby and Rails as they go through the learning process. One of the topics that seems to have some confusion around it is Class vs. Instance variables with respect to classes and objects. Because this confusion I spent some time with one of the engineers to put together a quick diagram to try and help clarify what is actually happening with respect to Class vs. Instance variables and methods. You can find the diagram <a href='/files/ruby_class_vs_instance.pdf'>here</a>.</p>
+  </section>
+
+  <footer>
+    
+    <span class="tag">Ruby</span>
+    
+    <span class="tag">Software Develompent</span>
+    
+  </footer>
+</article>
+
+
+  <article class='blog-post'>
+  <header>
+    <h2 class='title'><a href="/2010/07/30/Git-finding-abandoned-commits.html">Git, finding abandoned commits...</a></h2>
+    <div class='posted-info'>
+      <time datetime='2010-07-30T00:00:00Z' pubdate='pubdate' class='published-datetime'>July 30, 2010</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>So, as many of you may know I recently took a position heading up a new software engineering team that is responsible for producing the new products. One of my first actions when I came on board was switching my team over from SVN to Git. One of the engineers on the team abandoned a branch in one of our Git repositories because he didn&#8217;t think he would need it anymore. Soon, after he realized that he wanted something from that branch but now he couldn&#8217;t see the brach anymore in &#8216;gitk &#8211;all&#8217; or any of the other tools because he abandoned it. But, it has to still be there right, it is Git.</p>
+
+<p>I knew there was a way to do this in Git and I have done it in the past but I couldn&#8217;t remember how. After I explained a bit more to him about the internals of Git and he went off and did some exploration he came back to me with his found solution which follows:</p>
+
+<p><code>git fsck --unreachable| cut -f3 -d&#39; &#39;|xargs git rev-list --header|less</code></p>
+
+<p>I know there is some other way to find abandoned nodes in Git but I still can&#8217;t remember. Anyways, just figured I would share this method in the hopes that it would help someone out there. It may not be exactly what you want with respect to the &#8216;cut&#8217; or &#8216;xargs&#8217; but I will let you all play with it a bit to get exactly what you want.</p>
+  </section>
+
+  <footer>
+    
+    <span class="tag">Personal</span>
+    
+    <span class="tag">Git</span>
+    
+    <span class="tag">Software Development</span>
+    
+    <span class="tag">Source Control</span>
+    
+  </footer>
+</article>
+
+
 
 <!-- Pagination links -->
 <div class="pagination">
@@ -70,9 +185,9 @@
       <a href="/page3" class="previous">Prev</a>
     
   
-  <span class="page_number ">4 of 4</span>
+  <span class="page_number ">4 of 5</span>
   
-    <span class="next">Next</span>
+    <a href="/page5" class="next ">Next</a>
   
 </div>
 

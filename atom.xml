@@ -4,7 +4,7 @@
   <title>Drew's World</title>
   <link href="http://andrewdeponte.com/atom.xml" rel="self"/>
   <link href="http://andrewdeponte.com/"/>
-  <updated>2012-06-30T14:22:14-07:00</updated>
+  <updated>2012-06-30T14:59:31-07:00</updated>
   <id>http://andrewdeponte.com/</id>
   <author>
     <name>Andrew De Ponte</name>
@@ -417,6 +417,96 @@ Codes&lt;/code&gt; so that the output is a bit cleaner.&lt;/li&gt;
 &lt;p&gt;A few weeks later my Mom called me and asked for the measurements of the benches and soon enough she brought me some amazing bench covers. Given that my parents live in Virginia when she came to visit she didn&amp;#8217;t want to bring the foam for the covers with her so she had it shipped to me. Two days ago I got the foam and today I finally got around to finishing the cutting and installation of the foam. After, I finished I tried them out and they look amazing.&lt;/p&gt;
 
 &lt;p&gt;To check out some photos of them in their final state check them out &lt;a href='http://www.facebook.com/media/set/?set=a.535708104810.2048945.30901409&amp;amp;type=3&amp;amp;l=1b5b6f0f43'&gt;here&lt;/a&gt;.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>Copper Repipe Started</title>
+      <link href="http://andrewdeponte.com/2010/09/14/Copper-Repipe-Started.html"/>
+      <updated>2010-09-14T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2010/09/14/Copper-Repipe-Started</id>
+      <content type="html">&lt;p&gt;Hey All, I know it has a been a while since I made a post on my progress with the house. But, that is because I have been crazy busy with me new job and have also been sick for a decent amount of that time. Anyways, my parents were visiting from Virginia this past weekend so my Dad came over to my house and helped me on Saturday and Sunday for bit with the copper repipe I recently started. Prior to my Dad getting here I ran all the copper for the cold water mainline in the attic up to the wall right before the new tankless water heater.&lt;/p&gt;
+
+&lt;p&gt;On Saturday and Sunday my Dad and I finished running the cold through that wall, connecting the cold to the tankless water heater, running the hot into the attic, and wiring the electrical for the tankless and connecting it. This leaves me with needing to finish running the hot mainline with the rest of the valves in the attic and then doing room drops as necessary for the new laundry room, kitchen, and bathroom. If you are interested in seeing you can checkout the clip below.&lt;/p&gt;
+&lt;iframe allowFullScreen='allowFullScreen' frameborder='0' height='382' mozallowfullscreen='mozallowfullscreen' src='http://player.vimeo.com/video/14916693 ' webkitAllowFullScreen='webkitAllowFullScreen' width='680'&gt;useless text to fix fail to render rest of post issue&lt;/iframe&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>Rails friendly_id Plugin</title>
+      <link href="http://andrewdeponte.com/2010/08/26/Rails-friendly_id-Plugin.html"/>
+      <updated>2010-08-26T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2010/08/26/Rails-friendly_id-Plugin</id>
+      <content type="html">&lt;p&gt;Hey all. I recently discovered the friendly_id plugin for Rails at a Orange Country Ruby Group meetup. It basically provides a bunch of awesome functionality with respect to permalinking and slugging. Anyways, I very much recommend that you all check it out and play around with it. You can get to the projects GitHub page &lt;a href='http://github.com/norman/friendly_id'&gt;here&lt;/a&gt; and its documentation &lt;a href='http://norman.github.com/friendly_id/'&gt;here&lt;/a&gt;.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>Ruby Class vs. Instance Diagram</title>
+      <link href="http://andrewdeponte.com/2010/08/13/Ruby-Class-vs-Instance-Diagram.html"/>
+      <updated>2010-08-13T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2010/08/13/Ruby-Class-vs-Instance-Diagram</id>
+      <content type="html">&lt;p&gt;One of the many things that I have changed on my new team is the language. They were originally all PHP developers and my boss and I who have been using Ruby and Rails for years now decided to develop the new products in Ruby and Rails where fitting. Anyways, as a part of the process I have been educating (and being educated) by my engineers on Ruby and Rails as they go through the learning process. One of the topics that seems to have some confusion around it is Class vs. Instance variables with respect to classes and objects. Because this confusion I spent some time with one of the engineers to put together a quick diagram to try and help clarify what is actually happening with respect to Class vs. Instance variables and methods. You can find the diagram &lt;a href='/files/ruby_class_vs_instance.pdf'&gt;here&lt;/a&gt;.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>Git, finding abandoned commits...</title>
+      <link href="http://andrewdeponte.com/2010/07/30/Git-finding-abandoned-commits.html"/>
+      <updated>2010-07-30T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2010/07/30/Git-finding-abandoned-commits</id>
+      <content type="html">&lt;p&gt;So, as many of you may know I recently took a position heading up a new software engineering team that is responsible for producing the new products. One of my first actions when I came on board was switching my team over from SVN to Git. One of the engineers on the team abandoned a branch in one of our Git repositories because he didn&amp;#8217;t think he would need it anymore. Soon, after he realized that he wanted something from that branch but now he couldn&amp;#8217;t see the brach anymore in &amp;#8216;gitk &amp;#8211;all&amp;#8217; or any of the other tools because he abandoned it. But, it has to still be there right, it is Git.&lt;/p&gt;
+
+&lt;p&gt;I knew there was a way to do this in Git and I have done it in the past but I couldn&amp;#8217;t remember how. After I explained a bit more to him about the internals of Git and he went off and did some exploration he came back to me with his found solution which follows:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;git fsck --unreachable| cut -f3 -d&amp;#39; &amp;#39;|xargs git rev-list --header|less&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;I know there is some other way to find abandoned nodes in Git but I still can&amp;#8217;t remember. Anyways, just figured I would share this method in the hopes that it would help someone out there. It may not be exactly what you want with respect to the &amp;#8216;cut&amp;#8217; or &amp;#8216;xargs&amp;#8217; but I will let you all play with it a bit to get exactly what you want.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>Project Management Tool Review</title>
+      <link href="http://andrewdeponte.com/2010/07/28/Project-Management-Tool-Review.html"/>
+      <updated>2010-07-28T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2010/07/28/Project-Management-Tool-Review</id>
+      <content type="html">&lt;p&gt;When I took over the software engineering team at my job. I had the opportunity to start fresh with a new ticketing, bug tracking, and project management toolset. Over, the years I have used a number of different tools most recently Trac and Lighthouse. However, I can go on and on with the tools that I have tried. When, I came on board they were currently using Jira which I know is big in certain communities, however, everyone seemed to hate it and I have a bunch of issues with it that I don&amp;#8217;t want to get into. Anyways, so I spent some time and reviewed the following project management and ticketing systems again to just get a refresher and see where they were at and if any of them would work for me and my team.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Redmine - &lt;a href='http://www.redmine.org/'&gt;http://www.redmine.org/&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;Basecamp - &lt;a href='http://basecamphq.com/'&gt;http://basecamphq.com/&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;Devalot - &lt;a href='http://projects.noscience.net/devalot'&gt;http://projects.noscience.net/devalot&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;ProjectPier - &lt;a href='http://www.projectpier.org/'&gt;http://www.projectpier.org/&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;Trac - &lt;a href='http://trac.edgewall.org/'&gt;http://trac.edgewall.org/&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;Jira - &lt;a href='http://www.atlassian.com/software/jira/'&gt;http://www.atlassian.com/software/jira/&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;Collabtive - &lt;a href='http://collabtive.o-dyn.de/'&gt;http://collabtive.o-dyn.de/&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;eGroupWare - &lt;a href='http://www.egroupware.org/Home'&gt;http://www.egroupware.org/Home&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So after heavy review of each of the above listed project management tools I decided on Redmine because it is hugely flexible, has a decent community behind it. It does have what I would consider some usability issues and some major design issues in the UI. However, once you learn those it is pretty much capable of everything I need it to do. When, you look at other solutions they all seem to be lacking very important features.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>My New Job!</title>
+      <link href="http://andrewdeponte.com/2010/07/20/My-New-Job.html"/>
+      <updated>2010-07-20T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2010/07/20/My-New-Job</id>
+      <content type="html">&lt;p&gt;Hey all. I know its been a while since my last post. But, life has been a little crazy. I recently took a position at a new company called &lt;a href='http://realpractice.com'&gt;RealPractice&lt;/a&gt; heading up the software engineering team that is responsible for all of their new products. I am very excited to start up a new team and build some amazing software. I can&amp;#8217;t wait to get started building a strong team that builds even stronger software.&lt;/p&gt;
+
+&lt;p&gt;I have a feeling that this will put a bit of a slow down into the progress on the house. But, this is what I love doing, so I think it is worth it. This may also for a temporary period of time also slow down my rate of posting with respect to software tid-bits. But, I will come back stronger than ever with more stuff to post about.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>The Grounding Rod</title>
+      <link href="http://andrewdeponte.com/2010/07/04/The-Grounding-Rod.html"/>
+      <updated>2010-07-04T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2010/07/04/The-Grounding-Rod</id>
+      <content type="html">&lt;p&gt;After getting the 100 AMP Sub-Panel run last week as well as wiring two of the bedrooms and one bathroom I had one major bit left. Driving a ground rod and connecting it non-spliced to the cold water pipe and then to the main panel&amp;#8217;s ground bus (or in my case neutral bus because it doesn&amp;#8217;t have separate buses). I acquired the ground rod and some THHN 4 AWG to connect the ground rod to the main panel last weekend. So, today I woke up and since I decided that the best place to drive the ground rod was next to the gas meter I had to first dig out around the gas meter to find out where the gas main comes in. This was necessary so I didn&amp;#8217;t accidentally drive the ground rod through it. So, once I dug for a while I finally found the gas main and followed it to make sure that where I wanted to put the ground rod wouldn&amp;#8217;t effect the gas main. Luckily my original position was fine. So, then I started driving the 10ft copper clad rod into the ground with a sledge hammer such that a little less than a foot of the rod was exposed.&lt;/p&gt;
+
+&lt;p&gt;Once the rod was driven into the ground I then had to run the THHN 4 AWG from the rod to the cold water pipe and to the main panel. Getting the rod in the ground safely took me most of the day and was pretty damn exhausting. Running the THHN 4 AWG was a bit of a pain too just because I had to squeeze in by the eaves again. Anyways, I made a little update video clip showing what we did this week and last week with the electrical stuff. Check it out below.&lt;/p&gt;
+&lt;iframe allowFullScreen='allowFullScreen' frameborder='0' height='382' mozallowfullscreen='mozallowfullscreen' src='http://player.vimeo.com/video/13068260 ' webkitAllowFullScreen='webkitAllowFullScreen' width='680'&gt;useless text to fix fail to render rest of post issue&lt;/iframe&gt;</content>
     </entry>
   
 

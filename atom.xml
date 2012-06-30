@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title>Drew's World</title>
+  <link href="http://andrewdeponte.com/atom.xml" rel="self"/>
+  <link href="http://andrewdeponte.com/"/>
+  <updated>2012-06-30T13:49:10-07:00</updated>
+  <id>http://andrewdeponte.com/</id>
+  <author>
+    <name>Andrew De Ponte</name>
+    <email>cyphactor@gmail.com</email>
+  </author>
+
+  
+    <entry>
+      <title>SublimeText2 Guard Plugin Updates</title>
+      <link href="http://andrewdeponte.com/2012/04/15/SublimeText2-Guard-Plugin-Updates.html"/>
+      <updated>2012-04-15T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2012/04/15/SublimeText2-Guard-Plugin-Updates</id>
+      <content type="html">&lt;p&gt;Well, I am back with some more updates on my &lt;a href='http://github.com/cyphactor/sublime_guard'&gt;Sublime Text 2 Guard Plugin&lt;/a&gt;. This is a smaller release than the last as I have been very busy. Despite its small stature it is an exciting one as we have another contribution to honor. The following are the recent updates:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Fixed comma, single quote, question mark color issues (&lt;a href='https://github.com/cyphactor/sublime_guard/issues/25'&gt;#25&lt;/a&gt;)&lt;/li&gt;
+
+&lt;li&gt;Fixed small color issue caused by &lt;code&gt;!&lt;/code&gt; char (&lt;a href='http://github.com/cyphactor/sublime_guard/issues/26'&gt;#26&lt;/a&gt;)&lt;/li&gt;
+
+&lt;li&gt;Better console colors, change &lt;code&gt;0 failures&lt;/code&gt; from red to green (Thanks &lt;a href='http://github.com/lidanh'&gt;@lidanh&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A special thanks goes out to &lt;a href='http://github.com/lidanh'&gt;@lidanh&lt;/a&gt; for the code contribution. The new colors are much nicer and the &lt;code&gt;0 failures&lt;/code&gt; being green instead of red makes it easier to detect success vs failure.&lt;/p&gt;
+
+&lt;p&gt;Thanks also goes out to all the users of the &lt;a href='http://github.com/cyphactor/sublime_guard'&gt;Sublime Text 2 Guard Plugin&lt;/a&gt;. Especially, the users that have been submitting bug reports and feature requests. This plugin wouldn&amp;#8217;t exist without the direction and feedback from you all.&lt;/p&gt;
+
+&lt;p&gt;Please continue to provide feedback via Sublime Text 2 Guard Plugin &lt;a href='http://github.com/cyphactor/sublime_guard/issues'&gt;issues&lt;/a&gt; on our GitHub page.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>My zsh Setup</title>
+      <link href="http://andrewdeponte.com/2012/04/13/My-zsh-Setup.html"/>
+      <updated>2012-04-13T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2012/04/13/My-zsh-Setup</id>
+      <content type="html">&lt;p&gt;Relatively recently I switched to ZSH for my shell. The primary reason I switched was that I had more flexibility in prompts as I can setup a right prompt and a left prompt. I also like the completion interfacing that ZSH provides. Anyways, I finally got around to generalizing my ZSH setup and makeing it available on GitHub as a backup for myself so that I can easily set it up again in the future, as well as a means of sharing my setup with all of you. Anyways, it is availabe on GitHub at &lt;a href='http://github.com/cyphactor/dotzsh'&gt;http://github.com/cyphactor/dotzsh&lt;/a&gt; with instructions on how to install it using git.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>My VIM Setup</title>
+      <link href="http://andrewdeponte.com/2012/04/11/My-VIM-Setup.html"/>
+      <updated>2012-04-11T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2012/04/11/My-VIM-Setup</id>
+      <content type="html">&lt;p&gt;So, as some of you may know I pulled my old .vimrc out of hiding and started playing around with vim again to see if I would potentially want to switch back to it from Sublime Text 2. The reason being that I still fealt I was missing something that I had in vim (the quick keyboard navigation and general flexibility). Anyways, I pulled my .vimrc out and added the basics of what I think I am going to need for it to be an acceptable replacement for Sublime Text 2. This includes fuzzy file search, tab completion, etc. Basically all the things necessary for it to be a competitor to Sublime Text 2 in my mind. It isn&amp;#8217;t perferct yet but it is a start.&lt;/p&gt;
+
+&lt;p&gt;Note: The only reason I am doing this is because I already knew VIM so I don&amp;#8217;t have a learning curve to really explore this. In my eyes Sublime Text 2 and VIM are pretty damn close in terms of functionality but Sublime Text 2 provides a much smaller learning curve for the majority of people.&lt;/p&gt;
+
+&lt;p&gt;This does NOT mean that I am giving up on Sublime Text 2 or that I am going to stop supporting my Sublime Text 2 plugins. If it comes to that at some point in the future I will find a new mantainer for them and let you all know.&lt;/p&gt;
+
+&lt;p&gt;Anyways, I have made my vim setup available on github via &lt;a href='http://github.com/cyphactor/dotvim'&gt;http://github.com/cyphactor/dotvim&lt;/a&gt;. The README for the repository provides instructions on how to install using git.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>SublimeText2 Guard Plugin Updates</title>
+      <link href="http://andrewdeponte.com/2012/02/28/SublimeText2-Guard-Plugin-Updates.html"/>
+      <updated>2012-02-28T00:00:00-08:00</updated>
+      <id>http://andrewdeponte.com/2012/02/28/SublimeText2-Guard-Plugin-Updates</id>
+      <content type="html">&lt;p&gt;Well, I got some more updates for you all.&lt;/p&gt;
+
+&lt;p&gt;My Sublime Text 2 Guard Plugin has recently been recognized as an essential Sublime Text 2 plugin on a nettuts+ blog post. Thanks to this publicity and the exposure via Package Control, Twitter, GitHub, and Google I have gotten some decent feedback, especially around my recent addition of colored output. Thanks to all that feedback I have pushed out the following improvements to the Sublime Text 2 Guard Plugin:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Support for directory paths with spaces (&lt;a href='http://github.com/cyphactor/sublime_guard/pull/19'&gt;#19&lt;/a&gt;, Thanks &lt;a href='http://github.com/ffmike'&gt;@ffmike&lt;/a&gt;)&lt;/li&gt;
+
+&lt;li&gt;Fixed dash based coloring issue (&lt;a href='http://github.com/cyphactor/sublime_guard/issues/16'&gt;#16&lt;/a&gt;)&lt;/li&gt;
+
+&lt;li&gt;Fixed single quote based coloring issue (&lt;a href='http://github.com/cyphactor/sublime_guard/issues/17'&gt;#17&lt;/a&gt;)&lt;/li&gt;
+
+&lt;li&gt;Fixed question mark based coloring issue (&lt;a href='http://github.com/cyphactor/sublime_guard/issues/20'&gt;#20&lt;/a&gt;)&lt;/li&gt;
+
+&lt;li&gt;Fixed period based coloring issue (&lt;a href='http://github.com/cyphactor/sublime_guard/issues/21'&gt;#21&lt;/a&gt;)&lt;/li&gt;
+
+&lt;li&gt;Fixed success dot section identification &amp;amp; coloring issue (&lt;a href='http://github.com/cyphactor/sublime_guard/issues/22'&gt;#22&lt;/a&gt;)&lt;/li&gt;
+
+&lt;li&gt;Fixed a second single quote based coloring issue (&lt;a href='http://github.com/cyphactor/sublime_guard/issues/23'&gt;#23&lt;/a&gt;)&lt;/li&gt;
+
+&lt;li&gt;Added command relativity (&lt;a href='http://github.com/cyphactor/sublime_guard/issues/24'&gt;#24&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The above break down of improvements include primarily a bunch of coloring fixes, command relativity, and one very important issue that deserves some recognition, issue &lt;a href='http://github.com/cyphactor/sublime_guard/pull/19'&gt;#19&lt;/a&gt; by &lt;a href='http://github.com/ffmike'&gt;@ffmike&lt;/a&gt;. This is the Sublime Text 2 Guard Plugin&amp;#8217;s first contribution. Much thanks goes out to &lt;a href='http://github.com/ffmike'&gt;@ffmike&lt;/a&gt; for being our first contributor.&lt;/p&gt;
+
+&lt;p&gt;As usual if any of you have identified bugs or features that you would like added please submit them on the GitHub Issues page for the &lt;a href='http://github.com/cyphactor/sublime_guard/issues?sort=created&amp;amp;direction=desc&amp;amp;state=open'&gt;Sublime Text 2 Guard Plugin&lt;/a&gt;.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>SublimeText2 Guard Plugin in Color</title>
+      <link href="http://andrewdeponte.com/2012/02/22/SublimeText2-Guard-Plugin-in-Color.html"/>
+      <updated>2012-02-22T00:00:00-08:00</updated>
+      <id>http://andrewdeponte.com/2012/02/22/SublimeText2-Guard-Plugin-in-Color</id>
+      <content type="html">&lt;p&gt;Hey all,&lt;/p&gt;
+
+&lt;p&gt;I know there are a number of you who have been eagerly awaiting this moment. I sure have been. I am proud to announce the first release of the &lt;a href='http://github.com/cyphactor/sublime_guard'&gt;Sublime Text 2 Guard Plugin&lt;/a&gt; that provides colored output. Basically, it ended up that I had to define a language file to identify the entities in the output and then define a theme to color those identified entities. Once, I did that I simply programatically set the color_scheme and syntax options for the output panel and like magic colors worked. Given the complexity of the language definition and the limited test cases I had when developing I am sure there are going to be some bugs to work out. So, as usual please create issues if you find any of these &lt;a href='http://github.com/cyphactor/sublime_guard/issues'&gt;issues&lt;/a&gt;.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>SublimeText2 Guard Plugin Updates</title>
+      <link href="http://andrewdeponte.com/2012/02/09/SublimeText2-Guard-Plugin-Updates.html"/>
+      <updated>2012-02-09T00:00:00-08:00</updated>
+      <id>http://andrewdeponte.com/2012/02/09/SublimeText2-Guard-Plugin-Updates</id>
+      <content type="html">&lt;p&gt;Hey all,&lt;/p&gt;
+
+&lt;p&gt;My Sublime Text 2 Guard plugin has been out for a couple weeks now and it has definitely gotten some more usage under its belt. Thanks to everyone for your usage and feedback. As a result of the feedback and user generated issues I have released a new version to tighten it up a bit both from a user experience stand point as well as a stability standpoint. This release includes the following:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Now installable via &lt;a href='http://wbond.net/sublime_packages/package_control'&gt;Package Control&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;Fixed Guard won&amp;#8217;t start when installled via Package Control (&lt;a href='http://github.com/cyphactor/sublime_guard/issues/11'&gt;issue #11&lt;/a&gt;)&lt;/li&gt;
+
+&lt;li&gt;Added auto show output feature (&lt;a href='http://github.com/cyphactor/sublime_guard/issues/12'&gt;issue #12&lt;/a&gt;)&lt;/li&gt;
+
+&lt;li&gt;Replaced &lt;code&gt;#!/bin/sh&lt;/code&gt; with &lt;code&gt;#!/bin/bash&lt;/code&gt; in internal scripts&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For info on how to get the latest version or how to report bugs, feature requsts, etc. Please check out the GitHub page for the &lt;a href='http://github.com/cyphactor/sublime_guard'&gt;sublime_guard&lt;/a&gt; project.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>SublimeText2 Guard Plugin Updates</title>
+      <link href="http://andrewdeponte.com/2012/02/01/SublimeText2-Guard-Plugin-Updates.html"/>
+      <updated>2012-02-01T00:00:00-08:00</updated>
+      <id>http://andrewdeponte.com/2012/02/01/SublimeText2-Guard-Plugin-Updates</id>
+      <content type="html">&lt;p&gt;Hey all,&lt;/p&gt;
+
+&lt;p&gt;I was having some difficulties with a couple bugs in the Sublime Text 2 Guard plugin I have been working on. So, I decided I would drop Jon Skinner, developer of Sublime Text 2, an e-mail and see if he knew about the issues I was having and hopefully of solutions/work arounds for them. Jon, was very helpful in terms of better understanding the issues as well as suggesting some work arounds.&lt;/p&gt;
+
+&lt;p&gt;Anyways, given the input from Jon I took another look at the bugs/features of the Guard plugin and decided to tackle them tonight. The following items show the progress that I made tonight with respect to the Sublime Text 2 Guard plugin:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Enabled native Sublime Text 2 word wrap in the Guard output view.&lt;/li&gt;
+
+&lt;li&gt;Guard now exits properly when Sublime Text 2 exits/dies.&lt;/li&gt;
+
+&lt;li&gt;Added default key bindings to show Guard output view (super+shift+c)&lt;/li&gt;
+
+&lt;li&gt;Submitted a pull request to get the Guard plugin added to the &lt;a href='http://wbond.net/sublime_packages/package_control'&gt;Package Control&lt;/a&gt; repository list.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As usual I am looking for feedback issues (feature requests, bug fixes, etc.) You can find the project as &lt;a href='http://github.com/cyphactor/sublime_guard'&gt;sublime_guard&lt;/a&gt; on GitHub. As of tonight I am down to two feature requests. So, please create bugs in the issues if you run into any so that I can work on fixing them sooner rather than later.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>SublimeText2 Guard Plugin Updates</title>
+      <link href="http://andrewdeponte.com/2012/01/27/SublimeText2-Guard-Plugin-Updates.html"/>
+      <updated>2012-01-27T00:00:00-08:00</updated>
+      <id>http://andrewdeponte.com/2012/01/27/SublimeText2-Guard-Plugin-Updates</id>
+      <content type="html">&lt;p&gt;Just dropping a quick note to all that follow my blog. Last night I made a numeber updates to the &lt;a href='http://github.com/cyphactor/sublime_guard'&gt;Guard Plugin&lt;/a&gt; for &lt;a href='http://www.sublimetext.com/2'&gt;Sublime Text 2&lt;/a&gt;. Most of these were in direct response to feedback that I got from users after making the initial release on my blog, I think, two days ago. The modifications I made are enumarted below:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The biggest addition is &lt;code&gt;RVM detection and integration&lt;/code&gt;. The plugin is now intelligent enough to detect if you have RVM installed and detect if you are using a Project specific .rvmrc and of course respond by calling Guard appropriately depending on the case.&lt;/li&gt;
+
+&lt;li&gt;Another relatively small fix is a &lt;code&gt;vertical only auto-scroll&lt;/code&gt;. Before, if Guard output went to the right past the width of the pane it was auto-scrolling to the right and then bouncing back to the left at the next line. Now, it always scrolls down the left most column of the output basically making it auto-scroll vertically.&lt;/li&gt;
+
+&lt;li&gt;Third I added some output preprocessing that &lt;code&gt;strips out the Terminal Color
+Codes&lt;/code&gt; so that the output is a bit cleaner.&lt;/li&gt;
+
+&lt;li&gt;I also added a lot of &lt;code&gt;descriptive output and error handling and output&lt;/code&gt; to let the user better know what is failing so they might be able to debug the situation a bit better.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As always if you have any feedback (feature requests, bug reports, etc.) you can simply create an issue for the project at the projects &lt;a href='http://github.com/cyphactor/sublime_guard/issues'&gt;GitHub Issues Page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you are new to the &lt;a href='http://github.com/cyphactor/sublime_guard'&gt;Guard Plugin&lt;/a&gt; for &lt;a href='http://www.sublimetext.com/2'&gt;Sublime Text 2&lt;/a&gt; you can find installation instructions and document on the &lt;a href='http://github.com/cyphactor/sublime_guard'&gt;GitHub Page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;For instructions on upgrading please checkout the &lt;a href='http://github.com/cyphactor/sublime_guard'&gt;GitHub Page&lt;/a&gt;.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>SublimeText2 Guard Plugin Debut</title>
+      <link href="http://andrewdeponte.com/2012/01/25/SublimeText2-Guard-Plugin-Debut.html"/>
+      <updated>2012-01-25T00:00:00-08:00</updated>
+      <id>http://andrewdeponte.com/2012/01/25/SublimeText2-Guard-Plugin-Debut</id>
+      <content type="html">&lt;p&gt;Hi all. I know it has been a while. Please forgive me. My life has been a little crazy. I am still in the process of buliding my house. I also recently became engaged so I am trying to deal with wedding planning. Beyond that I am still trying to get all my development work done for RealPractice, my side company, and all of my open source projects.&lt;/p&gt;
+
+&lt;p&gt;Anyways, I needed a break from serious projects and decided it was time for a small fun project that would potentially help me develop the more serious projects more efficiently. A while back I started using a new text editor called &lt;a href='http://www.sublimetext.com/2'&gt;Sublime Text 2&lt;/a&gt;. Basically it is what TextMate 2 promised (and failed) to be and more.&lt;/p&gt;
+
+&lt;p&gt;So, since I have been using this for a while and I have been developing Ruby and Rails apps lately using BDD and TDD I decided it was time to remove the annoyance of having to switch to the terminal after each little development iteration to check Guard&amp;#8217;s output to see why my tests are failing. Wow that was a run on sentence. Oh, well it is 2 am and I just finished the plugin so bare with me. Anyways. Therefore, I decided it was the perfect opportunity to build a &lt;a href='http://www.sublimetext.com/2'&gt;Sublime Text 2&lt;/a&gt; plugin that integrates Guard into it.&lt;/p&gt;
+
+&lt;p&gt;It is available with its documentation on GitHub at &lt;a href='http://github.com/cyphactor/sublime_guard'&gt;http://github.com/cyphactor/sublime_guard&lt;/a&gt;. Please don&amp;#8217;t hesitate to go grab it, use it, extend it, contribute back, report bugs, or throw me new feature requests.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>Sod in Backyard and New Pocket Door</title>
+      <link href="http://andrewdeponte.com/2011/03/20/Sod-in-Backyard-and-New-Pocket-Door.html"/>
+      <updated>2011-03-20T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2011/03/20/Sod-in-Backyard-and-New-Pocket-Door</id>
+      <content type="html">&lt;p&gt;I know its a been a while since I made my last update about the progress on my house. I have been super busy with the house and a few other projects I have going on, not to mention my full time Job, :-). However, this weekend I manage to get quite a bit done. Probably, the most significant thing was the fact that I dug up over 4 inches of dirt for the entire backyard and put new soil down with furtilizer and laid some fresh sod down. My backyard actually is starting to look like a backyard. It feels so much better.&lt;/p&gt;
+
+&lt;p&gt;Secondly, I ripped out a wall, reframed it, and framed in another White Lami Pocket Door in the front bedroom. Hence, the closet now has a White Lami Pocket Door and so does the bathroom that is connected to the front bedroom. Seeing, the two White Lami doors hanging side by side helps me realize that my vision for this room is finally coming together.&lt;/p&gt;
+
+&lt;p&gt;Beyond, those feets I have been spending some time looking at fixtures for the bathroom that is attached to the front bedroom because the next step is really putting the plumbing for the fixtures in. Once, that is done I can drywall and tile the bathroom and the bedroom and put the fixtures in. Anyways, its coming together and I was definitely happy with the progress I made this weekend.&lt;/p&gt;
+
+&lt;p&gt;If you are interested in a short video update from me on this weekend please check it out below.&lt;/p&gt;
+&lt;iframe allowFullScreen='allowFullScreen' frameborder='0' height='382' mozallowfullscreen='mozallowfullscreen' src='http://player.vimeo.com/video/21262923 ' webkitAllowFullScreen='webkitAllowFullScreen' width='680'&gt;useless text to fix fail to render rest of post issue&lt;/iframe&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>House Update and Merry Christmas</title>
+      <link href="http://andrewdeponte.com/2010/12/25/House-Update-and-Merry-Christmas.html"/>
+      <updated>2010-12-25T00:00:00-08:00</updated>
+      <id>http://andrewdeponte.com/2010/12/25/House-Update-and-Merry-Christmas</id>
+      <content type="html">&lt;p&gt;Hey all,&lt;/p&gt;
+
+&lt;p&gt;I know it has been a while since I posted an updated on the house and I finally felt like I had a moment to breath tonight so I am going for it.&lt;/p&gt;
+
+&lt;p&gt;I was lucky that this year my family was doing Christmas at my Sister and her husbands house because it meant that my parents came out a bit early and they wanted to help with my house. So on the one day they came over, my Mom (I think of her as a master of mud) started cutting drywall to patch all the holes in the living room that I had to create to fix the gas lines and replace the electrical. While my Mom was doing that my Dad and I repiped the kitchen and got it hooked up to the new copper water system I put in the attic a little bit ago. My new dishwasher was delivered right around 7:00 pm so we called it a night.&lt;/p&gt;
+
+&lt;p&gt;The next day my Dad came over for a couple hours and we redid some of the electrical in the kitchen so that my new dishwasher would have electricity. After, that we installed my new garbage disposal and then install the new dishwasher. Oh, and when we repiped the kitchen we also ran cold water to the fridge which didn&amp;#8217;t used to exist before so now I have a fridge that has water and can do cool things like make ice!&lt;/p&gt;
+
+&lt;p&gt;Once we stopped working it was time to clean up and get ready to go see some family for Christmas eave which was nice. I learned about a very interesting iPhone/iPad game called Osmos. It is a very interesting game centralized around a gravity simulation. Then today I woke up and went over to my Sisters house and spend time with her and her husband, their kids, my parents, and my sisters husbands parents. It was a nice to spend time with them. I feel like I have been so busy lately that I haven&amp;#8217;t had a chance to see anyone except for people at work.&lt;/p&gt;
+
+&lt;p&gt;Plus its always nice to get presents, :-). This year was amazing I got clothes that I needed. Beyond that I got some other very practical things that I can use such as worm drive circular saw and a rolling tool chest. Anyways, thats my update I think next thing to tackle on the house is to repipe the laundry in the garage with copper. Once, that is done then I can repipe the existing bathroom, the one I am currently using, over a weekend. Once, those two things are done I will no longer be dependent on any galvanized water pipes and I can get rid of all of them, including the old tanked water heater which is still hooked up to them.&lt;/p&gt;
+
+&lt;p&gt;So, I hope you all had as nice of a Christmas as I did. I will try to post soon with another update on the house.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>Archaic - Archived Chats and Dev Helper</title>
+      <link href="http://andrewdeponte.com/2010/12/13/Archaic-Archived-Chats-and-Dev-Helper.html"/>
+      <updated>2010-12-13T00:00:00-08:00</updated>
+      <id>http://andrewdeponte.com/2010/12/13/Archaic-Archived-Chats-and-Dev-Helper</id>
+      <content type="html">&lt;p&gt;So for those of that don&amp;#8217;t know, I lead of team of software developers. For a long time now I have noticed a number of gaps in the industry with respect to software development and team collaboration. One area that I always felt was missing some love was group chat.&lt;/p&gt;
+
+&lt;p&gt;Sure, there are a large number of different chat protocols and applications that implement them all. However, they generally miss an archived history that has full text searching. Beyond the group chat is prime location to distribute push notifications when Git repositories that the team is working with have changes pushed to them. Because of these two issues and number of other that I really don&amp;#8217;t want to get into at this point I have started a new open source project called &lt;a href='http://github.com/cyphactor/archaic'&gt;&amp;#8220;Archaic&amp;#8221;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href='http://github.com/cyphactor/archaic'&gt;Archaic&lt;/a&gt; is a Rails application that provides archiving of IRC channel chats with a full text search interface as well as general developer helpers. It is composed of two pieces, an IRC Bot and the Rails application. Technically they both share the rails environment as the IRC Bot should be run with rails runner. You can checkout the project at the following: &lt;a href='http://github.com/cyphactor/archaic'&gt;http://github.com/cyphactor/archaic&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I plan to keep the master branch functional so feel free to use the master branch. It currently has the following features.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;IRC Chat Archiving&lt;/li&gt;
+
+&lt;li&gt;Full Text Chat Archive Searching with Context (to expand context simply click on resulting match)&lt;/li&gt;
+
+&lt;li&gt;Week number helper (when anyone in IRC channel types &amp;#8220;weeknum&amp;#8221; it replies with current week number)&lt;/li&gt;
+
+&lt;li&gt;Ticket number helper (when anyone in IRC channel types &amp;#8220;#\d+&amp;#8221; it replies with link to that ticket)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This is the initial introduction to this project and I am sure it has numerous directions that it can and will grow into. I very much welcome your thoughts, suggestions, feature requests, bug reports, testing, etc.&lt;/p&gt;
+
+&lt;p&gt;I believe that having a good central place of communication for a team even if they are working in the same office helps at least as a mechanism for keeping your devs notified about repo pushes close to real time.&lt;/p&gt;
+
+&lt;p&gt;Anyways, enjoy!&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>Git Based Workflow Revised</title>
+      <link href="http://andrewdeponte.com/2010/10/25/Git-Based-Workflow-Revised.html"/>
+      <updated>2010-10-25T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2010/10/25/Git-Based-Workflow-Revised</id>
+      <content type="html">&lt;p&gt;If you happened to read my previous post &lt;a href='/2010/10/24/An-Ideal-Git-Based-Team-Workflow.html'&gt;An Ideal Git Based Team Workflow&lt;/a&gt; this posting is a result of taking that concept and discussing it heavily with my team as well as further contemplating the issues and solutions.&lt;/p&gt;
+
+&lt;h3 id='the_real_requirements'&gt;The Real Requirements&lt;/h3&gt;
+
+&lt;p&gt;After reviewing my thoughts and discussing things further with my team I determined that a number of aspects of the previously defined workflow are not needed. In fact they were overcomplicating the workflow due to a lack of understanding of the actual requirements. One such requirement was the concept that branches should parallel deployment environments. This is not actually a requirement and I was sadly imposing it as one in my initial workflow. In hindsight this was primarily due to the fact that it was the focal point of a number of discussions with one of my developers, Michael Genereux. This singular mistaken requirement imposes a huge amount of complexity and constraint into the workflow for no significant value in my opinion. The set of requirements that I now believe are true requirements of our workflow are presented in the list below.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Overhead on the developers should be as minimal as possible&lt;/li&gt;
+
+&lt;li&gt;Overhead on the integrators should be as minimal as possible&lt;/li&gt;
+
+&lt;li&gt;Hotfix deployments should be able to trivially be made&lt;/li&gt;
+
+&lt;li&gt;Content deployments should be able to trivially be made&lt;/li&gt;
+
+&lt;li&gt;Iterative development cycles can happen parallel to Hotfix and Content development &amp;amp; deployment&lt;/li&gt;
+
+&lt;li&gt;Code review and feedback is needed for our inexperienced developers so that they can learn&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id='the_two_roles'&gt;The Two Roles&lt;/h3&gt;
+
+&lt;p&gt;After, isolating the correct requirements I determined that in order to satisfy the minimalistic overhead requirements as well as the code review/feedback requirements we were going to need two different roles within our workflow. The first role is what I will from this point on refer to as an &amp;#8220;Integrator&amp;#8221;. In reality an &amp;#8220;Integrator&amp;#8221; in my mind is simply a developer that is skilled enough to follow carefully designed policy, doesn&amp;#8217;t need much guidance, and fully understands the core concepts of Git and why the workflow policies exist. The second role is what I will refer to as a &amp;#8220;Newb&amp;#8221;. A &amp;#8220;Newb&amp;#8221; in this case is simply a less experienced developer that may need more guidance, heavier code review, and more direction in general.&lt;/p&gt;
+
+&lt;h4 id='the_integrator'&gt;The Integrator&lt;/h4&gt;
+
+&lt;p&gt;The group of developers which fall within the &amp;#8220;Integrator&amp;#8221; title are responsible for not only doing their normal iteration development but also for performing code review and providing feedback to the &amp;#8220;Newbs&amp;#8221;. Beyond that they are responsible for following the provided policies to manage Hotfixes, Content changes, and the normal iterative development cycle. The policies for each of these areas with respect to &amp;#8220;The Integrator&amp;#8221; role are provided below.&lt;/p&gt;
+
+&lt;h4 id='hotfixes'&gt;Hotfixes&lt;/h4&gt;
+
+&lt;p&gt;In this workflow I am defining hotfixes simply as changes that have to be made and deployed abruptly out side of a normal iteration deployment. These are normally severe bugs that drastically hinder the user experience and must be fixed asap.&lt;/p&gt;
+
+&lt;p&gt;Developers of the &amp;#8220;Integrator&amp;#8221; role are required when creating a hotfix or series of hotfixes to create a remote branch for the hotfixes within the current weeks iteration. The branch should be based on the release that the hotfixes are going to apply to. Secondarily the name of the branch should be of the following format, &lt;code&gt;&amp;quot;week_&amp;lt;week number&amp;gt;_hotfixes&amp;quot;&lt;/code&gt;. Once the remote branch exists development of the hotfixes should occur on the newly created hotfixes branch. Once the branch reaches a state in which it is ready to be released into the accelerated pipeline it should be tagged using the release naming scheme and deployed.&lt;/p&gt;
+
+&lt;h3 id='content_changes'&gt;Content Changes&lt;/h3&gt;
+
+&lt;p&gt;In this workflow I am defining content changes simply as changes which need to be deployed on a more frequent basis than the normal iteration deployments. Beyond that they are generally changes to assets or textual changes needed by marketing, etc. which have less of a functional involvement.&lt;/p&gt;
+
+&lt;p&gt;Developers of the &amp;#8220;Integrator&amp;#8221; role are not usually the developers making these changes directly. However, they are responsible for reviewing, integrating, and providing feedback to the &amp;#8220;Newbs&amp;#8221; that are making these changes through the &amp;#8220;Newb&amp;#8221; workflow as defined below. Hence, the &amp;#8220;Integrators&amp;#8221; should pull in the &amp;#8220;Newbs&amp;#8221; content changes after reviewing them and merge them into the current weeks remote branch for content changes. This branch should have a name of the following format, &lt;code&gt;&amp;quot;week_&amp;lt;week number&amp;gt;_content&amp;quot;&lt;/code&gt;. If this branch doesn&amp;#8217;t exist at the time in which an &amp;#8220;Integrator&amp;#8221; needs it they are responsible for creating it. Once this branch reaches a state in which it is ready to be deployed, it should be tagged using the release naming scheme and deployed into the pipeline.&lt;/p&gt;
+
+&lt;h3 id='normal_iteration'&gt;Normal Iteration&lt;/h3&gt;
+
+&lt;p&gt;In this workflow a normal iteration is simple a release cycle of two weeks. Within a normal iteration &amp;#8220;Integrators&amp;#8221; are responsible for not only managing content and hotfixes from &amp;#8220;Newbs&amp;#8221; but also managing normal iteration development from &amp;#8220;Newbs&amp;#8221;. Beyond that &amp;#8220;Integrators&amp;#8221; are responsible for performing their normal development work for the current iteration. All development changes should be performed inside specific topic branches and never directly on the master branch. If features/bugs are large enough that they may consume multiple days of development they should have their own remote topic branch. This allows other developers to participate or at a minimum obtain the partially completed changes which you have made. Beyond that never developing directly on master makes abrupt context switching trivial. Once a topic branch has reached a point in which it is ready to be merged into the current weeks iteration and ready for the pipeline the &amp;#8220;Integrator&amp;#8221; should merge it into the master branch and push the updated master branch to the central repository.&lt;/p&gt;
+
+&lt;h3 id='the_newb'&gt;The Newb&lt;/h3&gt;
+
+&lt;p&gt;The developers which fall within the &amp;#8220;Newb&amp;#8221; title are responsible for performing their development tasks and learning the process and value of the workflow policies as well as the technologies and languages which they are using. Ideally the &amp;#8220;Newbs&amp;#8221; progress to &amp;#8220;Integrators&amp;#8221; eventually. Their tasks similar to the &amp;#8220;Integrators&amp;#8221; may consist of development work for Hotfixes, Content Changes, or Normal Iteration development. However, one way they differ is in the process and policies they have to follow when performing these tasks. The workflow for each of these types of changes with respect to &amp;#8220;Newbs&amp;#8221; is provided below.&lt;/p&gt;
+
+&lt;h4 id='hotfixes'&gt;Hotfixes&lt;/h4&gt;
+
+&lt;p&gt;A &amp;#8220;Newb&amp;#8221; similar to an &amp;#8220;Integrator&amp;#8221; is required to do all development within topic branches. However, when a &amp;#8220;Newb&amp;#8221; believes they are ready to have their changes included in the current weeks hotfixes branch they must make a Pull Request via GitHub to their upstream repository. GitHub will then notify all of the &amp;#8220;Integrators&amp;#8221; of the new pull request and allow them to review the changes, provide any feedback and merge the changes in. GitHub will also allow the &amp;#8220;Integrators&amp;#8221; to throw the changes back to the &amp;#8220;Newb&amp;#8221; with feedback rather than merging the changes in.&lt;/p&gt;
+
+&lt;h3 id='content_changes'&gt;Content Changes&lt;/h3&gt;
+
+&lt;p&gt;With respect to a &amp;#8220;Newb&amp;#8221; content changes work exactly the same way as Hotfixes. They simply develop their content changes and submit an appropriate Pull Request via GitHub to their upstream repository so that an &amp;#8220;Integrator&amp;#8221; can appropriately deal with their changes and provide any feedback.&lt;/p&gt;
+
+&lt;h3 id='normal_iteration'&gt;Normal Iteration&lt;/h3&gt;
+
+&lt;p&gt;&amp;#8220;Newbs&amp;#8221; follow the same process for Normal Iteration development as they did Hotfixes and Content Changes. Develop the changes in a topic branch and submit a Pull Request via GitHub.&lt;/p&gt;
+
+&lt;h3 id='requirements_review'&gt;Requirements Review&lt;/h3&gt;
+
+&lt;p&gt;I believe that the above workflows and policies provide a solid basis for a well rounded team with very little overhead and a decent amount of flexibility with respect to parallel releases being made at different rates. Please note additional parallel releases can be added simply by adding additional conceptual types of changes to my current list of Hotfixes, Content Changes, and Normal Iteration Development.&lt;/p&gt;
+
+&lt;h3 id='release_naming_scheme'&gt;Release Naming Scheme&lt;/h3&gt;
+
+&lt;p&gt;Given that we are developing by either week or two week iterations I have decided that we should use the following naming scheme for tagging releases:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;release-YY.&amp;lt;week_num&amp;gt;-rc&amp;lt;release candidate counter&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The YY represents the year for 2010 it should be 10. The &lt;code&gt;&amp;lt;week_num&amp;gt;&lt;/code&gt; is the week number and the &lt;code&gt;&amp;lt;release candidate counter&amp;gt;&lt;/code&gt; is a counter for this iteration that reset at the beginning of each iteration. Once a final tagged release for production is ready to be made it should use the following naming scheme.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;release-YY.&amp;lt;week_num&amp;gt;-rf&amp;lt;release candidate counter&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;All the variables in the naming scheme for final tags are the same as those in the latest rc for a weekly iteration. For example if the latest rc is release-10.34-rc6 and no changes have been made since that tag and the code is ready to be tagged for a production release it should be tagged as release-10.34-rf6.&lt;/p&gt;
+
+&lt;h3 id='topic_branch_naming_scheme'&gt;Topic Branch Naming Scheme&lt;/h3&gt;
+
+&lt;p&gt;When naming topic branches it is required that you use the following naming scheme.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;lt;type char&amp;gt;&amp;lt;ticket id&amp;gt;_&amp;lt;name&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;&amp;lt;type char&amp;gt;&lt;/code&gt; is a character that defines if it is a task (t), bug (b), or feature (f). The ticket id is the unique identifier of the ticket in the ticketing system that corresponds to this topic branch. The &lt;code&gt;&amp;lt;name&amp;gt;&lt;/code&gt; is a short but meaningful name that describes the topic branch.&lt;/p&gt;
+
+&lt;h3 id='dont_tie_deployment_environments_to_branches'&gt;Don&amp;#8217;t Tie Deployment Environments to Branches&lt;/h3&gt;
+
+&lt;p&gt;So, as I stated in the opening I was assuming in the previous article that each deployment environment should have a branch that parallels it. This was an idea that was presented to me by one of my developers and I mistakenly ran with it. The following is an explanation of why I believe doing this is not valuable and potentially costly. Also, I am not pointing this out to pick on my developer. In fact it is quite the opposite. I am glad that he forced me to think about alternatives in great depth because the process has only more solidified my belief in the workflow and policies presented above. Beyond that, the explanation of my opinion may help him or others come to the same or even a better conclusion/workflow.&lt;/p&gt;
+
+&lt;p&gt;For some reason I couldn&amp;#8217;t initially place my finger on what was wrong with using branches that paralleled the deployment environments of development, qa, staging, and production. I knew that I really hated the overhead of having to deal with cherry picking changes from one branch to the next to simulate the pipeline but I still simply saw that as its own issue which inspired me to come up with the previous and very flawed workflow, An Ideal Git Based Team Workflow.&lt;/p&gt;
+
+&lt;p&gt;Today after an insane amount of contemplation, discussion, and fiddling with the workflow the answer finally came to me. The problem with the Deployment Environments mapping to branches is that from a workflow perspective we don&amp;#8217;t really care about the deployment environments other than the tagged release that is currently deployed in each environment. This information can easily be obtained without branches that map to the environments by correlating the deployed tag in a given environment to the matching tag in Git.&lt;/p&gt;
+
+&lt;p&gt;What we do care about with respect to a workflow however is the ability to be able to cleanly share code changes as well as be able to handle a number of parallel releases. I have chosen to represent these parellel releases via different classifications of changes in the above workflow. Specifically, Hotfixes, Content Changes, and Normal Iteration Development.&lt;/p&gt;
+
+&lt;p&gt;When you test these two models it is very interesting because in the model where you have branches for each deployment environment you end up spending a huge amount of overhead simulating something for no reason. The primary cost in overhead is the amount of merging and cherry-picking that is necessary to keep the states of the branches in line. Secondly, it does NOT allow you to make parallel deployments of various types unless those changes happen to fall within the various stages of your deployment pipeline.&lt;/p&gt;
+
+&lt;p&gt;The second model in which you have classifications of changes that map to parallel releases, the overhead of maintaining the deployment environment branches is completely eliminated. It also models the actual situation with respect to code and the natural requirements surrounding what needs to be done with/to that code. Therefore, it requires no additional overhead or maintenance.&lt;/p&gt;
+
+&lt;h3 id='conclusion'&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;The above is why I believe the model in which branches parallel deployment environments is costly and has no perceived value in comparison to its costs. As always I am interested to hear peoples thoughts and opinions with respect to my postings, so don&amp;#8217;t hesitate to share.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>An Ideal Git Based Team Workflow</title>
+      <link href="http://andrewdeponte.com/2010/10/24/An-Ideal-Git-Based-Team-Workflow.html"/>
+      <updated>2010-10-24T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2010/10/24/An-Ideal-Git-Based-Team-Workflow</id>
+      <content type="html">&lt;p&gt;If you don&amp;#8217;t know me there is one thing you should know about me. I love tools that help make things easier. Git has definitely been one of those tools for me. However, I always felt like there was something in the power of Git that wasn&amp;#8217;t really being taken advantage of because of peoples past knowledge and training of centralized source control systems such as SVN. Git provides many advantages which are difficult to argue for an individual developers workflow. However, I am more interested in a solid workflow for a team that has very little overhead using Git.&lt;/p&gt;
+
+&lt;p&gt;The team of developers that I lead up for RealPractice just released our first Beta (still pretty alpha) of our product. Before this point in time I really hadn&amp;#8217;t put in place a specific workflow largely because we had a small enough team that it was easily manageable and secondly because we simply had a huge amount of development before one release. Therefore, if things were broken during that period of time it was fine as long as what was in got fixed for the release. However, now that we have made the release I require a team workflow that gives us much more control of the development process, what gets included in the product, and at what stages things get included.&lt;/p&gt;
+
+&lt;h3 id='centralized_branch_workflow'&gt;Centralized Branch Workflow&lt;/h3&gt;
+
+&lt;p&gt;To begin with I looked heavily at a model that I have used in the past and seen used before. One of my developers Michael Genereux recommended this workflow as well when I told my team I was looking for a good workflow. However, I have only used this with very very small teams (2 man teams) in the past. Michael seemed to be a big supporter of this method so I discussed it with him and started playing with this workflow again.&lt;/p&gt;
+
+&lt;p&gt;This workflow uses Git in a centralized maner where you have an origin and that origin has branches for each of the stages/environments, experimental, development, qa, staging, and production. The idea is that development happens on the respective branches appropriately and gets merged backwards into the experimental so that it can follow the normal flow through the environments as one would want. In my mind this has a few major issues which are as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Development occurs in upper level branches. Ideally even if you are writing a bug fix you want that bug fix to go through all of the stages starting at the beginning. One could argue that you could develop the bug fix in the experimental branch and merge it into development branch and so on. However, this leads to the second issue.&lt;/li&gt;
+
+&lt;li&gt;This model works fine if you have a very small team that is extremely good at managing and knowing their commit history because when a change is made to experimental it somehow needs to get put into the development branch. Some would say you simply need to merge it into development branch. This argument is fine if you are a single dev and develop in a linear fashion on the experimental branch. However, if there is a team of people all sharing the same experimental branch then it can be a pain in the ass to identify which commits belong to bug fix Y or feature X and need to be cherry-picked into the next branch.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As you can probably see from above points alone, managing the code base and what gets included in it can be very hard and consume an insane amount of time. Especially, if you have to go through and isolate commits that need to be cherry-picked into the next branch all the time. Plus, think about the fact that I am only talking about one level experimental to development. This same process has to occur at every level of the process experimental all the way through production.&lt;/p&gt;
+
+&lt;h3 id='github_to_the_rescue_pull_requests'&gt;GitHub to the Rescue (Pull Requests)&lt;/h3&gt;
+
+&lt;p&gt;So after playing with the above a bit more and thinking pretty heavily I decided there has to be a better way. I started thinking about how I develop and how I could commit code that would then go through the environmental pipeline appropriately and not have the same overhead. Thats when I realized that the biggest overhead in the above process is the fact that the devs have to isolate commits for cherry-picking all the time. Hence, I started looking for solution in the Git space and didn&amp;#8217;t find anything directly within Git that seemed clean. Therefore, I started thinking about tools out side of Git and GitHub came to mind. With GitHub if you are using the pull based distributed model GitHub provides a feature called a &amp;#8220;Pull Request&amp;#8221;. This basically allows a developer to send a message to the upstream repository requesting that they pull in some changes. The beauty of the GitHub &amp;#8220;Pull Request&amp;#8221; is that it associates a range of commits with the pull request.&lt;/p&gt;
+
+&lt;p&gt;Hence, it allows a developer to develop a bug fix or feature in their repository and then simply create a &amp;#8220;Pull Request&amp;#8221; that includes the the proper commit range. Then when the upstream developer/integrator receives the &amp;#8220;Pull Request&amp;#8221; they can pull it into their repository and merge it in appropriately knowing exactly what the proper commit range is. This drastically reduces the amount of time needed to isolate the commits using the Centralized Branch Workflow. In my mind having the Pull Requests contain the commit range is brilliant on GitHub&amp;#8217;s part because it is an unbelievable time savor. Plus they provide a web interface for testing conflict states of &amp;#8220;Pull Requests&amp;#8221; and merging them in as well as a communication mechanism to submiting the developers in case you have to deny a pull request.&lt;/p&gt;
+
+&lt;h3 id='how_to_use_this_github_pull_request_model'&gt;How to use this GitHub Pull Request Model&lt;/h3&gt;
+
+&lt;p&gt;The following is how I want my developers to use this model. In ones own local repository they should create a topic branch for every task, bug, etc. Generally the branches should be named with the id of the task or bug so that we can identify commits with bugs and tasks in history. This also eases the local workflow to allow me to switch a dev from one focus to another abruptly (I try to do this almost never, but sometimes it happens). Generally, a dev should be developing the bug fix, task, or feature and reach a point at which they believe that they have enough for me to pull their changes into the development branch. At that point they should create a &amp;#8220;Pull Request&amp;#8221; because GitHub will help them by figuring out the commit range. If they continue to develop past the point where they want me to pull and neglect to make the &amp;#8220;Pull Request&amp;#8221; until later then they will have to isolate the commit range they want me to pull using GitHub (which is still easier than just using Git by itself). Note that keeping each task, bug fix, etc in its own topic branch makes commit isolation much easier for developers.&lt;/p&gt;
+
+&lt;p&gt;Once, they have sent the pull request all integrators are notified of the pull request and then have the opportunity to pull the changes into the appropriate branch and move those changes up the pipeline as they see fit. Some developers see the act of making a pull request as overhead. However, they should note that it isn&amp;#8217;t a side effect of GitHub it is a side effect of having to move change sets up the environment pipeline. GitHub just provides a tool that makes it easier than doing it without GitHub.&lt;/p&gt;
+
+&lt;h3 id='moving_changes_up_the_pipeline'&gt;Moving Changes up the Pipeline&lt;/h3&gt;
+
+&lt;p&gt;The last step in this process is the act of moving things up the environment pipeline. This is much the same process as in the Centralized Branch Workflow with one distinct difference, it is in a much more controlled environment because you don&amp;#8217;t have all of your devs sharing the same branch space. Instead you as the integrator control the branch space. You may be asking, who cares? Well, I do for one because it makes moving changes up the pipeline much easier because it requires far far less cherry-picking. In fact the majority of the time all that is needed is to merge pull requests into development, merge development up the pipeline, and so on and so forth. Do note however that every once and a while you do need to cherry-pick but it is far and few in comparison with the Centralized Branch Workflow.&lt;/p&gt;
+
+&lt;p&gt;So this is the current workflow that I am going with. I haven&amp;#8217;t completely decided on how much access I will give my team with respect to direct pushing if any. But, that is just a balance that has to be found over time in my experience. Anyways, I hope the above gives some insight into the workflow and why I have chosen it.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>Breaking through Front Shower Slab</title>
+      <link href="http://andrewdeponte.com/2010/10/10/Breaking-through-Front-Shower-Slab.html"/>
+      <updated>2010-10-10T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2010/10/10/Breaking-through-Front-Shower-Slab</id>
+      <content type="html">&lt;p&gt;So as some you already know I have been crazy busy with work as of late preparing for the launch of our new product. Hence, I haven&amp;#8217;t had much time to work on the house. However, this weekend I finally had some time and decided it was time to break into the slab of the front shower so that I could replace the piping that connects to the drain and the piping that connects to the vent. The following video shows the results of this little adventure.&lt;/p&gt;
+&lt;iframe allowFullScreen='allowFullScreen' frameborder='0' height='382' mozallowfullscreen='mozallowfullscreen' src='http://player.vimeo.com/video/15740571 ' webkitAllowFullScreen='webkitAllowFullScreen' width='680'&gt;useless text to fix fail to render rest of post issue&lt;/iframe&gt;</content>
+    </entry>
+  
+
+</feed>

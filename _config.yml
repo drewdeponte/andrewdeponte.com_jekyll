@@ -1,7 +1,0 @@
-source: .
-destination: ./_site
-plugins: ./_plugins
-
-auto: true
-pygments: true
-paginate: 5

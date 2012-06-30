@@ -12,3 +12,17 @@ fi
 # Generate the site into _site
 jekyll
 
+# Checkout the "master" branch
+git checkout master
+
+# Move the produced files in the _site directory up to the top level
+
+# Remove the _site directory
+
+# Stage all the new files and changes
+
+# Commit the stage new files and changes
+
+# Push the master branch up to origin
+
+# Checkout the "jekyll-site-src" branch

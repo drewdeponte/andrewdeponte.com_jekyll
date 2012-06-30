@@ -1,0 +1,137 @@
+---
+layout: post
+title: An Ideal Git Based Team Workflow
+date: 2010-10-24
+tags: [Git, Source Control, Team Workflow, Project Management, Software Development]
+---
+If you don't know me there is one thing you should know about me. I love tools
+that help make things easier. Git has definitely been one of those tools for
+me. However, I always felt like there was something in the power of Git that
+wasn't really being taken advantage of because of peoples past knowledge and
+training of centralized source control systems such as SVN. Git provides many
+advantages which are difficult to argue for an individual developers workflow.
+However, I am more interested in a solid workflow for a team that has very
+little overhead using Git.
+
+The team of developers that I lead up for RealPractice just released our first
+Beta (still pretty alpha) of our product. Before this point in time I really
+hadn't put in place a specific workflow largely because we had a small enough
+team that it was easily manageable and secondly because we simply had a huge
+amount of development before one release. Therefore, if things were broken
+during that period of time it was fine as long as what was in got fixed for the
+release. However, now that we have made the release I require a team workflow
+that gives us much more control of the development process, what gets included
+in the product, and at what stages things get included.
+
+### Centralized Branch Workflow
+
+To begin with I looked heavily at a model that I have used in the past and seen
+used before. One of my developers Michael Genereux recommended this workflow as
+well when I told my team I was looking for a good workflow. However, I have
+only used this with very very small teams (2 man teams) in the past. Michael
+seemed to be a big supporter of this method so I discussed it with him and
+started playing with this workflow again.
+
+This workflow uses Git in a centralized maner where you have an origin and that
+origin has branches for each of the stages/environments, experimental,
+development, qa, staging, and production. The idea is that development happens
+on the respective branches appropriately and gets merged backwards into the
+experimental so that it can follow the normal flow through the environments as
+one would want. In my mind this has a few major issues which are as follows: 
+
+* Development occurs in upper level branches. Ideally even if you are writing a
+  bug fix you want that bug fix to go through all of the stages starting at the
+  beginning. One could argue that you could develop the bug fix in the
+  experimental branch and merge it into development branch and so on. However,
+  this leads to the second issue.
+* This model works fine if you have a very small team that is extremely good at
+  managing and knowing their commit history because when a change is made to
+  experimental it somehow needs to get put into the development branch. Some
+  would say you simply need to merge it into development branch. This argument
+  is fine if you are a single dev and develop in a linear fashion on the
+  experimental branch. However, if there is a team of people all sharing the
+  same experimental branch then it can be a pain in the ass to identify which
+  commits belong to bug fix Y or feature X and need to be cherry-picked into
+  the next branch.
+
+As you can probably see from above points alone, managing the code base and
+what gets included in it can be very hard and consume an insane amount of time.
+Especially, if you have to go through and isolate commits that need to be
+cherry-picked into the next branch all the time. Plus, think about the fact
+that I am only talking about one level experimental to development. This same
+process has to occur at every level of the process experimental all the way
+through production.
+
+### GitHub to the Rescue (Pull Requests)
+
+So after playing with the above a bit more and thinking pretty heavily I
+decided there has to be a better way. I started thinking about how I develop
+and how I could commit code that would then go through the environmental
+pipeline appropriately and not have the same overhead. Thats when I realized
+that the biggest overhead in the  above process is the fact that the devs have
+to isolate commits for cherry-picking all the time. Hence, I started looking
+for solution in the Git space and didn't find anything directly within Git that
+seemed clean. Therefore, I started thinking about tools out side of Git and
+GitHub came to mind. With GitHub if you are using the pull based distributed
+model GitHub provides a feature called a "Pull Request". This basically allows
+a developer to send a message to the upstream repository requesting that they
+pull in some changes. The beauty of the GitHub "Pull Request" is that it
+associates a range of commits with the pull request.
+
+Hence, it allows a developer to develop a bug fix or feature in their
+repository and then simply create a "Pull Request" that includes the the proper
+commit range. Then when the upstream developer/integrator receives the "Pull
+Request" they can pull it into their repository and merge it in appropriately
+knowing exactly what the proper commit range is. This drastically reduces the
+amount of time needed to isolate the commits using the Centralized Branch
+Workflow. In my mind having the Pull Requests contain the commit range is
+brilliant on GitHub's part because it is an unbelievable time savor. Plus they
+provide a web interface for testing conflict states of "Pull Requests" and
+merging them in as well as a communication mechanism to submiting the
+developers in case you have to deny a pull request.
+
+### How to use this GitHub Pull Request Model
+
+The following is how I want my developers to use this model. In ones own local
+repository they should create a topic branch for every task, bug, etc.
+Generally the branches should be named with the id of the task or bug so that
+we can identify commits with bugs and tasks in history. This also eases the
+local workflow to allow me to switch a dev from one focus to another abruptly
+(I try to do this almost never, but sometimes it happens). Generally, a dev
+should be developing the bug fix, task, or feature and reach a point at which
+they believe that they have enough for me to pull their changes into the
+development branch. At that point they should create a "Pull Request" because
+GitHub will help them by figuring out the commit range. If they continue to
+develop past the point where they want me to pull and neglect to make the "Pull
+Request" until later then they will have to isolate the commit range they want
+me to pull using GitHub (which is still easier than just using Git by itself).
+Note that keeping each task, bug fix, etc in its own topic branch makes commit
+isolation much easier for developers.
+
+Once, they have sent the pull request all integrators are notified of the pull
+request and then have the opportunity to pull the changes into the appropriate
+branch and move those changes up the pipeline as they see fit. Some developers
+see the act of making a pull request as overhead. However, they should note
+that it isn't a side effect of GitHub it is a side effect of having to move
+change sets up the environment pipeline. GitHub just provides a tool that makes
+it easier than doing it without GitHub.
+
+### Moving Changes up the Pipeline
+
+The last step in this process is the act of moving things up the environment
+pipeline. This is much the same process as in the Centralized Branch Workflow
+with one distinct difference, it is in a much more controlled environment
+because you don't have all of your devs sharing the same branch space. Instead
+you as the integrator control the branch space. You may be asking, who cares?
+Well, I do for one because it makes moving changes up the pipeline much easier
+because it requires far far less cherry-picking. In fact the majority of the
+time all that is needed is to merge pull requests into development, merge
+development up the pipeline, and so on and so forth. Do note however that every
+once and a while you do need to cherry-pick but it is far and few in comparison
+with the Centralized Branch Workflow.
+
+So this is the current workflow that I am going with. I haven't completely
+decided on how much access I will give my team with respect to direct pushing
+if any. But, that is just a balance that has to be found over time in my
+experience. Anyways, I hope the above gives some insight into the workflow and
+why I have chosen it.

@@ -4,7 +4,7 @@
   <title>Drew's World</title>
   <link href="http://andrewdeponte.com/atom.xml" rel="self"/>
   <link href="http://andrewdeponte.com/"/>
-  <updated>2012-06-30T14:59:31-07:00</updated>
+  <updated>2012-06-30T16:18:00-07:00</updated>
   <id>http://andrewdeponte.com/</id>
   <author>
     <name>Andrew De Ponte</name>
@@ -507,6 +507,108 @@ Codes&lt;/code&gt; so that the output is a bit cleaner.&lt;/li&gt;
 
 &lt;p&gt;Once the rod was driven into the ground I then had to run the THHN 4 AWG from the rod to the cold water pipe and to the main panel. Getting the rod in the ground safely took me most of the day and was pretty damn exhausting. Running the THHN 4 AWG was a bit of a pain too just because I had to squeeze in by the eaves again. Anyways, I made a little update video clip showing what we did this week and last week with the electrical stuff. Check it out below.&lt;/p&gt;
 &lt;iframe allowFullScreen='allowFullScreen' frameborder='0' height='382' mozallowfullscreen='mozallowfullscreen' src='http://player.vimeo.com/video/13068260 ' webkitAllowFullScreen='webkitAllowFullScreen' width='680'&gt;useless text to fix fail to render rest of post issue&lt;/iframe&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>Kauai 2010</title>
+      <link href="http://andrewdeponte.com/2010/06/26/kauai-2010.html"/>
+      <updated>2010-06-26T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2010/06/26/kauai-2010</id>
+      <content type="html">&lt;p&gt;I just got back from an amazing vacation in Kauai. Aly and I went and just had an amazing time. We went hiking, kayaking, snorkeling, and more. This trip we made it one of our goals to try and find the best &amp;#8220;Shave Ice&amp;#8221; on the island. We definitely found some great &amp;#8220;Shave Ice&amp;#8221; at Jo Jo&amp;#8217;s and a few other places but I am sure there is more to explore. The beauty of Kauai never ceases to amaze me. It is one place on the planet that I have found to be truly relaxing for me. Anyways, we took a bunch of pictures on the trip and I have posted them in the photos section of my site. The photos are split into separate albums titled by the event and preceded by &amp;#8220;Kauai 2010&amp;#8221;. For a quick way to get to the photos section just click &lt;a href='http://www.facebook.com/andrewdeponte/photos'&gt;here&lt;/a&gt; and log into Facebook if you aren&amp;#8217;t already.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>100 AMP Sub-Panel</title>
+      <link href="http://andrewdeponte.com/2010/06/26/100-amp-sub-panel.html"/>
+      <updated>2010-06-26T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2010/06/26/100-amp-sub-panel</id>
+      <content type="html">&lt;p&gt;Well, I came back from my Kauai trip refreshed and ready to get some stuff done on the house. Today I worked with my Dad and Uncle to get the 100 AMP Sub-Panel run from the main panel with 2-3 Romex cable as well as rewire two of the bedrooms and one of the bathrooms. The 2-3 Romex is pretty expensive. I decided to get the 2-3 Romex rather than buying the individual conductors and conduit just because the price difference was relatively small and the 2-3 Romex is less work. Running the 2-3 was a bit of a pain given that the main panel is right were the eaves come down so I had to squeeze myself in real tight to get it run. But, I did it and now it is done. After a little exploration we also discovered that the main panel is only grounded to the cold water pipes in the attic which isn&amp;#8217;t up to code. I am very happy with the progress we made and I will have to fix the grounding next weekend.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>Western Digital MyPassport</title>
+      <link href="http://andrewdeponte.com/2010/06/14/western-digital-mypassport.html"/>
+      <updated>2010-06-14T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2010/06/14/western-digital-mypassport</id>
+      <content type="html">&lt;p&gt;So, recently I bought a Western Digital (WD) MyPassport portable 500GB hard drive. I found when plugging it in that it had a very annoying Virtual CD built into its firmware called WD SmartWare which I was not the least bit interested in using. All, I wanted was an external USB hard drive that was portable and just worked. So, the first thing I tried was to reformat it to a Journaled Mac OS X file system. Once, I reformatted it, I was able to copy files too and from the external drive just like I wanted to be. However, every time I plugged the external drive in it would also mount this stupid Virtual CD which I didn&amp;#8217;t want to deal with.&lt;/p&gt;
+
+&lt;p&gt;So, I googled around a bit for a way to stop this thing from mounting and coming up every time I plug the external drive in. I found a bunch of articles outlining how to update the firmware on the external hard drive and a bunch of very long step by step processes all just to get this stupid Virtual CD to go away. Soon, enough I found the answer I was looking for. It was simply to grab the UUID of the Volume by using the following command:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;diskutil info /Volumes/WD\ SmartWare/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Once, I had the UUID of the Volume then I created the /etc/fstab file and added the following line to it.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;UUID=84789472-2EB5-3C8E-BFC1-F554F91B026C none hfs rw,noauto 0 0&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;In my opinion this was a much better solution as it just disabled the auto mounting of that volume and didn&amp;#8217;t require a firmware flash or anything crazy just to get rid of the stupid Virtual CD. Anyways, I probably made this post more for me than any of you. Though, hopefully someone else finds this tid bit useful as well.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>Flight of the Conchords Concert</title>
+      <link href="http://andrewdeponte.com/2010/05/31/flight-of-the-conchords-concert.html"/>
+      <updated>2010-05-31T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2010/05/31/flight-of-the-conchords-concert</id>
+      <content type="html">&lt;p&gt;Woot woot! Aly and I just got back from an awesome Flight of the Conchords Concert at the Hollywood Bowl. I was very impressed with how they sounded live. Their stage presence and performance in general is just amazing. When I think about them, I always group them conceptually with parity bands. However, I think the thing I love the most about them is their raw musical talent and abilities to playing a vast number of genres really well while still doing intelligent comedy. Anyways, I had a blast and I strongly recommend going to see them live if you get the chance.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>Still working on Gas Pipes</title>
+      <link href="http://andrewdeponte.com/2010/05/23/still-working-on-gas-pipes.html"/>
+      <updated>2010-05-23T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2010/05/23/still-working-on-gas-pipes</id>
+      <content type="html">&lt;p&gt;So, if you recall I few posts back I wrote about how I had run the new gas pipes for the new laundry room and the tankless water heater. I also pressure tested the system but found it was still dropping 1 to 2 10ths of a PSI in about 15 mins. This Saturday my goal was to go through and find the leaks in the branches one by one and fix them and retest.&lt;/p&gt;
+
+&lt;p&gt;I did exactly that, I pressurized the gas lines up to 100 PSI and soap tested and to my wonder none of the new piping I added had any leaks. So, I then started testing all the other branches. I found leaks in the Tanked Water Heater branch, Stove branch, Old Stove Branch, and the Furnace Branch. Hence, I took apart all of these branches and cleaned the joints and reconnected all of the piping and then re-pressurized the system to 100 PSI found no leaks in those branches. That took me about all day to get that much done. Then I did a 15 PSI test for 15 minutes as required to pass inspection and found that it was now dropping just 1 10th of a PSI in 15 mins. I was done for the day though and frustrated after spending the entire day fixing and testing leaks one by one.&lt;/p&gt;
+
+&lt;p&gt;Sunday I called my buddy Dave and had him come over at 9:00 am to help me accomplish my goal for Sunday which was to take all the gas piping out and put it all back in cleaning and fixing each of the joints. The reason this was my goal was because Saturday night when I was burnt out I did a 100 PSI soap test again and found a bunch of leaks up in the attic in the mainline. Luckily it ended up that whoever did the gas lines before wasn&amp;#8217;t a complete idiot because they put a union right in the middle of the gas lines which allowed me to basically split the house in two halves and only have to redo one half on Sunday.&lt;/p&gt;
+
+&lt;p&gt;Dave and I redid the the kitchen half of the house on Sunday and soap tested and pressure tested it and all is good on that half of the house we are losing 0 PSI in all of pressure testing. That half covers the Tanked Water Heater, Stove, New Laundry Hookup, and Tankless Water Heater. Next weekend the plan is to finish the other half of the house which covers the Current Laundry, Fire Place, and Furnace.&lt;/p&gt;
+
+&lt;p&gt;Let the adventure continue, :-)&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>Bethany's Humboldt Graduation</title>
+      <link href="http://andrewdeponte.com/2010/05/19/bethany%27s-humboldt-graduation.html"/>
+      <updated>2010-05-19T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2010/05/19/bethany's-humboldt-graduation</id>
+      <content type="html">&lt;p&gt;Well, I got back early Monday morning from a little trip to Humboldt County, CA to see my friend Bethany graduate from Humboldt State University. If you didn&amp;#8217;t know already, Humboldt State University is where I graduated from years ago. Anyways, it was very nice to take some time off from my busy life and just relax and enjoy the Humboldt environment. It is most definitely a place I will always love because of the calm and the nature that surrounds you.&lt;/p&gt;
+
+&lt;p&gt;While there I also had the pleasure of spending time with Bethany&amp;#8217;s brother and parents. I have been friends with them since I can remember and it seems like as of late with the house and everything else I haven&amp;#8217;t had much time to see them. Hence, it was very nice to visit with them. We drove up to Patrick&amp;#8217;s Point on Sunday and walked around. If you aren&amp;#8217;t familiar with Patrick&amp;#8217;s Point it is a State Park and is a beautiful place to visit. Pictures of our visit to Patrick&amp;#8217;s Point can be found &lt;a href='http://www.facebook.com/media/set/?set=a.535700569910.2048934.30901409&amp;amp;type=3&amp;amp;l=d725d324ac'&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Sadly, toward the end of this trip I caught a very nasty cold and have been sick since. Sometimes things just have to go that way. Oh well, soon enough I will be to my normal self and kicking ass and taking names, :-).&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>MacBook Air SuperDrive Woes</title>
+      <link href="http://andrewdeponte.com/2010/05/12/macbook-air-superdrive-woes.html"/>
+      <updated>2010-05-12T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2010/05/12/macbook-air-superdrive-woes</id>
+      <content type="html">&lt;p&gt;As some of you already know I recently bought a new MacBook Air and with it I bought the MacBook Air SuperDrive. The MacBook Air SuperDrive is the first Apple product I bought and feel stupider for buying it. Obviously, because I am stupid and assumed that apple would create a good external CD/DVD drive that would work with the MacBook Air.&lt;/p&gt;
+
+&lt;p&gt;It seems that the MacBook Air SuperDrive only works when directly connected to the MacBook Air. Hence, no using the external SuperDrive with USB hubs. Beyond that the MacBook Air SuperDrive doesn&amp;#8217;t work on non MacBook Air laptops. After googling a bit some people think this is because Mac is using it as a loss leader for the Air and don&amp;#8217;t want to support it as a general external drive. I think this horrible from a product perspective because the MacBook Air only has 1, thats right 1 USB port.&lt;/p&gt;
+
+&lt;p&gt;Hence, when you run into a situation like today where I was installing some printer drivers and software and their installer expects you to be able to plug in the printer as a step in the wizard it gets a little tricky. Luckily, I was able to quit out of the installer disconnect the MacBook Air SuperDrive and connect the printer and get it working with some extra effort.&lt;/p&gt;
+
+&lt;p&gt;Anyways, the point of this story is that if you buy a MacBook Air, do not, I repeat DO NOT, buy a MacBook Air SuperDrive. You are much better off just going and buying some other external DVD ROM/Burner that will work on all your machines and via a hub.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>Gas Pipes & Dumpster</title>
+      <link href="http://andrewdeponte.com/2010/05/09/gas-pipes-%26-dumpster.html"/>
+      <updated>2010-05-09T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2010/05/09/gas-pipes-&-dumpster</id>
+      <content type="html">&lt;p&gt;Few, I just completed a very exhausting weekend with Aly and my parents. This weekend I ordered a dumpster because my parents were coming down to help work on my house and I had a massive pile of rubble in the backyard RV parking spot that needed to go. Once we loaded the dumpster with all of the rubble (more than two rooms of plaster) we decided to demo another room as the allocated 18 inches of heavy material at the bottom wasn&amp;#8217;t filled. This was crucial in my opinion because that damn dumpster cost so much.&lt;/p&gt;
+
+&lt;p&gt;Once, we had completed the plaster portion of the dumpster loading my Dad and I went to finish running the new gas pipes to the tankless water heater and pressure test them while Aly and my Mom worked on the back yard patio. It took us all weekend to get the pipes in and pressure tested. There is still a small leak as it is dropping 2 10ths of a PSI in 15 mins. Hence, further pressure testing is needed to get to the required state of holding 15 PSI for 15 mins. We went through and tested all of the new joints numerous times but couldn&amp;#8217;t find any leaks. Hence, we talked to some people we know in the industry and it seems that when you pressure test and find a leak you generally have to jack up the pressure pretty high 60 to 100 PSI and spray the entire joint not just the threading edges to find the leaks because some joints, elbows especially, tend to have pin holes due to imperfect manufacturing. We probably could have gotten this handled if it hadn&amp;#8217;t been Mother&amp;#8217;s Day on Sunday but it was nice to take a break and visit with family anyways.&lt;/p&gt;
+
+&lt;p&gt;Little did my Dad and I know, while we were hard at work on the black iron pipes, Aly and my Mom had done a huge amount of cleanup on in the backyard, started tilling the grass we previously killed, and removed most of the old nasty fiber glass patio cover. I was amazed with how much they managed to get done.&lt;/p&gt;
+
+&lt;p&gt;Thanks Girls!!&lt;/p&gt;
+
+&lt;p&gt;As usual I took pictures to let you all in on the progress. You can see them &lt;a href='http://www.facebook.com/media/set/?set=a.535700310430.2048932.30901409&amp;amp;type=3&amp;amp;l=2a1476b7e5'&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Oh, I also managed to replace the lighting boxes that were previously under the patio cover with outdoor boxes and light fixtures. Stay tuned for new developments with the house.&lt;/p&gt;</content>
     </entry>
   
 

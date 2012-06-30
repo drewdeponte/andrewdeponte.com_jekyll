@@ -12,17 +12,24 @@ fi
 # Generate the site into _site
 jekyll
 
+# Copy the generated site content to a temp folder
+TMPSITE=`mktemp -d /tmp/jekyll-cyph.XXXX`
+cp -r _site/* $TMPSITE/
+
 # Checkout the "master" branch
 git checkout master
 
-# Move the produced files in the _site directory up to the top level
-
-# Remove the _site directory
+# Copy the produced files from the temp directory up to the top level
+cp -r $TMPSITE/* ./
 
 # Stage all the new files and changes
+git add --all
 
 # Commit the stage new files and changes
+git commit -m "Publishing pure static site."
 
 # Push the master branch up to origin
+git push origin master:master
 
 # Checkout the "jekyll-site-src" branch
+git checkout jekyll-site-src

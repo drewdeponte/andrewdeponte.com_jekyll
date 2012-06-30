@@ -3,6 +3,8 @@ module Jekyll
     WIDTH = 680
     HEIGHT = 382
 
+    safe = true
+
     def initialize(name, id, tokens)
       super
       @id = id

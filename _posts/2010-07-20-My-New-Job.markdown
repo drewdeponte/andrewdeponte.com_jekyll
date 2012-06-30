@@ -1,0 +1,18 @@
+---
+layout: post
+title: My New Job!
+date: 2010-07-20
+tags: [RealPractice, Manager, Personal, Project Management, Software Development]
+---
+Hey all. I know its been a while since my last post. But, life has been a
+little crazy. I recently took a position at a new company called
+[RealPractice](http://realpractice.com) heading up the software engineering
+team that is responsible for all of their new products. I am very excited to
+start up a new team and build some amazing software. I can't wait to get
+started building a strong team that builds even stronger software.
+
+I have a feeling that this will put a bit of a slow down into the progress on
+the house. But, this is what I love doing, so I think it is worth it. This may
+also for a temporary period of time also slow down my rate of posting with
+respect to software tid-bits. But, I will come back stronger than ever with
+more stuff to post about.

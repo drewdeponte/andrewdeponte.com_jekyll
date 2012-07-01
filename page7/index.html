@@ -74,6 +74,148 @@
 </article>
 
 
+  <article class='blog-post'>
+  <header>
+    <h2 class='title'><a href="/2010/05/07/got-to-love-excuses-%28macbook-air%29.html">Got to Love Excuses (MacBook Air)</a></h2>
+    <div class='posted-info'>
+      <time datetime='2010-05-07T00:00:00Z' pubdate='pubdate' class='published-datetime'>May 07, 2010</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>So as a result of my 17in Mac Book Pro Battery expanding and my second battery starting to approach the same level of expansion I decided that I would use this as an excuse to upgrade my, I think, 4 your old 17in Mac Book Pro with a much smaller version as I have been coding all over the place lately. I have been going to Ruby group meet ups, private project development meet ups, and just wanted to get out of the office and do some coding. Hence, I bought one. Thats right, a MacBook Air. You can see the two machines side by side in the following picture.</p>
+
+<p><img alt='MacBook Air vs. 17in MacBook Pro' src='http://sphotos.xx.fbcdn.net/hphotos-snc7/73103_535700534980_831560_n.jpg' /></p>
+
+<p>Initially I thought I was seriously going to hate the small screen but then I thought about it and decided what the hell I should just take the leap and adapt as is required with most things. So, I did. Let me tell you there is something about having lots of screen space that was holding me back from using Spaces. My original background was Linux which has had the same concept as Spaces for as long as I can remember. I had no problem using virtual desktops (a.k.a. Spaces) when in Linux but I could never really get the feel for using them with my 17in. But, now that I have a tiny little ultra light weight sexy beast of machine that has a tiny 13in screen, I LOVE Spaces. I stay more organized this way and have a lot less clutter in my environment.</p>
+
+<p>It blows me away that reducing my screen size has had so much of an effect on my workflow and organization, and in a positive direction at that. Crazy, anyways I will make posts on any tricky things I have found I don&#8217;t like or love about the MacBook Air as my usage of it progresses.</p>
+  </section>
+
+  <footer>
+    
+    <span class="tag">Apple</span>
+    
+    <span class="tag">MacBook Air</span>
+    
+    <span class="tag">MacBook Pro 17in</span>
+    
+  </footer>
+</article>
+
+
+  <article class='blog-post'>
+  <header>
+    <h2 class='title'><a href="/2010/05/07/fat-fingered-my-macbook-air.html">Fat Fingered my MacBook Air</a></h2>
+    <div class='posted-info'>
+      <time datetime='2010-05-07T00:00:00Z' pubdate='pubdate' class='published-datetime'>May 07, 2010</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>So I setup my MacBook Air right after I got it and was just using the basic functionality. I then realized that I needed root to do something. Yep, you guessed it, I some how managed to to fat finger my root password when I setup the initial Admin user in the setup process. This is normally not a big deal as you can always put the DVD back in and rerun the setup wizard to create a new user. However when you are a MacBook Air and have no DVD drive it gets to be a tad bit more complex.</p>
+
+<p>The key is single user mode. After some googling I found that you can easily get into single user mode on Mac OS X simply by rebooting and right after the Chime noise holding Command-S and it will start you up into single user mode. For details on single user mode please go <a href='http://support.apple.com/kb/HT1492'>here</a>.</p>
+
+<p>When you see the prompt for single user mode it will tell you two commands to run to make it so that you can modify the file system. One is a fsck command and the other is a mount command. I simply ran the two commands as the info above the prompt instructed me to. Once it was done running those commands, I ran the following command and rebooted so that it would start the initial setup process over again. I did this because I knew that if I created a new Admin user and knew its password I could then sudo in and change the password of my existing Admin user that I previously fat fingered the password for.</p>
+
+<p><code>$ rm /var/db/.AppleSetupDone</code></p>
+
+<p>I know that there are command line tools that allow you to change passwords, etc. in Mac OS X, but for some reason I wasn&#8217;t feeling like looking up the directions on how to use them. Hence, I just did it this way. Figured I would share my find on Single User Mode, :-). I am sure someone has already found it, but it is new to me.</p>
+  </section>
+
+  <footer>
+    
+    <span class="tag">Change Root Password</span>
+    
+    <span class="tag">Mac OS X</span>
+    
+    <span class="tag">MacBook Air</span>
+    
+    <span class="tag">Single User Mode</span>
+    
+    <span class="tag">Apple</span>
+    
+    <span class="tag">Personal</span>
+    
+  </footer>
+</article>
+
+
+  <article class='blog-post'>
+  <header>
+    <h2 class='title'><a href="/2010/05/06/17in-macbook-pro-battery-expands.html">17in MacBook Pro Battery Expands</a></h2>
+    <div class='posted-info'>
+      <time datetime='2010-05-06T00:00:00Z' pubdate='pubdate' class='published-datetime'>May 06, 2010</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>Well, today I woke up like any other day in my life. I start by pulling my 17in Mac Book Pro out of my laptop bag. However, today I was greeted with a bit of surprise as you can see from the following photo.</p>
+
+<p><img alt='17in MacBook Pro Battery Expanded' src='http://sphotos.xx.fbcdn.net/hphotos-snc7/76715_535700265520_6468582_n.jpg' /></p>
+
+<p>It seems that my 17in MacBook Pro battery had decided that it was going to expand while it was out of my laptop. Thank God it was out of my laptop. Who knows what kind of damage it would have caused if it was in the laptop when this happened. Luckily this was a spare battery as I have 2 batteries for my 17in MacBook Pro. I swap them out fairly often so that I have a charged extra battery in my laptop bag and the other stays in the laptop. I guess I won&#8217;t be doing that for a while .</p>
+
+<p>I am somewhat disappointed. I have had this laptop for a few years at least but it still works like a champ and I would have thought that the battery would have failed from a charge holding perspective before the battery just decided to expand. Anyways, very strange so I figured I would share my surprise from this morning with you all. The sad part is that my other battery, the one currently in my 17in MacBook Pro, has started to expand as well. The aluminum shielding is bowing which means I am going to have to spend $129.00 on a new battery for my laptop. Oh, well, such is life.</p>
+
+<p>Apparently this was a known issue according to friends of mine at work and I just didn&#8217;t know about it till it happened to me, :-). My friends also informed me that Apple supposedly fixed this issue with all their new batteries so if I buy a new battery it shouldn&#8217;t happen with that new battery.</p>
+
+<p>Lets hope that they are right.</p>
+  </section>
+
+  <footer>
+    
+    <span class="tag">Battery</span>
+    
+    <span class="tag">MacBook Pro</span>
+    
+    <span class="tag">Apple</span>
+    
+    <span class="tag">Personal</span>
+    
+  </footer>
+</article>
+
+
+  <article class='blog-post'>
+  <header>
+    <h2 class='title'><a href="/2010/05/02/digging-a-pond.html">Digging a Pond</a></h2>
+    <div class='posted-info'>
+      <time datetime='2010-05-02T00:00:00Z' pubdate='pubdate' class='published-datetime'>May 02, 2010</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>Today, I woke up and realized that yesterday we neglected to take the stump of the biggest of the three plants out of the planter. Therefore, I decided that I was going to remove the stump and all of its roots. After digging it and all of its roots out there was already a huge hole and a large portion of the planter had been dug up. During my Mom&#8217;s last visit she had mentioned that I should put a pond in the corner of the planter where this biggest bush previously resided.</p>
+
+<p>So, after looking at the results of removing the bush Aly and I decided that we might as well just finish the job and dig a hole for the pond in the corner. Hence, I dug&#8230; and dug&#8230; and dug&#8230; for hours in the baking sun. Actually, it felt good to be doing some physical labor and the weather was pretty decent. Anyways, I dug it up and started the basics of the framing of the pond and its various tiers.</p>
+
+<p>Check out the results of my effort <a href='http://www.facebook.com/media/set/?set=a.535700165720.2048930.30901409&amp;type=3&amp;l=f4316bf9ab'>here</a> in these wonderful photos taken by my love Aly.</p>
+
+<p>P.S. - The finished part of the planter was all thanks to the hard work of my Mom during her last visit. Wench, I love you! Thanks for your help.</p>
+  </section>
+
+  <footer>
+    
+    <span class="tag">House</span>
+    
+    <span class="tag">Personal</span>
+    
+    <span class="tag">Pond</span>
+    
+  </footer>
+</article>
+
+
 
 <!-- Pagination links -->
 <div class="pagination">
@@ -82,9 +224,9 @@
       <a href="/page6" class="previous">Prev</a>
     
   
-  <span class="page_number ">7 of 7</span>
+  <span class="page_number ">7 of 9</span>
   
-    <span class="next">Next</span>
+    <a href="/page8" class="next ">Next</a>
   
 </div>
 

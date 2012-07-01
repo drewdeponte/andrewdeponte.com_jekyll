@@ -59,12 +59,3 @@
 .vg { color: #B8860B } /* Name.Variable.Global */
 .vi { color: #B8860B } /* Name.Variable.Instance */
 .il { color: #666666 } /* Literal.Number.Integer.Long */
-
-.highlight {
-  overflow: scroll;
-  padding: 10px;
-  background-color: #f3f3f3;
- -moz-border-radius: 20px;
- -webkit-border-radius: 20px;
- border-radius: 20px;
-}

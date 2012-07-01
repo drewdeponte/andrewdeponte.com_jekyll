@@ -5,7 +5,7 @@
     <meta name="description" content="Andrew De Ponte's Blog on Ruby, Ruby on Rails, Javascript, jQuery, and software development and engineering in general." />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="-1" />
-    <title> Home |  Andrew De Ponte, Software Engineer</title>
+    <title> Flot Multi-series Bar Graph Support |  Andrew De Ponte, Software Engineer</title>
 
     <link rel="stylesheet" href="/css/all.css" />
     <script type="text/javascript" src="/javascript/all.js"></script>
@@ -27,161 +27,13 @@
     </header>
     <div id="container">
       <div id="main_content">
-        
-  <article class='blog-post'>
-  <header>
-    <h2 class='title'><a href="/2009/12/06/a-go-at-graphics.html">A Go at Graphics</a></h2>
-    <div class='posted-info'>
-      <time datetime='2009-12-06T00:00:00Z' pubdate='pubdate' class='published-datetime'>December 06, 2009</time>
-      <span>by</span>
-      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
-    </div>
-  </header>
-
-  <section>
-    <p>Hi all. I recently tried my hand at a little graphic design work. A while back I came up with the domain name lusciousbits.com and bought it. I had a couple different ideas for that domain. However, I ran into a very difficult time coming up with the concept for a logo for the site. After a while of contemplating various concepts for logos and failing to come up with anything useful, I started asking people what they thought of when they heard the word luscious. It was astounding to me that the vast majority of people specifically said &#8220;You know the Hot Chick Mud Flaps on Trucks?&#8221; So, I finally decided that despite the fact that some may take it to be sexist I was going to use that and attempt a little graphics work. I did not intend it to be sexist so please don&#8217;t take it that way. The tag line was lovingly donated by another Software Engineer friend of mine (Patrick Murphy). Anyways, below is a wallpaper I created based on this concept for lusciousbits.com. You can get the wallpaper <a href='http://www.facebook.com/media/set/?set=a.629963920400.2070661.30901409&amp;type=3&amp;l=d82a9c683d'>here</a>.</p>
-  </section>
-
-  <footer>
-    
-    <span class="tag">Graphic Design</span>
-    
-    <span class="tag">Wallpaper</span>
-    
-  </footer>
-</article>
-
-
-  <article class='blog-post'>
-  <header>
-    <h2 class='title'><a href="/2009/10/31/jquery-comparative-histogram-plugin.html">jQuery Comparative Histogram Plugin</a></h2>
-    <div class='posted-info'>
-      <time datetime='2009-10-31T00:00:00Z' pubdate='pubdate' class='published-datetime'>October 31, 2009</time>
-      <span>by</span>
-      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
-    </div>
-  </header>
-
-  <section>
-    <p>I recently wrote a jQuery Plugin that I am calling jquery_comphist. It is a jQuery Plugin that draws a Comparative Histogram of a provided population divided into two major groups with any number of shared sub-groups. One of the most common uses for such a feature is when you are trying to display demographics data on some population. Anyways, as usual the code is available at my GitHub page here and you can see a demo of it below.</p>
-<div style='background-color: #f3f3f3; padding: 20px;'>
-<div id='comphist_example' style='width: 500px; height: 200px;'>&nbsp;</div>
-</div><script type='text/javascript'>
-$(function () {
-  function showCompHistTooltip(x, y, contents) {
-    $("<div id='comphist1tooltip'>" + contents + '</div>').css({ position: 'absolute', display: 'none', top: y - 20, left: x - 30, border: '1px solid #fdd', padding: '2px', 'background-color': '#fee', opacity: 1 }).appendTo("body").fadeIn(200);
-  }
-
-  var comphist_data = {
-    population_label: 'Active Fans This Week',
-    group_1_label: 'Male', group_2_label: 'Female',
-    subgroups: [
-    { label: '13-17', group_1_count: 3, group_2_count: 16 },
-    { label: '18-24', group_1_count: 7, group_2_count: 27 },
-    { label: '25-34', group_1_count: 3, group_2_count: 29 },
-    { label: '35-44', group_1_count: 2, group_2_count: 9 },
-    { label: '45-54', group_1_count: 0, group_2_count: 4 },
-    { label: '55+', group_1_count: 0, group_2_count: 0 }
-    ],
-    non_demo_count: 0
-  };
-  $("#comphist_example").comphist({}, comphist_data);
-
-  $("#comphist_example").bind("barover", function (e, perc, pos) {
-    $("#comphist1tooltip").remove();
-    showCompHistTooltip(pos.left, pos.top, perc);
-  });
-  
-  $("#comphist_example").bind("barout", function (e, perc, pos) {
-    $("#comphist1tooltip").remove();
-  });
-});
-</script>
-<p>With the jQuery Comparative Histogram (CompHist) Plugin you can easily represent populations and information about them. A prime usage exampe of this is demographics. All the styling is done via CSS. Hence the style is easily modified. It does the calculations for you and it allows for non listed group counts via a non_demo_count data option.</p>
-
-<p>The above demo was produced by defining a few code snippets. The first snippet is a snippet of HTML that includes the jQuery Comparative Histogram javascript source file and CSS style sheet. Note: The jQuery Comparative Histogram javascript source file needs to come after the standard jQuery javascript source file. An example of this snippet is as follows:</p>
-<div class='highlight'><pre><code class='html'><span class='nt'>&lt;script </span><span class='na'>type=</span><span class='s'>&quot;text/javascript&quot;</span> <span class='na'>src=</span><span class='s'>&quot;../jquery.comphist.js&quot;</span><span class='nt'>&gt;&lt;/script&gt;</span>
-<span class='nt'>&lt;link</span> <span class='na'>rel=</span><span class='s'>&quot;stylesheet&quot;</span> <span class='na'>type=</span><span class='s'>&quot;text/css&quot;</span> <span class='na'>href=</span><span class='s'>&quot;../stylesheets/jquery.comphist.css&quot;</span><span class='nt'>&gt;</span>
-</code></pre>
-</div>
-<p>Note: In the above snippet the href values are likely to be different in your case. The second code snippet is simply a single line of HTML where the div that is to be the Comparative Histogram. It is key that this div has an id that is easily referenced and a set height and width. An example of this snippet is as follows:</p>
-<div class='highlight'><pre><code class='html'><span class='nt'>&lt;div</span> <span class='na'>id=</span><span class='s'>&quot;compplaceholder&quot;</span> <span class='na'>style=</span><span class='s'>&quot;width: 375px; height: 200px;&quot;</span><span class='nt'>&gt;&lt;/div&gt;</span>
-</code></pre>
-</div>
-<p>The third code snippet needed is the javascript that defines the data, creates the Comparative Histogram in the specified div, and handles the hover functionality. An example of this is seen below.</p>
-<div class='highlight'><pre><code class='html'><span class='nt'>&lt;script </span><span class='na'>type=</span><span class='s'>&quot;text/javascript&quot;</span><span class='nt'>&gt;</span>
-<span class='nx'>$</span><span class='p'>(</span><span class='kd'>function</span> <span class='p'>()</span> <span class='p'>{</span>
-  <span class='kd'>function</span> <span class='nx'>showCompHistTooltip</span><span class='p'>(</span><span class='nx'>x</span><span class='p'>,</span> <span class='nx'>y</span><span class='p'>,</span> <span class='nx'>contents</span><span class='p'>)</span> <span class='p'>{</span>
-    <span class='nx'>console</span><span class='p'>.</span><span class='nx'>log</span><span class='p'>(</span><span class='s2'>&quot;called my shit&quot;</span><span class='p'>);</span>
-    <span class='nx'>$</span><span class='p'>(</span><span class='s1'>&#39;&lt;div id=&quot;comphist1tooltip&quot;&gt;&#39;</span> <span class='o'>+</span> <span class='nx'>contents</span> <span class='o'>+</span> <span class='s1'>&#39;&lt;/div&gt;&#39;</span><span class='p'>).</span><span class='nx'>css</span><span class='p'>({</span>
-      <span class='nx'>position</span><span class='o'>:</span> <span class='s1'>&#39;absolute&#39;</span><span class='p'>,</span>
-      <span class='nx'>display</span><span class='o'>:</span> <span class='s1'>&#39;none&#39;</span><span class='p'>,</span>
-      <span class='nx'>top</span><span class='o'>:</span> <span class='nx'>y</span> <span class='o'>-</span> <span class='mi'>20</span><span class='p'>,</span>
-      <span class='nx'>left</span><span class='o'>:</span> <span class='nx'>x</span> <span class='o'>-</span> <span class='mi'>30</span><span class='p'>,</span>
-      <span class='nx'>border</span><span class='o'>:</span> <span class='s1'>&#39;1px solid #fdd&#39;</span><span class='p'>,</span>
-      <span class='nx'>padding</span><span class='o'>:</span> <span class='s1'>&#39;2px&#39;</span><span class='p'>,</span>
-      <span class='s1'>&#39;background-color&#39;</span><span class='o'>:</span> <span class='s1'>&#39;#fee&#39;</span><span class='p'>,</span>
-      <span class='nx'>opacity</span><span class='o'>:</span> <span class='mi'>1</span>
-    <span class='p'>}).</span><span class='nx'>appendTo</span><span class='p'>(</span><span class='s2'>&quot;body&quot;</span><span class='p'>).</span><span class='nx'>fadeIn</span><span class='p'>(</span><span class='mi'>200</span><span class='p'>);</span>
-  <span class='p'>}</span>
-
-  <span class='kd'>var</span> <span class='nx'>comphist_data</span> <span class='o'>=</span> <span class='p'>{</span>
-    <span class='nx'>population_label</span><span class='o'>:</span> <span class='s1'>&#39;Active Fans This Week&#39;</span><span class='p'>,</span>
-    <span class='nx'>group_1_label</span><span class='o'>:</span> <span class='s1'>&#39;Male&#39;</span><span class='p'>,</span> <span class='nx'>group_2_label</span><span class='o'>:</span> <span class='s1'>&#39;Female&#39;</span><span class='p'>,</span>
-    <span class='nx'>subgroups</span><span class='o'>:</span> <span class='p'>[</span>
-    <span class='p'>{</span> <span class='nx'>label</span><span class='o'>:</span> <span class='s1'>&#39;13-17&#39;</span><span class='p'>,</span> <span class='nx'>group_1_count</span><span class='o'>:</span> <span class='mi'>3</span><span class='p'>,</span> <span class='nx'>group_2_count</span><span class='o'>:</span> <span class='mi'>16</span> <span class='p'>},</span>
-    <span class='p'>{</span> <span class='nx'>label</span><span class='o'>:</span> <span class='s1'>&#39;18-24&#39;</span><span class='p'>,</span> <span class='nx'>group_1_count</span><span class='o'>:</span> <span class='mi'>7</span><span class='p'>,</span> <span class='nx'>group_2_count</span><span class='o'>:</span> <span class='mi'>27</span> <span class='p'>},</span>
-    <span class='p'>{</span> <span class='nx'>label</span><span class='o'>:</span> <span class='s1'>&#39;25-34&#39;</span><span class='p'>,</span> <span class='nx'>group_1_count</span><span class='o'>:</span> <span class='mi'>3</span><span class='p'>,</span> <span class='nx'>group_2_count</span><span class='o'>:</span> <span class='mi'>29</span> <span class='p'>},</span>
-    <span class='p'>{</span> <span class='nx'>label</span><span class='o'>:</span> <span class='s1'>&#39;35-44&#39;</span><span class='p'>,</span> <span class='nx'>group_1_count</span><span class='o'>:</span> <span class='mi'>2</span><span class='p'>,</span> <span class='nx'>group_2_count</span><span class='o'>:</span> <span class='mi'>9</span> <span class='p'>},</span>
-    <span class='p'>{</span> <span class='nx'>label</span><span class='o'>:</span> <span class='s1'>&#39;45-54&#39;</span><span class='p'>,</span> <span class='nx'>group_1_count</span><span class='o'>:</span> <span class='mi'>0</span><span class='p'>,</span> <span class='nx'>group_2_count</span><span class='o'>:</span> <span class='mi'>4</span> <span class='p'>},</span>
-    <span class='p'>{</span> <span class='nx'>label</span><span class='o'>:</span> <span class='s1'>&#39;55+&#39;</span><span class='p'>,</span> <span class='nx'>group_1_count</span><span class='o'>:</span> <span class='mi'>0</span><span class='p'>,</span> <span class='nx'>group_2_count</span><span class='o'>:</span> <span class='mi'>0</span> <span class='p'>}</span>
-    <span class='p'>],</span>
-    <span class='nx'>non_demo_count</span><span class='o'>:</span> <span class='mi'>0</span>
-  <span class='p'>};</span>
-  <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#compplaceholder&quot;</span><span class='p'>).</span><span class='nx'>comphist</span><span class='p'>({},</span> <span class='nx'>comphist_data</span><span class='p'>);</span>
-
-  <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#compplaceholder&quot;</span><span class='p'>).</span><span class='nx'>bind</span><span class='p'>(</span><span class='s2'>&quot;barover&quot;</span><span class='p'>,</span> <span class='kd'>function</span> <span class='p'>(</span><span class='nx'>e</span><span class='p'>,</span> <span class='nx'>perc</span><span class='p'>,</span> <span class='nx'>pos</span><span class='p'>)</span> <span class='p'>{</span>
-    <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#comphist1tooltip&quot;</span><span class='p'>).</span><span class='nx'>remove</span><span class='p'>();</span>
-    <span class='nx'>showCompHistTooltip</span><span class='p'>(</span><span class='nx'>pos</span><span class='p'>.</span><span class='nx'>left</span><span class='p'>,</span> <span class='nx'>pos</span><span class='p'>.</span><span class='nx'>top</span><span class='p'>,</span> <span class='nx'>perc</span><span class='p'>);</span>
-  <span class='p'>});</span>
-  
-  <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#compplaceholder&quot;</span><span class='p'>).</span><span class='nx'>bind</span><span class='p'>(</span><span class='s2'>&quot;barout&quot;</span><span class='p'>,</span> <span class='kd'>function</span> <span class='p'>(</span><span class='nx'>e</span><span class='p'>,</span> <span class='nx'>perc</span><span class='p'>,</span> <span class='nx'>pos</span><span class='p'>)</span> <span class='p'>{</span>
-    <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#comphist1tooltip&quot;</span><span class='p'>).</span><span class='nx'>remove</span><span class='p'>();</span>
-  <span class='p'>});</span>
-<span class='p'>});</span>
-<span class='nt'>&lt;/script&gt;</span>
-</code></pre>
-</div>
-<p>Hopefully, the demo and quick code example helps get you up and running quickly.</p>
-  </section>
-
-  <footer>
-    
-    <span class="tag">Demographics</span>
-    
-    <span class="tag">Graphing</span>
-    
-    <span class="tag">Metrics</span>
-    
-    <span class="tag">jQuery</span>
-    
-    <span class="tag">JavaScript</span>
-    
-    <span class="tag">Software Development</span>
-    
-    <span class="tag">Software Projects</span>
-    
-  </footer>
-</article>
-
-
-  <article class='blog-post'>
+        <article class='blog-post'>
   <header>
     <h2 class='title'><a href="/2009/08/22/flot-multi-series-bar-graph-support.html">Flot Multi-series Bar Graph Support</a></h2>
     <div class='posted-info'>
       <time datetime='2009-08-22T00:00:00Z' pubdate='pubdate' class='published-datetime'>August 22, 2009</time>
       <span>by</span>
-      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+      <a href="http://github.com/cyphactor">@cyphactor</a>
     </div>
   </header>
 
@@ -334,92 +186,6 @@ $(function () {
     
   </footer>
 </article>
-
-
-  <article class='blog-post'>
-  <header>
-    <h2 class='title'><a href="/2009/08/09/lazy-google-app-engine-model-migrations.html">Lazy Google App Engine Model Migrations</a></h2>
-    <div class='posted-info'>
-      <time datetime='2009-08-09T00:00:00Z' pubdate='pubdate' class='published-datetime'>August 09, 2009</time>
-      <span>by</span>
-      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
-    </div>
-  </header>
-
-  <section>
-    <p>I have been working on a side project for a bit now called We&#8217;reSICC (We are Sound Image Community &amp; Collaboration). It planned to be an online service that is specifically designed to allow music artists and graphic artists to come together and collaborate to create music merchandise. The idea is that We&#8217;reSICC will provide a community and the necessary tools for Musicians and Graphic Artists to collaborate easily to produce merchandise and also provide the necessary tools for both Musicians and Graphic Artists to sell the products. The business model is simply that each party involved gets a chunk of the each sales profit. Anyways, thats enough lead in on that project you will find more about it later.</p>
-
-<p>The reason I mentioned We&#8217;reSICC is because we recently started porting the Django code base over to Google App Engine. We soon found that it lacked support for the standard database migration support that is generally necessary when developing an application of this magnitude. Hence, after searching long and hard I came to the conclusion that I would have to throw together the basis for implementing Lazy Migrations for Google App Engine Models. Hence, I did and then handed a version with very basic functionality off to Patrick Murphy to flesh out further. Patrick Murphy is a software engineer friend of mine that is also working on We&#8217;reSICC. He has written a very nice blog post here that explains how these Lazy Google App Engine Model Migrations and provided all the code you need to get started with it. We like to give back to the community that has given so much to us, :-).</p>
-
-<p>If you are interested in simply learning more about Patrick Murphy then by all means check out his blog <a href='http://codekittens.wordpress.com/'>here</a>.</p>
-  </section>
-
-  <footer>
-    
-    <span class="tag">Database</span>
-    
-    <span class="tag">Google App Engine</span>
-    
-    <span class="tag">Lazy</span>
-    
-    <span class="tag">Migrations</span>
-    
-    <span class="tag">Models</span>
-    
-    <span class="tag">We'reSICC</span>
-    
-    <span class="tag">Software Development</span>
-    
-    <span class="tag">Software Projects</span>
-    
-  </footer>
-</article>
-
-
-  <article class='blog-post'>
-  <header>
-    <h2 class='title'><a href="/2009/07/26/house-demo-day-2.html">House Demo Day 2</a></h2>
-    <div class='posted-info'>
-      <time datetime='2009-07-26T00:00:00Z' pubdate='pubdate' class='published-datetime'>July 26, 2009</time>
-      <span>by</span>
-      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
-    </div>
-  </header>
-
-  <section>
-    <p>Well, as expected the demo was continued today as well and will probably be continued for a while after that. Aly and I decided to put together another quick little HD video so you could see the progress if you were interested. So, here you go.</p>
-<iframe allowFullScreen='allowFullScreen' frameborder='0' height='382' mozallowfullscreen='mozallowfullscreen' src='http://player.vimeo.com/video/10447915 ' webkitAllowFullScreen='webkitAllowFullScreen' width='680'>useless text to fix fail to render rest of post issue</iframe>
-  </section>
-
-  <footer>
-    
-    <span class="tag">Demo</span>
-    
-    <span class="tag">HD</span>
-    
-    <span class="tag">House</span>
-    
-    <span class="tag">Video</span>
-    
-    <span class="tag">Personal</span>
-    
-  </footer>
-</article>
-
-
-
-<!-- Pagination links -->
-<div class="pagination">
-  
-    
-      <a href="/page9" class="previous">Prev</a>
-    
-  
-  <span class="page_number ">10 of 11</span>
-  
-    <a href="/page11" class="next ">Next</a>
-  
-</div>
 
       </div>
       <aside id="side_bar">

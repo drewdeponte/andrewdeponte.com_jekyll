@@ -4,7 +4,7 @@
   <title>Drew's World</title>
   <link href="http://andrewdeponte.com/atom.xml" rel="self"/>
   <link href="http://andrewdeponte.com/"/>
-  <updated>2012-06-30T19:02:17-07:00</updated>
+  <updated>2012-06-30T20:58:37-07:00</updated>
   <id>http://andrewdeponte.com/</id>
   <author>
     <name>Andrew De Ponte</name>
@@ -1128,6 +1128,263 @@ $(function () {
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;Hopefully, the demo and quick code example helps get you up and running quickly.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>Flot Multi-series Bar Graph Support</title>
+      <link href="http://andrewdeponte.com/2009/08/22/flot-multi-series-bar-graph-support.html"/>
+      <updated>2009-08-22T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2009/08/22/flot-multi-series-bar-graph-support</id>
+      <content type="html">&lt;p&gt;Hey boys and girls. I just got finished coding support for Multi-series bar graphs into Flot (a jQuery based JavaScript graphing library). Hence, I figured I would share not only the code but a little preview of it below. The code for it can be found at my GitHub account here. Please enjoy the little demo below.&lt;/p&gt;
+&lt;div style='background-color: #f3f3f3; padding: 20px;'&gt;
+&lt;div id='placeholder' style='width:500px;height:200px;'&gt;&amp;nbsp;&lt;/div&gt;
+&lt;/div&gt;&lt;p id='hoverdata'&gt;Mouse hovers at (&lt;span id='x'&gt;0&lt;/span&gt;, &lt;span id='y'&gt;0&lt;/span&gt;). &lt;span id='clickdata' /&gt;&lt;/p&gt;
+&lt;p&gt;With the multi-series bar graph support, you can have Flot display the series side by side. This is useful when you are interested in visually comparing series and grouping segments you want to columns in series that you are specifically interested in comparing.&lt;/p&gt;
+&lt;script id='source'&gt;
+$(function () {
+  var ms_data = [{&quot;label&quot;:&quot;FOO&quot;,&quot;data&quot;:[[0,80],[1,70],[2,100],[3,60],[4,102]]},
+                 {&quot;label&quot;:&quot;BAR&quot;,&quot;data&quot;:[[0,10],[1,20],[2,30],[3,40],[4,80]]},
+                 {&quot;label&quot;:&quot;CAR&quot;,&quot;data&quot;:[[0,5],[1,10],[2,15],[3,20],[4,25]]}]
+  var ms_ticks = [[0,&quot;1/28&quot;],[1,&quot;1/29&quot;],[2,&quot;1/30&quot;],[3,&quot;1/31&quot;],[4,&quot;1/32&quot;]];
+    
+    function plotWithOptions() {
+      $.plot($(&quot;#placeholder&quot;), ms_data, {
+        bars: { show: true, barWidth: 0.6, series_spread: true, align: &quot;center&quot; },
+        xaxis: { ticks: ms_ticks, autoscaleMargin: .10 },
+        grid: { hoverable: true, clickable: true }
+      });
+    }
+    
+    function showTooltip(x, y, contents) {
+        $(&quot;&lt;div id='tooltip'&gt;&quot; + contents + '&lt;/div&gt;').css( { position: 'absolute', display: 'none', top: y + 5, left: x + 5, border: '1px solid #fdd', padding: '2px', 'background-color': '#fee', opacity: 0.80 }).appendTo(&quot;body&quot;).show();
+    }
+
+    plotWithOptions();
+
+    $(&quot;#placeholder&quot;).bind(&quot;plothover&quot;, function (event, pos, item) {
+      $(&quot;#x&quot;).text(pos.x.toFixed(2));
+      $(&quot;#y&quot;).text(pos.y.toFixed(2));
+        if (item) {
+            if (previousPoint != item.datapoint) {
+                previousPoint = item.datapoint;
+              
+                $(&quot;#tooltip&quot;).remove();
+                var x = item.datapoint[0].toFixed(2),
+                    y = item.datapoint[1].toFixed(2);
+              
+                showTooltip(item.pageX, item.pageY,
+                            item.series.label + &quot; Group id: &quot; + Math.floor(x) + &quot;, y = &quot; + y + &quot;, seriesIndex: &quot; + item.seriesIndex);
+            }
+        }
+        else {
+            $(&quot;#tooltip&quot;).remove();
+            previousPoint = null;            
+        }
+    });
+
+    $(&quot;#placeholder&quot;).bind(&quot;plotclick&quot;, function (event, pos, item) {
+        if (item) {
+            $(&quot;#clickdata&quot;).text(&quot;You clicked bar &quot; + item.dataIndex + &quot; in &quot; + item.series.label + &quot;.&quot;);
+        }
+    });
+});
+&lt;/script&gt;
+&lt;p&gt;The above demo was produced by defining a few code snippets. The first snippet is a snippet of HTML that includes the customized Flot javascript source file. Note: The Flot javascript source file needs to come after the standard jQuery javascript source file. An example of this snippet is as follows:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='html'&gt;&lt;span class='c'&gt;&amp;lt;!--[if IE]&amp;gt;&amp;lt;script language=&amp;quot;javascript&amp;quot; type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;../excanvas.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;![endif]--&amp;gt;&lt;/span&gt;
+&lt;span class='nt'&gt;&amp;lt;script &lt;/span&gt;&lt;span class='na'&gt;language=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;javascript&amp;quot;&lt;/span&gt; &lt;span class='na'&gt;type=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt; &lt;span class='na'&gt;src=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;../jquery.js&amp;quot;&lt;/span&gt;&lt;span class='nt'&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class='nt'&gt;&amp;lt;script &lt;/span&gt;&lt;span class='na'&gt;language=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;javascript&amp;quot;&lt;/span&gt; &lt;span class='na'&gt;type=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt; &lt;span class='na'&gt;src=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;../jquery.flot.js&amp;quot;&lt;/span&gt;&lt;span class='nt'&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Note: In the above snippet the href values are likely to be different in your case. The second code snippet is simply a single line of HTML that is the div that is to be the Multi-series Bar Graph. It is key that this div has an id that is easily referenced and a set height and width. An example of this snippet is as follows:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='html'&gt;&lt;span class='nt'&gt;&amp;lt;div&lt;/span&gt; &lt;span class='na'&gt;id=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;placeholder&amp;quot;&lt;/span&gt; &lt;span class='na'&gt;style=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;width: 375px; height: 200px;&amp;quot;&lt;/span&gt;&lt;span class='nt'&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;The third code snippet needed is the javascript that defines the data, creates the Multi-series Bar Graph in the specified div, and handles the hover functionality. An example of this is seen below.&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='html'&gt;&lt;span class='nt'&gt;&amp;lt;script &lt;/span&gt;&lt;span class='na'&gt;id=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;source&amp;quot;&lt;/span&gt;&lt;span class='nt'&gt;&amp;gt;&lt;/span&gt;
+&lt;span class='nx'&gt;$&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='kd'&gt;function&lt;/span&gt; &lt;span class='p'&gt;()&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+  &lt;span class='kd'&gt;var&lt;/span&gt; &lt;span class='nx'&gt;ms_data&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='p'&gt;[{&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;label&amp;quot;&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;FOO&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;data&amp;quot;&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt;&lt;span class='p'&gt;[[&lt;/span&gt;&lt;span class='mi'&gt;0&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;&lt;span class='mi'&gt;80&lt;/span&gt;&lt;span class='p'&gt;],[&lt;/span&gt;&lt;span class='mi'&gt;1&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;&lt;span class='mi'&gt;70&lt;/span&gt;&lt;span class='p'&gt;],[&lt;/span&gt;&lt;span class='mi'&gt;2&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;&lt;span class='mi'&gt;100&lt;/span&gt;&lt;span class='p'&gt;],[&lt;/span&gt;&lt;span class='mi'&gt;3&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;&lt;span class='mi'&gt;60&lt;/span&gt;&lt;span class='p'&gt;],[&lt;/span&gt;&lt;span class='mi'&gt;4&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;&lt;span class='mi'&gt;102&lt;/span&gt;&lt;span class='p'&gt;]]},&lt;/span&gt;
+                 &lt;span class='p'&gt;{&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;label&amp;quot;&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;BAR&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;data&amp;quot;&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt;&lt;span class='p'&gt;[[&lt;/span&gt;&lt;span class='mi'&gt;0&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;&lt;span class='mi'&gt;10&lt;/span&gt;&lt;span class='p'&gt;],[&lt;/span&gt;&lt;span class='mi'&gt;1&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;&lt;span class='mi'&gt;20&lt;/span&gt;&lt;span class='p'&gt;],[&lt;/span&gt;&lt;span class='mi'&gt;2&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;&lt;span class='mi'&gt;30&lt;/span&gt;&lt;span class='p'&gt;],[&lt;/span&gt;&lt;span class='mi'&gt;3&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;&lt;span class='mi'&gt;40&lt;/span&gt;&lt;span class='p'&gt;],[&lt;/span&gt;&lt;span class='mi'&gt;4&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;&lt;span class='mi'&gt;80&lt;/span&gt;&lt;span class='p'&gt;]]},&lt;/span&gt;
+                 &lt;span class='p'&gt;{&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;label&amp;quot;&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;CAR&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;data&amp;quot;&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt;&lt;span class='p'&gt;[[&lt;/span&gt;&lt;span class='mi'&gt;0&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;&lt;span class='mi'&gt;5&lt;/span&gt;&lt;span class='p'&gt;],[&lt;/span&gt;&lt;span class='mi'&gt;1&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;&lt;span class='mi'&gt;10&lt;/span&gt;&lt;span class='p'&gt;],[&lt;/span&gt;&lt;span class='mi'&gt;2&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;&lt;span class='mi'&gt;15&lt;/span&gt;&lt;span class='p'&gt;],[&lt;/span&gt;&lt;span class='mi'&gt;3&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;&lt;span class='mi'&gt;20&lt;/span&gt;&lt;span class='p'&gt;],[&lt;/span&gt;&lt;span class='mi'&gt;4&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;&lt;span class='mi'&gt;25&lt;/span&gt;&lt;span class='p'&gt;]]}]&lt;/span&gt;
+  &lt;span class='kd'&gt;var&lt;/span&gt; &lt;span class='nx'&gt;ms_ticks&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='p'&gt;[[&lt;/span&gt;&lt;span class='mi'&gt;0&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;1/28&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;],[&lt;/span&gt;&lt;span class='mi'&gt;1&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;1/29&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;],[&lt;/span&gt;&lt;span class='mi'&gt;2&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;1/30&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;],[&lt;/span&gt;&lt;span class='mi'&gt;3&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;1/31&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;],[&lt;/span&gt;&lt;span class='mi'&gt;4&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;1/32&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;]];&lt;/span&gt;
+    
+    &lt;span class='kd'&gt;function&lt;/span&gt; &lt;span class='nx'&gt;plotWithOptions&lt;/span&gt;&lt;span class='p'&gt;()&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+      &lt;span class='nx'&gt;$&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;plot&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;$&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;#placeholder&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;),&lt;/span&gt; &lt;span class='nx'&gt;ms_data&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+        &lt;span class='nx'&gt;bars&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt; &lt;span class='nx'&gt;show&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='kc'&gt;true&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;barWidth&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mf'&gt;0.6&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;series_spread&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='kc'&gt;true&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;align&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;center&amp;quot;&lt;/span&gt; &lt;span class='p'&gt;},&lt;/span&gt;
+        &lt;span class='nx'&gt;xaxis&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt; &lt;span class='nx'&gt;ticks&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='nx'&gt;ms_ticks&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;autoscaleMargin&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='mi'&gt;10&lt;/span&gt; &lt;span class='p'&gt;},&lt;/span&gt;
+        &lt;span class='nx'&gt;grid&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt; &lt;span class='nx'&gt;hoverable&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='kc'&gt;true&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;clickable&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='kc'&gt;true&lt;/span&gt; &lt;span class='p'&gt;}&lt;/span&gt;
+      &lt;span class='p'&gt;});&lt;/span&gt;
+    &lt;span class='p'&gt;}&lt;/span&gt;
+    
+    &lt;span class='kd'&gt;function&lt;/span&gt; &lt;span class='nx'&gt;showTooltip&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;x&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;y&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;contents&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+        &lt;span class='nx'&gt;$&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s1'&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;).&lt;/span&gt;&lt;span class='nx'&gt;css&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+            &lt;span class='nx'&gt;position&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;absolute&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+            &lt;span class='nx'&gt;display&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;none&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+            &lt;span class='nx'&gt;top&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='nx'&gt;y&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='mi'&gt;5&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+            &lt;span class='nx'&gt;left&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='nx'&gt;x&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='mi'&gt;5&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+            &lt;span class='nx'&gt;border&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;1px solid #fdd&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+            &lt;span class='nx'&gt;padding&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;2px&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+            &lt;span class='s1'&gt;&amp;#39;background-color&amp;#39;&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;#fee&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+            &lt;span class='nx'&gt;opacity&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mf'&gt;0.80&lt;/span&gt;
+        &lt;span class='p'&gt;}).&lt;/span&gt;&lt;span class='nx'&gt;appendTo&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;body&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;).&lt;/span&gt;&lt;span class='nx'&gt;show&lt;/span&gt;&lt;span class='p'&gt;();&lt;/span&gt;
+    &lt;span class='p'&gt;}&lt;/span&gt;
+
+    &lt;span class='nx'&gt;plotWithOptions&lt;/span&gt;&lt;span class='p'&gt;();&lt;/span&gt;
+
+    &lt;span class='nx'&gt;$&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;#placeholder&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;).&lt;/span&gt;&lt;span class='nx'&gt;bind&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;plothover&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='kd'&gt;function&lt;/span&gt; &lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;event&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;pos&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;item&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+      &lt;span class='nx'&gt;$&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;#x&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;).&lt;/span&gt;&lt;span class='nx'&gt;text&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;pos&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;x&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;toFixed&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='mi'&gt;2&lt;/span&gt;&lt;span class='p'&gt;));&lt;/span&gt;
+      &lt;span class='nx'&gt;$&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;#y&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;).&lt;/span&gt;&lt;span class='nx'&gt;text&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;pos&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;y&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;toFixed&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='mi'&gt;2&lt;/span&gt;&lt;span class='p'&gt;));&lt;/span&gt;
+        &lt;span class='k'&gt;if&lt;/span&gt; &lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;item&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+            &lt;span class='k'&gt;if&lt;/span&gt; &lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;previousPoint&lt;/span&gt; &lt;span class='o'&gt;!=&lt;/span&gt; &lt;span class='nx'&gt;item&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;datapoint&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+                &lt;span class='nx'&gt;previousPoint&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='nx'&gt;item&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;datapoint&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt;
+              
+                &lt;span class='nx'&gt;$&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;#tooltip&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;).&lt;/span&gt;&lt;span class='nx'&gt;remove&lt;/span&gt;&lt;span class='p'&gt;();&lt;/span&gt;
+                &lt;span class='kd'&gt;var&lt;/span&gt; &lt;span class='nx'&gt;x&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='nx'&gt;item&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;datapoint&lt;/span&gt;&lt;span class='p'&gt;[&lt;/span&gt;&lt;span class='mi'&gt;0&lt;/span&gt;&lt;span class='p'&gt;].&lt;/span&gt;&lt;span class='nx'&gt;toFixed&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='mi'&gt;2&lt;/span&gt;&lt;span class='p'&gt;),&lt;/span&gt;
+                    &lt;span class='nx'&gt;y&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='nx'&gt;item&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;datapoint&lt;/span&gt;&lt;span class='p'&gt;[&lt;/span&gt;&lt;span class='mi'&gt;1&lt;/span&gt;&lt;span class='p'&gt;].&lt;/span&gt;&lt;span class='nx'&gt;toFixed&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='mi'&gt;2&lt;/span&gt;&lt;span class='p'&gt;);&lt;/span&gt;
+              
+                &lt;span class='nx'&gt;showTooltip&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;item&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;pageX&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;item&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;pageY&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+                            &lt;span class='nx'&gt;item&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;series&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;label&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot; Group id: &amp;quot;&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='nb'&gt;Math&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;floor&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;x&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;, y = &amp;quot;&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='nx'&gt;y&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;, seriesIndex: &amp;quot;&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='nx'&gt;item&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;seriesIndex&lt;/span&gt;&lt;span class='p'&gt;);&lt;/span&gt;
+            &lt;span class='p'&gt;}&lt;/span&gt;
+        &lt;span class='p'&gt;}&lt;/span&gt;
+        &lt;span class='k'&gt;else&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+            &lt;span class='nx'&gt;$&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;#tooltip&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;).&lt;/span&gt;&lt;span class='nx'&gt;remove&lt;/span&gt;&lt;span class='p'&gt;();&lt;/span&gt;
+            &lt;span class='nx'&gt;previousPoint&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='kc'&gt;null&lt;/span&gt;&lt;span class='p'&gt;;&lt;/span&gt;            
+        &lt;span class='p'&gt;}&lt;/span&gt;
+    &lt;span class='p'&gt;});&lt;/span&gt;
+
+    &lt;span class='nx'&gt;$&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;#placeholder&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;).&lt;/span&gt;&lt;span class='nx'&gt;bind&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;plotclick&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='kd'&gt;function&lt;/span&gt; &lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;event&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;pos&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;item&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+        &lt;span class='k'&gt;if&lt;/span&gt; &lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;item&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+            &lt;span class='nx'&gt;$&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;#clickdata&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;).&lt;/span&gt;&lt;span class='nx'&gt;text&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;You clicked bar &amp;quot;&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='nx'&gt;item&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;dataIndex&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot; in &amp;quot;&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='nx'&gt;item&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;series&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;label&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='s2'&gt;&amp;quot;.&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;);&lt;/span&gt;
+        &lt;span class='p'&gt;}&lt;/span&gt;
+    &lt;span class='p'&gt;});&lt;/span&gt;
+&lt;span class='p'&gt;});&lt;/span&gt;
+&lt;span class='nt'&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Hopefully, the demo and quick code example helps get you up and running.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>Lazy Google App Engine Model Migrations</title>
+      <link href="http://andrewdeponte.com/2009/08/09/lazy-google-app-engine-model-migrations.html"/>
+      <updated>2009-08-09T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2009/08/09/lazy-google-app-engine-model-migrations</id>
+      <content type="html">&lt;p&gt;I have been working on a side project for a bit now called We&amp;#8217;reSICC (We are Sound Image Community &amp;amp; Collaboration). It planned to be an online service that is specifically designed to allow music artists and graphic artists to come together and collaborate to create music merchandise. The idea is that We&amp;#8217;reSICC will provide a community and the necessary tools for Musicians and Graphic Artists to collaborate easily to produce merchandise and also provide the necessary tools for both Musicians and Graphic Artists to sell the products. The business model is simply that each party involved gets a chunk of the each sales profit. Anyways, thats enough lead in on that project you will find more about it later.&lt;/p&gt;
+
+&lt;p&gt;The reason I mentioned We&amp;#8217;reSICC is because we recently started porting the Django code base over to Google App Engine. We soon found that it lacked support for the standard database migration support that is generally necessary when developing an application of this magnitude. Hence, after searching long and hard I came to the conclusion that I would have to throw together the basis for implementing Lazy Migrations for Google App Engine Models. Hence, I did and then handed a version with very basic functionality off to Patrick Murphy to flesh out further. Patrick Murphy is a software engineer friend of mine that is also working on We&amp;#8217;reSICC. He has written a very nice blog post here that explains how these Lazy Google App Engine Model Migrations and provided all the code you need to get started with it. We like to give back to the community that has given so much to us, :-).&lt;/p&gt;
+
+&lt;p&gt;If you are interested in simply learning more about Patrick Murphy then by all means check out his blog &lt;a href='http://codekittens.wordpress.com/'&gt;here&lt;/a&gt;.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>House Demo Day 2</title>
+      <link href="http://andrewdeponte.com/2009/07/26/house-demo-day-2.html"/>
+      <updated>2009-07-26T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2009/07/26/house-demo-day-2</id>
+      <content type="html">&lt;p&gt;Well, as expected the demo was continued today as well and will probably be continued for a while after that. Aly and I decided to put together another quick little HD video so you could see the progress if you were interested. So, here you go.&lt;/p&gt;
+&lt;iframe allowFullScreen='allowFullScreen' frameborder='0' height='382' mozallowfullscreen='mozallowfullscreen' src='http://player.vimeo.com/video/10447915 ' webkitAllowFullScreen='webkitAllowFullScreen' width='680'&gt;useless text to fix fail to render rest of post issue&lt;/iframe&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>House Demo Day 1</title>
+      <link href="http://andrewdeponte.com/2009/07/25/house-demo-day-1.html"/>
+      <updated>2009-07-25T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2009/07/25/house-demo-day-1</id>
+      <content type="html">&lt;p&gt;As some of you may know from previous posts. I recently bought my first house which is very much a fixer upper. Anyways, today Aly and I just completed the first day of demo and here is a small walk through with Aly&amp;#8217;s new HD Flip.&lt;/p&gt;
+&lt;iframe allowFullScreen='allowFullScreen' frameborder='0' height='382' mozallowfullscreen='mozallowfullscreen' src='http://player.vimeo.com/video/10447735 ' webkitAllowFullScreen='webkitAllowFullScreen' width='680'&gt;useless text to fix fail to render rest of post issue&lt;/iframe&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>Bought My First House</title>
+      <link href="http://andrewdeponte.com/2009/07/21/bought-my-first-house.html"/>
+      <updated>2009-07-21T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2009/07/21/bought-my-first-house</id>
+      <content type="html">&lt;p&gt;Few, the stress and hesitation is over with. Today, I closed on my first house. I am now a home owner. Can you believe that? I can&amp;#8217;t. It hasn&amp;#8217;t really settled in yet that I now own my own home. Now, the excitement and overwhelming feeling comes of the massive project that is a fixer upper house. However, with that also comes the great satisfaction and feeling of accomplishment after I make every addition step towards my goals for this house.&lt;/p&gt;
+
+&lt;p&gt;Everyone keeps telling me that the tasks around the house will never end. I am sure they are right, but that is also part of what I love about it. It continually evolves as technology and time progress just as any good software does. Beyond that, I now get to make sure that it is the way I want it. In fact the two primary factors I took into consideration while looking for houses were Location, Location, Location, Location and a good base (framing, foundation) to start from. Oh, and I of course had to consider the money part as well. Luckily I found a repo that needed a lot of work but had an awesome location and fell just within my budget.&lt;/p&gt;
+
+&lt;p&gt;Buying this house was a very difficult decision to make as I am currently involved in a number of side software projects besides my normal full time job. However, everything seemed to fall into place and it felt like the right time. So, after weeks and weeks of contemplation and discussion with friends and family I finally decided to take the leap, and here I am now a home owner. Oh the life!&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>Ajax Request Generated JavaScript</title>
+      <link href="http://andrewdeponte.com/2009/07/01/ajax-request-generated-javascript.html"/>
+      <updated>2009-07-01T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2009/07/01/ajax-request-generated-javascript</id>
+      <content type="html">&lt;p&gt;Hi all. Recently I was working on a web application that utilized JavaScript and AJAX. Who would have guessed. Anyways, I ran into a bit of a snag when I had the AJAX requests result defining a JavaScript snippet. The problem was that AJAX requests strip out script tags and don&amp;#8217;t let them get inserted into the DOM tree. I am not sure why this is the case, maybe for some security reason that I have yet to see. Anyways, this creates a bit of a problem when you are trying to do things like use a JavaScript calendar widget inside the AJAX result set when the calendar widget needs to be initialized by some JavaScript code that is unique to that calendar.&lt;/p&gt;
+
+&lt;p&gt;Despite all my efforts in googling I failed to find a clearly defined solution. Bits of the sites have clues but none of them had actual solutions with enough detail to make it reproducible. Hence, after exploring all of these hints and all of the combinations of the hints I managed to find a working solution for using JavaScript that is dynamically generated as part of the result of an AJAX call.&lt;/p&gt;
+
+&lt;p&gt;Lets assume that you are using Prototype because I was, and it is a very common AJAX JavaScript library. The first thing I looked to find out was if there was an event fired off to the portion that is generated by AJAX request. The answer is, not that I could find. There are events in the top level document but none which really help you. Since, there are no events or callbacks in the child document (one produced by the ajax call and loaded into the top level) and no script tags carried through to the top level document we first have to figure out a way to get the JavaScript code to the top level document and then secondarily have JavaScript evaluate it.&lt;/p&gt;
+
+&lt;p&gt;In order to get the script tags content to the top level document I had to create a div that contained the raw content of the script tag that I wanted available. Beyond that the div had to have a unique ID that was able to be obtained programatically in the top level document using JavaScript. An example of this might look as follows (html.erb template of JavaScript):&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='html'&gt;  &lt;span class='nt'&gt;&amp;lt;div&lt;/span&gt; &lt;span class='na'&gt;id=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;&amp;lt;%= calendar_id %&amp;gt;_script&amp;quot;&lt;/span&gt; &lt;span class='na'&gt;style=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;display: none;&amp;quot;&lt;/span&gt;&lt;span class='nt'&gt;&amp;gt;&lt;/span&gt;;
+  &lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_id %&amp;gt;SelectHandler = function(type, args, obj){
+    var selected = args[0];
+    var selDate = selected[0][0] + &amp;quot;-&amp;quot; + selected[0][1] + &amp;quot;-&amp;quot; + selected[0][2];
+    &lt;span class='err'&gt;&amp;lt;&lt;/span&gt;% if txt_input_id.nil? %&amp;gt;
+      document.getElementById(&amp;quot;&lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_namespace %&amp;gt;_&lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_id %&amp;gt;&amp;quot;).value = selDate;
+      &lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_id %&amp;gt;hide();
+    &lt;span class='err'&gt;&amp;lt;&lt;/span&gt;% else %&amp;gt;
+      document.getElementById(&amp;quot;&lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= txt_input_id %&amp;gt;&amp;quot;).value = selDate;
+      &lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_id %&amp;gt;hide();
+    &lt;span class='err'&gt;&amp;lt;&lt;/span&gt;% end %&amp;gt;
+  }
+
+  &lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_id %&amp;gt;show = function (){
+    var cur_z = $(&amp;#39;&lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_container %&amp;gt;&amp;#39;).style.zIndex;
+    if (!cur_z) {
+      cur_z = 1;
+    } else {
+      cur_z = parseInt(cur_z);
+    }
+    $(&amp;#39;&lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_container %&amp;gt;&amp;#39;).show();
+    $(&amp;#39;&lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_container %&amp;gt;&amp;#39;).style.zIndex = (cur_z + 1);
+  }
+
+  &lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_id %&amp;gt;hide = function(){
+    var cur_z = $(&amp;#39;&lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_container %&amp;gt;&amp;#39;).style.zIndex;
+    if (!cur_z) {
+      cur_z = 1;
+    } else {
+      cur_z = parseInt(cur_z);
+    }
+    $(&amp;#39;&lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_container %&amp;gt;&amp;#39;).hide();
+    $(&amp;#39;&lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_container %&amp;gt;&amp;#39;).style.zIndex = (cur_z - 1);
+  }
+
+  YAHOO.namespace(&amp;quot;&lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_namespace %&amp;gt;.&lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_id %&amp;gt;&amp;quot;);
+  YAHOO.&lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_namespace %&amp;gt;.&lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_id %&amp;gt;.init = function() {
+    YAHOO.&lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_namespace %&amp;gt;.&lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_id %&amp;gt;.Cal = new YAHOO.widget.Calendar(&amp;quot;&lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_id %&amp;gt;&amp;quot;,&amp;quot;&lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_container %&amp;gt;&amp;quot;, &lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= @opts %&amp;gt;);
+
+    YAHOO.&lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_namespace %&amp;gt;.&lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_id %&amp;gt;.Cal.selectEvent.subscribe(&lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_id %&amp;gt;SelectHandler, YAHOO.&lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_namespace %&amp;gt;.&lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_id %&amp;gt;.Cal, true);
+    YAHOO.&lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_namespace %&amp;gt;.&lt;span class='err'&gt;&amp;lt;&lt;/span&gt;%= calendar_id %&amp;gt;.Cal.render();
+  }
+&lt;span class='nt'&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;This div with a unique id gives me the capability of pulling out the associated raw JavaScript that is the innerHTML content of this div in the top level document and having the top level documents JavaScript evaluate it. This can be done with a JavaScript function like the following:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='html'&gt;function createRowEditCalendar(id) {
+  var script = document.getElementById(&amp;quot;cal_visited_on_&amp;quot; + id + &amp;quot;_script&amp;quot;).innerHTML;
+  eval(script);
+  var my_init_cmd = &amp;quot;YAHOO.namespace_o_hell.cal_visited_on_&amp;quot; + id + &amp;quot;.init();&amp;quot;;
+  eval(my_init_cmd);
+  return true;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;The next logical question of course is what event or callback launches the above JavaScript function in the top level document. The answer in this case is simply to use the Prototypes Ajax.Updater onComplete callback by having it first programatically figure out the name of the div using the reproducible naming scheme and then call the above JavaScript function passing it the necessary id to access the hidden JavaScript div. This might look something like the following:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='html'&gt;&lt;span class='nt'&gt;&amp;lt;input&lt;/span&gt; &lt;span class='na'&gt;type=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;button&amp;quot;&lt;/span&gt; &lt;span class='na'&gt;id=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;rowedit_create_button&amp;quot;&lt;/span&gt; &lt;span class='na'&gt;value=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;Create&amp;quot;&lt;/span&gt; &lt;span class='na'&gt;onclick=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;new Ajax.Updater(&amp;lt;% if prefix %&amp;gt; &amp;#39;&amp;lt;%= prefix %&amp;gt;_rowedit_data_rows&amp;#39; &amp;lt;% else %&amp;gt; &amp;#39;rowedit_data_rows&amp;#39; &amp;lt;% end %&amp;gt;, &amp;#39;&amp;lt;%= urls[:create] %&amp;gt;&amp;#39;, {asynchronous:true, parameters:$(&amp;lt;% if prefix %&amp;gt; &amp;#39;&amp;lt;%= prefix %&amp;gt;_rowedit_create_form&amp;#39; &amp;lt;% else %&amp;gt; &amp;#39;rowedit_create_form&amp;#39; &amp;lt;% end %&amp;gt;).serialize(), insertion: Insertion.Bottom, onComplete: function() { var drows = document.getElementById(&amp;#39;rowedit_data_rows&amp;#39;); var last_row_id = drows.lastChild.id; last_row_id = last_row_id.replace(&amp;#39;edit_&amp;#39;, &amp;#39;&amp;#39;); last_row_id = last_row_id.replace(&amp;#39;_row&amp;#39;, &amp;#39;&amp;#39;); createRowEditCalendar(last_row_id); } });&amp;quot;&lt;/span&gt;&lt;span class='nt'&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Assuming that you have those three components in place and properly setup with all the syntax correct you should have a working solution. Note: Be very careful of syntax errors in the JavaScript inside the eval() method because FireBug won&amp;#8217;t detect them, or run-time errors in the JavaScript anywhere because not all of them will be detected by FireBug. Anyways, hope this helps someone out there, it sure would have helped me if I had it.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>iPhone App Loading Screen</title>
+      <link href="http://andrewdeponte.com/2009/06/21/iphone-app-loading-screen.html"/>
+      <updated>2009-06-21T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2009/06/21/iphone-app-loading-screen</id>
+      <content type="html">&lt;p&gt;Hi all. If you don&amp;#8217;t know already I have been playing with some iPhone app development pretty heavy lately. One of the interesting things which was some what more difficult to find was how to create a loading screens in iPhone apps. After I bit of googling and some reading of different forums I finally narrowed it down. It is handled automatically if you simply created a PNG file called Default.png that is 320 x 240 pixels with a 160 ppi and place it in your projects Resources file. Once in you Resources it will be displayed during the time that the application is loading. If you need to extend the time to get your splash screen to stay on the screen because your code is god like and fast simply tack a sleep or something in your applicationDidFinishLaunching method.&lt;/p&gt;</content>
     </entry>
   
 

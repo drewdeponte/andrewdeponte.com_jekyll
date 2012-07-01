@@ -4,7 +4,7 @@
   <title>Drew's World</title>
   <link href="http://andrewdeponte.com/atom.xml" rel="self"/>
   <link href="http://andrewdeponte.com/"/>
-  <updated>2012-06-30T18:04:40-07:00</updated>
+  <updated>2012-06-30T19:02:17-07:00</updated>
   <id>http://andrewdeponte.com/</id>
   <author>
     <name>Andrew De Ponte</name>
@@ -1015,6 +1015,119 @@ Codes&lt;/code&gt; so that the output is a bit cleaner.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;Anyways, the beauty of this process is that the RSS/Atom Feed Reader does the hard work for you and you only have to setup it up once and reconfigure it when you are decide you are looking for a new job title or in a new area. Also, keep in mind that it is time consuming process and you do have to focus and commit to following this process in order to accomplish your end goal of getting a job.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>Framed Front Left Bathroom Door</title>
+      <link href="http://andrewdeponte.com/2010/02/14/framed-front-left-bathroom-door.html"/>
+      <updated>2010-02-14T00:00:00-08:00</updated>
+      <id>http://andrewdeponte.com/2010/02/14/framed-front-left-bathroom-door</id>
+      <content type="html">&lt;p&gt;This weekend my friend Dave and I framed in the extra door in the bathroom at the front left of the house. It was the door that went from the bathroom to the garage entry area that is going to become an in-door laundry area. We also mounted a new 125 AMP Sub Panel in the framing as it is going to be the Sub Panel that feeds all of the house that is rewired. Anyways, you can check it out &lt;a href='http://www.facebook.com/media/set/?set=a.535699227600.2048925.30901409&amp;amp;type=3&amp;amp;l=46b03e486a'&gt;here&lt;/a&gt;.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>A Go at Graphics</title>
+      <link href="http://andrewdeponte.com/2009/12/06/a-go-at-graphics.html"/>
+      <updated>2009-12-06T00:00:00-08:00</updated>
+      <id>http://andrewdeponte.com/2009/12/06/a-go-at-graphics</id>
+      <content type="html">&lt;p&gt;Hi all. I recently tried my hand at a little graphic design work. A while back I came up with the domain name lusciousbits.com and bought it. I had a couple different ideas for that domain. However, I ran into a very difficult time coming up with the concept for a logo for the site. After a while of contemplating various concepts for logos and failing to come up with anything useful, I started asking people what they thought of when they heard the word luscious. It was astounding to me that the vast majority of people specifically said &amp;#8220;You know the Hot Chick Mud Flaps on Trucks?&amp;#8221; So, I finally decided that despite the fact that some may take it to be sexist I was going to use that and attempt a little graphics work. I did not intend it to be sexist so please don&amp;#8217;t take it that way. The tag line was lovingly donated by another Software Engineer friend of mine (Patrick Murphy). Anyways, below is a wallpaper I created based on this concept for lusciousbits.com. You can get the wallpaper &lt;a href='http://www.facebook.com/media/set/?set=a.629963920400.2070661.30901409&amp;amp;type=3&amp;amp;l=d82a9c683d'&gt;here&lt;/a&gt;.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>jQuery Comparative Histogram Plugin</title>
+      <link href="http://andrewdeponte.com/2009/10/31/jquery-comparative-histogram-plugin.html"/>
+      <updated>2009-10-31T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2009/10/31/jquery-comparative-histogram-plugin</id>
+      <content type="html">&lt;p&gt;I recently wrote a jQuery Plugin that I am calling jquery_comphist. It is a jQuery Plugin that draws a Comparative Histogram of a provided population divided into two major groups with any number of shared sub-groups. One of the most common uses for such a feature is when you are trying to display demographics data on some population. Anyways, as usual the code is available at my GitHub page here and you can see a demo of it below.&lt;/p&gt;
+&lt;div style='background-color: #f3f3f3; padding: 20px;'&gt;
+&lt;div id='comphist_example' style='width: 500px; height: 200px;'&gt;&amp;nbsp;&lt;/div&gt;
+&lt;/div&gt;&lt;script type='text/javascript'&gt;
+$(function () {
+  function showCompHistTooltip(x, y, contents) {
+    $(&quot;&lt;div id='comphist1tooltip'&gt;&quot; + contents + '&lt;/div&gt;').css({ position: 'absolute', display: 'none', top: y - 20, left: x - 30, border: '1px solid #fdd', padding: '2px', 'background-color': '#fee', opacity: 1 }).appendTo(&quot;body&quot;).fadeIn(200);
+  }
+
+  var comphist_data = {
+    population_label: 'Active Fans This Week',
+    group_1_label: 'Male', group_2_label: 'Female',
+    subgroups: [
+    { label: '13-17', group_1_count: 3, group_2_count: 16 },
+    { label: '18-24', group_1_count: 7, group_2_count: 27 },
+    { label: '25-34', group_1_count: 3, group_2_count: 29 },
+    { label: '35-44', group_1_count: 2, group_2_count: 9 },
+    { label: '45-54', group_1_count: 0, group_2_count: 4 },
+    { label: '55+', group_1_count: 0, group_2_count: 0 }
+    ],
+    non_demo_count: 0
+  };
+  $(&quot;#comphist_example&quot;).comphist({}, comphist_data);
+
+  $(&quot;#comphist_example&quot;).bind(&quot;barover&quot;, function (e, perc, pos) {
+    $(&quot;#comphist1tooltip&quot;).remove();
+    showCompHistTooltip(pos.left, pos.top, perc);
+  });
+  
+  $(&quot;#comphist_example&quot;).bind(&quot;barout&quot;, function (e, perc, pos) {
+    $(&quot;#comphist1tooltip&quot;).remove();
+  });
+});
+&lt;/script&gt;
+&lt;p&gt;With the jQuery Comparative Histogram (CompHist) Plugin you can easily represent populations and information about them. A prime usage exampe of this is demographics. All the styling is done via CSS. Hence the style is easily modified. It does the calculations for you and it allows for non listed group counts via a non_demo_count data option.&lt;/p&gt;
+
+&lt;p&gt;The above demo was produced by defining a few code snippets. The first snippet is a snippet of HTML that includes the jQuery Comparative Histogram javascript source file and CSS style sheet. Note: The jQuery Comparative Histogram javascript source file needs to come after the standard jQuery javascript source file. An example of this snippet is as follows:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='html'&gt;&lt;span class='nt'&gt;&amp;lt;script &lt;/span&gt;&lt;span class='na'&gt;type=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt; &lt;span class='na'&gt;src=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;../jquery.comphist.js&amp;quot;&lt;/span&gt;&lt;span class='nt'&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class='nt'&gt;&amp;lt;link&lt;/span&gt; &lt;span class='na'&gt;rel=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;stylesheet&amp;quot;&lt;/span&gt; &lt;span class='na'&gt;type=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;text/css&amp;quot;&lt;/span&gt; &lt;span class='na'&gt;href=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;../stylesheets/jquery.comphist.css&amp;quot;&lt;/span&gt;&lt;span class='nt'&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Note: In the above snippet the href values are likely to be different in your case. The second code snippet is simply a single line of HTML where the div that is to be the Comparative Histogram. It is key that this div has an id that is easily referenced and a set height and width. An example of this snippet is as follows:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='html'&gt;&lt;span class='nt'&gt;&amp;lt;div&lt;/span&gt; &lt;span class='na'&gt;id=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;compplaceholder&amp;quot;&lt;/span&gt; &lt;span class='na'&gt;style=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;width: 375px; height: 200px;&amp;quot;&lt;/span&gt;&lt;span class='nt'&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;The third code snippet needed is the javascript that defines the data, creates the Comparative Histogram in the specified div, and handles the hover functionality. An example of this is seen below.&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='html'&gt;&lt;span class='nt'&gt;&amp;lt;script &lt;/span&gt;&lt;span class='na'&gt;type=&lt;/span&gt;&lt;span class='s'&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt;&lt;span class='nt'&gt;&amp;gt;&lt;/span&gt;
+&lt;span class='nx'&gt;$&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='kd'&gt;function&lt;/span&gt; &lt;span class='p'&gt;()&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+  &lt;span class='kd'&gt;function&lt;/span&gt; &lt;span class='nx'&gt;showCompHistTooltip&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;x&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;y&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;contents&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+    &lt;span class='nx'&gt;console&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;log&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;called my shit&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;);&lt;/span&gt;
+    &lt;span class='nx'&gt;$&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s1'&gt;&amp;#39;&amp;lt;div id=&amp;quot;comphist1tooltip&amp;quot;&amp;gt;&amp;#39;&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='nx'&gt;contents&lt;/span&gt; &lt;span class='o'&gt;+&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;&amp;lt;/div&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;).&lt;/span&gt;&lt;span class='nx'&gt;css&lt;/span&gt;&lt;span class='p'&gt;({&lt;/span&gt;
+      &lt;span class='nx'&gt;position&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;absolute&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+      &lt;span class='nx'&gt;display&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;none&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+      &lt;span class='nx'&gt;top&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='nx'&gt;y&lt;/span&gt; &lt;span class='o'&gt;-&lt;/span&gt; &lt;span class='mi'&gt;20&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+      &lt;span class='nx'&gt;left&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='nx'&gt;x&lt;/span&gt; &lt;span class='o'&gt;-&lt;/span&gt; &lt;span class='mi'&gt;30&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+      &lt;span class='nx'&gt;border&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;1px solid #fdd&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+      &lt;span class='nx'&gt;padding&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;2px&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+      &lt;span class='s1'&gt;&amp;#39;background-color&amp;#39;&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;#fee&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+      &lt;span class='nx'&gt;opacity&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;1&lt;/span&gt;
+    &lt;span class='p'&gt;}).&lt;/span&gt;&lt;span class='nx'&gt;appendTo&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;body&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;).&lt;/span&gt;&lt;span class='nx'&gt;fadeIn&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='mi'&gt;200&lt;/span&gt;&lt;span class='p'&gt;);&lt;/span&gt;
+  &lt;span class='p'&gt;}&lt;/span&gt;
+
+  &lt;span class='kd'&gt;var&lt;/span&gt; &lt;span class='nx'&gt;comphist_data&lt;/span&gt; &lt;span class='o'&gt;=&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+    &lt;span class='nx'&gt;population_label&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;Active Fans This Week&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+    &lt;span class='nx'&gt;group_1_label&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;Male&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;group_2_label&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;Female&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt;
+    &lt;span class='nx'&gt;subgroups&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='p'&gt;[&lt;/span&gt;
+    &lt;span class='p'&gt;{&lt;/span&gt; &lt;span class='nx'&gt;label&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;13-17&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;group_1_count&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;3&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;group_2_count&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;16&lt;/span&gt; &lt;span class='p'&gt;},&lt;/span&gt;
+    &lt;span class='p'&gt;{&lt;/span&gt; &lt;span class='nx'&gt;label&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;18-24&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;group_1_count&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;7&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;group_2_count&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;27&lt;/span&gt; &lt;span class='p'&gt;},&lt;/span&gt;
+    &lt;span class='p'&gt;{&lt;/span&gt; &lt;span class='nx'&gt;label&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;25-34&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;group_1_count&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;3&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;group_2_count&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;29&lt;/span&gt; &lt;span class='p'&gt;},&lt;/span&gt;
+    &lt;span class='p'&gt;{&lt;/span&gt; &lt;span class='nx'&gt;label&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;35-44&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;group_1_count&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;2&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;group_2_count&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;9&lt;/span&gt; &lt;span class='p'&gt;},&lt;/span&gt;
+    &lt;span class='p'&gt;{&lt;/span&gt; &lt;span class='nx'&gt;label&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;45-54&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;group_1_count&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;0&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;group_2_count&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;4&lt;/span&gt; &lt;span class='p'&gt;},&lt;/span&gt;
+    &lt;span class='p'&gt;{&lt;/span&gt; &lt;span class='nx'&gt;label&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;55+&amp;#39;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;group_1_count&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;0&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;group_2_count&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;0&lt;/span&gt; &lt;span class='p'&gt;}&lt;/span&gt;
+    &lt;span class='p'&gt;],&lt;/span&gt;
+    &lt;span class='nx'&gt;non_demo_count&lt;/span&gt;&lt;span class='o'&gt;:&lt;/span&gt; &lt;span class='mi'&gt;0&lt;/span&gt;
+  &lt;span class='p'&gt;};&lt;/span&gt;
+  &lt;span class='nx'&gt;$&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;#compplaceholder&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;).&lt;/span&gt;&lt;span class='nx'&gt;comphist&lt;/span&gt;&lt;span class='p'&gt;({},&lt;/span&gt; &lt;span class='nx'&gt;comphist_data&lt;/span&gt;&lt;span class='p'&gt;);&lt;/span&gt;
+
+  &lt;span class='nx'&gt;$&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;#compplaceholder&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;).&lt;/span&gt;&lt;span class='nx'&gt;bind&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;barover&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='kd'&gt;function&lt;/span&gt; &lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;e&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;perc&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;pos&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+    &lt;span class='nx'&gt;$&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;#comphist1tooltip&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;).&lt;/span&gt;&lt;span class='nx'&gt;remove&lt;/span&gt;&lt;span class='p'&gt;();&lt;/span&gt;
+    &lt;span class='nx'&gt;showCompHistTooltip&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;pos&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;left&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;pos&lt;/span&gt;&lt;span class='p'&gt;.&lt;/span&gt;&lt;span class='nx'&gt;top&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;perc&lt;/span&gt;&lt;span class='p'&gt;);&lt;/span&gt;
+  &lt;span class='p'&gt;});&lt;/span&gt;
+  
+  &lt;span class='nx'&gt;$&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;#compplaceholder&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;).&lt;/span&gt;&lt;span class='nx'&gt;bind&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;barout&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='kd'&gt;function&lt;/span&gt; &lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='nx'&gt;e&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;perc&lt;/span&gt;&lt;span class='p'&gt;,&lt;/span&gt; &lt;span class='nx'&gt;pos&lt;/span&gt;&lt;span class='p'&gt;)&lt;/span&gt; &lt;span class='p'&gt;{&lt;/span&gt;
+    &lt;span class='nx'&gt;$&lt;/span&gt;&lt;span class='p'&gt;(&lt;/span&gt;&lt;span class='s2'&gt;&amp;quot;#comphist1tooltip&amp;quot;&lt;/span&gt;&lt;span class='p'&gt;).&lt;/span&gt;&lt;span class='nx'&gt;remove&lt;/span&gt;&lt;span class='p'&gt;();&lt;/span&gt;
+  &lt;span class='p'&gt;});&lt;/span&gt;
+&lt;span class='p'&gt;});&lt;/span&gt;
+&lt;span class='nt'&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Hopefully, the demo and quick code example helps get you up and running quickly.&lt;/p&gt;</content>
     </entry>
   
 

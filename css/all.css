@@ -4,3 +4,4 @@
 {% include css/nav.css %}
 {% include css/post.css %}
 {% include css/social_sprite.css %}
+{% include css/pygments.css %}

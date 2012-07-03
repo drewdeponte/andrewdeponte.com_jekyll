@@ -173,6 +173,15 @@ body > footer {
   margin-right: 3px;
 }
 
+.highlight {
+  overflow-x: auto;
+  padding: 10px;
+  background-color: #f3f3f3;
+  -moz-box-shadow:    inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow:         inset 0 0 10px #000000;
+}
+
 
 
 .rss_icon {
@@ -376,15 +385,6 @@ body > footer {
 .vg { color: #B8860B } /* Name.Variable.Global */
 .vi { color: #B8860B } /* Name.Variable.Instance */
 .il { color: #666666 } /* Literal.Number.Integer.Long */
-
-.highlight {
-  overflow: scroll;
-  padding: 10px;
-  background-color: #f3f3f3;
- -moz-border-radius: 20px;
- -webkit-border-radius: 20px;
- border-radius: 20px;
-}
 
 /* Any styles I want applied to the entier widget. */
 .ui-comphist-widget {

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" \>
+    <meta name="description" content="Andrew De Ponte's Blog on Ruby, Ruby on Rails, Javascript, jQuery, and software development and engineering in general." />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <title> Posts Tagged &ldquo;Git&rdquo; |  Andrew De Ponte, Software Engineer</title>
+
+    <link rel="stylesheet" href="/css/all.css" />
+    <script type="text/javascript" src="/javascript/all.js"></script>
+
+    <link href="http://coderwall.com/stylesheets/jquery.coderwall.css" rel="stylesheet" media="all" type="text/css" />
+    <script src="http://coderwall.com/javascripts/jquery.coderwall.js"></script>
+  </head>
+  <body>
+    <nav id="primary_nav">
+      <ul>
+        <li><a href="/">Blog</a></li>
+        <li><a href="/files/resume.pdf">Resume</a></li>
+      </ul>
+    </nav>
+    <header>
+      <a href="http://github.com/cyphactor"><img style="position: absolute; top: 0; left: 0; border: 0;" src="/images/fork_me_on_github.png" alt="Fork me on GitHub"></a>
+      <h1 id="site_title">Drew's World</h1>
+      <div id="site_subtitle">Rants, News, Etc on my Life and Projects</div>
+    </header>
+    <div id="container">
+      <div id="main_content">
+        
+  <article class='blog-post'>
+  <header>
+    <h2 class='title'><a href="/2010/10/25/Git-Based-Workflow-Revised.html">Git Based Workflow Revised</a></h2>
+    <div class='posted-info'>
+      <time datetime='2010-10-25T00:00:00Z' pubdate='pubdate' class='published-datetime'>October 25, 2010</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>If you happened to read my previous post <a href='/2010/10/24/An-Ideal-Git-Based-Team-Workflow.html'>An Ideal Git Based Team Workflow</a> this posting is a result of taking that concept and discussing it heavily with my team as well as further contemplating the issues and solutions.</p>
+
+<h3 id='the_real_requirements'>The Real Requirements</h3>
+
+<p>After reviewing my thoughts and discussing things further with my team I determined that a number of aspects of the previously defined workflow are not needed. In fact they were overcomplicating the workflow due to a lack of understanding of the actual requirements. One such requirement was the concept that branches should parallel deployment environments. This is not actually a requirement and I was sadly imposing it as one in my initial workflow. In hindsight this was primarily due to the fact that it was the focal point of a number of discussions with one of my developers, Michael Genereux. This singular mistaken requirement imposes a huge amount of complexity and constraint into the workflow for no significant value in my opinion. The set of requirements that I now believe are true requirements of our workflow are presented in the list below.</p>
+
+<ul>
+<li>Overhead on the developers should be as minimal as possible</li>
+
+<li>Overhead on the integrators should be as minimal as possible</li>
+
+<li>Hotfix deployments should be able to trivially be made</li>
+
+<li>Content deployments should be able to trivially be made</li>
+
+<li>Iterative development cycles can happen parallel to Hotfix and Content development &amp; deployment</li>
+
+<li>Code review and feedback is needed for our inexperienced developers so that they can learn</li>
+</ul>
+
+<h3 id='the_two_roles'>The Two Roles</h3>
+
+<p>After, isolating the correct requirements I determined that in order to satisfy the minimalistic overhead requirements as well as the code review/feedback requirements we were going to need two different roles within our workflow. The first role is what I will from this point on refer to as an &#8220;Integrator&#8221;. In reality an &#8220;Integrator&#8221; in my mind is simply a developer that is skilled enough to follow carefully designed policy, doesn&#8217;t need much guidance, and fully understands the core concepts of Git and why the workflow policies exist. The second role is what I will refer to as a &#8220;Newb&#8221;. A &#8220;Newb&#8221; in this case is simply a less experienced developer that may need more guidance, heavier code review, and more direction in general.</p>
+
+<h4 id='the_integrator'>The Integrator</h4>
+
+<p>The group of developers which fall within the &#8220;Integrator&#8221; title are responsible for not only doing their normal iteration development but also for performing code review and providing feedback to the &#8220;Newbs&#8221;. Beyond that they are responsible for following the provided policies to manage Hotfixes, Content changes, and the normal iterative development cycle. The policies for each of these areas with respect to &#8220;The Integrator&#8221; role are provided below.</p>
+
+<h4 id='hotfixes'>Hotfixes</h4>
+
+<p>In this workflow I am defining hotfixes simply as changes that have to be made and deployed abruptly out side of a normal iteration deployment. These are normally severe bugs that drastically hinder the user experience and must be fixed asap.</p>
+
+<p>Developers of the &#8220;Integrator&#8221; role are required when creating a hotfix or series of hotfixes to create a remote branch for the hotfixes within the current weeks iteration. The branch should be based on the release that the hotfixes are going to apply to. Secondarily the name of the branch should be of the following format, <code>&quot;week_&lt;week number&gt;_hotfixes&quot;</code>. Once the remote branch exists development of the hotfixes should occur on the newly created hotfixes branch. Once the branch reaches a state in which it is ready to be released into the accelerated pipeline it should be tagged using the release naming scheme and deployed.</p>
+
+<h3 id='content_changes'>Content Changes</h3>
+
+<p>In this workflow I am defining content changes simply as changes which need to be deployed on a more frequent basis than the normal iteration deployments. Beyond that they are generally changes to assets or textual changes needed by marketing, etc. which have less of a functional involvement.</p>
+
+<p>Developers of the &#8220;Integrator&#8221; role are not usually the developers making these changes directly. However, they are responsible for reviewing, integrating, and providing feedback to the &#8220;Newbs&#8221; that are making these changes through the &#8220;Newb&#8221; workflow as defined below. Hence, the &#8220;Integrators&#8221; should pull in the &#8220;Newbs&#8221; content changes after reviewing them and merge them into the current weeks remote branch for content changes. This branch should have a name of the following format, <code>&quot;week_&lt;week number&gt;_content&quot;</code>. If this branch doesn&#8217;t exist at the time in which an &#8220;Integrator&#8221; needs it they are responsible for creating it. Once this branch reaches a state in which it is ready to be deployed, it should be tagged using the release naming scheme and deployed into the pipeline.</p>
+
+<h3 id='normal_iteration'>Normal Iteration</h3>
+
+<p>In this workflow a normal iteration is simple a release cycle of two weeks. Within a normal iteration &#8220;Integrators&#8221; are responsible for not only managing content and hotfixes from &#8220;Newbs&#8221; but also managing normal iteration development from &#8220;Newbs&#8221;. Beyond that &#8220;Integrators&#8221; are responsible for performing their normal development work for the current iteration. All development changes should be performed inside specific topic branches and never directly on the master branch. If features/bugs are large enough that they may consume multiple days of development they should have their own remote topic branch. This allows other developers to participate or at a minimum obtain the partially completed changes which you have made. Beyond that never developing directly on master makes abrupt context switching trivial. Once a topic branch has reached a point in which it is ready to be merged into the current weeks iteration and ready for the pipeline the &#8220;Integrator&#8221; should merge it into the master branch and push the updated master branch to the central repository.</p>
+
+<h3 id='the_newb'>The Newb</h3>
+
+<p>The developers which fall within the &#8220;Newb&#8221; title are responsible for performing their development tasks and learning the process and value of the workflow policies as well as the technologies and languages which they are using. Ideally the &#8220;Newbs&#8221; progress to &#8220;Integrators&#8221; eventually. Their tasks similar to the &#8220;Integrators&#8221; may consist of development work for Hotfixes, Content Changes, or Normal Iteration development. However, one way they differ is in the process and policies they have to follow when performing these tasks. The workflow for each of these types of changes with respect to &#8220;Newbs&#8221; is provided below.</p>
+
+<h4 id='hotfixes'>Hotfixes</h4>
+
+<p>A &#8220;Newb&#8221; similar to an &#8220;Integrator&#8221; is required to do all development within topic branches. However, when a &#8220;Newb&#8221; believes they are ready to have their changes included in the current weeks hotfixes branch they must make a Pull Request via GitHub to their upstream repository. GitHub will then notify all of the &#8220;Integrators&#8221; of the new pull request and allow them to review the changes, provide any feedback and merge the changes in. GitHub will also allow the &#8220;Integrators&#8221; to throw the changes back to the &#8220;Newb&#8221; with feedback rather than merging the changes in.</p>
+
+<h3 id='content_changes'>Content Changes</h3>
+
+<p>With respect to a &#8220;Newb&#8221; content changes work exactly the same way as Hotfixes. They simply develop their content changes and submit an appropriate Pull Request via GitHub to their upstream repository so that an &#8220;Integrator&#8221; can appropriately deal with their changes and provide any feedback.</p>
+
+<h3 id='normal_iteration'>Normal Iteration</h3>
+
+<p>&#8220;Newbs&#8221; follow the same process for Normal Iteration development as they did Hotfixes and Content Changes. Develop the changes in a topic branch and submit a Pull Request via GitHub.</p>
+
+<h3 id='requirements_review'>Requirements Review</h3>
+
+<p>I believe that the above workflows and policies provide a solid basis for a well rounded team with very little overhead and a decent amount of flexibility with respect to parallel releases being made at different rates. Please note additional parallel releases can be added simply by adding additional conceptual types of changes to my current list of Hotfixes, Content Changes, and Normal Iteration Development.</p>
+
+<h3 id='release_naming_scheme'>Release Naming Scheme</h3>
+
+<p>Given that we are developing by either week or two week iterations I have decided that we should use the following naming scheme for tagging releases:</p>
+
+<p><code>release-YY.&lt;week_num&gt;-rc&lt;release candidate counter&gt;</code></p>
+
+<p>The YY represents the year for 2010 it should be 10. The <code>&lt;week_num&gt;</code> is the week number and the <code>&lt;release candidate counter&gt;</code> is a counter for this iteration that reset at the beginning of each iteration. Once a final tagged release for production is ready to be made it should use the following naming scheme.</p>
+
+<p><code>release-YY.&lt;week_num&gt;-rf&lt;release candidate counter&gt;</code></p>
+
+<p>All the variables in the naming scheme for final tags are the same as those in the latest rc for a weekly iteration. For example if the latest rc is release-10.34-rc6 and no changes have been made since that tag and the code is ready to be tagged for a production release it should be tagged as release-10.34-rf6.</p>
+
+<h3 id='topic_branch_naming_scheme'>Topic Branch Naming Scheme</h3>
+
+<p>When naming topic branches it is required that you use the following naming scheme.</p>
+
+<p><code>&lt;type char&gt;&lt;ticket id&gt;_&lt;name&gt;</code></p>
+
+<p>The <code>&lt;type char&gt;</code> is a character that defines if it is a task (t), bug (b), or feature (f). The ticket id is the unique identifier of the ticket in the ticketing system that corresponds to this topic branch. The <code>&lt;name&gt;</code> is a short but meaningful name that describes the topic branch.</p>
+
+<h3 id='dont_tie_deployment_environments_to_branches'>Don&#8217;t Tie Deployment Environments to Branches</h3>
+
+<p>So, as I stated in the opening I was assuming in the previous article that each deployment environment should have a branch that parallels it. This was an idea that was presented to me by one of my developers and I mistakenly ran with it. The following is an explanation of why I believe doing this is not valuable and potentially costly. Also, I am not pointing this out to pick on my developer. In fact it is quite the opposite. I am glad that he forced me to think about alternatives in great depth because the process has only more solidified my belief in the workflow and policies presented above. Beyond that, the explanation of my opinion may help him or others come to the same or even a better conclusion/workflow.</p>
+
+<p>For some reason I couldn&#8217;t initially place my finger on what was wrong with using branches that paralleled the deployment environments of development, qa, staging, and production. I knew that I really hated the overhead of having to deal with cherry picking changes from one branch to the next to simulate the pipeline but I still simply saw that as its own issue which inspired me to come up with the previous and very flawed workflow, An Ideal Git Based Team Workflow.</p>
+
+<p>Today after an insane amount of contemplation, discussion, and fiddling with the workflow the answer finally came to me. The problem with the Deployment Environments mapping to branches is that from a workflow perspective we don&#8217;t really care about the deployment environments other than the tagged release that is currently deployed in each environment. This information can easily be obtained without branches that map to the environments by correlating the deployed tag in a given environment to the matching tag in Git.</p>
+
+<p>What we do care about with respect to a workflow however is the ability to be able to cleanly share code changes as well as be able to handle a number of parallel releases. I have chosen to represent these parellel releases via different classifications of changes in the above workflow. Specifically, Hotfixes, Content Changes, and Normal Iteration Development.</p>
+
+<p>When you test these two models it is very interesting because in the model where you have branches for each deployment environment you end up spending a huge amount of overhead simulating something for no reason. The primary cost in overhead is the amount of merging and cherry-picking that is necessary to keep the states of the branches in line. Secondly, it does NOT allow you to make parallel deployments of various types unless those changes happen to fall within the various stages of your deployment pipeline.</p>
+
+<p>The second model in which you have classifications of changes that map to parallel releases, the overhead of maintaining the deployment environment branches is completely eliminated. It also models the actual situation with respect to code and the natural requirements surrounding what needs to be done with/to that code. Therefore, it requires no additional overhead or maintenance.</p>
+
+<h3 id='conclusion'>Conclusion</h3>
+
+<p>The above is why I believe the model in which branches parallel deployment environments is costly and has no perceived value in comparison to its costs. As always I am interested to hear peoples thoughts and opinions with respect to my postings, so don&#8217;t hesitate to share.</p>
+  </section>
+
+  <footer>
+    
+      <a class="tag" href="/tag/Git">Git</a>
+    
+      <a class="tag" href="/tag/GitHub">GitHub</a>
+    
+      <a class="tag" href="/tag/Source Control">Source Control</a>
+    
+      <a class="tag" href="/tag/Team Workflow">Team Workflow</a>
+    
+      <a class="tag" href="/tag/Project Management">Project Management</a>
+    
+      <a class="tag" href="/tag/Software Development">Software Development</a>
+    
+  </footer>
+</article>
+
+
+  <article class='blog-post'>
+  <header>
+    <h2 class='title'><a href="/2010/10/24/An-Ideal-Git-Based-Team-Workflow.html">An Ideal Git Based Team Workflow</a></h2>
+    <div class='posted-info'>
+      <time datetime='2010-10-24T00:00:00Z' pubdate='pubdate' class='published-datetime'>October 24, 2010</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>If you don&#8217;t know me there is one thing you should know about me. I love tools that help make things easier. Git has definitely been one of those tools for me. However, I always felt like there was something in the power of Git that wasn&#8217;t really being taken advantage of because of peoples past knowledge and training of centralized source control systems such as SVN. Git provides many advantages which are difficult to argue for an individual developers workflow. However, I am more interested in a solid workflow for a team that has very little overhead using Git.</p>
+
+<p>The team of developers that I lead up for RealPractice just released our first Beta (still pretty alpha) of our product. Before this point in time I really hadn&#8217;t put in place a specific workflow largely because we had a small enough team that it was easily manageable and secondly because we simply had a huge amount of development before one release. Therefore, if things were broken during that period of time it was fine as long as what was in got fixed for the release. However, now that we have made the release I require a team workflow that gives us much more control of the development process, what gets included in the product, and at what stages things get included.</p>
+
+<h3 id='centralized_branch_workflow'>Centralized Branch Workflow</h3>
+
+<p>To begin with I looked heavily at a model that I have used in the past and seen used before. One of my developers Michael Genereux recommended this workflow as well when I told my team I was looking for a good workflow. However, I have only used this with very very small teams (2 man teams) in the past. Michael seemed to be a big supporter of this method so I discussed it with him and started playing with this workflow again.</p>
+
+<p>This workflow uses Git in a centralized maner where you have an origin and that origin has branches for each of the stages/environments, experimental, development, qa, staging, and production. The idea is that development happens on the respective branches appropriately and gets merged backwards into the experimental so that it can follow the normal flow through the environments as one would want. In my mind this has a few major issues which are as follows:</p>
+
+<ul>
+<li>Development occurs in upper level branches. Ideally even if you are writing a bug fix you want that bug fix to go through all of the stages starting at the beginning. One could argue that you could develop the bug fix in the experimental branch and merge it into development branch and so on. However, this leads to the second issue.</li>
+
+<li>This model works fine if you have a very small team that is extremely good at managing and knowing their commit history because when a change is made to experimental it somehow needs to get put into the development branch. Some would say you simply need to merge it into development branch. This argument is fine if you are a single dev and develop in a linear fashion on the experimental branch. However, if there is a team of people all sharing the same experimental branch then it can be a pain in the ass to identify which commits belong to bug fix Y or feature X and need to be cherry-picked into the next branch.</li>
+</ul>
+
+<p>As you can probably see from above points alone, managing the code base and what gets included in it can be very hard and consume an insane amount of time. Especially, if you have to go through and isolate commits that need to be cherry-picked into the next branch all the time. Plus, think about the fact that I am only talking about one level experimental to development. This same process has to occur at every level of the process experimental all the way through production.</p>
+
+<h3 id='github_to_the_rescue_pull_requests'>GitHub to the Rescue (Pull Requests)</h3>
+
+<p>So after playing with the above a bit more and thinking pretty heavily I decided there has to be a better way. I started thinking about how I develop and how I could commit code that would then go through the environmental pipeline appropriately and not have the same overhead. Thats when I realized that the biggest overhead in the above process is the fact that the devs have to isolate commits for cherry-picking all the time. Hence, I started looking for solution in the Git space and didn&#8217;t find anything directly within Git that seemed clean. Therefore, I started thinking about tools out side of Git and GitHub came to mind. With GitHub if you are using the pull based distributed model GitHub provides a feature called a &#8220;Pull Request&#8221;. This basically allows a developer to send a message to the upstream repository requesting that they pull in some changes. The beauty of the GitHub &#8220;Pull Request&#8221; is that it associates a range of commits with the pull request.</p>
+
+<p>Hence, it allows a developer to develop a bug fix or feature in their repository and then simply create a &#8220;Pull Request&#8221; that includes the the proper commit range. Then when the upstream developer/integrator receives the &#8220;Pull Request&#8221; they can pull it into their repository and merge it in appropriately knowing exactly what the proper commit range is. This drastically reduces the amount of time needed to isolate the commits using the Centralized Branch Workflow. In my mind having the Pull Requests contain the commit range is brilliant on GitHub&#8217;s part because it is an unbelievable time savor. Plus they provide a web interface for testing conflict states of &#8220;Pull Requests&#8221; and merging them in as well as a communication mechanism to submiting the developers in case you have to deny a pull request.</p>
+
+<h3 id='how_to_use_this_github_pull_request_model'>How to use this GitHub Pull Request Model</h3>
+
+<p>The following is how I want my developers to use this model. In ones own local repository they should create a topic branch for every task, bug, etc. Generally the branches should be named with the id of the task or bug so that we can identify commits with bugs and tasks in history. This also eases the local workflow to allow me to switch a dev from one focus to another abruptly (I try to do this almost never, but sometimes it happens). Generally, a dev should be developing the bug fix, task, or feature and reach a point at which they believe that they have enough for me to pull their changes into the development branch. At that point they should create a &#8220;Pull Request&#8221; because GitHub will help them by figuring out the commit range. If they continue to develop past the point where they want me to pull and neglect to make the &#8220;Pull Request&#8221; until later then they will have to isolate the commit range they want me to pull using GitHub (which is still easier than just using Git by itself). Note that keeping each task, bug fix, etc in its own topic branch makes commit isolation much easier for developers.</p>
+
+<p>Once, they have sent the pull request all integrators are notified of the pull request and then have the opportunity to pull the changes into the appropriate branch and move those changes up the pipeline as they see fit. Some developers see the act of making a pull request as overhead. However, they should note that it isn&#8217;t a side effect of GitHub it is a side effect of having to move change sets up the environment pipeline. GitHub just provides a tool that makes it easier than doing it without GitHub.</p>
+
+<h3 id='moving_changes_up_the_pipeline'>Moving Changes up the Pipeline</h3>
+
+<p>The last step in this process is the act of moving things up the environment pipeline. This is much the same process as in the Centralized Branch Workflow with one distinct difference, it is in a much more controlled environment because you don&#8217;t have all of your devs sharing the same branch space. Instead you as the integrator control the branch space. You may be asking, who cares? Well, I do for one because it makes moving changes up the pipeline much easier because it requires far far less cherry-picking. In fact the majority of the time all that is needed is to merge pull requests into development, merge development up the pipeline, and so on and so forth. Do note however that every once and a while you do need to cherry-pick but it is far and few in comparison with the Centralized Branch Workflow.</p>
+
+<p>So this is the current workflow that I am going with. I haven&#8217;t completely decided on how much access I will give my team with respect to direct pushing if any. But, that is just a balance that has to be found over time in my experience. Anyways, I hope the above gives some insight into the workflow and why I have chosen it.</p>
+  </section>
+
+  <footer>
+    
+      <a class="tag" href="/tag/Git">Git</a>
+    
+      <a class="tag" href="/tag/Source Control">Source Control</a>
+    
+      <a class="tag" href="/tag/Team Workflow">Team Workflow</a>
+    
+      <a class="tag" href="/tag/Project Management">Project Management</a>
+    
+      <a class="tag" href="/tag/Software Development">Software Development</a>
+    
+  </footer>
+</article>
+
+
+  <article class='blog-post'>
+  <header>
+    <h2 class='title'><a href="/2010/07/30/Git-finding-abandoned-commits.html">Git, finding abandoned commits...</a></h2>
+    <div class='posted-info'>
+      <time datetime='2010-07-30T00:00:00Z' pubdate='pubdate' class='published-datetime'>July 30, 2010</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>So, as many of you may know I recently took a position heading up a new software engineering team that is responsible for producing the new products. One of my first actions when I came on board was switching my team over from SVN to Git. One of the engineers on the team abandoned a branch in one of our Git repositories because he didn&#8217;t think he would need it anymore. Soon, after he realized that he wanted something from that branch but now he couldn&#8217;t see the brach anymore in &#8216;gitk &#8211;all&#8217; or any of the other tools because he abandoned it. But, it has to still be there right, it is Git.</p>
+
+<p>I knew there was a way to do this in Git and I have done it in the past but I couldn&#8217;t remember how. After I explained a bit more to him about the internals of Git and he went off and did some exploration he came back to me with his found solution which follows:</p>
+
+<p><code>git fsck --unreachable| cut -f3 -d&#39; &#39;|xargs git rev-list --header|less</code></p>
+
+<p>I know there is some other way to find abandoned nodes in Git but I still can&#8217;t remember. Anyways, just figured I would share this method in the hopes that it would help someone out there. It may not be exactly what you want with respect to the &#8216;cut&#8217; or &#8216;xargs&#8217; but I will let you all play with it a bit to get exactly what you want.</p>
+  </section>
+
+  <footer>
+    
+      <a class="tag" href="/tag/Personal">Personal</a>
+    
+      <a class="tag" href="/tag/Git">Git</a>
+    
+      <a class="tag" href="/tag/Software Development">Software Development</a>
+    
+      <a class="tag" href="/tag/Source Control">Source Control</a>
+    
+  </footer>
+</article>
+
+
+
+      </div>
+      <aside id="side_bar">
+        <div>
+          <img src="/images/drew_bald_original_cropped.png" />
+        </div>
+        <div>
+          <a href="/atom.xml" class='rss_icon'></a>
+          <a href="http://www.linkedin.com/pub/andrew-de-ponte/1b/630/b38" class='linkedin_icon'></a>
+          <a href="aim:goim?screenname=andrew.deponte@gmail.com" class='aim_icon'></a>
+          <a href="skype:cyphactor?chat" class='skype_icon'></a>
+          <a href="http://twitter.com/#!/cyphactor" class='twitter_icon'></a>
+          <a href="ymsgr:sendim?a_deponte" class='yahoo_icon'></a>
+          <a href="http://vimeo.com/user3451180" class='vimeo_icon'></a>
+          <a href="/files/Andrew%20De%20Ponte.vcf" class='vcard_icon'></a>
+          <a href="http://www.facebook.com/andrewdeponte" class='facebook_icon'></a>
+          <a href="gtalk:chat?jid=cyphactor" class='google_icon'></a>
+        </div>
+        <div>
+          <section style="margin-left: 26px;" class="coderwall" data-coderwall-username="cyphactor" data-coderwall-orientation="vertical"></section>
+          <div style="clear: both;"></div>
+        </div>
+      </aside>
+      <div style="clear: both;"></div>
+    </div>
+    <footer>
+      Copyright &copy; 2012, Andrew De Ponte. All rights reserved.
+    </footer>
+  </body>
+  <head>
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+  </head>
+</html>

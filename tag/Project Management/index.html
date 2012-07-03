@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" \>
+    <meta name="description" content="Andrew De Ponte's Blog on Ruby, Ruby on Rails, Javascript, jQuery, and software development and engineering in general." />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <title> Posts Tagged &ldquo;Project Management&rdquo; |  Andrew De Ponte, Software Engineer</title>
+
+    <link rel="stylesheet" href="/css/all.css" />
+    <script type="text/javascript" src="/javascript/all.js"></script>
+
+    <link href="http://coderwall.com/stylesheets/jquery.coderwall.css" rel="stylesheet" media="all" type="text/css" />
+    <script src="http://coderwall.com/javascripts/jquery.coderwall.js"></script>
+  </head>
+  <body>
+    <nav id="primary_nav">
+      <ul>
+        <li><a href="/">Blog</a></li>
+        <li><a href="/files/resume.pdf">Resume</a></li>
+      </ul>
+    </nav>
+    <header>
+      <a href="http://github.com/cyphactor"><img style="position: absolute; top: 0; left: 0; border: 0;" src="/images/fork_me_on_github.png" alt="Fork me on GitHub"></a>
+      <h1 id="site_title">Drew's World</h1>
+      <div id="site_subtitle">Rants, News, Etc on my Life and Projects</div>
+    </header>
+    <div id="container">
+      <div id="main_content">
+        
+  <article class='blog-post'>
+  <header>
+    <h2 class='title'><a href="/2010/12/13/Archaic-Archived-Chats-and-Dev-Helper.html">Archaic - Archived Chats and Dev Helper</a></h2>
+    <div class='posted-info'>
+      <time datetime='2010-12-13T00:00:00Z' pubdate='pubdate' class='published-datetime'>December 13, 2010</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>So for those of that don&#8217;t know, I lead of team of software developers. For a long time now I have noticed a number of gaps in the industry with respect to software development and team collaboration. One area that I always felt was missing some love was group chat.</p>
+
+<p>Sure, there are a large number of different chat protocols and applications that implement them all. However, they generally miss an archived history that has full text searching. Beyond the group chat is prime location to distribute push notifications when Git repositories that the team is working with have changes pushed to them. Because of these two issues and number of other that I really don&#8217;t want to get into at this point I have started a new open source project called <a href='http://github.com/cyphactor/archaic'>&#8220;Archaic&#8221;</a>.</p>
+
+<p><a href='http://github.com/cyphactor/archaic'>Archaic</a> is a Rails application that provides archiving of IRC channel chats with a full text search interface as well as general developer helpers. It is composed of two pieces, an IRC Bot and the Rails application. Technically they both share the rails environment as the IRC Bot should be run with rails runner. You can checkout the project at the following: <a href='http://github.com/cyphactor/archaic'>http://github.com/cyphactor/archaic</a>.</p>
+
+<p>I plan to keep the master branch functional so feel free to use the master branch. It currently has the following features.</p>
+
+<ul>
+<li>IRC Chat Archiving</li>
+
+<li>Full Text Chat Archive Searching with Context (to expand context simply click on resulting match)</li>
+
+<li>Week number helper (when anyone in IRC channel types &#8220;weeknum&#8221; it replies with current week number)</li>
+
+<li>Ticket number helper (when anyone in IRC channel types &#8220;#\d+&#8221; it replies with link to that ticket)</li>
+</ul>
+
+<p>This is the initial introduction to this project and I am sure it has numerous directions that it can and will grow into. I very much welcome your thoughts, suggestions, feature requests, bug reports, testing, etc.</p>
+
+<p>I believe that having a good central place of communication for a team even if they are working in the same office helps at least as a mechanism for keeping your devs notified about repo pushes close to real time.</p>
+
+<p>Anyways, enjoy!</p>
+  </section>
+
+  <footer>
+    
+      <a class="tag" href="/tag/Cinch">Cinch</a>
+    
+      <a class="tag" href="/tag/IRC">IRC</a>
+    
+      <a class="tag" href="/tag/Ruby">Ruby</a>
+    
+      <a class="tag" href="/tag/Ruby on Rails">Ruby on Rails</a>
+    
+      <a class="tag" href="/tag/Applications">Applications</a>
+    
+      <a class="tag" href="/tag/Computers">Computers</a>
+    
+      <a class="tag" href="/tag/Manager">Manager</a>
+    
+      <a class="tag" href="/tag/Personal">Personal</a>
+    
+      <a class="tag" href="/tag/Project Management">Project Management</a>
+    
+      <a class="tag" href="/tag/Software Development">Software Development</a>
+    
+      <a class="tag" href="/tag/Software Projects">Software Projects</a>
+    
+  </footer>
+</article>
+
+
+  <article class='blog-post'>
+  <header>
+    <h2 class='title'><a href="/2010/10/25/Git-Based-Workflow-Revised.html">Git Based Workflow Revised</a></h2>
+    <div class='posted-info'>
+      <time datetime='2010-10-25T00:00:00Z' pubdate='pubdate' class='published-datetime'>October 25, 2010</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>If you happened to read my previous post <a href='/2010/10/24/An-Ideal-Git-Based-Team-Workflow.html'>An Ideal Git Based Team Workflow</a> this posting is a result of taking that concept and discussing it heavily with my team as well as further contemplating the issues and solutions.</p>
+
+<h3 id='the_real_requirements'>The Real Requirements</h3>
+
+<p>After reviewing my thoughts and discussing things further with my team I determined that a number of aspects of the previously defined workflow are not needed. In fact they were overcomplicating the workflow due to a lack of understanding of the actual requirements. One such requirement was the concept that branches should parallel deployment environments. This is not actually a requirement and I was sadly imposing it as one in my initial workflow. In hindsight this was primarily due to the fact that it was the focal point of a number of discussions with one of my developers, Michael Genereux. This singular mistaken requirement imposes a huge amount of complexity and constraint into the workflow for no significant value in my opinion. The set of requirements that I now believe are true requirements of our workflow are presented in the list below.</p>
+
+<ul>
+<li>Overhead on the developers should be as minimal as possible</li>
+
+<li>Overhead on the integrators should be as minimal as possible</li>
+
+<li>Hotfix deployments should be able to trivially be made</li>
+
+<li>Content deployments should be able to trivially be made</li>
+
+<li>Iterative development cycles can happen parallel to Hotfix and Content development &amp; deployment</li>
+
+<li>Code review and feedback is needed for our inexperienced developers so that they can learn</li>
+</ul>
+
+<h3 id='the_two_roles'>The Two Roles</h3>
+
+<p>After, isolating the correct requirements I determined that in order to satisfy the minimalistic overhead requirements as well as the code review/feedback requirements we were going to need two different roles within our workflow. The first role is what I will from this point on refer to as an &#8220;Integrator&#8221;. In reality an &#8220;Integrator&#8221; in my mind is simply a developer that is skilled enough to follow carefully designed policy, doesn&#8217;t need much guidance, and fully understands the core concepts of Git and why the workflow policies exist. The second role is what I will refer to as a &#8220;Newb&#8221;. A &#8220;Newb&#8221; in this case is simply a less experienced developer that may need more guidance, heavier code review, and more direction in general.</p>
+
+<h4 id='the_integrator'>The Integrator</h4>
+
+<p>The group of developers which fall within the &#8220;Integrator&#8221; title are responsible for not only doing their normal iteration development but also for performing code review and providing feedback to the &#8220;Newbs&#8221;. Beyond that they are responsible for following the provided policies to manage Hotfixes, Content changes, and the normal iterative development cycle. The policies for each of these areas with respect to &#8220;The Integrator&#8221; role are provided below.</p>
+
+<h4 id='hotfixes'>Hotfixes</h4>
+
+<p>In this workflow I am defining hotfixes simply as changes that have to be made and deployed abruptly out side of a normal iteration deployment. These are normally severe bugs that drastically hinder the user experience and must be fixed asap.</p>
+
+<p>Developers of the &#8220;Integrator&#8221; role are required when creating a hotfix or series of hotfixes to create a remote branch for the hotfixes within the current weeks iteration. The branch should be based on the release that the hotfixes are going to apply to. Secondarily the name of the branch should be of the following format, <code>&quot;week_&lt;week number&gt;_hotfixes&quot;</code>. Once the remote branch exists development of the hotfixes should occur on the newly created hotfixes branch. Once the branch reaches a state in which it is ready to be released into the accelerated pipeline it should be tagged using the release naming scheme and deployed.</p>
+
+<h3 id='content_changes'>Content Changes</h3>
+
+<p>In this workflow I am defining content changes simply as changes which need to be deployed on a more frequent basis than the normal iteration deployments. Beyond that they are generally changes to assets or textual changes needed by marketing, etc. which have less of a functional involvement.</p>
+
+<p>Developers of the &#8220;Integrator&#8221; role are not usually the developers making these changes directly. However, they are responsible for reviewing, integrating, and providing feedback to the &#8220;Newbs&#8221; that are making these changes through the &#8220;Newb&#8221; workflow as defined below. Hence, the &#8220;Integrators&#8221; should pull in the &#8220;Newbs&#8221; content changes after reviewing them and merge them into the current weeks remote branch for content changes. This branch should have a name of the following format, <code>&quot;week_&lt;week number&gt;_content&quot;</code>. If this branch doesn&#8217;t exist at the time in which an &#8220;Integrator&#8221; needs it they are responsible for creating it. Once this branch reaches a state in which it is ready to be deployed, it should be tagged using the release naming scheme and deployed into the pipeline.</p>
+
+<h3 id='normal_iteration'>Normal Iteration</h3>
+
+<p>In this workflow a normal iteration is simple a release cycle of two weeks. Within a normal iteration &#8220;Integrators&#8221; are responsible for not only managing content and hotfixes from &#8220;Newbs&#8221; but also managing normal iteration development from &#8220;Newbs&#8221;. Beyond that &#8220;Integrators&#8221; are responsible for performing their normal development work for the current iteration. All development changes should be performed inside specific topic branches and never directly on the master branch. If features/bugs are large enough that they may consume multiple days of development they should have their own remote topic branch. This allows other developers to participate or at a minimum obtain the partially completed changes which you have made. Beyond that never developing directly on master makes abrupt context switching trivial. Once a topic branch has reached a point in which it is ready to be merged into the current weeks iteration and ready for the pipeline the &#8220;Integrator&#8221; should merge it into the master branch and push the updated master branch to the central repository.</p>
+
+<h3 id='the_newb'>The Newb</h3>
+
+<p>The developers which fall within the &#8220;Newb&#8221; title are responsible for performing their development tasks and learning the process and value of the workflow policies as well as the technologies and languages which they are using. Ideally the &#8220;Newbs&#8221; progress to &#8220;Integrators&#8221; eventually. Their tasks similar to the &#8220;Integrators&#8221; may consist of development work for Hotfixes, Content Changes, or Normal Iteration development. However, one way they differ is in the process and policies they have to follow when performing these tasks. The workflow for each of these types of changes with respect to &#8220;Newbs&#8221; is provided below.</p>
+
+<h4 id='hotfixes'>Hotfixes</h4>
+
+<p>A &#8220;Newb&#8221; similar to an &#8220;Integrator&#8221; is required to do all development within topic branches. However, when a &#8220;Newb&#8221; believes they are ready to have their changes included in the current weeks hotfixes branch they must make a Pull Request via GitHub to their upstream repository. GitHub will then notify all of the &#8220;Integrators&#8221; of the new pull request and allow them to review the changes, provide any feedback and merge the changes in. GitHub will also allow the &#8220;Integrators&#8221; to throw the changes back to the &#8220;Newb&#8221; with feedback rather than merging the changes in.</p>
+
+<h3 id='content_changes'>Content Changes</h3>
+
+<p>With respect to a &#8220;Newb&#8221; content changes work exactly the same way as Hotfixes. They simply develop their content changes and submit an appropriate Pull Request via GitHub to their upstream repository so that an &#8220;Integrator&#8221; can appropriately deal with their changes and provide any feedback.</p>
+
+<h3 id='normal_iteration'>Normal Iteration</h3>
+
+<p>&#8220;Newbs&#8221; follow the same process for Normal Iteration development as they did Hotfixes and Content Changes. Develop the changes in a topic branch and submit a Pull Request via GitHub.</p>
+
+<h3 id='requirements_review'>Requirements Review</h3>
+
+<p>I believe that the above workflows and policies provide a solid basis for a well rounded team with very little overhead and a decent amount of flexibility with respect to parallel releases being made at different rates. Please note additional parallel releases can be added simply by adding additional conceptual types of changes to my current list of Hotfixes, Content Changes, and Normal Iteration Development.</p>
+
+<h3 id='release_naming_scheme'>Release Naming Scheme</h3>
+
+<p>Given that we are developing by either week or two week iterations I have decided that we should use the following naming scheme for tagging releases:</p>
+
+<p><code>release-YY.&lt;week_num&gt;-rc&lt;release candidate counter&gt;</code></p>
+
+<p>The YY represents the year for 2010 it should be 10. The <code>&lt;week_num&gt;</code> is the week number and the <code>&lt;release candidate counter&gt;</code> is a counter for this iteration that reset at the beginning of each iteration. Once a final tagged release for production is ready to be made it should use the following naming scheme.</p>
+
+<p><code>release-YY.&lt;week_num&gt;-rf&lt;release candidate counter&gt;</code></p>
+
+<p>All the variables in the naming scheme for final tags are the same as those in the latest rc for a weekly iteration. For example if the latest rc is release-10.34-rc6 and no changes have been made since that tag and the code is ready to be tagged for a production release it should be tagged as release-10.34-rf6.</p>
+
+<h3 id='topic_branch_naming_scheme'>Topic Branch Naming Scheme</h3>
+
+<p>When naming topic branches it is required that you use the following naming scheme.</p>
+
+<p><code>&lt;type char&gt;&lt;ticket id&gt;_&lt;name&gt;</code></p>
+
+<p>The <code>&lt;type char&gt;</code> is a character that defines if it is a task (t), bug (b), or feature (f). The ticket id is the unique identifier of the ticket in the ticketing system that corresponds to this topic branch. The <code>&lt;name&gt;</code> is a short but meaningful name that describes the topic branch.</p>
+
+<h3 id='dont_tie_deployment_environments_to_branches'>Don&#8217;t Tie Deployment Environments to Branches</h3>
+
+<p>So, as I stated in the opening I was assuming in the previous article that each deployment environment should have a branch that parallels it. This was an idea that was presented to me by one of my developers and I mistakenly ran with it. The following is an explanation of why I believe doing this is not valuable and potentially costly. Also, I am not pointing this out to pick on my developer. In fact it is quite the opposite. I am glad that he forced me to think about alternatives in great depth because the process has only more solidified my belief in the workflow and policies presented above. Beyond that, the explanation of my opinion may help him or others come to the same or even a better conclusion/workflow.</p>
+
+<p>For some reason I couldn&#8217;t initially place my finger on what was wrong with using branches that paralleled the deployment environments of development, qa, staging, and production. I knew that I really hated the overhead of having to deal with cherry picking changes from one branch to the next to simulate the pipeline but I still simply saw that as its own issue which inspired me to come up with the previous and very flawed workflow, An Ideal Git Based Team Workflow.</p>
+
+<p>Today after an insane amount of contemplation, discussion, and fiddling with the workflow the answer finally came to me. The problem with the Deployment Environments mapping to branches is that from a workflow perspective we don&#8217;t really care about the deployment environments other than the tagged release that is currently deployed in each environment. This information can easily be obtained without branches that map to the environments by correlating the deployed tag in a given environment to the matching tag in Git.</p>
+
+<p>What we do care about with respect to a workflow however is the ability to be able to cleanly share code changes as well as be able to handle a number of parallel releases. I have chosen to represent these parellel releases via different classifications of changes in the above workflow. Specifically, Hotfixes, Content Changes, and Normal Iteration Development.</p>
+
+<p>When you test these two models it is very interesting because in the model where you have branches for each deployment environment you end up spending a huge amount of overhead simulating something for no reason. The primary cost in overhead is the amount of merging and cherry-picking that is necessary to keep the states of the branches in line. Secondly, it does NOT allow you to make parallel deployments of various types unless those changes happen to fall within the various stages of your deployment pipeline.</p>
+
+<p>The second model in which you have classifications of changes that map to parallel releases, the overhead of maintaining the deployment environment branches is completely eliminated. It also models the actual situation with respect to code and the natural requirements surrounding what needs to be done with/to that code. Therefore, it requires no additional overhead or maintenance.</p>
+
+<h3 id='conclusion'>Conclusion</h3>
+
+<p>The above is why I believe the model in which branches parallel deployment environments is costly and has no perceived value in comparison to its costs. As always I am interested to hear peoples thoughts and opinions with respect to my postings, so don&#8217;t hesitate to share.</p>
+  </section>
+
+  <footer>
+    
+      <a class="tag" href="/tag/Git">Git</a>
+    
+      <a class="tag" href="/tag/GitHub">GitHub</a>
+    
+      <a class="tag" href="/tag/Source Control">Source Control</a>
+    
+      <a class="tag" href="/tag/Team Workflow">Team Workflow</a>
+    
+      <a class="tag" href="/tag/Project Management">Project Management</a>
+    
+      <a class="tag" href="/tag/Software Development">Software Development</a>
+    
+  </footer>
+</article>
+
+
+  <article class='blog-post'>
+  <header>
+    <h2 class='title'><a href="/2010/10/24/An-Ideal-Git-Based-Team-Workflow.html">An Ideal Git Based Team Workflow</a></h2>
+    <div class='posted-info'>
+      <time datetime='2010-10-24T00:00:00Z' pubdate='pubdate' class='published-datetime'>October 24, 2010</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>If you don&#8217;t know me there is one thing you should know about me. I love tools that help make things easier. Git has definitely been one of those tools for me. However, I always felt like there was something in the power of Git that wasn&#8217;t really being taken advantage of because of peoples past knowledge and training of centralized source control systems such as SVN. Git provides many advantages which are difficult to argue for an individual developers workflow. However, I am more interested in a solid workflow for a team that has very little overhead using Git.</p>
+
+<p>The team of developers that I lead up for RealPractice just released our first Beta (still pretty alpha) of our product. Before this point in time I really hadn&#8217;t put in place a specific workflow largely because we had a small enough team that it was easily manageable and secondly because we simply had a huge amount of development before one release. Therefore, if things were broken during that period of time it was fine as long as what was in got fixed for the release. However, now that we have made the release I require a team workflow that gives us much more control of the development process, what gets included in the product, and at what stages things get included.</p>
+
+<h3 id='centralized_branch_workflow'>Centralized Branch Workflow</h3>
+
+<p>To begin with I looked heavily at a model that I have used in the past and seen used before. One of my developers Michael Genereux recommended this workflow as well when I told my team I was looking for a good workflow. However, I have only used this with very very small teams (2 man teams) in the past. Michael seemed to be a big supporter of this method so I discussed it with him and started playing with this workflow again.</p>
+
+<p>This workflow uses Git in a centralized maner where you have an origin and that origin has branches for each of the stages/environments, experimental, development, qa, staging, and production. The idea is that development happens on the respective branches appropriately and gets merged backwards into the experimental so that it can follow the normal flow through the environments as one would want. In my mind this has a few major issues which are as follows:</p>
+
+<ul>
+<li>Development occurs in upper level branches. Ideally even if you are writing a bug fix you want that bug fix to go through all of the stages starting at the beginning. One could argue that you could develop the bug fix in the experimental branch and merge it into development branch and so on. However, this leads to the second issue.</li>
+
+<li>This model works fine if you have a very small team that is extremely good at managing and knowing their commit history because when a change is made to experimental it somehow needs to get put into the development branch. Some would say you simply need to merge it into development branch. This argument is fine if you are a single dev and develop in a linear fashion on the experimental branch. However, if there is a team of people all sharing the same experimental branch then it can be a pain in the ass to identify which commits belong to bug fix Y or feature X and need to be cherry-picked into the next branch.</li>
+</ul>
+
+<p>As you can probably see from above points alone, managing the code base and what gets included in it can be very hard and consume an insane amount of time. Especially, if you have to go through and isolate commits that need to be cherry-picked into the next branch all the time. Plus, think about the fact that I am only talking about one level experimental to development. This same process has to occur at every level of the process experimental all the way through production.</p>
+
+<h3 id='github_to_the_rescue_pull_requests'>GitHub to the Rescue (Pull Requests)</h3>
+
+<p>So after playing with the above a bit more and thinking pretty heavily I decided there has to be a better way. I started thinking about how I develop and how I could commit code that would then go through the environmental pipeline appropriately and not have the same overhead. Thats when I realized that the biggest overhead in the above process is the fact that the devs have to isolate commits for cherry-picking all the time. Hence, I started looking for solution in the Git space and didn&#8217;t find anything directly within Git that seemed clean. Therefore, I started thinking about tools out side of Git and GitHub came to mind. With GitHub if you are using the pull based distributed model GitHub provides a feature called a &#8220;Pull Request&#8221;. This basically allows a developer to send a message to the upstream repository requesting that they pull in some changes. The beauty of the GitHub &#8220;Pull Request&#8221; is that it associates a range of commits with the pull request.</p>
+
+<p>Hence, it allows a developer to develop a bug fix or feature in their repository and then simply create a &#8220;Pull Request&#8221; that includes the the proper commit range. Then when the upstream developer/integrator receives the &#8220;Pull Request&#8221; they can pull it into their repository and merge it in appropriately knowing exactly what the proper commit range is. This drastically reduces the amount of time needed to isolate the commits using the Centralized Branch Workflow. In my mind having the Pull Requests contain the commit range is brilliant on GitHub&#8217;s part because it is an unbelievable time savor. Plus they provide a web interface for testing conflict states of &#8220;Pull Requests&#8221; and merging them in as well as a communication mechanism to submiting the developers in case you have to deny a pull request.</p>
+
+<h3 id='how_to_use_this_github_pull_request_model'>How to use this GitHub Pull Request Model</h3>
+
+<p>The following is how I want my developers to use this model. In ones own local repository they should create a topic branch for every task, bug, etc. Generally the branches should be named with the id of the task or bug so that we can identify commits with bugs and tasks in history. This also eases the local workflow to allow me to switch a dev from one focus to another abruptly (I try to do this almost never, but sometimes it happens). Generally, a dev should be developing the bug fix, task, or feature and reach a point at which they believe that they have enough for me to pull their changes into the development branch. At that point they should create a &#8220;Pull Request&#8221; because GitHub will help them by figuring out the commit range. If they continue to develop past the point where they want me to pull and neglect to make the &#8220;Pull Request&#8221; until later then they will have to isolate the commit range they want me to pull using GitHub (which is still easier than just using Git by itself). Note that keeping each task, bug fix, etc in its own topic branch makes commit isolation much easier for developers.</p>
+
+<p>Once, they have sent the pull request all integrators are notified of the pull request and then have the opportunity to pull the changes into the appropriate branch and move those changes up the pipeline as they see fit. Some developers see the act of making a pull request as overhead. However, they should note that it isn&#8217;t a side effect of GitHub it is a side effect of having to move change sets up the environment pipeline. GitHub just provides a tool that makes it easier than doing it without GitHub.</p>
+
+<h3 id='moving_changes_up_the_pipeline'>Moving Changes up the Pipeline</h3>
+
+<p>The last step in this process is the act of moving things up the environment pipeline. This is much the same process as in the Centralized Branch Workflow with one distinct difference, it is in a much more controlled environment because you don&#8217;t have all of your devs sharing the same branch space. Instead you as the integrator control the branch space. You may be asking, who cares? Well, I do for one because it makes moving changes up the pipeline much easier because it requires far far less cherry-picking. In fact the majority of the time all that is needed is to merge pull requests into development, merge development up the pipeline, and so on and so forth. Do note however that every once and a while you do need to cherry-pick but it is far and few in comparison with the Centralized Branch Workflow.</p>
+
+<p>So this is the current workflow that I am going with. I haven&#8217;t completely decided on how much access I will give my team with respect to direct pushing if any. But, that is just a balance that has to be found over time in my experience. Anyways, I hope the above gives some insight into the workflow and why I have chosen it.</p>
+  </section>
+
+  <footer>
+    
+      <a class="tag" href="/tag/Git">Git</a>
+    
+      <a class="tag" href="/tag/Source Control">Source Control</a>
+    
+      <a class="tag" href="/tag/Team Workflow">Team Workflow</a>
+    
+      <a class="tag" href="/tag/Project Management">Project Management</a>
+    
+      <a class="tag" href="/tag/Software Development">Software Development</a>
+    
+  </footer>
+</article>
+
+
+  <article class='blog-post'>
+  <header>
+    <h2 class='title'><a href="/2010/07/28/Project-Management-Tool-Review.html">Project Management Tool Review</a></h2>
+    <div class='posted-info'>
+      <time datetime='2010-07-28T00:00:00Z' pubdate='pubdate' class='published-datetime'>July 28, 2010</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>When I took over the software engineering team at my job. I had the opportunity to start fresh with a new ticketing, bug tracking, and project management toolset. Over, the years I have used a number of different tools most recently Trac and Lighthouse. However, I can go on and on with the tools that I have tried. When, I came on board they were currently using Jira which I know is big in certain communities, however, everyone seemed to hate it and I have a bunch of issues with it that I don&#8217;t want to get into. Anyways, so I spent some time and reviewed the following project management and ticketing systems again to just get a refresher and see where they were at and if any of them would work for me and my team.</p>
+
+<ul>
+<li>Redmine - <a href='http://www.redmine.org/'>http://www.redmine.org/</a></li>
+
+<li>Basecamp - <a href='http://basecamphq.com/'>http://basecamphq.com/</a></li>
+
+<li>Devalot - <a href='http://projects.noscience.net/devalot'>http://projects.noscience.net/devalot</a></li>
+
+<li>ProjectPier - <a href='http://www.projectpier.org/'>http://www.projectpier.org/</a></li>
+
+<li>Trac - <a href='http://trac.edgewall.org/'>http://trac.edgewall.org/</a></li>
+
+<li>Jira - <a href='http://www.atlassian.com/software/jira/'>http://www.atlassian.com/software/jira/</a></li>
+
+<li>Collabtive - <a href='http://collabtive.o-dyn.de/'>http://collabtive.o-dyn.de/</a></li>
+
+<li>eGroupWare - <a href='http://www.egroupware.org/Home'>http://www.egroupware.org/Home</a></li>
+</ul>
+
+<p>So after heavy review of each of the above listed project management tools I decided on Redmine because it is hugely flexible, has a decent community behind it. It does have what I would consider some usability issues and some major design issues in the UI. However, once you learn those it is pretty much capable of everything I need it to do. When, you look at other solutions they all seem to be lacking very important features.</p>
+  </section>
+
+  <footer>
+    
+      <a class="tag" href="/tag/Project Management">Project Management</a>
+    
+      <a class="tag" href="/tag/Software Development">Software Development</a>
+    
+  </footer>
+</article>
+
+
+  <article class='blog-post'>
+  <header>
+    <h2 class='title'><a href="/2010/07/20/My-New-Job.html">My New Job!</a></h2>
+    <div class='posted-info'>
+      <time datetime='2010-07-20T00:00:00Z' pubdate='pubdate' class='published-datetime'>July 20, 2010</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>Hey all. I know its been a while since my last post. But, life has been a little crazy. I recently took a position at a new company called <a href='http://realpractice.com'>RealPractice</a> heading up the software engineering team that is responsible for all of their new products. I am very excited to start up a new team and build some amazing software. I can&#8217;t wait to get started building a strong team that builds even stronger software.</p>
+
+<p>I have a feeling that this will put a bit of a slow down into the progress on the house. But, this is what I love doing, so I think it is worth it. This may also for a temporary period of time also slow down my rate of posting with respect to software tid-bits. But, I will come back stronger than ever with more stuff to post about.</p>
+  </section>
+
+  <footer>
+    
+      <a class="tag" href="/tag/RealPractice">RealPractice</a>
+    
+      <a class="tag" href="/tag/Manager">Manager</a>
+    
+      <a class="tag" href="/tag/Personal">Personal</a>
+    
+      <a class="tag" href="/tag/Project Management">Project Management</a>
+    
+      <a class="tag" href="/tag/Software Development">Software Development</a>
+    
+  </footer>
+</article>
+
+
+  <article class='blog-post'>
+  <header>
+    <h2 class='title'><a href="/2010/04/30/a-quick-multi-source-ticket-dashboard.html">A Quick Multi-Source Ticket Dashboard</a></h2>
+    <div class='posted-info'>
+      <time datetime='2010-04-30T00:00:00Z' pubdate='pubdate' class='published-datetime'>April 30, 2010</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>Today was one of those days where I woke up and something was just off with respect to my workflow for some reason. I was frustrated with the fact that I had to load a browser and go to a website to see what my tickets were for the day. Instinctively I just wanted my tickets to magically be in my head so I didn&#8217;t have to go through all those steps. So, I started thinking about this problem more and more as the day went by and I came to the conclusion that I really have two problems.</p>
+
+<ol>
+<li>I have tickets dispersed through multiple ticketing system.</li>
+
+<li>I hate having to go through so many steps to see my tickets.</li>
+</ol>
+
+<p>When I started thinking about my two problems I realized that I have my tickets in roughly four different applications/services. These applications/services are as follows:</p>
+
+<ul>
+<li><a href='http://trac.edgewall.org/'>Trac</a> - Web based project management/task management tool</li>
+
+<li><a href='http://lighthouseapp.com/'>Lighthouse</a> - Web based project management/task management tool</li>
+
+<li><a href='http://github.com/'>GitHub</a> - Web based Git repository management system and issue tracking tool</li>
+
+<li><a href='http://culturedcode.com/things/'>Things</a> - Desktop task management system</li>
+</ul>
+
+<p>Beyond having multiple ticket sources, most of them have multiple accounts for various reasons (contract jobs I have done, etc.). Being in a specific environment while working within that scope/environment is fine. For example if I am working on Project X it makes sense that I be in project X&#8217;s environment. However, the situation that I am frustrated with is the initialization and transition periods which exist before you start working on a project and when you are switching from one project to the next project.</p>
+
+<p>Based on my issues and the situation I am frustrated with I have come up with a small set of requirements for a solution. These requirements are listed below.</p>
+
+<ol>
+<li>Tickets from all ticket sources must exist in a dashboard</li>
+
+<li>This dashboard must require zero effort/steps to view it</li>
+
+<li>This dashboard must automatically update with zero effort/steps</li>
+</ol>
+
+<p>As many of you know despite the fact that I write software for various platforms and in various languages my platform for development is generally Mac OS X. Given that Mac OS X was my environment, I started thinking about this requirement set and thinking about how I could make something that required zero effort/steps to view it. The closest thing I could come up with was having my tickets displayed on my desktop. After a few minutes of googling based on that idea I found an awesome tool for Mac OS X called <a href='http://projects.tynsoe.org/en/geektool/'>GeekTool</a>. Among other things, <a href='http://projects.tynsoe.org/en/geektool/'>GeekTool</a> will run shell scripts/console applications for you on a set frequency and display their output to a defined section of your desktop. This was perfect in my opinion so I played with it for a few minutes and decide that I was going to use <a href='http://projects.tynsoe.org/en/geektool/'>GeekTool</a>.</p>
+
+<p>Given the functionality of <a href='http://projects.tynsoe.org/en/geektool/'>GeekTool</a> all that was really left was to write shell scripts/console applications that output all of my tickets from the various ticket sources and I would have a very quick and functional solution to my issue. Hence, I got to writing and pumped out the following short little Ruby scripts, and one AppleScript script to provide output of all my tickets from the various sources.</p>
+
+<p>The following is a ruby script that pulls all my tickets in from all of my various <a href='http://lighthouseapp.com/'>Lighthouse</a> accounts and projects.</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'>#!/usr/bin/env ruby</span>
+<span class='nb'>require</span> <span class='s1'>&#39;rubygems&#39;</span>
+<span class='nb'>require</span> <span class='s1'>&#39;lighthouse-api&#39;</span>
+
+<span class='kp'>include</span> <span class='no'>Lighthouse</span>
+
+<span class='n'>accounts</span> <span class='o'>=</span> <span class='o'>[</span><span class='s1'>&#39;domain one&#39;</span><span class='p'>,</span> <span class='s1'>&#39;domain two&#39;</span><span class='p'>,</span> <span class='s1'>&#39;domain three&#39;</span><span class='o'>]</span>
+<span class='no'>Lighthouse</span><span class='o'>.</span><span class='n'>token</span> <span class='o'>=</span> <span class='s1'>&#39;your lighthouse All Accounts token&#39;</span>
+
+<span class='n'>accounts</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>a</span><span class='o'>|</span>
+  <span class='no'>Lighthouse</span><span class='o'>.</span><span class='n'>account</span> <span class='o'>=</span> <span class='n'>a</span>
+  <span class='no'>Project</span><span class='o'>.</span><span class='n'>find</span><span class='p'>(</span><span class='ss'>:all</span><span class='p'>)</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span> <span class='o'>|</span><span class='nb'>p</span><span class='o'>|</span>
+    <span class='k'>if</span> <span class='p'>(</span><span class='o'>!</span><span class='nb'>p</span><span class='o'>.</span><span class='n'>archived</span><span class='p'>)</span>
+      <span class='n'>ticks</span> <span class='o'>=</span> <span class='nb'>p</span><span class='o'>.</span><span class='n'>tickets</span><span class='p'>({</span><span class='ss'>:q</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;responsible:me sort:priority state:open&quot;</span><span class='p'>})</span>
+      <span class='k'>if</span> <span class='p'>(</span><span class='n'>ticks</span><span class='o'>.</span><span class='n'>length</span> <span class='o'>&gt;</span> <span class='mi'>0</span><span class='p'>)</span>
+        <span class='nb'>puts</span> <span class='nb'>p</span><span class='o'>.</span><span class='n'>name</span>
+        <span class='nb'>puts</span> <span class='s2'>&quot;-------------------------&quot;</span>
+        <span class='nb'>puts</span> <span class='s2'>&quot;    id | pri | title&quot;</span>
+        <span class='nb'>puts</span> <span class='s2'>&quot;-------------------------&quot;</span>
+        <span class='n'>ticks</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>t</span><span class='o'>|</span>
+          <span class='nb'>puts</span> <span class='n'>t</span><span class='o'>.</span><span class='n'>id</span><span class='o'>.</span><span class='n'>to_s</span><span class='o'>.</span><span class='n'>rjust</span><span class='p'>(</span><span class='mi'>6</span><span class='p'>)</span> <span class='o'>+</span> <span class='s2'>&quot; | &quot;</span> <span class='o'>+</span> <span class='n'>t</span><span class='o'>.</span><span class='n'>priority</span><span class='o'>.</span><span class='n'>to_s</span><span class='o'>.</span><span class='n'>center</span><span class='p'>(</span><span class='mi'>3</span><span class='p'>)</span> <span class='o'>+</span> <span class='s2'>&quot; | &quot;</span> <span class='o'>+</span> <span class='n'>t</span><span class='o'>.</span><span class='n'>title</span>
+        <span class='p'>}</span>
+        <span class='nb'>puts</span> <span class='s2'>&quot;</span><span class='se'>\n</span><span class='s2'>&quot;</span>
+      <span class='k'>end</span>
+    <span class='k'>end</span>
+  <span class='p'>}</span>
+<span class='p'>}</span>
+</code></pre>
+</div>
+<p>The following is a ruby script that pulls all my tickets in from all of my various <a href='http://github.com/'>GitHub</a> accounts and projects.</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'>#!/usr/bin/env ruby</span>
+
+<span class='nb'>require</span> <span class='s1'>&#39;rubygems&#39;</span>
+<span class='nb'>require</span> <span class='s1'>&#39;octopi&#39;</span>
+
+<span class='kp'>include</span> <span class='no'>Octopi</span>
+
+<span class='n'>creds</span> <span class='o'>=</span> <span class='o'>[</span>
+  <span class='p'>{</span> <span class='ss'>:login</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;login one&quot;</span><span class='p'>,</span> <span class='ss'>:token</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;API token tied to login one&quot;</span> <span class='p'>},</span>
+  <span class='p'>{</span> <span class='ss'>:login</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;login two&quot;</span><span class='p'>,</span> <span class='ss'>:token</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;API token tied to login two&quot;</span> <span class='p'>},</span>
+  <span class='p'>{</span> <span class='ss'>:login</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;login three&quot;</span><span class='p'>,</span> <span class='ss'>:token</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;API token tied to login three&quot;</span><span class='p'>}</span>
+<span class='o'>]</span>
+
+<span class='n'>creds</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>cred</span><span class='o'>|</span>
+  <span class='n'>authenticated_with</span> <span class='ss'>:login</span> <span class='o'>=&gt;</span> <span class='n'>cred</span><span class='o'>[</span><span class='ss'>:login</span><span class='o'>]</span><span class='p'>,</span> <span class='ss'>:token</span> <span class='o'>=&gt;</span> <span class='n'>cred</span><span class='o'>[</span><span class='ss'>:token</span><span class='o'>]</span> <span class='k'>do</span>
+    <span class='n'>user</span> <span class='o'>=</span> <span class='no'>User</span><span class='o'>.</span><span class='n'>find</span><span class='p'>(</span><span class='n'>cred</span><span class='o'>[</span><span class='ss'>:login</span><span class='o'>]</span><span class='p'>)</span>
+    <span class='n'>repos</span> <span class='o'>=</span> <span class='n'>user</span><span class='o'>.</span><span class='n'>repositories</span>
+    <span class='n'>repos</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>r</span><span class='o'>|</span>
+      <span class='n'>ticks</span> <span class='o'>=</span> <span class='no'>Issue</span><span class='o'>.</span><span class='n'>find_all</span><span class='p'>(</span><span class='ss'>:repository</span> <span class='o'>=&gt;</span> <span class='n'>r</span><span class='p'>,</span> <span class='ss'>:state</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;open&quot;</span><span class='p'>)</span>
+      <span class='k'>if</span> <span class='p'>(</span><span class='n'>ticks</span><span class='o'>.</span><span class='n'>length</span> <span class='o'>&gt;</span> <span class='mi'>0</span><span class='p'>)</span>
+        <span class='nb'>puts</span> <span class='n'>r</span><span class='o'>.</span><span class='n'>name</span>
+        <span class='nb'>puts</span> <span class='s2'>&quot;-------------------------&quot;</span>
+        <span class='nb'>puts</span> <span class='s2'>&quot;    id | pri | title&quot;</span>
+        <span class='nb'>puts</span> <span class='s2'>&quot;-------------------------&quot;</span>
+        <span class='n'>ticks</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>t</span><span class='o'>|</span>
+          <span class='nb'>puts</span> <span class='s2'>&quot;n/a&quot;</span><span class='o'>.</span><span class='n'>rjust</span><span class='p'>(</span><span class='mi'>6</span><span class='p'>)</span> <span class='o'>+</span> <span class='s2'>&quot; | &quot;</span> <span class='o'>+</span> <span class='n'>t</span><span class='o'>.</span><span class='n'>votes</span><span class='o'>.</span><span class='n'>to_s</span><span class='o'>.</span><span class='n'>center</span><span class='p'>(</span><span class='mi'>3</span><span class='p'>)</span> <span class='o'>+</span> <span class='s2'>&quot; | &quot;</span> <span class='o'>+</span> <span class='n'>t</span><span class='o'>.</span><span class='n'>title</span>
+        <span class='p'>}</span>
+        <span class='nb'>puts</span> <span class='s2'>&quot;</span><span class='se'>\n</span><span class='s2'>&quot;</span>
+      <span class='k'>end</span>
+    <span class='p'>}</span>
+  <span class='k'>end</span>
+<span class='p'>}</span>
+</code></pre>
+</div>
+<p>The following is a AppleScript script that pulls all my tickets in from <a href='http://culturedcode.com/things/'>Things</a>.</p>
+<div class='highlight'><pre><code class='applescript'><span class='k'>tell</span> <span class='nb'>application</span> <span class='s2'>&quot;Things&quot;</span>
+  <span class='k'>set</span> <span class='nv'>nl</span> <span class='k'>to</span> <span class='s2'>&quot;\n&quot;</span>
+  <span class='k'>set</span> <span class='nv'>output</span> <span class='k'>to</span> <span class='s2'>&quot;Things Tasks in Today\n--------------------------\n&quot;</span>
+  <span class='k'>repeat</span> <span class='nv'>with</span> <span class='nv'>todayToDo</span> <span class='k'>in</span> <span class='k'>to</span> <span class='nv'>dos</span> <span class='k'>of</span> <span class='nv'>list</span> <span class='s2'>&quot;Today&quot;</span>
+    <span class='k'>set</span> <span class='nv'>curTaskName</span> <span class='k'>to</span> <span class='na'>name</span> <span class='k'>of</span> <span class='nv'>todayToDo</span>
+    <span class='k'>set</span> <span class='nv'>output</span> <span class='k'>to</span> <span class='nv'>output</span> <span class='o'>&amp;</span> <span class='s2'>&quot; - &quot;</span> <span class='o'>&amp;</span> <span class='nv'>curTaskName</span> <span class='o'>&amp;</span> <span class='nv'>nl</span>
+  <span class='k'>end</span> <span class='k'>repeat</span>
+<span class='k'>end</span> <span class='k'>tell</span>
+<span class='nv'>output</span>
+</code></pre>
+</div>
+<p>The following is a Python script that pulls all my tickets in from <a href='http://trac.edgewall.org/'>Trac</a> when your <a href='http://trac.edgewall.org/'>Trac</a> environment has the <a href='http://trac-hacks.org/wiki/XmlRpcPlugin'>Trac XML RPC plugin</a> installed.</p>
+<div class='highlight'><pre><code class='python'><span class='c'>#!/usr/bin/env python</span>
+
+<span class='kn'>import</span> <span class='nn'>xmlrpclib</span>
+
+<span class='n'>username</span> <span class='o'>=</span> <span class='s'>&quot;loginname&quot;</span>
+<span class='n'>password</span> <span class='o'>=</span> <span class='s'>&quot;password&quot;</span>
+<span class='n'>port</span> <span class='o'>=</span> <span class='bp'>None</span> <span class='c'># if need to specify a port set this to the port number</span>
+<span class='n'>host</span> <span class='o'>=</span> <span class='s'>&quot;domain-name-where-trac-hosted&quot;</span> <span class='c'># trac.rippletv.com at my work</span>
+<span class='n'>path</span> <span class='o'>=</span> <span class='s'>&quot;/path-to-the-environment&quot;</span>
+
+<span class='n'>url</span> <span class='o'>=</span> <span class='s'>&quot;https://</span><span class='si'>%s</span><span class='s'>:</span><span class='si'>%s</span><span class='s'>@</span><span class='si'>%s</span><span class='s'>&quot;</span> <span class='o'>%</span> <span class='p'>(</span><span class='n'>username</span><span class='p'>,</span> <span class='n'>password</span><span class='p'>,</span> <span class='n'>host</span><span class='p'>)</span> 
+<span class='k'>if</span> <span class='p'>(</span><span class='n'>port</span><span class='p'>):</span>
+    <span class='n'>url</span> <span class='o'>+=</span> <span class='s'>&quot;:</span><span class='si'>%s</span><span class='s'>&quot;</span> <span class='o'>%</span> <span class='p'>(</span><span class='nb'>str</span><span class='p'>(</span><span class='n'>port</span><span class='p'>))</span>
+<span class='n'>url</span> <span class='o'>+=</span> <span class='n'>path</span> <span class='o'>+</span> <span class='s'>&quot;/login/xmlrpc&quot;</span>
+
+<span class='n'>svr</span> <span class='o'>=</span> <span class='n'>xmlrpclib</span><span class='o'>.</span><span class='n'>ServerProxy</span><span class='p'>(</span><span class='n'>url</span><span class='p'>)</span>
+
+<span class='k'>print</span> <span class='s'>&quot;-------------------------&quot;</span>
+<span class='k'>print</span> <span class='s'>&quot;    id | pri | title&quot;</span>
+<span class='k'>print</span> <span class='s'>&quot;-------------------------&quot;</span>
+
+<span class='n'>ticket_ids</span> <span class='o'>=</span> <span class='n'>svr</span><span class='o'>.</span><span class='n'>ticket</span><span class='o'>.</span><span class='n'>query</span><span class='p'>(</span><span class='s'>&quot;owner=&quot;</span> <span class='o'>+</span> <span class='n'>username</span> <span class='o'>+</span> <span class='s'>&quot;&amp;status!=closed&amp;order=priority&quot;</span><span class='p'>)</span>
+<span class='k'>for</span> <span class='n'>ti</span> <span class='ow'>in</span> <span class='n'>ticket_ids</span><span class='p'>:</span>
+  <span class='n'>cur_tick</span> <span class='o'>=</span> <span class='n'>svr</span><span class='o'>.</span><span class='n'>ticket</span><span class='o'>.</span><span class='n'>get</span><span class='p'>(</span><span class='n'>ti</span><span class='p'>)</span>
+  <span class='n'>cur_tick_hash</span> <span class='o'>=</span> <span class='n'>cur_tick</span><span class='p'>[</span><span class='mi'>3</span><span class='p'>]</span>
+  <span class='n'>cur_id</span> <span class='o'>=</span> <span class='n'>ti</span>
+  <span class='n'>cur_summary</span> <span class='o'>=</span> <span class='n'>cur_tick_hash</span><span class='p'>[</span><span class='s'>&#39;summary&#39;</span><span class='p'>]</span>
+  <span class='n'>cur_priority</span> <span class='o'>=</span> <span class='n'>cur_tick_hash</span><span class='p'>[</span><span class='s'>&#39;priority&#39;</span><span class='p'>]</span>
+  <span class='n'>pri_num</span> <span class='o'>=</span> <span class='mi'>0</span>
+  <span class='k'>if</span> <span class='p'>(</span><span class='n'>cur_priority</span> <span class='o'>==</span> <span class='s'>&quot;trivial&quot;</span><span class='p'>):</span>
+    <span class='n'>pri_num</span> <span class='o'>=</span> <span class='mi'>0</span>
+  <span class='k'>elif</span> <span class='p'>(</span><span class='n'>cur_priority</span> <span class='o'>==</span> <span class='s'>&quot;minor&quot;</span><span class='p'>):</span>
+    <span class='n'>pri_num</span> <span class='o'>=</span> <span class='mi'>1</span>
+  <span class='k'>elif</span> <span class='p'>(</span><span class='n'>cur_priority</span> <span class='o'>==</span> <span class='s'>&quot;major&quot;</span><span class='p'>):</span>
+    <span class='n'>pri_num</span> <span class='o'>=</span> <span class='mi'>2</span>
+  <span class='k'>elif</span> <span class='p'>(</span><span class='n'>cur_priority</span> <span class='o'>==</span> <span class='s'>&quot;critical&quot;</span><span class='p'>):</span>
+    <span class='n'>pri_num</span> <span class='o'>=</span> <span class='mi'>3</span>
+  <span class='k'>elif</span> <span class='p'>(</span><span class='n'>cur_priority</span> <span class='o'>==</span> <span class='s'>&quot;blocker&quot;</span><span class='p'>):</span>
+    <span class='n'>pri_num</span> <span class='o'>=</span> <span class='mi'>4</span>
+  <span class='k'>print</span> <span class='nb'>str</span><span class='p'>(</span><span class='n'>cur_id</span><span class='p'>)</span><span class='o'>.</span><span class='n'>rjust</span><span class='p'>(</span><span class='mi'>6</span><span class='p'>)</span> <span class='o'>+</span>  <span class='s'>&quot; | &quot;</span> <span class='o'>+</span> <span class='nb'>str</span><span class='p'>(</span><span class='n'>pri_num</span><span class='p'>)</span><span class='o'>.</span><span class='n'>center</span><span class='p'>(</span><span class='mi'>3</span><span class='p'>)</span> <span class='o'>+</span> <span class='s'>&quot; | &quot;</span> <span class='o'>+</span> <span class='nb'>str</span><span class='p'>(</span><span class='n'>cur_summary</span><span class='p'>)</span>
+</code></pre>
+</div>
+<p>After coding the above scripts I simply set them up through the <a href='http://projects.tynsoe.org/en/geektool/'>GeekTool</a> UI and like magic within 15 mins or so I had a working solution to my issue, thanks to the power of REST based Web Services, Ruby, the Ruby Community, and Things AppleScript integration. Checkout a screenshot <a href='https://www.facebook.com/media/set/?set=a.629955991290.2070660.30901409&amp;type=1&amp;l=d6d8aefeb9'>here</a>.</p>
+  </section>
+
+  <footer>
+    
+      <a class="tag" href="/tag/AppleScript">AppleScript</a>
+    
+      <a class="tag" href="/tag/GeekTool">GeekTool</a>
+    
+      <a class="tag" href="/tag/GitHub">GitHub</a>
+    
+      <a class="tag" href="/tag/Lighthouse">Lighthouse</a>
+    
+      <a class="tag" href="/tag/Mac OS X">Mac OS X</a>
+    
+      <a class="tag" href="/tag/Ruby">Ruby</a>
+    
+      <a class="tag" href="/tag/Things">Things</a>
+    
+      <a class="tag" href="/tag/Trac">Trac</a>
+    
+      <a class="tag" href="/tag/Project Management">Project Management</a>
+    
+      <a class="tag" href="/tag/Software Development">Software Development</a>
+    
+      <a class="tag" href="/tag/Software Projects">Software Projects</a>
+    
+  </footer>
+</article>
+
+
+
+      </div>
+      <aside id="side_bar">
+        <div>
+          <img src="/images/drew_bald_original_cropped.png" />
+        </div>
+        <div>
+          <a href="/atom.xml" class='rss_icon'></a>
+          <a href="http://www.linkedin.com/pub/andrew-de-ponte/1b/630/b38" class='linkedin_icon'></a>
+          <a href="aim:goim?screenname=andrew.deponte@gmail.com" class='aim_icon'></a>
+          <a href="skype:cyphactor?chat" class='skype_icon'></a>
+          <a href="http://twitter.com/#!/cyphactor" class='twitter_icon'></a>
+          <a href="ymsgr:sendim?a_deponte" class='yahoo_icon'></a>
+          <a href="http://vimeo.com/user3451180" class='vimeo_icon'></a>
+          <a href="/files/Andrew%20De%20Ponte.vcf" class='vcard_icon'></a>
+          <a href="http://www.facebook.com/andrewdeponte" class='facebook_icon'></a>
+          <a href="gtalk:chat?jid=cyphactor" class='google_icon'></a>
+        </div>
+        <div>
+          <section style="margin-left: 26px;" class="coderwall" data-coderwall-username="cyphactor" data-coderwall-orientation="vertical"></section>
+          <div style="clear: both;"></div>
+        </div>
+      </aside>
+      <div style="clear: both;"></div>
+    </div>
+    <footer>
+      Copyright &copy; 2012, Andrew De Ponte. All rights reserved.
+    </footer>
+  </body>
+  <head>
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+  </head>
+</html>

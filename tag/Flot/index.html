@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" \>
+    <meta name="description" content="Andrew De Ponte's Blog on Ruby, Ruby on Rails, Javascript, jQuery, and software development and engineering in general." />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <title> Posts Tagged &ldquo;Flot&rdquo; |  Andrew De Ponte, Software Engineer</title>
+
+    <link rel="stylesheet" href="/css/all.css" />
+    <script type="text/javascript" src="/javascript/all.js"></script>
+
+    <link href="http://coderwall.com/stylesheets/jquery.coderwall.css" rel="stylesheet" media="all" type="text/css" />
+    <script src="http://coderwall.com/javascripts/jquery.coderwall.js"></script>
+  </head>
+  <body>
+    <nav id="primary_nav">
+      <ul>
+        <li><a href="/">Blog</a></li>
+        <li><a href="/files/resume.pdf">Resume</a></li>
+      </ul>
+    </nav>
+    <header>
+      <a href="http://github.com/cyphactor"><img style="position: absolute; top: 0; left: 0; border: 0;" src="/images/fork_me_on_github.png" alt="Fork me on GitHub"></a>
+      <h1 id="site_title">Drew's World</h1>
+      <div id="site_subtitle">Rants, News, Etc on my Life and Projects</div>
+    </header>
+    <div id="container">
+      <div id="main_content">
+        
+  <article class='blog-post'>
+  <header>
+    <h2 class='title'><a href="/2009/08/22/flot-multi-series-bar-graph-support.html">Flot Multi-series Bar Graph Support</a></h2>
+    <div class='posted-info'>
+      <time datetime='2009-08-22T00:00:00Z' pubdate='pubdate' class='published-datetime'>August 22, 2009</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>Hey boys and girls. I just got finished coding support for Multi-series bar graphs into Flot (a jQuery based JavaScript graphing library). Hence, I figured I would share not only the code but a little preview of it below. The code for it can be found at my GitHub account here. Please enjoy the little demo below.</p>
+<div style='background-color: #f3f3f3; padding: 20px;'>
+<div id='placeholder' style='width:500px;height:200px;'>&nbsp;</div>
+</div><p id='hoverdata'>Mouse hovers at (<span id='x'>0</span>, <span id='y'>0</span>). <span id='clickdata' /></p>
+<p>With the multi-series bar graph support, you can have Flot display the series side by side. This is useful when you are interested in visually comparing series and grouping segments you want to columns in series that you are specifically interested in comparing.</p>
+<script id='source'>
+$(function () {
+  var ms_data = [{"label":"FOO","data":[[0,80],[1,70],[2,100],[3,60],[4,102]]},
+                 {"label":"BAR","data":[[0,10],[1,20],[2,30],[3,40],[4,80]]},
+                 {"label":"CAR","data":[[0,5],[1,10],[2,15],[3,20],[4,25]]}]
+  var ms_ticks = [[0,"1/28"],[1,"1/29"],[2,"1/30"],[3,"1/31"],[4,"1/32"]];
+    
+    function plotWithOptions() {
+      $.plot($("#placeholder"), ms_data, {
+        bars: { show: true, barWidth: 0.6, series_spread: true, align: "center" },
+        xaxis: { ticks: ms_ticks, autoscaleMargin: .10 },
+        grid: { hoverable: true, clickable: true }
+      });
+    }
+    
+    function showTooltip(x, y, contents) {
+        $("<div id='tooltip'>" + contents + '</div>').css( { position: 'absolute', display: 'none', top: y + 5, left: x + 5, border: '1px solid #fdd', padding: '2px', 'background-color': '#fee', opacity: 0.80 }).appendTo("body").show();
+    }
+
+    plotWithOptions();
+
+    $("#placeholder").bind("plothover", function (event, pos, item) {
+      $("#x").text(pos.x.toFixed(2));
+      $("#y").text(pos.y.toFixed(2));
+        if (item) {
+            if (previousPoint != item.datapoint) {
+                previousPoint = item.datapoint;
+              
+                $("#tooltip").remove();
+                var x = item.datapoint[0].toFixed(2),
+                    y = item.datapoint[1].toFixed(2);
+              
+                showTooltip(item.pageX, item.pageY,
+                            item.series.label + " Group id: " + Math.floor(x) + ", y = " + y + ", seriesIndex: " + item.seriesIndex);
+            }
+        }
+        else {
+            $("#tooltip").remove();
+            previousPoint = null;            
+        }
+    });
+
+    $("#placeholder").bind("plotclick", function (event, pos, item) {
+        if (item) {
+            $("#clickdata").text("You clicked bar " + item.dataIndex + " in " + item.series.label + ".");
+        }
+    });
+});
+</script>
+<p>The above demo was produced by defining a few code snippets. The first snippet is a snippet of HTML that includes the customized Flot javascript source file. Note: The Flot javascript source file needs to come after the standard jQuery javascript source file. An example of this snippet is as follows:</p>
+<div class='highlight'><pre><code class='html'><span class='c'>&lt;!--[if IE]&gt;&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot; src=&quot;../excanvas.min.js&quot;&gt;&lt;/script&gt;&lt;![endif]--&gt;</span>
+<span class='nt'>&lt;script </span><span class='na'>language=</span><span class='s'>&quot;javascript&quot;</span> <span class='na'>type=</span><span class='s'>&quot;text/javascript&quot;</span> <span class='na'>src=</span><span class='s'>&quot;../jquery.js&quot;</span><span class='nt'>&gt;&lt;/script&gt;</span>
+<span class='nt'>&lt;script </span><span class='na'>language=</span><span class='s'>&quot;javascript&quot;</span> <span class='na'>type=</span><span class='s'>&quot;text/javascript&quot;</span> <span class='na'>src=</span><span class='s'>&quot;../jquery.flot.js&quot;</span><span class='nt'>&gt;&lt;/script&gt;</span>
+</code></pre>
+</div>
+<p>Note: In the above snippet the href values are likely to be different in your case. The second code snippet is simply a single line of HTML that is the div that is to be the Multi-series Bar Graph. It is key that this div has an id that is easily referenced and a set height and width. An example of this snippet is as follows:</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;div</span> <span class='na'>id=</span><span class='s'>&quot;placeholder&quot;</span> <span class='na'>style=</span><span class='s'>&quot;width: 375px; height: 200px;&quot;</span><span class='nt'>&gt;&lt;/div&gt;</span>
+</code></pre>
+</div>
+<p>The third code snippet needed is the javascript that defines the data, creates the Multi-series Bar Graph in the specified div, and handles the hover functionality. An example of this is seen below.</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;script </span><span class='na'>id=</span><span class='s'>&quot;source&quot;</span><span class='nt'>&gt;</span>
+<span class='nx'>$</span><span class='p'>(</span><span class='kd'>function</span> <span class='p'>()</span> <span class='p'>{</span>
+  <span class='kd'>var</span> <span class='nx'>ms_data</span> <span class='o'>=</span> <span class='p'>[{</span><span class='s2'>&quot;label&quot;</span><span class='o'>:</span><span class='s2'>&quot;FOO&quot;</span><span class='p'>,</span><span class='s2'>&quot;data&quot;</span><span class='o'>:</span><span class='p'>[[</span><span class='mi'>0</span><span class='p'>,</span><span class='mi'>80</span><span class='p'>],[</span><span class='mi'>1</span><span class='p'>,</span><span class='mi'>70</span><span class='p'>],[</span><span class='mi'>2</span><span class='p'>,</span><span class='mi'>100</span><span class='p'>],[</span><span class='mi'>3</span><span class='p'>,</span><span class='mi'>60</span><span class='p'>],[</span><span class='mi'>4</span><span class='p'>,</span><span class='mi'>102</span><span class='p'>]]},</span>
+                 <span class='p'>{</span><span class='s2'>&quot;label&quot;</span><span class='o'>:</span><span class='s2'>&quot;BAR&quot;</span><span class='p'>,</span><span class='s2'>&quot;data&quot;</span><span class='o'>:</span><span class='p'>[[</span><span class='mi'>0</span><span class='p'>,</span><span class='mi'>10</span><span class='p'>],[</span><span class='mi'>1</span><span class='p'>,</span><span class='mi'>20</span><span class='p'>],[</span><span class='mi'>2</span><span class='p'>,</span><span class='mi'>30</span><span class='p'>],[</span><span class='mi'>3</span><span class='p'>,</span><span class='mi'>40</span><span class='p'>],[</span><span class='mi'>4</span><span class='p'>,</span><span class='mi'>80</span><span class='p'>]]},</span>
+                 <span class='p'>{</span><span class='s2'>&quot;label&quot;</span><span class='o'>:</span><span class='s2'>&quot;CAR&quot;</span><span class='p'>,</span><span class='s2'>&quot;data&quot;</span><span class='o'>:</span><span class='p'>[[</span><span class='mi'>0</span><span class='p'>,</span><span class='mi'>5</span><span class='p'>],[</span><span class='mi'>1</span><span class='p'>,</span><span class='mi'>10</span><span class='p'>],[</span><span class='mi'>2</span><span class='p'>,</span><span class='mi'>15</span><span class='p'>],[</span><span class='mi'>3</span><span class='p'>,</span><span class='mi'>20</span><span class='p'>],[</span><span class='mi'>4</span><span class='p'>,</span><span class='mi'>25</span><span class='p'>]]}]</span>
+  <span class='kd'>var</span> <span class='nx'>ms_ticks</span> <span class='o'>=</span> <span class='p'>[[</span><span class='mi'>0</span><span class='p'>,</span><span class='s2'>&quot;1/28&quot;</span><span class='p'>],[</span><span class='mi'>1</span><span class='p'>,</span><span class='s2'>&quot;1/29&quot;</span><span class='p'>],[</span><span class='mi'>2</span><span class='p'>,</span><span class='s2'>&quot;1/30&quot;</span><span class='p'>],[</span><span class='mi'>3</span><span class='p'>,</span><span class='s2'>&quot;1/31&quot;</span><span class='p'>],[</span><span class='mi'>4</span><span class='p'>,</span><span class='s2'>&quot;1/32&quot;</span><span class='p'>]];</span>
+    
+    <span class='kd'>function</span> <span class='nx'>plotWithOptions</span><span class='p'>()</span> <span class='p'>{</span>
+      <span class='nx'>$</span><span class='p'>.</span><span class='nx'>plot</span><span class='p'>(</span><span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#placeholder&quot;</span><span class='p'>),</span> <span class='nx'>ms_data</span><span class='p'>,</span> <span class='p'>{</span>
+        <span class='nx'>bars</span><span class='o'>:</span> <span class='p'>{</span> <span class='nx'>show</span><span class='o'>:</span> <span class='kc'>true</span><span class='p'>,</span> <span class='nx'>barWidth</span><span class='o'>:</span> <span class='mf'>0.6</span><span class='p'>,</span> <span class='nx'>series_spread</span><span class='o'>:</span> <span class='kc'>true</span><span class='p'>,</span> <span class='nx'>align</span><span class='o'>:</span> <span class='s2'>&quot;center&quot;</span> <span class='p'>},</span>
+        <span class='nx'>xaxis</span><span class='o'>:</span> <span class='p'>{</span> <span class='nx'>ticks</span><span class='o'>:</span> <span class='nx'>ms_ticks</span><span class='p'>,</span> <span class='nx'>autoscaleMargin</span><span class='o'>:</span> <span class='p'>.</span><span class='mi'>10</span> <span class='p'>},</span>
+        <span class='nx'>grid</span><span class='o'>:</span> <span class='p'>{</span> <span class='nx'>hoverable</span><span class='o'>:</span> <span class='kc'>true</span><span class='p'>,</span> <span class='nx'>clickable</span><span class='o'>:</span> <span class='kc'>true</span> <span class='p'>}</span>
+      <span class='p'>});</span>
+    <span class='p'>}</span>
+    
+    <span class='kd'>function</span> <span class='nx'>showTooltip</span><span class='p'>(</span><span class='nx'>x</span><span class='p'>,</span> <span class='nx'>y</span><span class='p'>,</span> <span class='nx'>contents</span><span class='p'>)</span> <span class='p'>{</span>
+        <span class='nx'>$</span><span class='p'>(</span><span class='s1'>&#39;&#39;</span><span class='p'>).</span><span class='nx'>css</span><span class='p'>(</span> <span class='p'>{</span>
+            <span class='nx'>position</span><span class='o'>:</span> <span class='s1'>&#39;absolute&#39;</span><span class='p'>,</span>
+            <span class='nx'>display</span><span class='o'>:</span> <span class='s1'>&#39;none&#39;</span><span class='p'>,</span>
+            <span class='nx'>top</span><span class='o'>:</span> <span class='nx'>y</span> <span class='o'>+</span> <span class='mi'>5</span><span class='p'>,</span>
+            <span class='nx'>left</span><span class='o'>:</span> <span class='nx'>x</span> <span class='o'>+</span> <span class='mi'>5</span><span class='p'>,</span>
+            <span class='nx'>border</span><span class='o'>:</span> <span class='s1'>&#39;1px solid #fdd&#39;</span><span class='p'>,</span>
+            <span class='nx'>padding</span><span class='o'>:</span> <span class='s1'>&#39;2px&#39;</span><span class='p'>,</span>
+            <span class='s1'>&#39;background-color&#39;</span><span class='o'>:</span> <span class='s1'>&#39;#fee&#39;</span><span class='p'>,</span>
+            <span class='nx'>opacity</span><span class='o'>:</span> <span class='mf'>0.80</span>
+        <span class='p'>}).</span><span class='nx'>appendTo</span><span class='p'>(</span><span class='s2'>&quot;body&quot;</span><span class='p'>).</span><span class='nx'>show</span><span class='p'>();</span>
+    <span class='p'>}</span>
+
+    <span class='nx'>plotWithOptions</span><span class='p'>();</span>
+
+    <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#placeholder&quot;</span><span class='p'>).</span><span class='nx'>bind</span><span class='p'>(</span><span class='s2'>&quot;plothover&quot;</span><span class='p'>,</span> <span class='kd'>function</span> <span class='p'>(</span><span class='nx'>event</span><span class='p'>,</span> <span class='nx'>pos</span><span class='p'>,</span> <span class='nx'>item</span><span class='p'>)</span> <span class='p'>{</span>
+      <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#x&quot;</span><span class='p'>).</span><span class='nx'>text</span><span class='p'>(</span><span class='nx'>pos</span><span class='p'>.</span><span class='nx'>x</span><span class='p'>.</span><span class='nx'>toFixed</span><span class='p'>(</span><span class='mi'>2</span><span class='p'>));</span>
+      <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#y&quot;</span><span class='p'>).</span><span class='nx'>text</span><span class='p'>(</span><span class='nx'>pos</span><span class='p'>.</span><span class='nx'>y</span><span class='p'>.</span><span class='nx'>toFixed</span><span class='p'>(</span><span class='mi'>2</span><span class='p'>));</span>
+        <span class='k'>if</span> <span class='p'>(</span><span class='nx'>item</span><span class='p'>)</span> <span class='p'>{</span>
+            <span class='k'>if</span> <span class='p'>(</span><span class='nx'>previousPoint</span> <span class='o'>!=</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>datapoint</span><span class='p'>)</span> <span class='p'>{</span>
+                <span class='nx'>previousPoint</span> <span class='o'>=</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>datapoint</span><span class='p'>;</span>
+              
+                <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#tooltip&quot;</span><span class='p'>).</span><span class='nx'>remove</span><span class='p'>();</span>
+                <span class='kd'>var</span> <span class='nx'>x</span> <span class='o'>=</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>datapoint</span><span class='p'>[</span><span class='mi'>0</span><span class='p'>].</span><span class='nx'>toFixed</span><span class='p'>(</span><span class='mi'>2</span><span class='p'>),</span>
+                    <span class='nx'>y</span> <span class='o'>=</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>datapoint</span><span class='p'>[</span><span class='mi'>1</span><span class='p'>].</span><span class='nx'>toFixed</span><span class='p'>(</span><span class='mi'>2</span><span class='p'>);</span>
+              
+                <span class='nx'>showTooltip</span><span class='p'>(</span><span class='nx'>item</span><span class='p'>.</span><span class='nx'>pageX</span><span class='p'>,</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>pageY</span><span class='p'>,</span>
+                            <span class='nx'>item</span><span class='p'>.</span><span class='nx'>series</span><span class='p'>.</span><span class='nx'>label</span> <span class='o'>+</span> <span class='s2'>&quot; Group id: &quot;</span> <span class='o'>+</span> <span class='nb'>Math</span><span class='p'>.</span><span class='nx'>floor</span><span class='p'>(</span><span class='nx'>x</span><span class='p'>)</span> <span class='o'>+</span> <span class='s2'>&quot;, y = &quot;</span> <span class='o'>+</span> <span class='nx'>y</span> <span class='o'>+</span> <span class='s2'>&quot;, seriesIndex: &quot;</span> <span class='o'>+</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>seriesIndex</span><span class='p'>);</span>
+            <span class='p'>}</span>
+        <span class='p'>}</span>
+        <span class='k'>else</span> <span class='p'>{</span>
+            <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#tooltip&quot;</span><span class='p'>).</span><span class='nx'>remove</span><span class='p'>();</span>
+            <span class='nx'>previousPoint</span> <span class='o'>=</span> <span class='kc'>null</span><span class='p'>;</span>            
+        <span class='p'>}</span>
+    <span class='p'>});</span>
+
+    <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#placeholder&quot;</span><span class='p'>).</span><span class='nx'>bind</span><span class='p'>(</span><span class='s2'>&quot;plotclick&quot;</span><span class='p'>,</span> <span class='kd'>function</span> <span class='p'>(</span><span class='nx'>event</span><span class='p'>,</span> <span class='nx'>pos</span><span class='p'>,</span> <span class='nx'>item</span><span class='p'>)</span> <span class='p'>{</span>
+        <span class='k'>if</span> <span class='p'>(</span><span class='nx'>item</span><span class='p'>)</span> <span class='p'>{</span>
+            <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#clickdata&quot;</span><span class='p'>).</span><span class='nx'>text</span><span class='p'>(</span><span class='s2'>&quot;You clicked bar &quot;</span> <span class='o'>+</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>dataIndex</span> <span class='o'>+</span> <span class='s2'>&quot; in &quot;</span> <span class='o'>+</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>series</span><span class='p'>.</span><span class='nx'>label</span> <span class='o'>+</span> <span class='s2'>&quot;.&quot;</span><span class='p'>);</span>
+        <span class='p'>}</span>
+    <span class='p'>});</span>
+<span class='p'>});</span>
+<span class='nt'>&lt;/script&gt;</span>
+</code></pre>
+</div>
+<p>Hopefully, the demo and quick code example helps get you up and running.</p>
+  </section>
+
+  <footer>
+    
+      <a class="tag" href="/tag/Flot">Flot</a>
+    
+      <a class="tag" href="/tag/Graphing">Graphing</a>
+    
+      <a class="tag" href="/tag/Metrics">Metrics</a>
+    
+      <a class="tag" href="/tag/Plugin">Plugin</a>
+    
+      <a class="tag" href="/tag/jQuery">jQuery</a>
+    
+      <a class="tag" href="/tag/JavaScript">JavaScript</a>
+    
+      <a class="tag" href="/tag/Software Development">Software Development</a>
+    
+      <a class="tag" href="/tag/Software Projects">Software Projects</a>
+    
+  </footer>
+</article>
+
+
+
+      </div>
+      <aside id="side_bar">
+        <div>
+          <img src="/images/drew_bald_original_cropped.png" />
+        </div>
+        <div>
+          <a href="/atom.xml" class='rss_icon'></a>
+          <a href="http://www.linkedin.com/pub/andrew-de-ponte/1b/630/b38" class='linkedin_icon'></a>
+          <a href="aim:goim?screenname=andrew.deponte@gmail.com" class='aim_icon'></a>
+          <a href="skype:cyphactor?chat" class='skype_icon'></a>
+          <a href="http://twitter.com/#!/cyphactor" class='twitter_icon'></a>
+          <a href="ymsgr:sendim?a_deponte" class='yahoo_icon'></a>
+          <a href="http://vimeo.com/user3451180" class='vimeo_icon'></a>
+          <a href="/files/Andrew%20De%20Ponte.vcf" class='vcard_icon'></a>
+          <a href="http://www.facebook.com/andrewdeponte" class='facebook_icon'></a>
+          <a href="gtalk:chat?jid=cyphactor" class='google_icon'></a>
+        </div>
+        <div>
+          <section style="margin-left: 26px;" class="coderwall" data-coderwall-username="cyphactor" data-coderwall-orientation="vertical"></section>
+          <div style="clear: both;"></div>
+        </div>
+      </aside>
+      <div style="clear: both;"></div>
+    </div>
+    <footer>
+      Copyright &copy; 2012, Andrew De Ponte. All rights reserved.
+    </footer>
+  </body>
+  <head>
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+  </head>
+</html>

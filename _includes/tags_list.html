@@ -1,6 +1,6 @@
 <div class="tags_list">
   <h2>Tags</h2>
   {% for tag_hash in site.tags %}
-  <a class="tag" href="/tag/{{ tag_hash[0] }}"><span class="tag_name">{{ tag_hash[0] }}</span> <span class="tag_usage_count">({{ tag_hash[1].size }})</span></a>
+  <a class="tag" href="{{ tag_hash[0] | tag_page_path }}"><span class="tag_name">{{ tag_hash[0] }}</span> <span class="tag_usage_count">({{ tag_hash[1].size }})</span></a>
   {% endfor %}
 </div>

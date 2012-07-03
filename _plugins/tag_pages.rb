@@ -23,14 +23,17 @@ module Jekyll
       if site.layouts.key? 'tag_index'
         dir = site.config['tag_dir'] || 'tag'
         site.tags.keys.each do |tag|
-          add_tag_page_to_site(site, File.join(dir, tag), tag)
+          site.pages << TagPage.new(site, site.source, File.join(dir, tag), tag)
         end
       end
     end
+  end
 
-    def add_tag_page_to_site(site, dir, tag)
-      index = TagPage.new(site, site.source, dir, tag)
-      site.pages << index
+  module TagPagePathFilter
+    def tag_page_path(input)
+      "/tag/#{input}"
     end
   end
 end
+
+Liquid::Template.register_filter(Jekyll::TagPagePathFilter)

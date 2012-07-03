@@ -17,7 +17,7 @@ layout: default
 
   <footer>
     {% for tag in page.tags %}
-      <a class="tag" href="/tag/{{ tag }}">{{ tag }}</a>
+      <a class="tag" href="{{ tag | tag_page_path }}">{{ tag }}</a>
     {% endfor %}
     <div>
       <script type="text/javascript">

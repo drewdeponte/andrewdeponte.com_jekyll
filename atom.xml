@@ -4,7 +4,7 @@
   <title>Drew's World</title>
   <link href="http://andrewdeponte.com/atom.xml" rel="self"/>
   <link href="http://andrewdeponte.com/"/>
-  <updated>2012-07-03T00:18:40-07:00</updated>
+  <updated>2012-07-03T00:42:55-07:00</updated>
   <id>http://andrewdeponte.com/</id>
   <author>
     <name>Andrew De Ponte</name>
@@ -1385,6 +1385,35 @@ $(function () {
       <updated>2009-06-21T00:00:00-07:00</updated>
       <id>http://andrewdeponte.com/2009/06/21/iphone-app-loading-screen</id>
       <content type="html">&lt;p&gt;Hi all. If you don&amp;#8217;t know already I have been playing with some iPhone app development pretty heavy lately. One of the interesting things which was some what more difficult to find was how to create a loading screens in iPhone apps. After I bit of googling and some reading of different forums I finally narrowed it down. It is handled automatically if you simply created a PNG file called Default.png that is 320 x 240 pixels with a 160 ppi and place it in your projects Resources file. Once in you Resources it will be displayed during the time that the application is loading. If you need to extend the time to get your splash screen to stay on the screen because your code is god like and fast simply tack a sleep or something in your applicationDidFinishLaunching method.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>Trac Ticket Creator</title>
+      <link href="http://andrewdeponte.com/2009/02/28/trac-ticket-creator.html"/>
+      <updated>2009-02-28T00:00:00-08:00</updated>
+      <id>http://andrewdeponte.com/2009/02/28/trac-ticket-creator</id>
+      <content type="html">&lt;p&gt;Hello all. I have been using Trac for many years now and I have always had one issue with. Creation of large numbers of tickets, large numbers being 10 to 20. The interface just doesn&amp;#8217;t make it easy. So early this evening I finally decided I was going to do something about it. So, I went to &lt;a href='http://trac-hacks.org/wiki/XmlRpcPlugin'&gt;http://trac-hacks.org/wiki/XmlRpcPlugin&lt;/a&gt; and checkout out and installed the code on one of our Trac servers. Then, I wrote a simple python wxWidgets script that connects via XML RPC to the Trac environment and provides a much quicker and easier interface for creating large numbers of tickets.&lt;/p&gt;
+
+&lt;p&gt;The interface simply provides a milestone dropdown and then a textbox and that is it. Once you have selected a milestone you want the tickets to be associated with (generally a batch of tickets is associated with a milestone), you can type your ticket summary into the text box and simply press enter to create the ticket. Once you press enter and it creates the ticket it will clear the text box so that you can type the next ticket summary in and hit enter to create the next ticket.&lt;/p&gt;
+
+&lt;p&gt;Soon enough I will clean this script up and officially release it as on an open source app on the main site. If you are interested in this app before that time, feel free to hit me up.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>Songbird</title>
+      <link href="http://andrewdeponte.com/2007/09/11/songbird.html"/>
+      <updated>2007-09-11T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2007/09/11/songbird</id>
+      <content type="html">&lt;p&gt;Just to let you all know. I finally found a media manager/player for Mac OS X that supports practically every file format including iTunes DRM based media files. Beyond that, it lets you play the web which is freaking amazing. It is something you have to see to believe. Check it out at the &lt;a href='http://songbirdnest.com/'&gt;birdnest&lt;/a&gt;. Beyond that it is cross-platform so it works on Windows, Linux, and Mac OS X. It is currently only available by developer pre-release which is pretty functional as it is. It will be even more amazing as time goes on. A simple glance at their screencast on their site will show you what it is all about and how it works in general.&lt;/p&gt;</content>
+    </entry>
+  
+    <entry>
+      <title>TextMate Autotools Screencast</title>
+      <link href="http://andrewdeponte.com/2007/09/05/textmate-autotools-screencast-%231.html"/>
+      <updated>2007-09-05T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2007/09/05/textmate-autotools-screencast-#1</id>
+      <content type="html">&lt;p&gt;I just threw together a screencast that covers a little TextMate Bundle I have been working. The TextMate Autotools Bundle is an extension for the TextMate editor which integrates TextMate with the standard GNU Autotools suite with a specific emphasis on cross-platform building. Check it out below to see the features and how to use them in this alpha version.&lt;/p&gt;
+&lt;iframe allowFullScreen='allowFullScreen' frameborder='0' height='382' mozallowfullscreen='mozallowfullscreen' src='http://player.vimeo.com/video/10421190 ' webkitAllowFullScreen='webkitAllowFullScreen' width='680'&gt;useless text to fix fail to render rest of post issue&lt;/iframe&gt;</content>
     </entry>
   
 

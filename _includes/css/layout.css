@@ -74,3 +74,24 @@ body > footer {
 .pagination a:hover {
   text-decoration: underline;
 }
+
+.tags_list {
+  text-align: left;
+  font-size: 14px;
+}
+
+.tags_list a.tag {
+  display: block;
+  margin-left: 5px;
+  margin-right: 5px;
+  text-decoration: none;
+  color: #0D0D0D;
+}
+
+.tags_list a.tag:hover {
+  text-decoration: underline;
+}
+
+.tags_list a.tag .tag_usage_count {
+  color: #606060;
+}

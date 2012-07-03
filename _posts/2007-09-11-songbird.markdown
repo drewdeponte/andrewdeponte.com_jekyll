@@ -1,0 +1,15 @@
+---
+layout: post
+title: Songbird
+date: 2007-09-11
+tags: [Media Management, Media Player, Songbird, Applications]
+---
+Just to let you all know. I finally found a media manager/player for Mac OS X
+that supports practically every file format including iTunes DRM based media
+files. Beyond that, it lets you play the web which is freaking amazing. It is
+something you have to see to believe. Check it out at the
+[birdnest](http://songbirdnest.com/). Beyond that it is cross-platform so it
+works on Windows, Linux, and Mac OS X. It is currently only available by
+developer pre-release which is pretty functional as it is. It will be even more
+amazing as time goes on. A simple glance at their screencast on their site will
+show you what it is all about and how it works in general.

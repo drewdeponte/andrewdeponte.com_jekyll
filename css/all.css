@@ -75,6 +75,27 @@ body > footer {
   text-decoration: underline;
 }
 
+.tags_list {
+  text-align: left;
+  font-size: 14px;
+}
+
+.tags_list a.tag {
+  display: block;
+  margin-left: 5px;
+  margin-right: 5px;
+  text-decoration: none;
+  color: #606060;
+}
+
+.tags_list a.tag:hover {
+  text-decoration: underline;
+}
+
+.tags_list a.tag .tag_usage_count {
+  color: #0D0D0D;
+}
+
 #primary_nav {
   margin-top: 40px;
   font-size: 13px;

@@ -2,7 +2,7 @@
 layout: post
 title: House Demo Day 1
 date: 2009-07-25
-tags: [Demo, Flip, HD, House, Video, Personal]
+tags: [House, Personal]
 ---
 As some of you may know from previous posts. I recently bought my first house
 which is very much a fixer upper. Anyways, today Aly and I just completed the

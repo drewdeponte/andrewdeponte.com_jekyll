@@ -2,7 +2,7 @@
 layout: post
 title: iPhone App Loading Screen
 date: 2009-06-21
-tags: [Development, Loading Screen, iPhone, Software Development]
+tags: [iPhone Development, Software Development]
 ---
 Hi all. If you don't know already I have been playing with some iPhone app
 development pretty heavy lately. One of the interesting things which was some

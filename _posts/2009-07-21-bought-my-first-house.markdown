@@ -2,7 +2,7 @@
 layout: post
 title: Bought My First House
 date: 2009-07-21
-tags: [House, Purchased, Personal]
+tags: [House, Personal]
 ---
 Few, the stress and hesitation is over with. Today, I closed on my first house.
 I am now a home owner. Can you believe that? I can't. It hasn't really settled

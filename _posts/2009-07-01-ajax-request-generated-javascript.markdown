@@ -2,7 +2,7 @@
 layout: post
 title: Ajax Request Generated JavaScript
 date: 2009-07-01
-tags: [Ajax, Dynamic, JavaScript, Prototype, Software Development]
+tags: [Ajax, JavaScript, Prototype, Software Development]
 ---
 Hi all. Recently I was working on a web application that utilized JavaScript
 and AJAX. Who would have guessed. Anyways, I ran into a bit of a snag when I

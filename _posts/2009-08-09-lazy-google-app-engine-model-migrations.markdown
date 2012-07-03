@@ -2,7 +2,7 @@
 layout: post
 title: Lazy Google App Engine Model Migrations
 date: 2009-08-09
-tags: [Database, Google App Engine, Lazy, Migrations, Models, We'reSICC, Software Development, Software Projects]
+tags: [Google App Engine, Software Development]
 ---
 I have been working on a side project for a bit now called We'reSICC (We are
 Sound Image Community & Collaboration). It planned to be an online service that

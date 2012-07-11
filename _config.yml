@@ -4,3 +4,13 @@ plugins: ./_plugins
 
 pygments: true
 paginate: 5
+
+mini_magick:
+  thumbnail:
+    source: images/photos/original
+    destination: images/photos/thumbnail
+    resize: "100x100"
+  medium:
+    source: images/photos/original
+    destination: images/photos/medium
+    resize: "300x200"

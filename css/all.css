@@ -173,6 +173,13 @@ body > footer {
   line-height: 1.3;
 }
 
+.blog-post section img {
+  margin-top: 3px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
 .blog-post a {
   color: #0191c2;
   text-decoration: none;

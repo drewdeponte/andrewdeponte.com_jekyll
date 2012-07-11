@@ -15,7 +15,6 @@ miles you run into some power lines. This point provides a decent view of
 Hanalei Bay and the area around it.
 
 </br>
-</br>
 
 {% medium_photo dsc_0363.jpg right %}
 
@@ -26,8 +25,6 @@ trails went to tiny look out points which presented a view of probably about
 entirety leading from it's mouth in Hanalei Bay all the way up the canyon.
 Overall, the view is quite amazing. Beyond that though, the hike was worth it
 just for the amazing work out.
-
-</br>
 
 {% medium_photo dsc_0349.jpg left %}
 

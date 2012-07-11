@@ -4,6 +4,8 @@ title: North Coast Relaxation
 date: 2007-07-23
 tags: [Kauai, Vacation, Personal]
 ---
+{% medium_photo dsc_0272.jpg left %}
+
 Today was a day of complete relaxation. I did absolutely nothing but relax in
 the pool and Jacuzzi, eat, drink beer, and write software. It was a beautiful
 day as usual here in paradise. I spent a few hours absorbing the rays and

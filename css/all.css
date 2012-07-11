@@ -75,12 +75,12 @@ body > footer {
   text-decoration: underline;
 }
 
-.tags_list {
+.tags_list, .archives_list {
   text-align: left;
   font-size: 14px;
 }
 
-.tags_list a.tag {
+.tags_list a.tag, .archives_list a.archive {
   display: block;
   margin-left: 5px;
   margin-right: 5px;
@@ -88,11 +88,11 @@ body > footer {
   color: #606060;
 }
 
-.tags_list a.tag:hover {
+.tags_list a.tag:hover, .archives_list a.archive:hover {
   text-decoration: underline;
 }
 
-.tags_list a.tag .tag_usage_count {
+.tags_list a.tag .tag_usage_count, .archives_list a.archive .archive_count {
   color: #0D0D0D;
 }
 

@@ -40,12 +40,12 @@ module Jekyll
     def render(context)
       archives = []
       context.registers[:site].posts.group_by { |c| { "month" => c.date.month, "year" => c.date.year } }.each do |period, posts|
-        archives << { :year => period['year'].to_s, :month => '%02d' % period['month'].to_s, :count => posts.size }
+        archives << { :year => period['year'].to_s, :month => '%02d' % period['month'].to_s, :month_num => period['month'], :count => posts.size }
       end
 
-      html = "<div class=\"archives\"><h2>Archives</h2>"
+      html = "<div class=\"archives_list\"><h2>Archives</h2>"
       archives.reverse.each do |archive_info|
-        html << "<a href=\"/#{archive_info[:year]}/#{archive_info[:month]}\" class=\"archive\"><span class=\"archive_period\">#{archive_info[:year]} - #{archive_info[:month]}</span><span class=\"archive_count\">(#{archive_info[:count]})</span></a>"
+        html << "<a href=\"/#{archive_info[:year]}/#{archive_info[:month]}\" class=\"archive\"><span class=\"archive_period\">#{Date::MONTHNAMES[archive_info[:month_num]]} #{archive_info[:year]} </span><span class=\"archive_count\">(#{archive_info[:count]})</span></a>"
       end
       html << "</div>"
       return html

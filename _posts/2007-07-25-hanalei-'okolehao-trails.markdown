@@ -4,6 +4,8 @@ title: Hanalei 'Okolehao Trails
 date: 2007-07-25
 tags: [Kauai, Vacation, Personal]
 ---
+{% medium_photo dsc_0345.jpg left %}
+
 Today, I hiked the Hanalei 'Okolehao Trail. It is a pretty aggressive trail
 relative to the grade. It gains 1,250 feet in approximately 2 miles. It is
 pretty relentless and the second half of the trail is becoming more and more
@@ -12,6 +14,11 @@ good work out, :-). The trail starts out as a dirt road. After going about .75
 miles you run into some power lines. This point provides a decent view of
 Hanalei Bay and the area around it.
 
+</br>
+</br>
+
+{% medium_photo dsc_0363.jpg right %}
+
 After continuing on the relentless trail, it gradually gets more over grown.
 Once I made it to the top I noticed a number of off shoot trails. All of these
 trails went to tiny look out points which presented a view of probably about
@@ -19,6 +26,10 @@ trails went to tiny look out points which presented a view of probably about
 entirety leading from it's mouth in Hanalei Bay all the way up the canyon.
 Overall, the view is quite amazing. Beyond that though, the hike was worth it
 just for the amazing work out.
+
+</br>
+
+{% medium_photo dsc_0349.jpg left %}
 
 Once, the 4 miles of the hike were completed and I made it back to the condo I
 went for an afternoon dip in the pool and jacuzzi, and then ate lunch. After

@@ -15,9 +15,9 @@ module Jekyll
 
     def render(context)
       if @alignment
-        %(<a href="/images/photos/original/#{@photo_name}"><img src="/images/photos/medium/#{@photo_name}" align="#{@alignment}" /></a>)
+        %(<a href="/images/photos/original/#{@photo_name}" target="_blank"><img src="/images/photos/medium/#{@photo_name}" align="#{@alignment}" /></a>)
       else
-        %(<a href="/images/photos/oroginal/#{@photo_name}"><img src="/images/photos/medium/#{@photo_name}" /></a>)
+        %(<a href="/images/photos/oroginal/#{@photo_name}" target="_blank"><img src="/images/photos/medium/#{@photo_name}" /></a>)
       end
     end
   end

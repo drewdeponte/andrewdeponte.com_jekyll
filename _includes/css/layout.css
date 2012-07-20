@@ -80,6 +80,26 @@ body > footer {
   font-size: 14px;
 }
 
+.tags_list h2 {
+  font-size: 16px;
+  color: #F0F2F2;
+  background-color: #363636;
+  padding: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.archives_list h2 {
+  font-size: 16px;
+  color: #F0F2F2;
+  background-color: #363636;
+  padding: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
 .tags_list a.tag, .archives_list a.archive {
   display: block;
   margin-left: 5px;

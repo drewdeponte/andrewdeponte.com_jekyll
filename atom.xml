@@ -4,13 +4,43 @@
   <title>Drew's World</title>
   <link href="http://andrewdeponte.com/atom.xml" rel="self"/>
   <link href="http://andrewdeponte.com/"/>
-  <updated>2012-07-19T22:18:52-07:00</updated>
+  <updated>2012-07-22T22:55:40-07:00</updated>
   <id>http://andrewdeponte.com/</id>
   <author>
     <name>Andrew De Ponte</name>
     <email>cyphactor@gmail.com</email>
   </author>
 
+  
+    <entry>
+      <title>A New Rails Tagging Plugin</title>
+      <link href="http://andrewdeponte.com/2012/07/22/a-new-rails-tagging-plugin.html"/>
+      <updated>2012-07-22T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2012/07/22/a-new-rails-tagging-plugin</id>
+      <content type="html">&lt;p&gt;A little over 3 months ago I had the need for a good tagging plugin for Rails. I tried out a number of the popular ones but they just weren&amp;#8217;t up to my standards in terms of their APIs and their functionality. To accomplish the user experience goals that had been set forth for the project I would have had to hack the existing Rails tagging plugins to pieces.&lt;/p&gt;
+
+&lt;p&gt;So after some discussion about the Rails plugins with my team. We decided that I should just start my own Rails tagging plugin. Anyways, I started developing &lt;a href='http://github.com/cyphactor/tagalong'&gt;Tagalong&lt;/a&gt;, my Rails tagging plugin, immediately. The library is now 3 months old and I figured I should let people know that it exists and provide a breakdown of its features.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href='http://github.com/cyphactor/tagalong'&gt;Tagalong&lt;/a&gt; has two major concepts that a developer needs to understand before being able to use it. The first concept is a &lt;em&gt;Tagger&lt;/em&gt;. A &lt;em&gt;Tagger&lt;/em&gt; is simply an object that can perform the act of tagging other objects (&lt;em&gt;Taggables&lt;/em&gt;). As I am sure you have guessed the second concept is a &lt;em&gt;Taggable&lt;/em&gt;. A &lt;em&gt;Taggable&lt;/em&gt; is simply an object in the system that can be tagged.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href='http://github.com/cyphactor/tagalong'&gt;Tagalong&lt;/a&gt; Rails plugin is built entirely around these two concepts a &lt;em&gt;Tagger&lt;/em&gt; and a &lt;em&gt;Taggable&lt;/em&gt;. This architecture decision is one of the major differences between this Rails tagging plugin and the other tagging plugins out there. A brief breakdown of the plugin is as follows.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;clean easy to understand API&lt;/li&gt;
+
+&lt;li&gt;does NOT require saving of the model when tagging/untagging&lt;/li&gt;
+
+&lt;li&gt;keeps history of tags &lt;em&gt;Taggers&lt;/em&gt; have used&lt;/li&gt;
+
+&lt;li&gt;allows defining multiple &lt;em&gt;Taggers&lt;/em&gt; and &lt;em&gt;Taggables&lt;/em&gt;&lt;/li&gt;
+
+&lt;li&gt;tracks number of times tags are used&lt;/li&gt;
+
+&lt;li&gt;returns tag lists in alphabetical order&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The above are simply a few brief points. For details on all its features and how to use it please refer to the GitHub project &lt;a href='http://github.com/cyphactor/tagalong'&gt;http://github.com/cyphactor/tagalong&lt;/a&gt;.&lt;/p&gt;</content>
+    </entry>
   
     <entry>
       <title>SublimeText2 Guard Plugin Updates</title>

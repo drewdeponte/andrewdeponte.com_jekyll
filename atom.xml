@@ -4,13 +4,47 @@
   <title>Drew's World</title>
   <link href="http://andrewdeponte.com/atom.xml" rel="self"/>
   <link href="http://andrewdeponte.com/"/>
-  <updated>2012-07-22T23:10:26-07:00</updated>
+  <updated>2012-07-25T13:46:32-07:00</updated>
   <id>http://andrewdeponte.com/</id>
   <author>
     <name>Andrew De Ponte</name>
     <email>cyphactor@gmail.com</email>
   </author>
 
+  
+    <entry>
+      <title>Sublime Text 2 Guard Plugin Updates</title>
+      <link href="http://andrewdeponte.com/2012/07/25/sublime-text-2-guard-plugin-updates.html"/>
+      <updated>2012-07-25T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2012/07/25/sublime-text-2-guard-plugin-updates</id>
+      <content type="html">&lt;p&gt;It has been a while since I have provided an update on my &lt;a href='http://github.com/cyphactor/sublime_guard'&gt;Sublime Text 2 Guard Plugin&lt;/a&gt; and I just made some changes so I figured I would make a quick post. The project has recently had a number of contributions which I will list in the changes below.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Fixed default Linux key-mappings (&lt;a href='http://github.com/cyphactor/sublime_guard/issues/52'&gt;#52&lt;/a&gt;)&lt;/li&gt;
+
+&lt;li&gt;Fixed default Windows key-mappings (&lt;a href='http://github.com/cyphactor/sublime_guard/issues/52'&gt;#52&lt;/a&gt;)&lt;/li&gt;
+
+&lt;li&gt;Added Run all Tests &amp;amp; Show Guard Output, Thanks &lt;a href='http://github.com/whitequark'&gt;@whitequark&lt;/a&gt; (&lt;a href='http://github.com/cyphactor/sublime_guard/issues/44'&gt;#44&lt;/a&gt;, &lt;a href='http://github.com/cyphactor/sublime_guard/issues/53'&gt;#53&lt;/a&gt;)&lt;/li&gt;
+
+&lt;li&gt;Made it work without Bundler, Thanks &lt;a href='http://github.com/brandonblack'&gt;@brandonblack&lt;/a&gt; (&lt;a href='http://github.com/cyphactor/sublime_guard/issues/51'&gt;#51&lt;/a&gt;, &lt;a href='http://github.com/cyphactor/sublime_guard/issues/50'&gt;#50&lt;/a&gt;)&lt;/li&gt;
+
+&lt;li&gt;Clear output when predefined text found, Thanks &lt;a href='http://github.com/diogomafra'&gt;@diogomafra&lt;/a&gt; (&lt;a href='http://github.com/cyphactor/sublime_guard/issues/48'&gt;#48&lt;/a&gt;)&lt;/li&gt;
+
+&lt;li&gt;Added support for &lt;em&gt;rbenv&lt;/em&gt;, Thanks &lt;a href='http://github.com/chrislerum'&gt;@chrislerum&lt;/a&gt; (&lt;a href='http://github.com/cyphactor/sublime_guard/issues/45'&gt;#45&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I have been completely stoked with the growing usage of this plugin as well as the abundance of contributions people have been making to the plugin. In this update there are a number of people that need to be called out with special thanks.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href='http://github.com/diogomafra'&gt;@diogomafra&lt;/a&gt; provided a &lt;em&gt;Clear output when predefined text found&lt;/em&gt; feature. I am sure many users will find this feature a nice addition to smoothing out their workflow. Thank you for your contribution &lt;a href='http://github.com/diogomafra'&gt;@diogomafra&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href='http://github.com/chrislerum'&gt;@chrislerum&lt;/a&gt; provided &lt;strong&gt;rbenv support&lt;/strong&gt;. I know that this feature will be huge for a number of the users as this was a highly requestd feature. Thank you so much for your contribution &lt;a href='http://github.com/chrislerum'&gt;@chrislerum&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href='http://github.com/brandonblack'&gt;@brandonblack&lt;/a&gt; provided the ability to function without bundler. This will allow users who aren&amp;#8217;t using bundler to be able to use this plugin. I think this is a great addition as the more people we can get using this plugin the more feedback we can get. Hence, the better it will become. Thanks for your contribution &lt;a href='http://github.com/brandonblack'&gt;@brandonblack&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href='http://github.com/whitequark'&gt;@whitequark&lt;/a&gt; provided the basis for the &lt;strong&gt;Run all Tests &amp;amp; Show Guard Output&lt;/strong&gt; feature. I know a number of developers who have been waiting for something like this to fit their personal workflow. Thank you very much for your contribution &lt;a href='http://github.com/whitequark'&gt;@whitequark&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;A big thanks goes out to all the above listed contributors and all of our prior contributors. Thank you all for helping make this a solid very useful plugin for the development community. As usual please make issues for any bugs or feature requsets you have at &lt;a href='http://github.com/cyphactor/sublime_guard'&gt;Sublime Text 2 Guard Plugin&lt;/a&gt;.&lt;/p&gt;</content>
+    </entry>
   
     <entry>
       <title>OctopusCI now has job rerun</title>

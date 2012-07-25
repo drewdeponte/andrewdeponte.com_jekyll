@@ -31,6 +31,41 @@
         
   <article class='blog-post'>
   <header>
+    <h2 class='title'><a href="/2012/04/11/My-VIM-Setup.html">My VIM Setup</a></h2>
+    <div class='posted-info'>
+      <time datetime='2012-04-11T00:00:00Z' pubdate='pubdate' class='published-datetime'>April 11, 2012</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>So, as some of you may know I pulled my old .vimrc out of hiding and started playing around with vim again to see if I would potentially want to switch back to it from Sublime Text 2. The reason being that I still fealt I was missing something that I had in vim (the quick keyboard navigation and general flexibility). Anyways, I pulled my .vimrc out and added the basics of what I think I am going to need for it to be an acceptable replacement for Sublime Text 2. This includes fuzzy file search, tab completion, etc. Basically all the things necessary for it to be a competitor to Sublime Text 2 in my mind. It isn&#8217;t perferct yet but it is a start.</p>
+
+<p>Note: The only reason I am doing this is because I already knew VIM so I don&#8217;t have a learning curve to really explore this. In my eyes Sublime Text 2 and VIM are pretty damn close in terms of functionality but Sublime Text 2 provides a much smaller learning curve for the majority of people.</p>
+
+<p>This does NOT mean that I am giving up on Sublime Text 2 or that I am going to stop supporting my Sublime Text 2 plugins. If it comes to that at some point in the future I will find a new mantainer for them and let you all know.</p>
+
+<p>Anyways, I have made my vim setup available on github via <a href='http://github.com/cyphactor/dotvim'>http://github.com/cyphactor/dotvim</a>. The README for the repository provides instructions on how to install using git.</p>
+    <div style="clear: both;"></div>
+  </section>
+
+  <footer>
+    
+      <a class="tag" href="/tag/.vimrc">.vimrc</a>
+    
+      <a class="tag" href="/tag/Fuzzy File Search">Fuzzy File Search</a>
+    
+      <a class="tag" href="/tag/Tab Completion">Tab Completion</a>
+    
+      <a class="tag" href="/tag/vim">vim</a>
+    
+  </footer>
+</article>
+
+
+  <article class='blog-post'>
+  <header>
     <h2 class='title'><a href="/2012/02/28/SublimeText2-Guard-Plugin-Updates.html">SublimeText2 Guard Plugin Updates</a></h2>
     <div class='posted-info'>
       <time datetime='2012-02-28T00:00:00Z' pubdate='pubdate' class='published-datetime'>February 28, 2012</time>
@@ -233,58 +268,6 @@
 </article>
 
 
-  <article class='blog-post'>
-  <header>
-    <h2 class='title'><a href="/2012/01/27/SublimeText2-Guard-Plugin-Updates.html">SublimeText2 Guard Plugin Updates</a></h2>
-    <div class='posted-info'>
-      <time datetime='2012-01-27T00:00:00Z' pubdate='pubdate' class='published-datetime'>January 27, 2012</time>
-      <span>by</span>
-      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
-    </div>
-  </header>
-
-  <section>
-    <p>Just dropping a quick note to all that follow my blog. Last night I made a numeber updates to the <a href='http://github.com/cyphactor/sublime_guard'>Guard Plugin</a> for <a href='http://www.sublimetext.com/2'>Sublime Text 2</a>. Most of these were in direct response to feedback that I got from users after making the initial release on my blog, I think, two days ago. The modifications I made are enumarted below:</p>
-
-<ul>
-<li>The biggest addition is <code>RVM detection and integration</code>. The plugin is now intelligent enough to detect if you have RVM installed and detect if you are using a Project specific .rvmrc and of course respond by calling Guard appropriately depending on the case.</li>
-
-<li>Another relatively small fix is a <code>vertical only auto-scroll</code>. Before, if Guard output went to the right past the width of the pane it was auto-scrolling to the right and then bouncing back to the left at the next line. Now, it always scrolls down the left most column of the output basically making it auto-scroll vertically.</li>
-
-<li>Third I added some output preprocessing that <code>strips out the Terminal Color
-Codes</code> so that the output is a bit cleaner.</li>
-
-<li>I also added a lot of <code>descriptive output and error handling and output</code> to let the user better know what is failing so they might be able to debug the situation a bit better.</li>
-</ul>
-
-<p>As always if you have any feedback (feature requests, bug reports, etc.) you can simply create an issue for the project at the projects <a href='http://github.com/cyphactor/sublime_guard/issues'>GitHub Issues Page</a>.</p>
-
-<p>If you are new to the <a href='http://github.com/cyphactor/sublime_guard'>Guard Plugin</a> for <a href='http://www.sublimetext.com/2'>Sublime Text 2</a> you can find installation instructions and document on the <a href='http://github.com/cyphactor/sublime_guard'>GitHub Page</a>.</p>
-
-<p>For instructions on upgrading please checkout the <a href='http://github.com/cyphactor/sublime_guard'>GitHub Page</a>.</p>
-    <div style="clear: both;"></div>
-  </section>
-
-  <footer>
-    
-      <a class="tag" href="/tag/Python">Python</a>
-    
-      <a class="tag" href="/tag/Sublime Text 2">Sublime Text 2</a>
-    
-      <a class="tag" href="/tag/Sublime Text 2 Plugin">Sublime Text 2 Plugin</a>
-    
-      <a class="tag" href="/tag/Software">Software</a>
-    
-      <a class="tag" href="/tag/Personal">Personal</a>
-    
-      <a class="tag" href="/tag/Software Development">Software Development</a>
-    
-      <a class="tag" href="/tag/Software Projects">Software Projects</a>
-    
-  </footer>
-</article>
-
-
 
 <!-- Pagination links -->
 <div class="pagination">
@@ -334,7 +317,7 @@ Codes</code> so that the output is a bit cleaner.</li>
   
   <a class="tag" href="/tag/TextMate"><span class="tag_name">TextMate</span> <span class="tag_usage_count">(1)</span></a>
   
-  <a class="tag" href="/tag/Software Development"><span class="tag_name">Software Development</span> <span class="tag_usage_count">(22)</span></a>
+  <a class="tag" href="/tag/Software Development"><span class="tag_name">Software Development</span> <span class="tag_usage_count">(23)</span></a>
   
   <a class="tag" href="/tag/Media Management"><span class="tag_name">Media Management</span> <span class="tag_usage_count">(1)</span></a>
   
@@ -572,7 +555,7 @@ Codes</code> so that the output is a bit cleaner.</li>
   
   <a class="tag" href="/tag/Sublime Text 2"><span class="tag_name">Sublime Text 2</span> <span class="tag_usage_count">(7)</span></a>
   
-  <a class="tag" href="/tag/Sublime Text 2 Plugin"><span class="tag_name">Sublime Text 2 Plugin</span> <span class="tag_usage_count">(6)</span></a>
+  <a class="tag" href="/tag/Sublime Text 2 Plugin"><span class="tag_name">Sublime Text 2 Plugin</span> <span class="tag_usage_count">(7)</span></a>
   
   <a class="tag" href="/tag/Color"><span class="tag_name">Color</span> <span class="tag_usage_count">(3)</span></a>
   
@@ -610,11 +593,13 @@ Codes</code> so that the output is a bit cleaner.</li>
   
   <a class="tag" href="/tag/Continuous Integration"><span class="tag_name">Continuous Integration</span> <span class="tag_usage_count">(1)</span></a>
   
+  <a class="tag" href="/tag/Guard"><span class="tag_name">Guard</span> <span class="tag_usage_count">(1)</span></a>
+  
 </div>
 
         </div>
         <div>
-          <div class="archives_list"><h2>Archives</h2><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(2)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
+          <div class="archives_list"><h2>Archives</h2><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
         </div>
       </aside>
       <div style="clear: both;"></div>

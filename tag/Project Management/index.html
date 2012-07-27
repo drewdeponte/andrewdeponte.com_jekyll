@@ -418,13 +418,125 @@
 <p>Given the functionality of <a href='http://projects.tynsoe.org/en/geektool/'>GeekTool</a> all that was really left was to write shell scripts/console applications that output all of my tickets from the various ticket sources and I would have a very quick and functional solution to my issue. Hence, I got to writing and pumped out the following short little Ruby scripts, and one AppleScript script to provide output of all my tickets from the various sources.</p>
 
 <p>The following is a ruby script that pulls all my tickets in from all of my various <a href='http://lighthouseapp.com/'>Lighthouse</a> accounts and projects.</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'>#!/usr/bin/env ruby</span>
+<span class='nb'>require</span> <span class='s1'>&#39;rubygems&#39;</span>
+<span class='nb'>require</span> <span class='s1'>&#39;lighthouse-api&#39;</span>
 
+<span class='kp'>include</span> <span class='no'>Lighthouse</span>
+
+<span class='n'>accounts</span> <span class='o'>=</span> <span class='o'>[</span><span class='s1'>&#39;domain one&#39;</span><span class='p'>,</span> <span class='s1'>&#39;domain two&#39;</span><span class='p'>,</span> <span class='s1'>&#39;domain three&#39;</span><span class='o'>]</span>
+<span class='no'>Lighthouse</span><span class='o'>.</span><span class='n'>token</span> <span class='o'>=</span> <span class='s1'>&#39;your lighthouse All Accounts token&#39;</span>
+
+<span class='n'>accounts</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>a</span><span class='o'>|</span>
+  <span class='no'>Lighthouse</span><span class='o'>.</span><span class='n'>account</span> <span class='o'>=</span> <span class='n'>a</span>
+  <span class='no'>Project</span><span class='o'>.</span><span class='n'>find</span><span class='p'>(</span><span class='ss'>:all</span><span class='p'>)</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span> <span class='o'>|</span><span class='nb'>p</span><span class='o'>|</span>
+    <span class='k'>if</span> <span class='p'>(</span><span class='o'>!</span><span class='nb'>p</span><span class='o'>.</span><span class='n'>archived</span><span class='p'>)</span>
+      <span class='n'>ticks</span> <span class='o'>=</span> <span class='nb'>p</span><span class='o'>.</span><span class='n'>tickets</span><span class='p'>({</span><span class='ss'>:q</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;responsible:me sort:priority state:open&quot;</span><span class='p'>})</span>
+      <span class='k'>if</span> <span class='p'>(</span><span class='n'>ticks</span><span class='o'>.</span><span class='n'>length</span> <span class='o'>&gt;</span> <span class='mi'>0</span><span class='p'>)</span>
+        <span class='nb'>puts</span> <span class='nb'>p</span><span class='o'>.</span><span class='n'>name</span>
+        <span class='nb'>puts</span> <span class='s2'>&quot;-------------------------&quot;</span>
+        <span class='nb'>puts</span> <span class='s2'>&quot;    id | pri | title&quot;</span>
+        <span class='nb'>puts</span> <span class='s2'>&quot;-------------------------&quot;</span>
+        <span class='n'>ticks</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>t</span><span class='o'>|</span>
+          <span class='nb'>puts</span> <span class='n'>t</span><span class='o'>.</span><span class='n'>id</span><span class='o'>.</span><span class='n'>to_s</span><span class='o'>.</span><span class='n'>rjust</span><span class='p'>(</span><span class='mi'>6</span><span class='p'>)</span> <span class='o'>+</span> <span class='s2'>&quot; | &quot;</span> <span class='o'>+</span> <span class='n'>t</span><span class='o'>.</span><span class='n'>priority</span><span class='o'>.</span><span class='n'>to_s</span><span class='o'>.</span><span class='n'>center</span><span class='p'>(</span><span class='mi'>3</span><span class='p'>)</span> <span class='o'>+</span> <span class='s2'>&quot; | &quot;</span> <span class='o'>+</span> <span class='n'>t</span><span class='o'>.</span><span class='n'>title</span>
+        <span class='p'>}</span>
+        <span class='nb'>puts</span> <span class='s2'>&quot;</span><span class='se'>\n</span><span class='s2'>&quot;</span>
+      <span class='k'>end</span>
+    <span class='k'>end</span>
+  <span class='p'>}</span>
+<span class='p'>}</span>
+</code></pre>
+</div>
 <p>The following is a ruby script that pulls all my tickets in from all of my various <a href='http://github.com/'>GitHub</a> accounts and projects.</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'>#!/usr/bin/env ruby</span>
 
+<span class='nb'>require</span> <span class='s1'>&#39;rubygems&#39;</span>
+<span class='nb'>require</span> <span class='s1'>&#39;octopi&#39;</span>
+
+<span class='kp'>include</span> <span class='no'>Octopi</span>
+
+<span class='n'>creds</span> <span class='o'>=</span> <span class='o'>[</span>
+  <span class='p'>{</span> <span class='ss'>:login</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;login one&quot;</span><span class='p'>,</span> <span class='ss'>:token</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;API token tied to login one&quot;</span> <span class='p'>},</span>
+  <span class='p'>{</span> <span class='ss'>:login</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;login two&quot;</span><span class='p'>,</span> <span class='ss'>:token</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;API token tied to login two&quot;</span> <span class='p'>},</span>
+  <span class='p'>{</span> <span class='ss'>:login</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;login three&quot;</span><span class='p'>,</span> <span class='ss'>:token</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;API token tied to login three&quot;</span><span class='p'>}</span>
+<span class='o'>]</span>
+
+<span class='n'>creds</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>cred</span><span class='o'>|</span>
+  <span class='n'>authenticated_with</span> <span class='ss'>:login</span> <span class='o'>=&gt;</span> <span class='n'>cred</span><span class='o'>[</span><span class='ss'>:login</span><span class='o'>]</span><span class='p'>,</span> <span class='ss'>:token</span> <span class='o'>=&gt;</span> <span class='n'>cred</span><span class='o'>[</span><span class='ss'>:token</span><span class='o'>]</span> <span class='k'>do</span>
+    <span class='n'>user</span> <span class='o'>=</span> <span class='no'>User</span><span class='o'>.</span><span class='n'>find</span><span class='p'>(</span><span class='n'>cred</span><span class='o'>[</span><span class='ss'>:login</span><span class='o'>]</span><span class='p'>)</span>
+    <span class='n'>repos</span> <span class='o'>=</span> <span class='n'>user</span><span class='o'>.</span><span class='n'>repositories</span>
+    <span class='n'>repos</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>r</span><span class='o'>|</span>
+      <span class='n'>ticks</span> <span class='o'>=</span> <span class='no'>Issue</span><span class='o'>.</span><span class='n'>find_all</span><span class='p'>(</span><span class='ss'>:repository</span> <span class='o'>=&gt;</span> <span class='n'>r</span><span class='p'>,</span> <span class='ss'>:state</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;open&quot;</span><span class='p'>)</span>
+      <span class='k'>if</span> <span class='p'>(</span><span class='n'>ticks</span><span class='o'>.</span><span class='n'>length</span> <span class='o'>&gt;</span> <span class='mi'>0</span><span class='p'>)</span>
+        <span class='nb'>puts</span> <span class='n'>r</span><span class='o'>.</span><span class='n'>name</span>
+        <span class='nb'>puts</span> <span class='s2'>&quot;-------------------------&quot;</span>
+        <span class='nb'>puts</span> <span class='s2'>&quot;    id | pri | title&quot;</span>
+        <span class='nb'>puts</span> <span class='s2'>&quot;-------------------------&quot;</span>
+        <span class='n'>ticks</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>t</span><span class='o'>|</span>
+          <span class='nb'>puts</span> <span class='s2'>&quot;n/a&quot;</span><span class='o'>.</span><span class='n'>rjust</span><span class='p'>(</span><span class='mi'>6</span><span class='p'>)</span> <span class='o'>+</span> <span class='s2'>&quot; | &quot;</span> <span class='o'>+</span> <span class='n'>t</span><span class='o'>.</span><span class='n'>votes</span><span class='o'>.</span><span class='n'>to_s</span><span class='o'>.</span><span class='n'>center</span><span class='p'>(</span><span class='mi'>3</span><span class='p'>)</span> <span class='o'>+</span> <span class='s2'>&quot; | &quot;</span> <span class='o'>+</span> <span class='n'>t</span><span class='o'>.</span><span class='n'>title</span>
+        <span class='p'>}</span>
+        <span class='nb'>puts</span> <span class='s2'>&quot;</span><span class='se'>\n</span><span class='s2'>&quot;</span>
+      <span class='k'>end</span>
+    <span class='p'>}</span>
+  <span class='k'>end</span>
+<span class='p'>}</span>
+</code></pre>
+</div>
 <p>The following is a AppleScript script that pulls all my tickets in from <a href='http://culturedcode.com/things/'>Things</a>.</p>
-
+<div class='highlight'><pre><code class='applescript'><span class='k'>tell</span> <span class='nb'>application</span> <span class='s2'>&quot;Things&quot;</span>
+  <span class='k'>set</span> <span class='nv'>nl</span> <span class='k'>to</span> <span class='s2'>&quot;\n&quot;</span>
+  <span class='k'>set</span> <span class='nv'>output</span> <span class='k'>to</span> <span class='s2'>&quot;Things Tasks in Today\n--------------------------\n&quot;</span>
+  <span class='k'>repeat</span> <span class='nv'>with</span> <span class='nv'>todayToDo</span> <span class='k'>in</span> <span class='k'>to</span> <span class='nv'>dos</span> <span class='k'>of</span> <span class='nv'>list</span> <span class='s2'>&quot;Today&quot;</span>
+    <span class='k'>set</span> <span class='nv'>curTaskName</span> <span class='k'>to</span> <span class='na'>name</span> <span class='k'>of</span> <span class='nv'>todayToDo</span>
+    <span class='k'>set</span> <span class='nv'>output</span> <span class='k'>to</span> <span class='nv'>output</span> <span class='o'>&amp;</span> <span class='s2'>&quot; - &quot;</span> <span class='o'>&amp;</span> <span class='nv'>curTaskName</span> <span class='o'>&amp;</span> <span class='nv'>nl</span>
+  <span class='k'>end</span> <span class='k'>repeat</span>
+<span class='k'>end</span> <span class='k'>tell</span>
+<span class='nv'>output</span>
+</code></pre>
+</div>
 <p>The following is a Python script that pulls all my tickets in from <a href='http://trac.edgewall.org/'>Trac</a> when your <a href='http://trac.edgewall.org/'>Trac</a> environment has the <a href='http://trac-hacks.org/wiki/XmlRpcPlugin'>Trac XML RPC plugin</a> installed.</p>
+<div class='highlight'><pre><code class='python'><span class='c'>#!/usr/bin/env python</span>
 
+<span class='kn'>import</span> <span class='nn'>xmlrpclib</span>
+
+<span class='n'>username</span> <span class='o'>=</span> <span class='s'>&quot;loginname&quot;</span>
+<span class='n'>password</span> <span class='o'>=</span> <span class='s'>&quot;password&quot;</span>
+<span class='n'>port</span> <span class='o'>=</span> <span class='bp'>None</span> <span class='c'># if need to specify a port set this to the port number</span>
+<span class='n'>host</span> <span class='o'>=</span> <span class='s'>&quot;domain-name-where-trac-hosted&quot;</span> <span class='c'># trac.rippletv.com at my work</span>
+<span class='n'>path</span> <span class='o'>=</span> <span class='s'>&quot;/path-to-the-environment&quot;</span>
+
+<span class='n'>url</span> <span class='o'>=</span> <span class='s'>&quot;https://</span><span class='si'>%s</span><span class='s'>:</span><span class='si'>%s</span><span class='s'>@</span><span class='si'>%s</span><span class='s'>&quot;</span> <span class='o'>%</span> <span class='p'>(</span><span class='n'>username</span><span class='p'>,</span> <span class='n'>password</span><span class='p'>,</span> <span class='n'>host</span><span class='p'>)</span> 
+<span class='k'>if</span> <span class='p'>(</span><span class='n'>port</span><span class='p'>):</span>
+    <span class='n'>url</span> <span class='o'>+=</span> <span class='s'>&quot;:</span><span class='si'>%s</span><span class='s'>&quot;</span> <span class='o'>%</span> <span class='p'>(</span><span class='nb'>str</span><span class='p'>(</span><span class='n'>port</span><span class='p'>))</span>
+<span class='n'>url</span> <span class='o'>+=</span> <span class='n'>path</span> <span class='o'>+</span> <span class='s'>&quot;/login/xmlrpc&quot;</span>
+
+<span class='n'>svr</span> <span class='o'>=</span> <span class='n'>xmlrpclib</span><span class='o'>.</span><span class='n'>ServerProxy</span><span class='p'>(</span><span class='n'>url</span><span class='p'>)</span>
+
+<span class='k'>print</span> <span class='s'>&quot;-------------------------&quot;</span>
+<span class='k'>print</span> <span class='s'>&quot;    id | pri | title&quot;</span>
+<span class='k'>print</span> <span class='s'>&quot;-------------------------&quot;</span>
+
+<span class='n'>ticket_ids</span> <span class='o'>=</span> <span class='n'>svr</span><span class='o'>.</span><span class='n'>ticket</span><span class='o'>.</span><span class='n'>query</span><span class='p'>(</span><span class='s'>&quot;owner=&quot;</span> <span class='o'>+</span> <span class='n'>username</span> <span class='o'>+</span> <span class='s'>&quot;&amp;status!=closed&amp;order=priority&quot;</span><span class='p'>)</span>
+<span class='k'>for</span> <span class='n'>ti</span> <span class='ow'>in</span> <span class='n'>ticket_ids</span><span class='p'>:</span>
+  <span class='n'>cur_tick</span> <span class='o'>=</span> <span class='n'>svr</span><span class='o'>.</span><span class='n'>ticket</span><span class='o'>.</span><span class='n'>get</span><span class='p'>(</span><span class='n'>ti</span><span class='p'>)</span>
+  <span class='n'>cur_tick_hash</span> <span class='o'>=</span> <span class='n'>cur_tick</span><span class='p'>[</span><span class='mi'>3</span><span class='p'>]</span>
+  <span class='n'>cur_id</span> <span class='o'>=</span> <span class='n'>ti</span>
+  <span class='n'>cur_summary</span> <span class='o'>=</span> <span class='n'>cur_tick_hash</span><span class='p'>[</span><span class='s'>&#39;summary&#39;</span><span class='p'>]</span>
+  <span class='n'>cur_priority</span> <span class='o'>=</span> <span class='n'>cur_tick_hash</span><span class='p'>[</span><span class='s'>&#39;priority&#39;</span><span class='p'>]</span>
+  <span class='n'>pri_num</span> <span class='o'>=</span> <span class='mi'>0</span>
+  <span class='k'>if</span> <span class='p'>(</span><span class='n'>cur_priority</span> <span class='o'>==</span> <span class='s'>&quot;trivial&quot;</span><span class='p'>):</span>
+    <span class='n'>pri_num</span> <span class='o'>=</span> <span class='mi'>0</span>
+  <span class='k'>elif</span> <span class='p'>(</span><span class='n'>cur_priority</span> <span class='o'>==</span> <span class='s'>&quot;minor&quot;</span><span class='p'>):</span>
+    <span class='n'>pri_num</span> <span class='o'>=</span> <span class='mi'>1</span>
+  <span class='k'>elif</span> <span class='p'>(</span><span class='n'>cur_priority</span> <span class='o'>==</span> <span class='s'>&quot;major&quot;</span><span class='p'>):</span>
+    <span class='n'>pri_num</span> <span class='o'>=</span> <span class='mi'>2</span>
+  <span class='k'>elif</span> <span class='p'>(</span><span class='n'>cur_priority</span> <span class='o'>==</span> <span class='s'>&quot;critical&quot;</span><span class='p'>):</span>
+    <span class='n'>pri_num</span> <span class='o'>=</span> <span class='mi'>3</span>
+  <span class='k'>elif</span> <span class='p'>(</span><span class='n'>cur_priority</span> <span class='o'>==</span> <span class='s'>&quot;blocker&quot;</span><span class='p'>):</span>
+    <span class='n'>pri_num</span> <span class='o'>=</span> <span class='mi'>4</span>
+  <span class='k'>print</span> <span class='nb'>str</span><span class='p'>(</span><span class='n'>cur_id</span><span class='p'>)</span><span class='o'>.</span><span class='n'>rjust</span><span class='p'>(</span><span class='mi'>6</span><span class='p'>)</span> <span class='o'>+</span>  <span class='s'>&quot; | &quot;</span> <span class='o'>+</span> <span class='nb'>str</span><span class='p'>(</span><span class='n'>pri_num</span><span class='p'>)</span><span class='o'>.</span><span class='n'>center</span><span class='p'>(</span><span class='mi'>3</span><span class='p'>)</span> <span class='o'>+</span> <span class='s'>&quot; | &quot;</span> <span class='o'>+</span> <span class='nb'>str</span><span class='p'>(</span><span class='n'>cur_summary</span><span class='p'>)</span>
+</code></pre>
+</div>
 <p>After coding the above scripts I simply set them up through the <a href='http://projects.tynsoe.org/en/geektool/'>GeekTool</a> UI and like magic within 15 mins or so I had a working solution to my issue, thanks to the power of REST based Web Services, Ruby, the Ruby Community, and Things AppleScript integration. Checkout a screenshot <a href='https://www.facebook.com/media/set/?set=a.629955991290.2070660.30901409&amp;type=1&amp;l=d6d8aefeb9'>here</a>.</p>
     <div style="clear: both;"></div>
   </section>

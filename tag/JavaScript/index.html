@@ -77,11 +77,58 @@ $(function () {
 <p>With the jQuery Comparative Histogram (CompHist) Plugin you can easily represent populations and information about them. A prime usage exampe of this is demographics. All the styling is done via CSS. Hence the style is easily modified. It does the calculations for you and it allows for non listed group counts via a non_demo_count data option.</p>
 
 <p>The above demo was produced by defining a few code snippets. The first snippet is a snippet of HTML that includes the jQuery Comparative Histogram javascript source file and CSS style sheet. Note: The jQuery Comparative Histogram javascript source file needs to come after the standard jQuery javascript source file. An example of this snippet is as follows:</p>
-
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;script </span><span class='na'>type=</span><span class='s'>&quot;text/javascript&quot;</span> <span class='na'>src=</span><span class='s'>&quot;../jquery.comphist.js&quot;</span><span class='nt'>&gt;&lt;/script&gt;</span>
+<span class='nt'>&lt;link</span> <span class='na'>rel=</span><span class='s'>&quot;stylesheet&quot;</span> <span class='na'>type=</span><span class='s'>&quot;text/css&quot;</span> <span class='na'>href=</span><span class='s'>&quot;../stylesheets/jquery.comphist.css&quot;</span><span class='nt'>&gt;</span>
+</code></pre>
+</div>
 <p>Note: In the above snippet the href values are likely to be different in your case. The second code snippet is simply a single line of HTML where the div that is to be the Comparative Histogram. It is key that this div has an id that is easily referenced and a set height and width. An example of this snippet is as follows:</p>
-
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;div</span> <span class='na'>id=</span><span class='s'>&quot;compplaceholder&quot;</span> <span class='na'>style=</span><span class='s'>&quot;width: 375px; height: 200px;&quot;</span><span class='nt'>&gt;&lt;/div&gt;</span>
+</code></pre>
+</div>
 <p>The third code snippet needed is the javascript that defines the data, creates the Comparative Histogram in the specified div, and handles the hover functionality. An example of this is seen below.</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;script </span><span class='na'>type=</span><span class='s'>&quot;text/javascript&quot;</span><span class='nt'>&gt;</span>
+<span class='nx'>$</span><span class='p'>(</span><span class='kd'>function</span> <span class='p'>()</span> <span class='p'>{</span>
+  <span class='kd'>function</span> <span class='nx'>showCompHistTooltip</span><span class='p'>(</span><span class='nx'>x</span><span class='p'>,</span> <span class='nx'>y</span><span class='p'>,</span> <span class='nx'>contents</span><span class='p'>)</span> <span class='p'>{</span>
+    <span class='nx'>console</span><span class='p'>.</span><span class='nx'>log</span><span class='p'>(</span><span class='s2'>&quot;called my shit&quot;</span><span class='p'>);</span>
+    <span class='nx'>$</span><span class='p'>(</span><span class='s1'>&#39;&lt;div id=&quot;comphist1tooltip&quot;&gt;&#39;</span> <span class='o'>+</span> <span class='nx'>contents</span> <span class='o'>+</span> <span class='s1'>&#39;&lt;/div&gt;&#39;</span><span class='p'>).</span><span class='nx'>css</span><span class='p'>({</span>
+      <span class='nx'>position</span><span class='o'>:</span> <span class='s1'>&#39;absolute&#39;</span><span class='p'>,</span>
+      <span class='nx'>display</span><span class='o'>:</span> <span class='s1'>&#39;none&#39;</span><span class='p'>,</span>
+      <span class='nx'>top</span><span class='o'>:</span> <span class='nx'>y</span> <span class='o'>-</span> <span class='mi'>20</span><span class='p'>,</span>
+      <span class='nx'>left</span><span class='o'>:</span> <span class='nx'>x</span> <span class='o'>-</span> <span class='mi'>30</span><span class='p'>,</span>
+      <span class='nx'>border</span><span class='o'>:</span> <span class='s1'>&#39;1px solid #fdd&#39;</span><span class='p'>,</span>
+      <span class='nx'>padding</span><span class='o'>:</span> <span class='s1'>&#39;2px&#39;</span><span class='p'>,</span>
+      <span class='s1'>&#39;background-color&#39;</span><span class='o'>:</span> <span class='s1'>&#39;#fee&#39;</span><span class='p'>,</span>
+      <span class='nx'>opacity</span><span class='o'>:</span> <span class='mi'>1</span>
+    <span class='p'>}).</span><span class='nx'>appendTo</span><span class='p'>(</span><span class='s2'>&quot;body&quot;</span><span class='p'>).</span><span class='nx'>fadeIn</span><span class='p'>(</span><span class='mi'>200</span><span class='p'>);</span>
+  <span class='p'>}</span>
 
+  <span class='kd'>var</span> <span class='nx'>comphist_data</span> <span class='o'>=</span> <span class='p'>{</span>
+    <span class='nx'>population_label</span><span class='o'>:</span> <span class='s1'>&#39;Active Fans This Week&#39;</span><span class='p'>,</span>
+    <span class='nx'>group_1_label</span><span class='o'>:</span> <span class='s1'>&#39;Male&#39;</span><span class='p'>,</span> <span class='nx'>group_2_label</span><span class='o'>:</span> <span class='s1'>&#39;Female&#39;</span><span class='p'>,</span>
+    <span class='nx'>subgroups</span><span class='o'>:</span> <span class='p'>[</span>
+    <span class='p'>{</span> <span class='nx'>label</span><span class='o'>:</span> <span class='s1'>&#39;13-17&#39;</span><span class='p'>,</span> <span class='nx'>group_1_count</span><span class='o'>:</span> <span class='mi'>3</span><span class='p'>,</span> <span class='nx'>group_2_count</span><span class='o'>:</span> <span class='mi'>16</span> <span class='p'>},</span>
+    <span class='p'>{</span> <span class='nx'>label</span><span class='o'>:</span> <span class='s1'>&#39;18-24&#39;</span><span class='p'>,</span> <span class='nx'>group_1_count</span><span class='o'>:</span> <span class='mi'>7</span><span class='p'>,</span> <span class='nx'>group_2_count</span><span class='o'>:</span> <span class='mi'>27</span> <span class='p'>},</span>
+    <span class='p'>{</span> <span class='nx'>label</span><span class='o'>:</span> <span class='s1'>&#39;25-34&#39;</span><span class='p'>,</span> <span class='nx'>group_1_count</span><span class='o'>:</span> <span class='mi'>3</span><span class='p'>,</span> <span class='nx'>group_2_count</span><span class='o'>:</span> <span class='mi'>29</span> <span class='p'>},</span>
+    <span class='p'>{</span> <span class='nx'>label</span><span class='o'>:</span> <span class='s1'>&#39;35-44&#39;</span><span class='p'>,</span> <span class='nx'>group_1_count</span><span class='o'>:</span> <span class='mi'>2</span><span class='p'>,</span> <span class='nx'>group_2_count</span><span class='o'>:</span> <span class='mi'>9</span> <span class='p'>},</span>
+    <span class='p'>{</span> <span class='nx'>label</span><span class='o'>:</span> <span class='s1'>&#39;45-54&#39;</span><span class='p'>,</span> <span class='nx'>group_1_count</span><span class='o'>:</span> <span class='mi'>0</span><span class='p'>,</span> <span class='nx'>group_2_count</span><span class='o'>:</span> <span class='mi'>4</span> <span class='p'>},</span>
+    <span class='p'>{</span> <span class='nx'>label</span><span class='o'>:</span> <span class='s1'>&#39;55+&#39;</span><span class='p'>,</span> <span class='nx'>group_1_count</span><span class='o'>:</span> <span class='mi'>0</span><span class='p'>,</span> <span class='nx'>group_2_count</span><span class='o'>:</span> <span class='mi'>0</span> <span class='p'>}</span>
+    <span class='p'>],</span>
+    <span class='nx'>non_demo_count</span><span class='o'>:</span> <span class='mi'>0</span>
+  <span class='p'>};</span>
+  <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#compplaceholder&quot;</span><span class='p'>).</span><span class='nx'>comphist</span><span class='p'>({},</span> <span class='nx'>comphist_data</span><span class='p'>);</span>
+
+  <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#compplaceholder&quot;</span><span class='p'>).</span><span class='nx'>bind</span><span class='p'>(</span><span class='s2'>&quot;barover&quot;</span><span class='p'>,</span> <span class='kd'>function</span> <span class='p'>(</span><span class='nx'>e</span><span class='p'>,</span> <span class='nx'>perc</span><span class='p'>,</span> <span class='nx'>pos</span><span class='p'>)</span> <span class='p'>{</span>
+    <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#comphist1tooltip&quot;</span><span class='p'>).</span><span class='nx'>remove</span><span class='p'>();</span>
+    <span class='nx'>showCompHistTooltip</span><span class='p'>(</span><span class='nx'>pos</span><span class='p'>.</span><span class='nx'>left</span><span class='p'>,</span> <span class='nx'>pos</span><span class='p'>.</span><span class='nx'>top</span><span class='p'>,</span> <span class='nx'>perc</span><span class='p'>);</span>
+  <span class='p'>});</span>
+  
+  <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#compplaceholder&quot;</span><span class='p'>).</span><span class='nx'>bind</span><span class='p'>(</span><span class='s2'>&quot;barout&quot;</span><span class='p'>,</span> <span class='kd'>function</span> <span class='p'>(</span><span class='nx'>e</span><span class='p'>,</span> <span class='nx'>perc</span><span class='p'>,</span> <span class='nx'>pos</span><span class='p'>)</span> <span class='p'>{</span>
+    <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#comphist1tooltip&quot;</span><span class='p'>).</span><span class='nx'>remove</span><span class='p'>();</span>
+  <span class='p'>});</span>
+<span class='p'>});</span>
+<span class='nt'>&lt;/script&gt;</span>
+</code></pre>
+</div>
 <p>Hopefully, the demo and quick code example helps get you up and running quickly.</p>
     <div style="clear: both;"></div>
   </section>
@@ -172,11 +219,76 @@ $(function () {
 });
 </script>
 <p>The above demo was produced by defining a few code snippets. The first snippet is a snippet of HTML that includes the customized Flot javascript source file. Note: The Flot javascript source file needs to come after the standard jQuery javascript source file. An example of this snippet is as follows:</p>
-
+<div class='highlight'><pre><code class='html'><span class='c'>&lt;!--[if IE]&gt;&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot; src=&quot;../excanvas.min.js&quot;&gt;&lt;/script&gt;&lt;![endif]--&gt;</span>
+<span class='nt'>&lt;script </span><span class='na'>language=</span><span class='s'>&quot;javascript&quot;</span> <span class='na'>type=</span><span class='s'>&quot;text/javascript&quot;</span> <span class='na'>src=</span><span class='s'>&quot;../jquery.js&quot;</span><span class='nt'>&gt;&lt;/script&gt;</span>
+<span class='nt'>&lt;script </span><span class='na'>language=</span><span class='s'>&quot;javascript&quot;</span> <span class='na'>type=</span><span class='s'>&quot;text/javascript&quot;</span> <span class='na'>src=</span><span class='s'>&quot;../jquery.flot.js&quot;</span><span class='nt'>&gt;&lt;/script&gt;</span>
+</code></pre>
+</div>
 <p>Note: In the above snippet the href values are likely to be different in your case. The second code snippet is simply a single line of HTML that is the div that is to be the Multi-series Bar Graph. It is key that this div has an id that is easily referenced and a set height and width. An example of this snippet is as follows:</p>
-
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;div</span> <span class='na'>id=</span><span class='s'>&quot;placeholder&quot;</span> <span class='na'>style=</span><span class='s'>&quot;width: 375px; height: 200px;&quot;</span><span class='nt'>&gt;&lt;/div&gt;</span>
+</code></pre>
+</div>
 <p>The third code snippet needed is the javascript that defines the data, creates the Multi-series Bar Graph in the specified div, and handles the hover functionality. An example of this is seen below.</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;script </span><span class='na'>id=</span><span class='s'>&quot;source&quot;</span><span class='nt'>&gt;</span>
+<span class='nx'>$</span><span class='p'>(</span><span class='kd'>function</span> <span class='p'>()</span> <span class='p'>{</span>
+  <span class='kd'>var</span> <span class='nx'>ms_data</span> <span class='o'>=</span> <span class='p'>[{</span><span class='s2'>&quot;label&quot;</span><span class='o'>:</span><span class='s2'>&quot;FOO&quot;</span><span class='p'>,</span><span class='s2'>&quot;data&quot;</span><span class='o'>:</span><span class='p'>[[</span><span class='mi'>0</span><span class='p'>,</span><span class='mi'>80</span><span class='p'>],[</span><span class='mi'>1</span><span class='p'>,</span><span class='mi'>70</span><span class='p'>],[</span><span class='mi'>2</span><span class='p'>,</span><span class='mi'>100</span><span class='p'>],[</span><span class='mi'>3</span><span class='p'>,</span><span class='mi'>60</span><span class='p'>],[</span><span class='mi'>4</span><span class='p'>,</span><span class='mi'>102</span><span class='p'>]]},</span>
+                 <span class='p'>{</span><span class='s2'>&quot;label&quot;</span><span class='o'>:</span><span class='s2'>&quot;BAR&quot;</span><span class='p'>,</span><span class='s2'>&quot;data&quot;</span><span class='o'>:</span><span class='p'>[[</span><span class='mi'>0</span><span class='p'>,</span><span class='mi'>10</span><span class='p'>],[</span><span class='mi'>1</span><span class='p'>,</span><span class='mi'>20</span><span class='p'>],[</span><span class='mi'>2</span><span class='p'>,</span><span class='mi'>30</span><span class='p'>],[</span><span class='mi'>3</span><span class='p'>,</span><span class='mi'>40</span><span class='p'>],[</span><span class='mi'>4</span><span class='p'>,</span><span class='mi'>80</span><span class='p'>]]},</span>
+                 <span class='p'>{</span><span class='s2'>&quot;label&quot;</span><span class='o'>:</span><span class='s2'>&quot;CAR&quot;</span><span class='p'>,</span><span class='s2'>&quot;data&quot;</span><span class='o'>:</span><span class='p'>[[</span><span class='mi'>0</span><span class='p'>,</span><span class='mi'>5</span><span class='p'>],[</span><span class='mi'>1</span><span class='p'>,</span><span class='mi'>10</span><span class='p'>],[</span><span class='mi'>2</span><span class='p'>,</span><span class='mi'>15</span><span class='p'>],[</span><span class='mi'>3</span><span class='p'>,</span><span class='mi'>20</span><span class='p'>],[</span><span class='mi'>4</span><span class='p'>,</span><span class='mi'>25</span><span class='p'>]]}]</span>
+  <span class='kd'>var</span> <span class='nx'>ms_ticks</span> <span class='o'>=</span> <span class='p'>[[</span><span class='mi'>0</span><span class='p'>,</span><span class='s2'>&quot;1/28&quot;</span><span class='p'>],[</span><span class='mi'>1</span><span class='p'>,</span><span class='s2'>&quot;1/29&quot;</span><span class='p'>],[</span><span class='mi'>2</span><span class='p'>,</span><span class='s2'>&quot;1/30&quot;</span><span class='p'>],[</span><span class='mi'>3</span><span class='p'>,</span><span class='s2'>&quot;1/31&quot;</span><span class='p'>],[</span><span class='mi'>4</span><span class='p'>,</span><span class='s2'>&quot;1/32&quot;</span><span class='p'>]];</span>
+    
+    <span class='kd'>function</span> <span class='nx'>plotWithOptions</span><span class='p'>()</span> <span class='p'>{</span>
+      <span class='nx'>$</span><span class='p'>.</span><span class='nx'>plot</span><span class='p'>(</span><span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#placeholder&quot;</span><span class='p'>),</span> <span class='nx'>ms_data</span><span class='p'>,</span> <span class='p'>{</span>
+        <span class='nx'>bars</span><span class='o'>:</span> <span class='p'>{</span> <span class='nx'>show</span><span class='o'>:</span> <span class='kc'>true</span><span class='p'>,</span> <span class='nx'>barWidth</span><span class='o'>:</span> <span class='mf'>0.6</span><span class='p'>,</span> <span class='nx'>series_spread</span><span class='o'>:</span> <span class='kc'>true</span><span class='p'>,</span> <span class='nx'>align</span><span class='o'>:</span> <span class='s2'>&quot;center&quot;</span> <span class='p'>},</span>
+        <span class='nx'>xaxis</span><span class='o'>:</span> <span class='p'>{</span> <span class='nx'>ticks</span><span class='o'>:</span> <span class='nx'>ms_ticks</span><span class='p'>,</span> <span class='nx'>autoscaleMargin</span><span class='o'>:</span> <span class='p'>.</span><span class='mi'>10</span> <span class='p'>},</span>
+        <span class='nx'>grid</span><span class='o'>:</span> <span class='p'>{</span> <span class='nx'>hoverable</span><span class='o'>:</span> <span class='kc'>true</span><span class='p'>,</span> <span class='nx'>clickable</span><span class='o'>:</span> <span class='kc'>true</span> <span class='p'>}</span>
+      <span class='p'>});</span>
+    <span class='p'>}</span>
+    
+    <span class='kd'>function</span> <span class='nx'>showTooltip</span><span class='p'>(</span><span class='nx'>x</span><span class='p'>,</span> <span class='nx'>y</span><span class='p'>,</span> <span class='nx'>contents</span><span class='p'>)</span> <span class='p'>{</span>
+        <span class='nx'>$</span><span class='p'>(</span><span class='s1'>&#39;&#39;</span><span class='p'>).</span><span class='nx'>css</span><span class='p'>(</span> <span class='p'>{</span>
+            <span class='nx'>position</span><span class='o'>:</span> <span class='s1'>&#39;absolute&#39;</span><span class='p'>,</span>
+            <span class='nx'>display</span><span class='o'>:</span> <span class='s1'>&#39;none&#39;</span><span class='p'>,</span>
+            <span class='nx'>top</span><span class='o'>:</span> <span class='nx'>y</span> <span class='o'>+</span> <span class='mi'>5</span><span class='p'>,</span>
+            <span class='nx'>left</span><span class='o'>:</span> <span class='nx'>x</span> <span class='o'>+</span> <span class='mi'>5</span><span class='p'>,</span>
+            <span class='nx'>border</span><span class='o'>:</span> <span class='s1'>&#39;1px solid #fdd&#39;</span><span class='p'>,</span>
+            <span class='nx'>padding</span><span class='o'>:</span> <span class='s1'>&#39;2px&#39;</span><span class='p'>,</span>
+            <span class='s1'>&#39;background-color&#39;</span><span class='o'>:</span> <span class='s1'>&#39;#fee&#39;</span><span class='p'>,</span>
+            <span class='nx'>opacity</span><span class='o'>:</span> <span class='mf'>0.80</span>
+        <span class='p'>}).</span><span class='nx'>appendTo</span><span class='p'>(</span><span class='s2'>&quot;body&quot;</span><span class='p'>).</span><span class='nx'>show</span><span class='p'>();</span>
+    <span class='p'>}</span>
 
+    <span class='nx'>plotWithOptions</span><span class='p'>();</span>
+
+    <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#placeholder&quot;</span><span class='p'>).</span><span class='nx'>bind</span><span class='p'>(</span><span class='s2'>&quot;plothover&quot;</span><span class='p'>,</span> <span class='kd'>function</span> <span class='p'>(</span><span class='nx'>event</span><span class='p'>,</span> <span class='nx'>pos</span><span class='p'>,</span> <span class='nx'>item</span><span class='p'>)</span> <span class='p'>{</span>
+      <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#x&quot;</span><span class='p'>).</span><span class='nx'>text</span><span class='p'>(</span><span class='nx'>pos</span><span class='p'>.</span><span class='nx'>x</span><span class='p'>.</span><span class='nx'>toFixed</span><span class='p'>(</span><span class='mi'>2</span><span class='p'>));</span>
+      <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#y&quot;</span><span class='p'>).</span><span class='nx'>text</span><span class='p'>(</span><span class='nx'>pos</span><span class='p'>.</span><span class='nx'>y</span><span class='p'>.</span><span class='nx'>toFixed</span><span class='p'>(</span><span class='mi'>2</span><span class='p'>));</span>
+        <span class='k'>if</span> <span class='p'>(</span><span class='nx'>item</span><span class='p'>)</span> <span class='p'>{</span>
+            <span class='k'>if</span> <span class='p'>(</span><span class='nx'>previousPoint</span> <span class='o'>!=</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>datapoint</span><span class='p'>)</span> <span class='p'>{</span>
+                <span class='nx'>previousPoint</span> <span class='o'>=</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>datapoint</span><span class='p'>;</span>
+              
+                <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#tooltip&quot;</span><span class='p'>).</span><span class='nx'>remove</span><span class='p'>();</span>
+                <span class='kd'>var</span> <span class='nx'>x</span> <span class='o'>=</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>datapoint</span><span class='p'>[</span><span class='mi'>0</span><span class='p'>].</span><span class='nx'>toFixed</span><span class='p'>(</span><span class='mi'>2</span><span class='p'>),</span>
+                    <span class='nx'>y</span> <span class='o'>=</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>datapoint</span><span class='p'>[</span><span class='mi'>1</span><span class='p'>].</span><span class='nx'>toFixed</span><span class='p'>(</span><span class='mi'>2</span><span class='p'>);</span>
+              
+                <span class='nx'>showTooltip</span><span class='p'>(</span><span class='nx'>item</span><span class='p'>.</span><span class='nx'>pageX</span><span class='p'>,</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>pageY</span><span class='p'>,</span>
+                            <span class='nx'>item</span><span class='p'>.</span><span class='nx'>series</span><span class='p'>.</span><span class='nx'>label</span> <span class='o'>+</span> <span class='s2'>&quot; Group id: &quot;</span> <span class='o'>+</span> <span class='nb'>Math</span><span class='p'>.</span><span class='nx'>floor</span><span class='p'>(</span><span class='nx'>x</span><span class='p'>)</span> <span class='o'>+</span> <span class='s2'>&quot;, y = &quot;</span> <span class='o'>+</span> <span class='nx'>y</span> <span class='o'>+</span> <span class='s2'>&quot;, seriesIndex: &quot;</span> <span class='o'>+</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>seriesIndex</span><span class='p'>);</span>
+            <span class='p'>}</span>
+        <span class='p'>}</span>
+        <span class='k'>else</span> <span class='p'>{</span>
+            <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#tooltip&quot;</span><span class='p'>).</span><span class='nx'>remove</span><span class='p'>();</span>
+            <span class='nx'>previousPoint</span> <span class='o'>=</span> <span class='kc'>null</span><span class='p'>;</span>            
+        <span class='p'>}</span>
+    <span class='p'>});</span>
+
+    <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#placeholder&quot;</span><span class='p'>).</span><span class='nx'>bind</span><span class='p'>(</span><span class='s2'>&quot;plotclick&quot;</span><span class='p'>,</span> <span class='kd'>function</span> <span class='p'>(</span><span class='nx'>event</span><span class='p'>,</span> <span class='nx'>pos</span><span class='p'>,</span> <span class='nx'>item</span><span class='p'>)</span> <span class='p'>{</span>
+        <span class='k'>if</span> <span class='p'>(</span><span class='nx'>item</span><span class='p'>)</span> <span class='p'>{</span>
+            <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#clickdata&quot;</span><span class='p'>).</span><span class='nx'>text</span><span class='p'>(</span><span class='s2'>&quot;You clicked bar &quot;</span> <span class='o'>+</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>dataIndex</span> <span class='o'>+</span> <span class='s2'>&quot; in &quot;</span> <span class='o'>+</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>series</span><span class='p'>.</span><span class='nx'>label</span> <span class='o'>+</span> <span class='s2'>&quot;.&quot;</span><span class='p'>);</span>
+        <span class='p'>}</span>
+    <span class='p'>});</span>
+<span class='p'>});</span>
+<span class='nt'>&lt;/script&gt;</span>
+</code></pre>
+</div>
 <p>Hopefully, the demo and quick code example helps get you up and running.</p>
     <div style="clear: both;"></div>
   </section>
@@ -221,11 +333,65 @@ $(function () {
 <p>Lets assume that you are using Prototype because I was, and it is a very common AJAX JavaScript library. The first thing I looked to find out was if there was an event fired off to the portion that is generated by AJAX request. The answer is, not that I could find. There are events in the top level document but none which really help you. Since, there are no events or callbacks in the child document (one produced by the ajax call and loaded into the top level) and no script tags carried through to the top level document we first have to figure out a way to get the JavaScript code to the top level document and then secondarily have JavaScript evaluate it.</p>
 
 <p>In order to get the script tags content to the top level document I had to create a div that contained the raw content of the script tag that I wanted available. Beyond that the div had to have a unique ID that was able to be obtained programatically in the top level document using JavaScript. An example of this might look as follows (html.erb template of JavaScript):</p>
+<div class='highlight'><pre><code class='html'>  <span class='nt'>&lt;div</span> <span class='na'>id=</span><span class='s'>&quot;&lt;%= calendar_id %&gt;_script&quot;</span> <span class='na'>style=</span><span class='s'>&quot;display: none;&quot;</span><span class='nt'>&gt;</span>;
+  <span class='err'>&lt;</span>%= calendar_id %&gt;SelectHandler = function(type, args, obj){
+    var selected = args[0];
+    var selDate = selected[0][0] + &quot;-&quot; + selected[0][1] + &quot;-&quot; + selected[0][2];
+    <span class='err'>&lt;</span>% if txt_input_id.nil? %&gt;
+      document.getElementById(&quot;<span class='err'>&lt;</span>%= calendar_namespace %&gt;_<span class='err'>&lt;</span>%= calendar_id %&gt;&quot;).value = selDate;
+      <span class='err'>&lt;</span>%= calendar_id %&gt;hide();
+    <span class='err'>&lt;</span>% else %&gt;
+      document.getElementById(&quot;<span class='err'>&lt;</span>%= txt_input_id %&gt;&quot;).value = selDate;
+      <span class='err'>&lt;</span>%= calendar_id %&gt;hide();
+    <span class='err'>&lt;</span>% end %&gt;
+  }
 
+  <span class='err'>&lt;</span>%= calendar_id %&gt;show = function (){
+    var cur_z = $(&#39;<span class='err'>&lt;</span>%= calendar_container %&gt;&#39;).style.zIndex;
+    if (!cur_z) {
+      cur_z = 1;
+    } else {
+      cur_z = parseInt(cur_z);
+    }
+    $(&#39;<span class='err'>&lt;</span>%= calendar_container %&gt;&#39;).show();
+    $(&#39;<span class='err'>&lt;</span>%= calendar_container %&gt;&#39;).style.zIndex = (cur_z + 1);
+  }
+
+  <span class='err'>&lt;</span>%= calendar_id %&gt;hide = function(){
+    var cur_z = $(&#39;<span class='err'>&lt;</span>%= calendar_container %&gt;&#39;).style.zIndex;
+    if (!cur_z) {
+      cur_z = 1;
+    } else {
+      cur_z = parseInt(cur_z);
+    }
+    $(&#39;<span class='err'>&lt;</span>%= calendar_container %&gt;&#39;).hide();
+    $(&#39;<span class='err'>&lt;</span>%= calendar_container %&gt;&#39;).style.zIndex = (cur_z - 1);
+  }
+
+  YAHOO.namespace(&quot;<span class='err'>&lt;</span>%= calendar_namespace %&gt;.<span class='err'>&lt;</span>%= calendar_id %&gt;&quot;);
+  YAHOO.<span class='err'>&lt;</span>%= calendar_namespace %&gt;.<span class='err'>&lt;</span>%= calendar_id %&gt;.init = function() {
+    YAHOO.<span class='err'>&lt;</span>%= calendar_namespace %&gt;.<span class='err'>&lt;</span>%= calendar_id %&gt;.Cal = new YAHOO.widget.Calendar(&quot;<span class='err'>&lt;</span>%= calendar_id %&gt;&quot;,&quot;<span class='err'>&lt;</span>%= calendar_container %&gt;&quot;, <span class='err'>&lt;</span>%= @opts %&gt;);
+
+    YAHOO.<span class='err'>&lt;</span>%= calendar_namespace %&gt;.<span class='err'>&lt;</span>%= calendar_id %&gt;.Cal.selectEvent.subscribe(<span class='err'>&lt;</span>%= calendar_id %&gt;SelectHandler, YAHOO.<span class='err'>&lt;</span>%= calendar_namespace %&gt;.<span class='err'>&lt;</span>%= calendar_id %&gt;.Cal, true);
+    YAHOO.<span class='err'>&lt;</span>%= calendar_namespace %&gt;.<span class='err'>&lt;</span>%= calendar_id %&gt;.Cal.render();
+  }
+<span class='nt'>&lt;/div&gt;</span>
+</code></pre>
+</div>
 <p>This div with a unique id gives me the capability of pulling out the associated raw JavaScript that is the innerHTML content of this div in the top level document and having the top level documents JavaScript evaluate it. This can be done with a JavaScript function like the following:</p>
-
+<div class='highlight'><pre><code class='html'>function createRowEditCalendar(id) {
+  var script = document.getElementById(&quot;cal_visited_on_&quot; + id + &quot;_script&quot;).innerHTML;
+  eval(script);
+  var my_init_cmd = &quot;YAHOO.namespace_o_hell.cal_visited_on_&quot; + id + &quot;.init();&quot;;
+  eval(my_init_cmd);
+  return true;
+}
+</code></pre>
+</div>
 <p>The next logical question of course is what event or callback launches the above JavaScript function in the top level document. The answer in this case is simply to use the Prototypes Ajax.Updater onComplete callback by having it first programatically figure out the name of the div using the reproducible naming scheme and then call the above JavaScript function passing it the necessary id to access the hidden JavaScript div. This might look something like the following:</p>
-
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;input</span> <span class='na'>type=</span><span class='s'>&quot;button&quot;</span> <span class='na'>id=</span><span class='s'>&quot;rowedit_create_button&quot;</span> <span class='na'>value=</span><span class='s'>&quot;Create&quot;</span> <span class='na'>onclick=</span><span class='s'>&quot;new Ajax.Updater(&lt;% if prefix %&gt; &#39;&lt;%= prefix %&gt;_rowedit_data_rows&#39; &lt;% else %&gt; &#39;rowedit_data_rows&#39; &lt;% end %&gt;, &#39;&lt;%= urls[:create] %&gt;&#39;, {asynchronous:true, parameters:$(&lt;% if prefix %&gt; &#39;&lt;%= prefix %&gt;_rowedit_create_form&#39; &lt;% else %&gt; &#39;rowedit_create_form&#39; &lt;% end %&gt;).serialize(), insertion: Insertion.Bottom, onComplete: function() { var drows = document.getElementById(&#39;rowedit_data_rows&#39;); var last_row_id = drows.lastChild.id; last_row_id = last_row_id.replace(&#39;edit_&#39;, &#39;&#39;); last_row_id = last_row_id.replace(&#39;_row&#39;, &#39;&#39;); createRowEditCalendar(last_row_id); } });&quot;</span><span class='nt'>/&gt;</span>
+</code></pre>
+</div>
 <p>Assuming that you have those three components in place and properly setup with all the syntax correct you should have a working solution. Note: Be very careful of syntax errors in the JavaScript inside the eval() method because FireBug won&#8217;t detect them, or run-time errors in the JavaScript anywhere because not all of them will be detected by FireBug. Anyways, hope this helps someone out there, it sure would have helped me if I had it.</p>
     <div style="clear: both;"></div>
   </section>

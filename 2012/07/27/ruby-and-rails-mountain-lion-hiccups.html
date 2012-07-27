@@ -54,10 +54,10 @@
 <h2 id='gcc42'>gcc-4.2</h2>
 
 <p>The latest XCode now comes with clang/llvm which is a new C/C++/Objective-C compiler. The problem is that the Ruby language isn&#8217;t fully compatible with clang and llvm. Therefore, you need to install GCC 4.2 using Homebrew. GCC 4.2 is the latest version of the GCC compiler that apple provided before switching to clang/llvm. Anyways, you can install GCC 4.2 by doing the following with brew:</p>
-
-<pre><code>brew tap homebrew/dupes
-brew install apple-gcc42</code></pre>
-
+<div class='highlight'><pre><code class='bash'>brew tap homebrew/dupes
+brew install apple-gcc42
+</code></pre>
+</div>
 <p>The above will install the apple gcc-4.2 in a side by side fashion with XCode. This means that it won&#8217;t mess up your existing XCode install like other solutions.</p>
 
 <p>Once you install gcc-4.2 then you can install/reinstall your ruby version inside of RVM as needed.</p>
@@ -65,16 +65,29 @@ brew install apple-gcc42</code></pre>
 <h2 id='apache_2_web_sharing'>Apache 2 (Web Sharing)</h2>
 
 <p>In the upgrade it seems that they have revamped the Sharing preference pane. In the process of this it seems that Apple has decided to remove the Web sharing component of this preference pane. Don&#8217;t worry though. Apache is still there and running. You just can&#8217;t start it and stop it from the preferences pane anymore. You can use the following commands instead.</p>
-
-<pre><code>sudo apachectl stop
+<div class='highlight'><pre><code class='bash'>sudo apachectl stop
 sudo apachectl start
-sudo apachectl restart</code></pre>
-
+sudo apachectl restart
+</code></pre>
+</div>
 <p><strong>Note:</strong> When the upgrade happened it nuked all my <code>/etc/apache2/users/</code> configs and all my other apache configs. So, if you have any custom apache configs as I did you should probably back them up before upgrading.</p>
 
 <h2 id='x11'>X11</h2>
 
 <p>It seems that another thing that was changed with the upgrade to Mac OS X Mountain Lion was that they removed the X11 that I had previously installed and seemed to no longer provide it. Thats ok though because XQuartz 2.7.2 is what you want and it is available freely at <a href='http://xquartz.macosforge.org/landing/'>http://xquartz.macosforge.org/landing/</a>. Just install that bad boy and follow the on screen instructions to reboot when it is done and you should be good to go in terms of X11.</p>
+
+<h2 id='imagemagick'>ImageMagick</h2>
+
+<p>Before upgrading I had ImageMagick installed via Homebrew. After, the upgrade was finished my ImageMagick was exiting with failures about some dylib. To solve this problem I simply ran the following and I was back in running order with respect to ImageMagick:</p>
+<div class='highlight'><pre><code class='bash'>brew upgrade imagemagick
+</code></pre>
+</div>
+<h2 id='pygments'>Pygments</h2>
+
+<p>I use Pygments to handle syntax highlighting in my jekyll sites and it seemed to not be working after the upgrade. I believe this is because it is now using Python 2.7.2. To resolve this issue I just re-installed Pygments using the following:</p>
+<div class='highlight'><pre><code class='bash'>sudo easy_install Pygments
+</code></pre>
+</div>
     <div style="clear: both;"></div>
   </section>
 

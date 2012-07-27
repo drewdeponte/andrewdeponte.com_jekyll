@@ -94,76 +94,11 @@ $(function () {
 });
 </script>
 <p>The above demo was produced by defining a few code snippets. The first snippet is a snippet of HTML that includes the customized Flot javascript source file. Note: The Flot javascript source file needs to come after the standard jQuery javascript source file. An example of this snippet is as follows:</p>
-<div class='highlight'><pre><code class='html'><span class='c'>&lt;!--[if IE]&gt;&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot; src=&quot;../excanvas.min.js&quot;&gt;&lt;/script&gt;&lt;![endif]--&gt;</span>
-<span class='nt'>&lt;script </span><span class='na'>language=</span><span class='s'>&quot;javascript&quot;</span> <span class='na'>type=</span><span class='s'>&quot;text/javascript&quot;</span> <span class='na'>src=</span><span class='s'>&quot;../jquery.js&quot;</span><span class='nt'>&gt;&lt;/script&gt;</span>
-<span class='nt'>&lt;script </span><span class='na'>language=</span><span class='s'>&quot;javascript&quot;</span> <span class='na'>type=</span><span class='s'>&quot;text/javascript&quot;</span> <span class='na'>src=</span><span class='s'>&quot;../jquery.flot.js&quot;</span><span class='nt'>&gt;&lt;/script&gt;</span>
-</code></pre>
-</div>
+
 <p>Note: In the above snippet the href values are likely to be different in your case. The second code snippet is simply a single line of HTML that is the div that is to be the Multi-series Bar Graph. It is key that this div has an id that is easily referenced and a set height and width. An example of this snippet is as follows:</p>
-<div class='highlight'><pre><code class='html'><span class='nt'>&lt;div</span> <span class='na'>id=</span><span class='s'>&quot;placeholder&quot;</span> <span class='na'>style=</span><span class='s'>&quot;width: 375px; height: 200px;&quot;</span><span class='nt'>&gt;&lt;/div&gt;</span>
-</code></pre>
-</div>
+
 <p>The third code snippet needed is the javascript that defines the data, creates the Multi-series Bar Graph in the specified div, and handles the hover functionality. An example of this is seen below.</p>
-<div class='highlight'><pre><code class='html'><span class='nt'>&lt;script </span><span class='na'>id=</span><span class='s'>&quot;source&quot;</span><span class='nt'>&gt;</span>
-<span class='nx'>$</span><span class='p'>(</span><span class='kd'>function</span> <span class='p'>()</span> <span class='p'>{</span>
-  <span class='kd'>var</span> <span class='nx'>ms_data</span> <span class='o'>=</span> <span class='p'>[{</span><span class='s2'>&quot;label&quot;</span><span class='o'>:</span><span class='s2'>&quot;FOO&quot;</span><span class='p'>,</span><span class='s2'>&quot;data&quot;</span><span class='o'>:</span><span class='p'>[[</span><span class='mi'>0</span><span class='p'>,</span><span class='mi'>80</span><span class='p'>],[</span><span class='mi'>1</span><span class='p'>,</span><span class='mi'>70</span><span class='p'>],[</span><span class='mi'>2</span><span class='p'>,</span><span class='mi'>100</span><span class='p'>],[</span><span class='mi'>3</span><span class='p'>,</span><span class='mi'>60</span><span class='p'>],[</span><span class='mi'>4</span><span class='p'>,</span><span class='mi'>102</span><span class='p'>]]},</span>
-                 <span class='p'>{</span><span class='s2'>&quot;label&quot;</span><span class='o'>:</span><span class='s2'>&quot;BAR&quot;</span><span class='p'>,</span><span class='s2'>&quot;data&quot;</span><span class='o'>:</span><span class='p'>[[</span><span class='mi'>0</span><span class='p'>,</span><span class='mi'>10</span><span class='p'>],[</span><span class='mi'>1</span><span class='p'>,</span><span class='mi'>20</span><span class='p'>],[</span><span class='mi'>2</span><span class='p'>,</span><span class='mi'>30</span><span class='p'>],[</span><span class='mi'>3</span><span class='p'>,</span><span class='mi'>40</span><span class='p'>],[</span><span class='mi'>4</span><span class='p'>,</span><span class='mi'>80</span><span class='p'>]]},</span>
-                 <span class='p'>{</span><span class='s2'>&quot;label&quot;</span><span class='o'>:</span><span class='s2'>&quot;CAR&quot;</span><span class='p'>,</span><span class='s2'>&quot;data&quot;</span><span class='o'>:</span><span class='p'>[[</span><span class='mi'>0</span><span class='p'>,</span><span class='mi'>5</span><span class='p'>],[</span><span class='mi'>1</span><span class='p'>,</span><span class='mi'>10</span><span class='p'>],[</span><span class='mi'>2</span><span class='p'>,</span><span class='mi'>15</span><span class='p'>],[</span><span class='mi'>3</span><span class='p'>,</span><span class='mi'>20</span><span class='p'>],[</span><span class='mi'>4</span><span class='p'>,</span><span class='mi'>25</span><span class='p'>]]}]</span>
-  <span class='kd'>var</span> <span class='nx'>ms_ticks</span> <span class='o'>=</span> <span class='p'>[[</span><span class='mi'>0</span><span class='p'>,</span><span class='s2'>&quot;1/28&quot;</span><span class='p'>],[</span><span class='mi'>1</span><span class='p'>,</span><span class='s2'>&quot;1/29&quot;</span><span class='p'>],[</span><span class='mi'>2</span><span class='p'>,</span><span class='s2'>&quot;1/30&quot;</span><span class='p'>],[</span><span class='mi'>3</span><span class='p'>,</span><span class='s2'>&quot;1/31&quot;</span><span class='p'>],[</span><span class='mi'>4</span><span class='p'>,</span><span class='s2'>&quot;1/32&quot;</span><span class='p'>]];</span>
-    
-    <span class='kd'>function</span> <span class='nx'>plotWithOptions</span><span class='p'>()</span> <span class='p'>{</span>
-      <span class='nx'>$</span><span class='p'>.</span><span class='nx'>plot</span><span class='p'>(</span><span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#placeholder&quot;</span><span class='p'>),</span> <span class='nx'>ms_data</span><span class='p'>,</span> <span class='p'>{</span>
-        <span class='nx'>bars</span><span class='o'>:</span> <span class='p'>{</span> <span class='nx'>show</span><span class='o'>:</span> <span class='kc'>true</span><span class='p'>,</span> <span class='nx'>barWidth</span><span class='o'>:</span> <span class='mf'>0.6</span><span class='p'>,</span> <span class='nx'>series_spread</span><span class='o'>:</span> <span class='kc'>true</span><span class='p'>,</span> <span class='nx'>align</span><span class='o'>:</span> <span class='s2'>&quot;center&quot;</span> <span class='p'>},</span>
-        <span class='nx'>xaxis</span><span class='o'>:</span> <span class='p'>{</span> <span class='nx'>ticks</span><span class='o'>:</span> <span class='nx'>ms_ticks</span><span class='p'>,</span> <span class='nx'>autoscaleMargin</span><span class='o'>:</span> <span class='p'>.</span><span class='mi'>10</span> <span class='p'>},</span>
-        <span class='nx'>grid</span><span class='o'>:</span> <span class='p'>{</span> <span class='nx'>hoverable</span><span class='o'>:</span> <span class='kc'>true</span><span class='p'>,</span> <span class='nx'>clickable</span><span class='o'>:</span> <span class='kc'>true</span> <span class='p'>}</span>
-      <span class='p'>});</span>
-    <span class='p'>}</span>
-    
-    <span class='kd'>function</span> <span class='nx'>showTooltip</span><span class='p'>(</span><span class='nx'>x</span><span class='p'>,</span> <span class='nx'>y</span><span class='p'>,</span> <span class='nx'>contents</span><span class='p'>)</span> <span class='p'>{</span>
-        <span class='nx'>$</span><span class='p'>(</span><span class='s1'>&#39;&#39;</span><span class='p'>).</span><span class='nx'>css</span><span class='p'>(</span> <span class='p'>{</span>
-            <span class='nx'>position</span><span class='o'>:</span> <span class='s1'>&#39;absolute&#39;</span><span class='p'>,</span>
-            <span class='nx'>display</span><span class='o'>:</span> <span class='s1'>&#39;none&#39;</span><span class='p'>,</span>
-            <span class='nx'>top</span><span class='o'>:</span> <span class='nx'>y</span> <span class='o'>+</span> <span class='mi'>5</span><span class='p'>,</span>
-            <span class='nx'>left</span><span class='o'>:</span> <span class='nx'>x</span> <span class='o'>+</span> <span class='mi'>5</span><span class='p'>,</span>
-            <span class='nx'>border</span><span class='o'>:</span> <span class='s1'>&#39;1px solid #fdd&#39;</span><span class='p'>,</span>
-            <span class='nx'>padding</span><span class='o'>:</span> <span class='s1'>&#39;2px&#39;</span><span class='p'>,</span>
-            <span class='s1'>&#39;background-color&#39;</span><span class='o'>:</span> <span class='s1'>&#39;#fee&#39;</span><span class='p'>,</span>
-            <span class='nx'>opacity</span><span class='o'>:</span> <span class='mf'>0.80</span>
-        <span class='p'>}).</span><span class='nx'>appendTo</span><span class='p'>(</span><span class='s2'>&quot;body&quot;</span><span class='p'>).</span><span class='nx'>show</span><span class='p'>();</span>
-    <span class='p'>}</span>
 
-    <span class='nx'>plotWithOptions</span><span class='p'>();</span>
-
-    <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#placeholder&quot;</span><span class='p'>).</span><span class='nx'>bind</span><span class='p'>(</span><span class='s2'>&quot;plothover&quot;</span><span class='p'>,</span> <span class='kd'>function</span> <span class='p'>(</span><span class='nx'>event</span><span class='p'>,</span> <span class='nx'>pos</span><span class='p'>,</span> <span class='nx'>item</span><span class='p'>)</span> <span class='p'>{</span>
-      <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#x&quot;</span><span class='p'>).</span><span class='nx'>text</span><span class='p'>(</span><span class='nx'>pos</span><span class='p'>.</span><span class='nx'>x</span><span class='p'>.</span><span class='nx'>toFixed</span><span class='p'>(</span><span class='mi'>2</span><span class='p'>));</span>
-      <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#y&quot;</span><span class='p'>).</span><span class='nx'>text</span><span class='p'>(</span><span class='nx'>pos</span><span class='p'>.</span><span class='nx'>y</span><span class='p'>.</span><span class='nx'>toFixed</span><span class='p'>(</span><span class='mi'>2</span><span class='p'>));</span>
-        <span class='k'>if</span> <span class='p'>(</span><span class='nx'>item</span><span class='p'>)</span> <span class='p'>{</span>
-            <span class='k'>if</span> <span class='p'>(</span><span class='nx'>previousPoint</span> <span class='o'>!=</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>datapoint</span><span class='p'>)</span> <span class='p'>{</span>
-                <span class='nx'>previousPoint</span> <span class='o'>=</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>datapoint</span><span class='p'>;</span>
-              
-                <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#tooltip&quot;</span><span class='p'>).</span><span class='nx'>remove</span><span class='p'>();</span>
-                <span class='kd'>var</span> <span class='nx'>x</span> <span class='o'>=</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>datapoint</span><span class='p'>[</span><span class='mi'>0</span><span class='p'>].</span><span class='nx'>toFixed</span><span class='p'>(</span><span class='mi'>2</span><span class='p'>),</span>
-                    <span class='nx'>y</span> <span class='o'>=</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>datapoint</span><span class='p'>[</span><span class='mi'>1</span><span class='p'>].</span><span class='nx'>toFixed</span><span class='p'>(</span><span class='mi'>2</span><span class='p'>);</span>
-              
-                <span class='nx'>showTooltip</span><span class='p'>(</span><span class='nx'>item</span><span class='p'>.</span><span class='nx'>pageX</span><span class='p'>,</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>pageY</span><span class='p'>,</span>
-                            <span class='nx'>item</span><span class='p'>.</span><span class='nx'>series</span><span class='p'>.</span><span class='nx'>label</span> <span class='o'>+</span> <span class='s2'>&quot; Group id: &quot;</span> <span class='o'>+</span> <span class='nb'>Math</span><span class='p'>.</span><span class='nx'>floor</span><span class='p'>(</span><span class='nx'>x</span><span class='p'>)</span> <span class='o'>+</span> <span class='s2'>&quot;, y = &quot;</span> <span class='o'>+</span> <span class='nx'>y</span> <span class='o'>+</span> <span class='s2'>&quot;, seriesIndex: &quot;</span> <span class='o'>+</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>seriesIndex</span><span class='p'>);</span>
-            <span class='p'>}</span>
-        <span class='p'>}</span>
-        <span class='k'>else</span> <span class='p'>{</span>
-            <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#tooltip&quot;</span><span class='p'>).</span><span class='nx'>remove</span><span class='p'>();</span>
-            <span class='nx'>previousPoint</span> <span class='o'>=</span> <span class='kc'>null</span><span class='p'>;</span>            
-        <span class='p'>}</span>
-    <span class='p'>});</span>
-
-    <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#placeholder&quot;</span><span class='p'>).</span><span class='nx'>bind</span><span class='p'>(</span><span class='s2'>&quot;plotclick&quot;</span><span class='p'>,</span> <span class='kd'>function</span> <span class='p'>(</span><span class='nx'>event</span><span class='p'>,</span> <span class='nx'>pos</span><span class='p'>,</span> <span class='nx'>item</span><span class='p'>)</span> <span class='p'>{</span>
-        <span class='k'>if</span> <span class='p'>(</span><span class='nx'>item</span><span class='p'>)</span> <span class='p'>{</span>
-            <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#clickdata&quot;</span><span class='p'>).</span><span class='nx'>text</span><span class='p'>(</span><span class='s2'>&quot;You clicked bar &quot;</span> <span class='o'>+</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>dataIndex</span> <span class='o'>+</span> <span class='s2'>&quot; in &quot;</span> <span class='o'>+</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>series</span><span class='p'>.</span><span class='nx'>label</span> <span class='o'>+</span> <span class='s2'>&quot;.&quot;</span><span class='p'>);</span>
-        <span class='p'>}</span>
-    <span class='p'>});</span>
-<span class='p'>});</span>
-<span class='nt'>&lt;/script&gt;</span>
-</code></pre>
-</div>
 <p>Hopefully, the demo and quick code example helps get you up and running.</p>
     <div style="clear: both;"></div>
   </section>
@@ -241,7 +176,7 @@ $(function () {
   
   <a class="tag" href="/tag/TextMate"><span class="tag_name">TextMate</span> <span class="tag_usage_count">(1)</span></a>
   
-  <a class="tag" href="/tag/Software Development"><span class="tag_name">Software Development</span> <span class="tag_usage_count">(23)</span></a>
+  <a class="tag" href="/tag/Software Development"><span class="tag_name">Software Development</span> <span class="tag_usage_count">(24)</span></a>
   
   <a class="tag" href="/tag/Media Management"><span class="tag_name">Media Management</span> <span class="tag_usage_count">(1)</span></a>
   
@@ -351,7 +286,7 @@ $(function () {
   
   <a class="tag" href="/tag/Mac OS X"><span class="tag_name">Mac OS X</span> <span class="tag_usage_count">(3)</span></a>
   
-  <a class="tag" href="/tag/Ruby"><span class="tag_name">Ruby</span> <span class="tag_usage_count">(4)</span></a>
+  <a class="tag" href="/tag/Ruby"><span class="tag_name">Ruby</span> <span class="tag_usage_count">(5)</span></a>
   
   <a class="tag" href="/tag/Things"><span class="tag_name">Things</span> <span class="tag_usage_count">(1)</span></a>
   
@@ -519,11 +454,15 @@ $(function () {
   
   <a class="tag" href="/tag/Guard"><span class="tag_name">Guard</span> <span class="tag_usage_count">(1)</span></a>
   
+  <a class="tag" href="/tag/Mac OS X Mountain Lion"><span class="tag_name">Mac OS X Mountain Lion</span> <span class="tag_usage_count">(1)</span></a>
+  
+  <a class="tag" href="/tag/Rails"><span class="tag_name">Rails</span> <span class="tag_usage_count">(1)</span></a>
+  
 </div>
 
         </div>
         <div>
-          <div class="archives_list"><h2>Archives</h2><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
+          <div class="archives_list"><h2>Archives</h2><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
         </div>
       </aside>
       <div style="clear: both;"></div>

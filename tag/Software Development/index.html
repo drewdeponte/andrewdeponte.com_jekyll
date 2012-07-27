@@ -31,6 +31,70 @@
         
   <article class='blog-post'>
   <header>
+    <h2 class='title'><a href="/2012/07/27/ruby-and-rails-mountain-lion-hiccups.html">Ruby and Rails Mountain Lion Hiccups</a></h2>
+    <div class='posted-info'>
+      <time datetime='2012-07-27T00:00:00Z' pubdate='pubdate' class='published-datetime'>July 27, 2012</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>So when Mac OS X Mountain Lion was released a few days ago I jumped on upgrading and got switched over as soon as I could. My mentality for upgrading is that I would much rather deal with the pain of upgrading in smaller chunks when needed rather than waiting. Plus, I just like to be on the latest and greatest in terms of the tools I use for my job.</p>
+
+<p>Anyways, below is going to be a listing of some of the hiccups that either I or other developers on my team have run into in terms of their Ruby and Rails development environment setups.</p>
+
+<h2 id='git'>Git</h2>
+
+<p>Some of the devs on my team had Git installed via the <a href='http://code.google.com/p/git-osx-installer/'>git-osx-installer</a>. These developers seemed to lose their Git installs when they upgraded. I was using a <a href='http://mxcl.github.com/homebrew/'>Homebrew</a> install of Git and it worked just fine for me after upgrading. So be aware of what your situation is and resort to brew because it is awesome.</p>
+
+<h2 id='xcode_44'>XCode 4.4</h2>
+
+<p>In order to build gems with the native exensions and just to have the basic development tools around I installed the latest XCode 4.4. Once installed I went to the preferences menu, in the download tab, and chose to install the <em>Command Line Tools</em> because that is really what I was looking for more than anything. I have read on other posts online that you can download the <em>Command Line Tools</em> alone and install just them. I personally chose to install XCode as I do use XCode and the native tools to work on iPhone/iPad app development as well.</p>
+
+<h2 id='gcc42'>gcc-4.2</h2>
+
+<p>The latest XCode now comes with clang/llvm which is a new C/C++/Objective-C compiler. The problem is that the Ruby language isn&#8217;t fully compatible with clang and llvm. Therefore, you need to install GCC 4.2 using Homebrew. GCC 4.2 is the latest version of the GCC compiler that apple provided before switching to clang/llvm. Anyways, you can install GCC 4.2 by doing the following with brew:</p>
+
+<pre><code>brew tap homebrew/dupes
+brew install apple-gcc42</code></pre>
+
+<p>The above will install the apple gcc-4.2 in a side by side fashion with XCode. This means that it won&#8217;t mess up your existing XCode install like other solutions.</p>
+
+<p>Once you install gcc-4.2 then you can install/reinstall your ruby version inside of RVM as needed.</p>
+
+<h2 id='apache_2_web_sharing'>Apache 2 (Web Sharing)</h2>
+
+<p>In the upgrade it seems that they have revamped the Sharing preference pane. In the process of this it seems that Apple has decided to remove the Web sharing component of this preference pane. Don&#8217;t worry though. Apache is still there and running. You just can&#8217;t start it and stop it from the preferences pane anymore. You can use the following commands instead.</p>
+
+<pre><code>sudo apachectl stop
+sudo apachectl start
+sudo apachectl restart</code></pre>
+
+<p><strong>Note:</strong> When the upgrade happened it nuked all my <code>/etc/apache2/users/</code> configs and all my other apache configs. So, if you have any custom apache configs as I did you should probably back them up before upgrading.</p>
+
+<h2 id='x11'>X11</h2>
+
+<p>It seems that another thing that was changed with the upgrade to Mac OS X Mountain Lion was that they removed the X11 that I had previously installed and seemed to no longer provide it. Thats ok though because XQuartz 2.7.2 is what you want and it is available freely at <a href='http://xquartz.macosforge.org/landing/'>http://xquartz.macosforge.org/landing/</a>. Just install that bad boy and follow the on screen instructions to reboot when it is done and you should be good to go in terms of X11.</p>
+    <div style="clear: both;"></div>
+  </section>
+
+  <footer>
+    
+      <a class="tag" href="/tag/Mac OS X Mountain Lion">Mac OS X Mountain Lion</a>
+    
+      <a class="tag" href="/tag/Ruby">Ruby</a>
+    
+      <a class="tag" href="/tag/Rails">Rails</a>
+    
+      <a class="tag" href="/tag/Software Development">Software Development</a>
+    
+  </footer>
+</article>
+
+
+  <article class='blog-post'>
+  <header>
     <h2 class='title'><a href="/2012/07/25/sublime-text-2-guard-plugin-updates.html">Sublime Text 2 Guard Plugin Updates</a></h2>
     <div class='posted-info'>
       <time datetime='2012-07-25T00:00:00Z' pubdate='pubdate' class='published-datetime'>July 25, 2012</time>
@@ -891,125 +955,13 @@ Codes</code> so that the output is a bit cleaner.</li>
 <p>Given the functionality of <a href='http://projects.tynsoe.org/en/geektool/'>GeekTool</a> all that was really left was to write shell scripts/console applications that output all of my tickets from the various ticket sources and I would have a very quick and functional solution to my issue. Hence, I got to writing and pumped out the following short little Ruby scripts, and one AppleScript script to provide output of all my tickets from the various sources.</p>
 
 <p>The following is a ruby script that pulls all my tickets in from all of my various <a href='http://lighthouseapp.com/'>Lighthouse</a> accounts and projects.</p>
-<div class='highlight'><pre><code class='ruby'><span class='c1'>#!/usr/bin/env ruby</span>
-<span class='nb'>require</span> <span class='s1'>&#39;rubygems&#39;</span>
-<span class='nb'>require</span> <span class='s1'>&#39;lighthouse-api&#39;</span>
 
-<span class='kp'>include</span> <span class='no'>Lighthouse</span>
-
-<span class='n'>accounts</span> <span class='o'>=</span> <span class='o'>[</span><span class='s1'>&#39;domain one&#39;</span><span class='p'>,</span> <span class='s1'>&#39;domain two&#39;</span><span class='p'>,</span> <span class='s1'>&#39;domain three&#39;</span><span class='o'>]</span>
-<span class='no'>Lighthouse</span><span class='o'>.</span><span class='n'>token</span> <span class='o'>=</span> <span class='s1'>&#39;your lighthouse All Accounts token&#39;</span>
-
-<span class='n'>accounts</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>a</span><span class='o'>|</span>
-  <span class='no'>Lighthouse</span><span class='o'>.</span><span class='n'>account</span> <span class='o'>=</span> <span class='n'>a</span>
-  <span class='no'>Project</span><span class='o'>.</span><span class='n'>find</span><span class='p'>(</span><span class='ss'>:all</span><span class='p'>)</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span> <span class='o'>|</span><span class='nb'>p</span><span class='o'>|</span>
-    <span class='k'>if</span> <span class='p'>(</span><span class='o'>!</span><span class='nb'>p</span><span class='o'>.</span><span class='n'>archived</span><span class='p'>)</span>
-      <span class='n'>ticks</span> <span class='o'>=</span> <span class='nb'>p</span><span class='o'>.</span><span class='n'>tickets</span><span class='p'>({</span><span class='ss'>:q</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;responsible:me sort:priority state:open&quot;</span><span class='p'>})</span>
-      <span class='k'>if</span> <span class='p'>(</span><span class='n'>ticks</span><span class='o'>.</span><span class='n'>length</span> <span class='o'>&gt;</span> <span class='mi'>0</span><span class='p'>)</span>
-        <span class='nb'>puts</span> <span class='nb'>p</span><span class='o'>.</span><span class='n'>name</span>
-        <span class='nb'>puts</span> <span class='s2'>&quot;-------------------------&quot;</span>
-        <span class='nb'>puts</span> <span class='s2'>&quot;    id | pri | title&quot;</span>
-        <span class='nb'>puts</span> <span class='s2'>&quot;-------------------------&quot;</span>
-        <span class='n'>ticks</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>t</span><span class='o'>|</span>
-          <span class='nb'>puts</span> <span class='n'>t</span><span class='o'>.</span><span class='n'>id</span><span class='o'>.</span><span class='n'>to_s</span><span class='o'>.</span><span class='n'>rjust</span><span class='p'>(</span><span class='mi'>6</span><span class='p'>)</span> <span class='o'>+</span> <span class='s2'>&quot; | &quot;</span> <span class='o'>+</span> <span class='n'>t</span><span class='o'>.</span><span class='n'>priority</span><span class='o'>.</span><span class='n'>to_s</span><span class='o'>.</span><span class='n'>center</span><span class='p'>(</span><span class='mi'>3</span><span class='p'>)</span> <span class='o'>+</span> <span class='s2'>&quot; | &quot;</span> <span class='o'>+</span> <span class='n'>t</span><span class='o'>.</span><span class='n'>title</span>
-        <span class='p'>}</span>
-        <span class='nb'>puts</span> <span class='s2'>&quot;</span><span class='se'>\n</span><span class='s2'>&quot;</span>
-      <span class='k'>end</span>
-    <span class='k'>end</span>
-  <span class='p'>}</span>
-<span class='p'>}</span>
-</code></pre>
-</div>
 <p>The following is a ruby script that pulls all my tickets in from all of my various <a href='http://github.com/'>GitHub</a> accounts and projects.</p>
-<div class='highlight'><pre><code class='ruby'><span class='c1'>#!/usr/bin/env ruby</span>
 
-<span class='nb'>require</span> <span class='s1'>&#39;rubygems&#39;</span>
-<span class='nb'>require</span> <span class='s1'>&#39;octopi&#39;</span>
-
-<span class='kp'>include</span> <span class='no'>Octopi</span>
-
-<span class='n'>creds</span> <span class='o'>=</span> <span class='o'>[</span>
-  <span class='p'>{</span> <span class='ss'>:login</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;login one&quot;</span><span class='p'>,</span> <span class='ss'>:token</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;API token tied to login one&quot;</span> <span class='p'>},</span>
-  <span class='p'>{</span> <span class='ss'>:login</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;login two&quot;</span><span class='p'>,</span> <span class='ss'>:token</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;API token tied to login two&quot;</span> <span class='p'>},</span>
-  <span class='p'>{</span> <span class='ss'>:login</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;login three&quot;</span><span class='p'>,</span> <span class='ss'>:token</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;API token tied to login three&quot;</span><span class='p'>}</span>
-<span class='o'>]</span>
-
-<span class='n'>creds</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>cred</span><span class='o'>|</span>
-  <span class='n'>authenticated_with</span> <span class='ss'>:login</span> <span class='o'>=&gt;</span> <span class='n'>cred</span><span class='o'>[</span><span class='ss'>:login</span><span class='o'>]</span><span class='p'>,</span> <span class='ss'>:token</span> <span class='o'>=&gt;</span> <span class='n'>cred</span><span class='o'>[</span><span class='ss'>:token</span><span class='o'>]</span> <span class='k'>do</span>
-    <span class='n'>user</span> <span class='o'>=</span> <span class='no'>User</span><span class='o'>.</span><span class='n'>find</span><span class='p'>(</span><span class='n'>cred</span><span class='o'>[</span><span class='ss'>:login</span><span class='o'>]</span><span class='p'>)</span>
-    <span class='n'>repos</span> <span class='o'>=</span> <span class='n'>user</span><span class='o'>.</span><span class='n'>repositories</span>
-    <span class='n'>repos</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>r</span><span class='o'>|</span>
-      <span class='n'>ticks</span> <span class='o'>=</span> <span class='no'>Issue</span><span class='o'>.</span><span class='n'>find_all</span><span class='p'>(</span><span class='ss'>:repository</span> <span class='o'>=&gt;</span> <span class='n'>r</span><span class='p'>,</span> <span class='ss'>:state</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;open&quot;</span><span class='p'>)</span>
-      <span class='k'>if</span> <span class='p'>(</span><span class='n'>ticks</span><span class='o'>.</span><span class='n'>length</span> <span class='o'>&gt;</span> <span class='mi'>0</span><span class='p'>)</span>
-        <span class='nb'>puts</span> <span class='n'>r</span><span class='o'>.</span><span class='n'>name</span>
-        <span class='nb'>puts</span> <span class='s2'>&quot;-------------------------&quot;</span>
-        <span class='nb'>puts</span> <span class='s2'>&quot;    id | pri | title&quot;</span>
-        <span class='nb'>puts</span> <span class='s2'>&quot;-------------------------&quot;</span>
-        <span class='n'>ticks</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>t</span><span class='o'>|</span>
-          <span class='nb'>puts</span> <span class='s2'>&quot;n/a&quot;</span><span class='o'>.</span><span class='n'>rjust</span><span class='p'>(</span><span class='mi'>6</span><span class='p'>)</span> <span class='o'>+</span> <span class='s2'>&quot; | &quot;</span> <span class='o'>+</span> <span class='n'>t</span><span class='o'>.</span><span class='n'>votes</span><span class='o'>.</span><span class='n'>to_s</span><span class='o'>.</span><span class='n'>center</span><span class='p'>(</span><span class='mi'>3</span><span class='p'>)</span> <span class='o'>+</span> <span class='s2'>&quot; | &quot;</span> <span class='o'>+</span> <span class='n'>t</span><span class='o'>.</span><span class='n'>title</span>
-        <span class='p'>}</span>
-        <span class='nb'>puts</span> <span class='s2'>&quot;</span><span class='se'>\n</span><span class='s2'>&quot;</span>
-      <span class='k'>end</span>
-    <span class='p'>}</span>
-  <span class='k'>end</span>
-<span class='p'>}</span>
-</code></pre>
-</div>
 <p>The following is a AppleScript script that pulls all my tickets in from <a href='http://culturedcode.com/things/'>Things</a>.</p>
-<div class='highlight'><pre><code class='applescript'><span class='k'>tell</span> <span class='nb'>application</span> <span class='s2'>&quot;Things&quot;</span>
-  <span class='k'>set</span> <span class='nv'>nl</span> <span class='k'>to</span> <span class='s2'>&quot;\n&quot;</span>
-  <span class='k'>set</span> <span class='nv'>output</span> <span class='k'>to</span> <span class='s2'>&quot;Things Tasks in Today\n--------------------------\n&quot;</span>
-  <span class='k'>repeat</span> <span class='nv'>with</span> <span class='nv'>todayToDo</span> <span class='k'>in</span> <span class='k'>to</span> <span class='nv'>dos</span> <span class='k'>of</span> <span class='nv'>list</span> <span class='s2'>&quot;Today&quot;</span>
-    <span class='k'>set</span> <span class='nv'>curTaskName</span> <span class='k'>to</span> <span class='na'>name</span> <span class='k'>of</span> <span class='nv'>todayToDo</span>
-    <span class='k'>set</span> <span class='nv'>output</span> <span class='k'>to</span> <span class='nv'>output</span> <span class='o'>&amp;</span> <span class='s2'>&quot; - &quot;</span> <span class='o'>&amp;</span> <span class='nv'>curTaskName</span> <span class='o'>&amp;</span> <span class='nv'>nl</span>
-  <span class='k'>end</span> <span class='k'>repeat</span>
-<span class='k'>end</span> <span class='k'>tell</span>
-<span class='nv'>output</span>
-</code></pre>
-</div>
+
 <p>The following is a Python script that pulls all my tickets in from <a href='http://trac.edgewall.org/'>Trac</a> when your <a href='http://trac.edgewall.org/'>Trac</a> environment has the <a href='http://trac-hacks.org/wiki/XmlRpcPlugin'>Trac XML RPC plugin</a> installed.</p>
-<div class='highlight'><pre><code class='python'><span class='c'>#!/usr/bin/env python</span>
 
-<span class='kn'>import</span> <span class='nn'>xmlrpclib</span>
-
-<span class='n'>username</span> <span class='o'>=</span> <span class='s'>&quot;loginname&quot;</span>
-<span class='n'>password</span> <span class='o'>=</span> <span class='s'>&quot;password&quot;</span>
-<span class='n'>port</span> <span class='o'>=</span> <span class='bp'>None</span> <span class='c'># if need to specify a port set this to the port number</span>
-<span class='n'>host</span> <span class='o'>=</span> <span class='s'>&quot;domain-name-where-trac-hosted&quot;</span> <span class='c'># trac.rippletv.com at my work</span>
-<span class='n'>path</span> <span class='o'>=</span> <span class='s'>&quot;/path-to-the-environment&quot;</span>
-
-<span class='n'>url</span> <span class='o'>=</span> <span class='s'>&quot;https://</span><span class='si'>%s</span><span class='s'>:</span><span class='si'>%s</span><span class='s'>@</span><span class='si'>%s</span><span class='s'>&quot;</span> <span class='o'>%</span> <span class='p'>(</span><span class='n'>username</span><span class='p'>,</span> <span class='n'>password</span><span class='p'>,</span> <span class='n'>host</span><span class='p'>)</span> 
-<span class='k'>if</span> <span class='p'>(</span><span class='n'>port</span><span class='p'>):</span>
-    <span class='n'>url</span> <span class='o'>+=</span> <span class='s'>&quot;:</span><span class='si'>%s</span><span class='s'>&quot;</span> <span class='o'>%</span> <span class='p'>(</span><span class='nb'>str</span><span class='p'>(</span><span class='n'>port</span><span class='p'>))</span>
-<span class='n'>url</span> <span class='o'>+=</span> <span class='n'>path</span> <span class='o'>+</span> <span class='s'>&quot;/login/xmlrpc&quot;</span>
-
-<span class='n'>svr</span> <span class='o'>=</span> <span class='n'>xmlrpclib</span><span class='o'>.</span><span class='n'>ServerProxy</span><span class='p'>(</span><span class='n'>url</span><span class='p'>)</span>
-
-<span class='k'>print</span> <span class='s'>&quot;-------------------------&quot;</span>
-<span class='k'>print</span> <span class='s'>&quot;    id | pri | title&quot;</span>
-<span class='k'>print</span> <span class='s'>&quot;-------------------------&quot;</span>
-
-<span class='n'>ticket_ids</span> <span class='o'>=</span> <span class='n'>svr</span><span class='o'>.</span><span class='n'>ticket</span><span class='o'>.</span><span class='n'>query</span><span class='p'>(</span><span class='s'>&quot;owner=&quot;</span> <span class='o'>+</span> <span class='n'>username</span> <span class='o'>+</span> <span class='s'>&quot;&amp;status!=closed&amp;order=priority&quot;</span><span class='p'>)</span>
-<span class='k'>for</span> <span class='n'>ti</span> <span class='ow'>in</span> <span class='n'>ticket_ids</span><span class='p'>:</span>
-  <span class='n'>cur_tick</span> <span class='o'>=</span> <span class='n'>svr</span><span class='o'>.</span><span class='n'>ticket</span><span class='o'>.</span><span class='n'>get</span><span class='p'>(</span><span class='n'>ti</span><span class='p'>)</span>
-  <span class='n'>cur_tick_hash</span> <span class='o'>=</span> <span class='n'>cur_tick</span><span class='p'>[</span><span class='mi'>3</span><span class='p'>]</span>
-  <span class='n'>cur_id</span> <span class='o'>=</span> <span class='n'>ti</span>
-  <span class='n'>cur_summary</span> <span class='o'>=</span> <span class='n'>cur_tick_hash</span><span class='p'>[</span><span class='s'>&#39;summary&#39;</span><span class='p'>]</span>
-  <span class='n'>cur_priority</span> <span class='o'>=</span> <span class='n'>cur_tick_hash</span><span class='p'>[</span><span class='s'>&#39;priority&#39;</span><span class='p'>]</span>
-  <span class='n'>pri_num</span> <span class='o'>=</span> <span class='mi'>0</span>
-  <span class='k'>if</span> <span class='p'>(</span><span class='n'>cur_priority</span> <span class='o'>==</span> <span class='s'>&quot;trivial&quot;</span><span class='p'>):</span>
-    <span class='n'>pri_num</span> <span class='o'>=</span> <span class='mi'>0</span>
-  <span class='k'>elif</span> <span class='p'>(</span><span class='n'>cur_priority</span> <span class='o'>==</span> <span class='s'>&quot;minor&quot;</span><span class='p'>):</span>
-    <span class='n'>pri_num</span> <span class='o'>=</span> <span class='mi'>1</span>
-  <span class='k'>elif</span> <span class='p'>(</span><span class='n'>cur_priority</span> <span class='o'>==</span> <span class='s'>&quot;major&quot;</span><span class='p'>):</span>
-    <span class='n'>pri_num</span> <span class='o'>=</span> <span class='mi'>2</span>
-  <span class='k'>elif</span> <span class='p'>(</span><span class='n'>cur_priority</span> <span class='o'>==</span> <span class='s'>&quot;critical&quot;</span><span class='p'>):</span>
-    <span class='n'>pri_num</span> <span class='o'>=</span> <span class='mi'>3</span>
-  <span class='k'>elif</span> <span class='p'>(</span><span class='n'>cur_priority</span> <span class='o'>==</span> <span class='s'>&quot;blocker&quot;</span><span class='p'>):</span>
-    <span class='n'>pri_num</span> <span class='o'>=</span> <span class='mi'>4</span>
-  <span class='k'>print</span> <span class='nb'>str</span><span class='p'>(</span><span class='n'>cur_id</span><span class='p'>)</span><span class='o'>.</span><span class='n'>rjust</span><span class='p'>(</span><span class='mi'>6</span><span class='p'>)</span> <span class='o'>+</span>  <span class='s'>&quot; | &quot;</span> <span class='o'>+</span> <span class='nb'>str</span><span class='p'>(</span><span class='n'>pri_num</span><span class='p'>)</span><span class='o'>.</span><span class='n'>center</span><span class='p'>(</span><span class='mi'>3</span><span class='p'>)</span> <span class='o'>+</span> <span class='s'>&quot; | &quot;</span> <span class='o'>+</span> <span class='nb'>str</span><span class='p'>(</span><span class='n'>cur_summary</span><span class='p'>)</span>
-</code></pre>
-</div>
 <p>After coding the above scripts I simply set them up through the <a href='http://projects.tynsoe.org/en/geektool/'>GeekTool</a> UI and like magic within 15 mins or so I had a working solution to my issue, thanks to the power of REST based Web Services, Ruby, the Ruby Community, and Things AppleScript integration. Checkout a screenshot <a href='https://www.facebook.com/media/set/?set=a.629955991290.2070660.30901409&amp;type=1&amp;l=d6d8aefeb9'>here</a>.</p>
     <div style="clear: both;"></div>
   </section>
@@ -1090,58 +1042,11 @@ $(function () {
 <p>With the jQuery Comparative Histogram (CompHist) Plugin you can easily represent populations and information about them. A prime usage exampe of this is demographics. All the styling is done via CSS. Hence the style is easily modified. It does the calculations for you and it allows for non listed group counts via a non_demo_count data option.</p>
 
 <p>The above demo was produced by defining a few code snippets. The first snippet is a snippet of HTML that includes the jQuery Comparative Histogram javascript source file and CSS style sheet. Note: The jQuery Comparative Histogram javascript source file needs to come after the standard jQuery javascript source file. An example of this snippet is as follows:</p>
-<div class='highlight'><pre><code class='html'><span class='nt'>&lt;script </span><span class='na'>type=</span><span class='s'>&quot;text/javascript&quot;</span> <span class='na'>src=</span><span class='s'>&quot;../jquery.comphist.js&quot;</span><span class='nt'>&gt;&lt;/script&gt;</span>
-<span class='nt'>&lt;link</span> <span class='na'>rel=</span><span class='s'>&quot;stylesheet&quot;</span> <span class='na'>type=</span><span class='s'>&quot;text/css&quot;</span> <span class='na'>href=</span><span class='s'>&quot;../stylesheets/jquery.comphist.css&quot;</span><span class='nt'>&gt;</span>
-</code></pre>
-</div>
+
 <p>Note: In the above snippet the href values are likely to be different in your case. The second code snippet is simply a single line of HTML where the div that is to be the Comparative Histogram. It is key that this div has an id that is easily referenced and a set height and width. An example of this snippet is as follows:</p>
-<div class='highlight'><pre><code class='html'><span class='nt'>&lt;div</span> <span class='na'>id=</span><span class='s'>&quot;compplaceholder&quot;</span> <span class='na'>style=</span><span class='s'>&quot;width: 375px; height: 200px;&quot;</span><span class='nt'>&gt;&lt;/div&gt;</span>
-</code></pre>
-</div>
+
 <p>The third code snippet needed is the javascript that defines the data, creates the Comparative Histogram in the specified div, and handles the hover functionality. An example of this is seen below.</p>
-<div class='highlight'><pre><code class='html'><span class='nt'>&lt;script </span><span class='na'>type=</span><span class='s'>&quot;text/javascript&quot;</span><span class='nt'>&gt;</span>
-<span class='nx'>$</span><span class='p'>(</span><span class='kd'>function</span> <span class='p'>()</span> <span class='p'>{</span>
-  <span class='kd'>function</span> <span class='nx'>showCompHistTooltip</span><span class='p'>(</span><span class='nx'>x</span><span class='p'>,</span> <span class='nx'>y</span><span class='p'>,</span> <span class='nx'>contents</span><span class='p'>)</span> <span class='p'>{</span>
-    <span class='nx'>console</span><span class='p'>.</span><span class='nx'>log</span><span class='p'>(</span><span class='s2'>&quot;called my shit&quot;</span><span class='p'>);</span>
-    <span class='nx'>$</span><span class='p'>(</span><span class='s1'>&#39;&lt;div id=&quot;comphist1tooltip&quot;&gt;&#39;</span> <span class='o'>+</span> <span class='nx'>contents</span> <span class='o'>+</span> <span class='s1'>&#39;&lt;/div&gt;&#39;</span><span class='p'>).</span><span class='nx'>css</span><span class='p'>({</span>
-      <span class='nx'>position</span><span class='o'>:</span> <span class='s1'>&#39;absolute&#39;</span><span class='p'>,</span>
-      <span class='nx'>display</span><span class='o'>:</span> <span class='s1'>&#39;none&#39;</span><span class='p'>,</span>
-      <span class='nx'>top</span><span class='o'>:</span> <span class='nx'>y</span> <span class='o'>-</span> <span class='mi'>20</span><span class='p'>,</span>
-      <span class='nx'>left</span><span class='o'>:</span> <span class='nx'>x</span> <span class='o'>-</span> <span class='mi'>30</span><span class='p'>,</span>
-      <span class='nx'>border</span><span class='o'>:</span> <span class='s1'>&#39;1px solid #fdd&#39;</span><span class='p'>,</span>
-      <span class='nx'>padding</span><span class='o'>:</span> <span class='s1'>&#39;2px&#39;</span><span class='p'>,</span>
-      <span class='s1'>&#39;background-color&#39;</span><span class='o'>:</span> <span class='s1'>&#39;#fee&#39;</span><span class='p'>,</span>
-      <span class='nx'>opacity</span><span class='o'>:</span> <span class='mi'>1</span>
-    <span class='p'>}).</span><span class='nx'>appendTo</span><span class='p'>(</span><span class='s2'>&quot;body&quot;</span><span class='p'>).</span><span class='nx'>fadeIn</span><span class='p'>(</span><span class='mi'>200</span><span class='p'>);</span>
-  <span class='p'>}</span>
 
-  <span class='kd'>var</span> <span class='nx'>comphist_data</span> <span class='o'>=</span> <span class='p'>{</span>
-    <span class='nx'>population_label</span><span class='o'>:</span> <span class='s1'>&#39;Active Fans This Week&#39;</span><span class='p'>,</span>
-    <span class='nx'>group_1_label</span><span class='o'>:</span> <span class='s1'>&#39;Male&#39;</span><span class='p'>,</span> <span class='nx'>group_2_label</span><span class='o'>:</span> <span class='s1'>&#39;Female&#39;</span><span class='p'>,</span>
-    <span class='nx'>subgroups</span><span class='o'>:</span> <span class='p'>[</span>
-    <span class='p'>{</span> <span class='nx'>label</span><span class='o'>:</span> <span class='s1'>&#39;13-17&#39;</span><span class='p'>,</span> <span class='nx'>group_1_count</span><span class='o'>:</span> <span class='mi'>3</span><span class='p'>,</span> <span class='nx'>group_2_count</span><span class='o'>:</span> <span class='mi'>16</span> <span class='p'>},</span>
-    <span class='p'>{</span> <span class='nx'>label</span><span class='o'>:</span> <span class='s1'>&#39;18-24&#39;</span><span class='p'>,</span> <span class='nx'>group_1_count</span><span class='o'>:</span> <span class='mi'>7</span><span class='p'>,</span> <span class='nx'>group_2_count</span><span class='o'>:</span> <span class='mi'>27</span> <span class='p'>},</span>
-    <span class='p'>{</span> <span class='nx'>label</span><span class='o'>:</span> <span class='s1'>&#39;25-34&#39;</span><span class='p'>,</span> <span class='nx'>group_1_count</span><span class='o'>:</span> <span class='mi'>3</span><span class='p'>,</span> <span class='nx'>group_2_count</span><span class='o'>:</span> <span class='mi'>29</span> <span class='p'>},</span>
-    <span class='p'>{</span> <span class='nx'>label</span><span class='o'>:</span> <span class='s1'>&#39;35-44&#39;</span><span class='p'>,</span> <span class='nx'>group_1_count</span><span class='o'>:</span> <span class='mi'>2</span><span class='p'>,</span> <span class='nx'>group_2_count</span><span class='o'>:</span> <span class='mi'>9</span> <span class='p'>},</span>
-    <span class='p'>{</span> <span class='nx'>label</span><span class='o'>:</span> <span class='s1'>&#39;45-54&#39;</span><span class='p'>,</span> <span class='nx'>group_1_count</span><span class='o'>:</span> <span class='mi'>0</span><span class='p'>,</span> <span class='nx'>group_2_count</span><span class='o'>:</span> <span class='mi'>4</span> <span class='p'>},</span>
-    <span class='p'>{</span> <span class='nx'>label</span><span class='o'>:</span> <span class='s1'>&#39;55+&#39;</span><span class='p'>,</span> <span class='nx'>group_1_count</span><span class='o'>:</span> <span class='mi'>0</span><span class='p'>,</span> <span class='nx'>group_2_count</span><span class='o'>:</span> <span class='mi'>0</span> <span class='p'>}</span>
-    <span class='p'>],</span>
-    <span class='nx'>non_demo_count</span><span class='o'>:</span> <span class='mi'>0</span>
-  <span class='p'>};</span>
-  <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#compplaceholder&quot;</span><span class='p'>).</span><span class='nx'>comphist</span><span class='p'>({},</span> <span class='nx'>comphist_data</span><span class='p'>);</span>
-
-  <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#compplaceholder&quot;</span><span class='p'>).</span><span class='nx'>bind</span><span class='p'>(</span><span class='s2'>&quot;barover&quot;</span><span class='p'>,</span> <span class='kd'>function</span> <span class='p'>(</span><span class='nx'>e</span><span class='p'>,</span> <span class='nx'>perc</span><span class='p'>,</span> <span class='nx'>pos</span><span class='p'>)</span> <span class='p'>{</span>
-    <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#comphist1tooltip&quot;</span><span class='p'>).</span><span class='nx'>remove</span><span class='p'>();</span>
-    <span class='nx'>showCompHistTooltip</span><span class='p'>(</span><span class='nx'>pos</span><span class='p'>.</span><span class='nx'>left</span><span class='p'>,</span> <span class='nx'>pos</span><span class='p'>.</span><span class='nx'>top</span><span class='p'>,</span> <span class='nx'>perc</span><span class='p'>);</span>
-  <span class='p'>});</span>
-  
-  <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#compplaceholder&quot;</span><span class='p'>).</span><span class='nx'>bind</span><span class='p'>(</span><span class='s2'>&quot;barout&quot;</span><span class='p'>,</span> <span class='kd'>function</span> <span class='p'>(</span><span class='nx'>e</span><span class='p'>,</span> <span class='nx'>perc</span><span class='p'>,</span> <span class='nx'>pos</span><span class='p'>)</span> <span class='p'>{</span>
-    <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#comphist1tooltip&quot;</span><span class='p'>).</span><span class='nx'>remove</span><span class='p'>();</span>
-  <span class='p'>});</span>
-<span class='p'>});</span>
-<span class='nt'>&lt;/script&gt;</span>
-</code></pre>
-</div>
 <p>Hopefully, the demo and quick code example helps get you up and running quickly.</p>
     <div style="clear: both;"></div>
   </section>
@@ -1232,76 +1137,11 @@ $(function () {
 });
 </script>
 <p>The above demo was produced by defining a few code snippets. The first snippet is a snippet of HTML that includes the customized Flot javascript source file. Note: The Flot javascript source file needs to come after the standard jQuery javascript source file. An example of this snippet is as follows:</p>
-<div class='highlight'><pre><code class='html'><span class='c'>&lt;!--[if IE]&gt;&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot; src=&quot;../excanvas.min.js&quot;&gt;&lt;/script&gt;&lt;![endif]--&gt;</span>
-<span class='nt'>&lt;script </span><span class='na'>language=</span><span class='s'>&quot;javascript&quot;</span> <span class='na'>type=</span><span class='s'>&quot;text/javascript&quot;</span> <span class='na'>src=</span><span class='s'>&quot;../jquery.js&quot;</span><span class='nt'>&gt;&lt;/script&gt;</span>
-<span class='nt'>&lt;script </span><span class='na'>language=</span><span class='s'>&quot;javascript&quot;</span> <span class='na'>type=</span><span class='s'>&quot;text/javascript&quot;</span> <span class='na'>src=</span><span class='s'>&quot;../jquery.flot.js&quot;</span><span class='nt'>&gt;&lt;/script&gt;</span>
-</code></pre>
-</div>
+
 <p>Note: In the above snippet the href values are likely to be different in your case. The second code snippet is simply a single line of HTML that is the div that is to be the Multi-series Bar Graph. It is key that this div has an id that is easily referenced and a set height and width. An example of this snippet is as follows:</p>
-<div class='highlight'><pre><code class='html'><span class='nt'>&lt;div</span> <span class='na'>id=</span><span class='s'>&quot;placeholder&quot;</span> <span class='na'>style=</span><span class='s'>&quot;width: 375px; height: 200px;&quot;</span><span class='nt'>&gt;&lt;/div&gt;</span>
-</code></pre>
-</div>
+
 <p>The third code snippet needed is the javascript that defines the data, creates the Multi-series Bar Graph in the specified div, and handles the hover functionality. An example of this is seen below.</p>
-<div class='highlight'><pre><code class='html'><span class='nt'>&lt;script </span><span class='na'>id=</span><span class='s'>&quot;source&quot;</span><span class='nt'>&gt;</span>
-<span class='nx'>$</span><span class='p'>(</span><span class='kd'>function</span> <span class='p'>()</span> <span class='p'>{</span>
-  <span class='kd'>var</span> <span class='nx'>ms_data</span> <span class='o'>=</span> <span class='p'>[{</span><span class='s2'>&quot;label&quot;</span><span class='o'>:</span><span class='s2'>&quot;FOO&quot;</span><span class='p'>,</span><span class='s2'>&quot;data&quot;</span><span class='o'>:</span><span class='p'>[[</span><span class='mi'>0</span><span class='p'>,</span><span class='mi'>80</span><span class='p'>],[</span><span class='mi'>1</span><span class='p'>,</span><span class='mi'>70</span><span class='p'>],[</span><span class='mi'>2</span><span class='p'>,</span><span class='mi'>100</span><span class='p'>],[</span><span class='mi'>3</span><span class='p'>,</span><span class='mi'>60</span><span class='p'>],[</span><span class='mi'>4</span><span class='p'>,</span><span class='mi'>102</span><span class='p'>]]},</span>
-                 <span class='p'>{</span><span class='s2'>&quot;label&quot;</span><span class='o'>:</span><span class='s2'>&quot;BAR&quot;</span><span class='p'>,</span><span class='s2'>&quot;data&quot;</span><span class='o'>:</span><span class='p'>[[</span><span class='mi'>0</span><span class='p'>,</span><span class='mi'>10</span><span class='p'>],[</span><span class='mi'>1</span><span class='p'>,</span><span class='mi'>20</span><span class='p'>],[</span><span class='mi'>2</span><span class='p'>,</span><span class='mi'>30</span><span class='p'>],[</span><span class='mi'>3</span><span class='p'>,</span><span class='mi'>40</span><span class='p'>],[</span><span class='mi'>4</span><span class='p'>,</span><span class='mi'>80</span><span class='p'>]]},</span>
-                 <span class='p'>{</span><span class='s2'>&quot;label&quot;</span><span class='o'>:</span><span class='s2'>&quot;CAR&quot;</span><span class='p'>,</span><span class='s2'>&quot;data&quot;</span><span class='o'>:</span><span class='p'>[[</span><span class='mi'>0</span><span class='p'>,</span><span class='mi'>5</span><span class='p'>],[</span><span class='mi'>1</span><span class='p'>,</span><span class='mi'>10</span><span class='p'>],[</span><span class='mi'>2</span><span class='p'>,</span><span class='mi'>15</span><span class='p'>],[</span><span class='mi'>3</span><span class='p'>,</span><span class='mi'>20</span><span class='p'>],[</span><span class='mi'>4</span><span class='p'>,</span><span class='mi'>25</span><span class='p'>]]}]</span>
-  <span class='kd'>var</span> <span class='nx'>ms_ticks</span> <span class='o'>=</span> <span class='p'>[[</span><span class='mi'>0</span><span class='p'>,</span><span class='s2'>&quot;1/28&quot;</span><span class='p'>],[</span><span class='mi'>1</span><span class='p'>,</span><span class='s2'>&quot;1/29&quot;</span><span class='p'>],[</span><span class='mi'>2</span><span class='p'>,</span><span class='s2'>&quot;1/30&quot;</span><span class='p'>],[</span><span class='mi'>3</span><span class='p'>,</span><span class='s2'>&quot;1/31&quot;</span><span class='p'>],[</span><span class='mi'>4</span><span class='p'>,</span><span class='s2'>&quot;1/32&quot;</span><span class='p'>]];</span>
-    
-    <span class='kd'>function</span> <span class='nx'>plotWithOptions</span><span class='p'>()</span> <span class='p'>{</span>
-      <span class='nx'>$</span><span class='p'>.</span><span class='nx'>plot</span><span class='p'>(</span><span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#placeholder&quot;</span><span class='p'>),</span> <span class='nx'>ms_data</span><span class='p'>,</span> <span class='p'>{</span>
-        <span class='nx'>bars</span><span class='o'>:</span> <span class='p'>{</span> <span class='nx'>show</span><span class='o'>:</span> <span class='kc'>true</span><span class='p'>,</span> <span class='nx'>barWidth</span><span class='o'>:</span> <span class='mf'>0.6</span><span class='p'>,</span> <span class='nx'>series_spread</span><span class='o'>:</span> <span class='kc'>true</span><span class='p'>,</span> <span class='nx'>align</span><span class='o'>:</span> <span class='s2'>&quot;center&quot;</span> <span class='p'>},</span>
-        <span class='nx'>xaxis</span><span class='o'>:</span> <span class='p'>{</span> <span class='nx'>ticks</span><span class='o'>:</span> <span class='nx'>ms_ticks</span><span class='p'>,</span> <span class='nx'>autoscaleMargin</span><span class='o'>:</span> <span class='p'>.</span><span class='mi'>10</span> <span class='p'>},</span>
-        <span class='nx'>grid</span><span class='o'>:</span> <span class='p'>{</span> <span class='nx'>hoverable</span><span class='o'>:</span> <span class='kc'>true</span><span class='p'>,</span> <span class='nx'>clickable</span><span class='o'>:</span> <span class='kc'>true</span> <span class='p'>}</span>
-      <span class='p'>});</span>
-    <span class='p'>}</span>
-    
-    <span class='kd'>function</span> <span class='nx'>showTooltip</span><span class='p'>(</span><span class='nx'>x</span><span class='p'>,</span> <span class='nx'>y</span><span class='p'>,</span> <span class='nx'>contents</span><span class='p'>)</span> <span class='p'>{</span>
-        <span class='nx'>$</span><span class='p'>(</span><span class='s1'>&#39;&#39;</span><span class='p'>).</span><span class='nx'>css</span><span class='p'>(</span> <span class='p'>{</span>
-            <span class='nx'>position</span><span class='o'>:</span> <span class='s1'>&#39;absolute&#39;</span><span class='p'>,</span>
-            <span class='nx'>display</span><span class='o'>:</span> <span class='s1'>&#39;none&#39;</span><span class='p'>,</span>
-            <span class='nx'>top</span><span class='o'>:</span> <span class='nx'>y</span> <span class='o'>+</span> <span class='mi'>5</span><span class='p'>,</span>
-            <span class='nx'>left</span><span class='o'>:</span> <span class='nx'>x</span> <span class='o'>+</span> <span class='mi'>5</span><span class='p'>,</span>
-            <span class='nx'>border</span><span class='o'>:</span> <span class='s1'>&#39;1px solid #fdd&#39;</span><span class='p'>,</span>
-            <span class='nx'>padding</span><span class='o'>:</span> <span class='s1'>&#39;2px&#39;</span><span class='p'>,</span>
-            <span class='s1'>&#39;background-color&#39;</span><span class='o'>:</span> <span class='s1'>&#39;#fee&#39;</span><span class='p'>,</span>
-            <span class='nx'>opacity</span><span class='o'>:</span> <span class='mf'>0.80</span>
-        <span class='p'>}).</span><span class='nx'>appendTo</span><span class='p'>(</span><span class='s2'>&quot;body&quot;</span><span class='p'>).</span><span class='nx'>show</span><span class='p'>();</span>
-    <span class='p'>}</span>
 
-    <span class='nx'>plotWithOptions</span><span class='p'>();</span>
-
-    <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#placeholder&quot;</span><span class='p'>).</span><span class='nx'>bind</span><span class='p'>(</span><span class='s2'>&quot;plothover&quot;</span><span class='p'>,</span> <span class='kd'>function</span> <span class='p'>(</span><span class='nx'>event</span><span class='p'>,</span> <span class='nx'>pos</span><span class='p'>,</span> <span class='nx'>item</span><span class='p'>)</span> <span class='p'>{</span>
-      <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#x&quot;</span><span class='p'>).</span><span class='nx'>text</span><span class='p'>(</span><span class='nx'>pos</span><span class='p'>.</span><span class='nx'>x</span><span class='p'>.</span><span class='nx'>toFixed</span><span class='p'>(</span><span class='mi'>2</span><span class='p'>));</span>
-      <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#y&quot;</span><span class='p'>).</span><span class='nx'>text</span><span class='p'>(</span><span class='nx'>pos</span><span class='p'>.</span><span class='nx'>y</span><span class='p'>.</span><span class='nx'>toFixed</span><span class='p'>(</span><span class='mi'>2</span><span class='p'>));</span>
-        <span class='k'>if</span> <span class='p'>(</span><span class='nx'>item</span><span class='p'>)</span> <span class='p'>{</span>
-            <span class='k'>if</span> <span class='p'>(</span><span class='nx'>previousPoint</span> <span class='o'>!=</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>datapoint</span><span class='p'>)</span> <span class='p'>{</span>
-                <span class='nx'>previousPoint</span> <span class='o'>=</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>datapoint</span><span class='p'>;</span>
-              
-                <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#tooltip&quot;</span><span class='p'>).</span><span class='nx'>remove</span><span class='p'>();</span>
-                <span class='kd'>var</span> <span class='nx'>x</span> <span class='o'>=</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>datapoint</span><span class='p'>[</span><span class='mi'>0</span><span class='p'>].</span><span class='nx'>toFixed</span><span class='p'>(</span><span class='mi'>2</span><span class='p'>),</span>
-                    <span class='nx'>y</span> <span class='o'>=</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>datapoint</span><span class='p'>[</span><span class='mi'>1</span><span class='p'>].</span><span class='nx'>toFixed</span><span class='p'>(</span><span class='mi'>2</span><span class='p'>);</span>
-              
-                <span class='nx'>showTooltip</span><span class='p'>(</span><span class='nx'>item</span><span class='p'>.</span><span class='nx'>pageX</span><span class='p'>,</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>pageY</span><span class='p'>,</span>
-                            <span class='nx'>item</span><span class='p'>.</span><span class='nx'>series</span><span class='p'>.</span><span class='nx'>label</span> <span class='o'>+</span> <span class='s2'>&quot; Group id: &quot;</span> <span class='o'>+</span> <span class='nb'>Math</span><span class='p'>.</span><span class='nx'>floor</span><span class='p'>(</span><span class='nx'>x</span><span class='p'>)</span> <span class='o'>+</span> <span class='s2'>&quot;, y = &quot;</span> <span class='o'>+</span> <span class='nx'>y</span> <span class='o'>+</span> <span class='s2'>&quot;, seriesIndex: &quot;</span> <span class='o'>+</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>seriesIndex</span><span class='p'>);</span>
-            <span class='p'>}</span>
-        <span class='p'>}</span>
-        <span class='k'>else</span> <span class='p'>{</span>
-            <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#tooltip&quot;</span><span class='p'>).</span><span class='nx'>remove</span><span class='p'>();</span>
-            <span class='nx'>previousPoint</span> <span class='o'>=</span> <span class='kc'>null</span><span class='p'>;</span>            
-        <span class='p'>}</span>
-    <span class='p'>});</span>
-
-    <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#placeholder&quot;</span><span class='p'>).</span><span class='nx'>bind</span><span class='p'>(</span><span class='s2'>&quot;plotclick&quot;</span><span class='p'>,</span> <span class='kd'>function</span> <span class='p'>(</span><span class='nx'>event</span><span class='p'>,</span> <span class='nx'>pos</span><span class='p'>,</span> <span class='nx'>item</span><span class='p'>)</span> <span class='p'>{</span>
-        <span class='k'>if</span> <span class='p'>(</span><span class='nx'>item</span><span class='p'>)</span> <span class='p'>{</span>
-            <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#clickdata&quot;</span><span class='p'>).</span><span class='nx'>text</span><span class='p'>(</span><span class='s2'>&quot;You clicked bar &quot;</span> <span class='o'>+</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>dataIndex</span> <span class='o'>+</span> <span class='s2'>&quot; in &quot;</span> <span class='o'>+</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>series</span><span class='p'>.</span><span class='nx'>label</span> <span class='o'>+</span> <span class='s2'>&quot;.&quot;</span><span class='p'>);</span>
-        <span class='p'>}</span>
-    <span class='p'>});</span>
-<span class='p'>});</span>
-<span class='nt'>&lt;/script&gt;</span>
-</code></pre>
-</div>
 <p>Hopefully, the demo and quick code example helps get you up and running.</p>
     <div style="clear: both;"></div>
   </section>
@@ -1375,65 +1215,11 @@ $(function () {
 <p>Lets assume that you are using Prototype because I was, and it is a very common AJAX JavaScript library. The first thing I looked to find out was if there was an event fired off to the portion that is generated by AJAX request. The answer is, not that I could find. There are events in the top level document but none which really help you. Since, there are no events or callbacks in the child document (one produced by the ajax call and loaded into the top level) and no script tags carried through to the top level document we first have to figure out a way to get the JavaScript code to the top level document and then secondarily have JavaScript evaluate it.</p>
 
 <p>In order to get the script tags content to the top level document I had to create a div that contained the raw content of the script tag that I wanted available. Beyond that the div had to have a unique ID that was able to be obtained programatically in the top level document using JavaScript. An example of this might look as follows (html.erb template of JavaScript):</p>
-<div class='highlight'><pre><code class='html'>  <span class='nt'>&lt;div</span> <span class='na'>id=</span><span class='s'>&quot;&lt;%= calendar_id %&gt;_script&quot;</span> <span class='na'>style=</span><span class='s'>&quot;display: none;&quot;</span><span class='nt'>&gt;</span>;
-  <span class='err'>&lt;</span>%= calendar_id %&gt;SelectHandler = function(type, args, obj){
-    var selected = args[0];
-    var selDate = selected[0][0] + &quot;-&quot; + selected[0][1] + &quot;-&quot; + selected[0][2];
-    <span class='err'>&lt;</span>% if txt_input_id.nil? %&gt;
-      document.getElementById(&quot;<span class='err'>&lt;</span>%= calendar_namespace %&gt;_<span class='err'>&lt;</span>%= calendar_id %&gt;&quot;).value = selDate;
-      <span class='err'>&lt;</span>%= calendar_id %&gt;hide();
-    <span class='err'>&lt;</span>% else %&gt;
-      document.getElementById(&quot;<span class='err'>&lt;</span>%= txt_input_id %&gt;&quot;).value = selDate;
-      <span class='err'>&lt;</span>%= calendar_id %&gt;hide();
-    <span class='err'>&lt;</span>% end %&gt;
-  }
 
-  <span class='err'>&lt;</span>%= calendar_id %&gt;show = function (){
-    var cur_z = $(&#39;<span class='err'>&lt;</span>%= calendar_container %&gt;&#39;).style.zIndex;
-    if (!cur_z) {
-      cur_z = 1;
-    } else {
-      cur_z = parseInt(cur_z);
-    }
-    $(&#39;<span class='err'>&lt;</span>%= calendar_container %&gt;&#39;).show();
-    $(&#39;<span class='err'>&lt;</span>%= calendar_container %&gt;&#39;).style.zIndex = (cur_z + 1);
-  }
-
-  <span class='err'>&lt;</span>%= calendar_id %&gt;hide = function(){
-    var cur_z = $(&#39;<span class='err'>&lt;</span>%= calendar_container %&gt;&#39;).style.zIndex;
-    if (!cur_z) {
-      cur_z = 1;
-    } else {
-      cur_z = parseInt(cur_z);
-    }
-    $(&#39;<span class='err'>&lt;</span>%= calendar_container %&gt;&#39;).hide();
-    $(&#39;<span class='err'>&lt;</span>%= calendar_container %&gt;&#39;).style.zIndex = (cur_z - 1);
-  }
-
-  YAHOO.namespace(&quot;<span class='err'>&lt;</span>%= calendar_namespace %&gt;.<span class='err'>&lt;</span>%= calendar_id %&gt;&quot;);
-  YAHOO.<span class='err'>&lt;</span>%= calendar_namespace %&gt;.<span class='err'>&lt;</span>%= calendar_id %&gt;.init = function() {
-    YAHOO.<span class='err'>&lt;</span>%= calendar_namespace %&gt;.<span class='err'>&lt;</span>%= calendar_id %&gt;.Cal = new YAHOO.widget.Calendar(&quot;<span class='err'>&lt;</span>%= calendar_id %&gt;&quot;,&quot;<span class='err'>&lt;</span>%= calendar_container %&gt;&quot;, <span class='err'>&lt;</span>%= @opts %&gt;);
-
-    YAHOO.<span class='err'>&lt;</span>%= calendar_namespace %&gt;.<span class='err'>&lt;</span>%= calendar_id %&gt;.Cal.selectEvent.subscribe(<span class='err'>&lt;</span>%= calendar_id %&gt;SelectHandler, YAHOO.<span class='err'>&lt;</span>%= calendar_namespace %&gt;.<span class='err'>&lt;</span>%= calendar_id %&gt;.Cal, true);
-    YAHOO.<span class='err'>&lt;</span>%= calendar_namespace %&gt;.<span class='err'>&lt;</span>%= calendar_id %&gt;.Cal.render();
-  }
-<span class='nt'>&lt;/div&gt;</span>
-</code></pre>
-</div>
 <p>This div with a unique id gives me the capability of pulling out the associated raw JavaScript that is the innerHTML content of this div in the top level document and having the top level documents JavaScript evaluate it. This can be done with a JavaScript function like the following:</p>
-<div class='highlight'><pre><code class='html'>function createRowEditCalendar(id) {
-  var script = document.getElementById(&quot;cal_visited_on_&quot; + id + &quot;_script&quot;).innerHTML;
-  eval(script);
-  var my_init_cmd = &quot;YAHOO.namespace_o_hell.cal_visited_on_&quot; + id + &quot;.init();&quot;;
-  eval(my_init_cmd);
-  return true;
-}
-</code></pre>
-</div>
+
 <p>The next logical question of course is what event or callback launches the above JavaScript function in the top level document. The answer in this case is simply to use the Prototypes Ajax.Updater onComplete callback by having it first programatically figure out the name of the div using the reproducible naming scheme and then call the above JavaScript function passing it the necessary id to access the hidden JavaScript div. This might look something like the following:</p>
-<div class='highlight'><pre><code class='html'><span class='nt'>&lt;input</span> <span class='na'>type=</span><span class='s'>&quot;button&quot;</span> <span class='na'>id=</span><span class='s'>&quot;rowedit_create_button&quot;</span> <span class='na'>value=</span><span class='s'>&quot;Create&quot;</span> <span class='na'>onclick=</span><span class='s'>&quot;new Ajax.Updater(&lt;% if prefix %&gt; &#39;&lt;%= prefix %&gt;_rowedit_data_rows&#39; &lt;% else %&gt; &#39;rowedit_data_rows&#39; &lt;% end %&gt;, &#39;&lt;%= urls[:create] %&gt;&#39;, {asynchronous:true, parameters:$(&lt;% if prefix %&gt; &#39;&lt;%= prefix %&gt;_rowedit_create_form&#39; &lt;% else %&gt; &#39;rowedit_create_form&#39; &lt;% end %&gt;).serialize(), insertion: Insertion.Bottom, onComplete: function() { var drows = document.getElementById(&#39;rowedit_data_rows&#39;); var last_row_id = drows.lastChild.id; last_row_id = last_row_id.replace(&#39;edit_&#39;, &#39;&#39;); last_row_id = last_row_id.replace(&#39;_row&#39;, &#39;&#39;); createRowEditCalendar(last_row_id); } });&quot;</span><span class='nt'>/&gt;</span>
-</code></pre>
-</div>
+
 <p>Assuming that you have those three components in place and properly setup with all the syntax correct you should have a working solution. Note: Be very careful of syntax errors in the JavaScript inside the eval() method because FireBug won&#8217;t detect them, or run-time errors in the JavaScript anywhere because not all of them will be detected by FireBug. Anyways, hope this helps someone out there, it sure would have helped me if I had it.</p>
     <div style="clear: both;"></div>
   </section>
@@ -1582,7 +1368,7 @@ $(function () {
   
   <a class="tag" href="/tag/TextMate"><span class="tag_name">TextMate</span> <span class="tag_usage_count">(1)</span></a>
   
-  <a class="tag" href="/tag/Software Development"><span class="tag_name">Software Development</span> <span class="tag_usage_count">(23)</span></a>
+  <a class="tag" href="/tag/Software Development"><span class="tag_name">Software Development</span> <span class="tag_usage_count">(24)</span></a>
   
   <a class="tag" href="/tag/Media Management"><span class="tag_name">Media Management</span> <span class="tag_usage_count">(1)</span></a>
   
@@ -1692,7 +1478,7 @@ $(function () {
   
   <a class="tag" href="/tag/Mac OS X"><span class="tag_name">Mac OS X</span> <span class="tag_usage_count">(3)</span></a>
   
-  <a class="tag" href="/tag/Ruby"><span class="tag_name">Ruby</span> <span class="tag_usage_count">(4)</span></a>
+  <a class="tag" href="/tag/Ruby"><span class="tag_name">Ruby</span> <span class="tag_usage_count">(5)</span></a>
   
   <a class="tag" href="/tag/Things"><span class="tag_name">Things</span> <span class="tag_usage_count">(1)</span></a>
   
@@ -1860,11 +1646,15 @@ $(function () {
   
   <a class="tag" href="/tag/Guard"><span class="tag_name">Guard</span> <span class="tag_usage_count">(1)</span></a>
   
+  <a class="tag" href="/tag/Mac OS X Mountain Lion"><span class="tag_name">Mac OS X Mountain Lion</span> <span class="tag_usage_count">(1)</span></a>
+  
+  <a class="tag" href="/tag/Rails"><span class="tag_name">Rails</span> <span class="tag_usage_count">(1)</span></a>
+  
 </div>
 
         </div>
         <div>
-          <div class="archives_list"><h2>Archives</h2><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
+          <div class="archives_list"><h2>Archives</h2><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
         </div>
       </aside>
       <div style="clear: both;"></div>

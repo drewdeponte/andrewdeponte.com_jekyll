@@ -31,6 +31,57 @@
         
   <article class='blog-post'>
   <header>
+    <h2 class='title'><a href="/2012/02/01/SublimeText2-Guard-Plugin-Updates.html">SublimeText2 Guard Plugin Updates</a></h2>
+    <div class='posted-info'>
+      <time datetime='2012-02-01T00:00:00Z' pubdate='pubdate' class='published-datetime'>February 01, 2012</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>Hey all,</p>
+
+<p>I was having some difficulties with a couple bugs in the Sublime Text 2 Guard plugin I have been working on. So, I decided I would drop Jon Skinner, developer of Sublime Text 2, an e-mail and see if he knew about the issues I was having and hopefully of solutions/work arounds for them. Jon, was very helpful in terms of better understanding the issues as well as suggesting some work arounds.</p>
+
+<p>Anyways, given the input from Jon I took another look at the bugs/features of the Guard plugin and decided to tackle them tonight. The following items show the progress that I made tonight with respect to the Sublime Text 2 Guard plugin:</p>
+
+<ul>
+<li>Enabled native Sublime Text 2 word wrap in the Guard output view.</li>
+
+<li>Guard now exits properly when Sublime Text 2 exits/dies.</li>
+
+<li>Added default key bindings to show Guard output view (super+shift+c)</li>
+
+<li>Submitted a pull request to get the Guard plugin added to the <a href='http://wbond.net/sublime_packages/package_control'>Package Control</a> repository list.</li>
+</ul>
+
+<p>As usual I am looking for feedback issues (feature requests, bug fixes, etc.) You can find the project as <a href='http://github.com/cyphactor/sublime_guard'>sublime_guard</a> on GitHub. As of tonight I am down to two feature requests. So, please create bugs in the issues if you run into any so that I can work on fixing them sooner rather than later.</p>
+    <div style="clear: both;"></div>
+  </section>
+
+  <footer>
+    
+      <a class="tag" href="/tag/Python">Python</a>
+    
+      <a class="tag" href="/tag/Sublime Text 2">Sublime Text 2</a>
+    
+      <a class="tag" href="/tag/Sublime Text 2 Plugin">Sublime Text 2 Plugin</a>
+    
+      <a class="tag" href="/tag/Software">Software</a>
+    
+      <a class="tag" href="/tag/Personal">Personal</a>
+    
+      <a class="tag" href="/tag/Software Development">Software Development</a>
+    
+      <a class="tag" href="/tag/Software Projects">Software Projects</a>
+    
+  </footer>
+</article>
+
+
+  <article class='blog-post'>
+  <header>
     <h2 class='title'><a href="/2012/01/27/SublimeText2-Guard-Plugin-Updates.html">SublimeText2 Guard Plugin Updates</a></h2>
     <div class='posted-info'>
       <time datetime='2012-01-27T00:00:00Z' pubdate='pubdate' class='published-datetime'>January 27, 2012</time>
@@ -207,71 +258,6 @@ Codes</code> so that the output is a bit cleaner.</li>
 </article>
 
 
-  <article class='blog-post'>
-  <header>
-    <h2 class='title'><a href="/2010/12/13/Archaic-Archived-Chats-and-Dev-Helper.html">Archaic - Archived Chats and Dev Helper</a></h2>
-    <div class='posted-info'>
-      <time datetime='2010-12-13T00:00:00Z' pubdate='pubdate' class='published-datetime'>December 13, 2010</time>
-      <span>by</span>
-      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
-    </div>
-  </header>
-
-  <section>
-    <p>So for those of that don&#8217;t know, I lead of team of software developers. For a long time now I have noticed a number of gaps in the industry with respect to software development and team collaboration. One area that I always felt was missing some love was group chat.</p>
-
-<p>Sure, there are a large number of different chat protocols and applications that implement them all. However, they generally miss an archived history that has full text searching. Beyond the group chat is prime location to distribute push notifications when Git repositories that the team is working with have changes pushed to them. Because of these two issues and number of other that I really don&#8217;t want to get into at this point I have started a new open source project called <a href='http://github.com/cyphactor/archaic'>&#8220;Archaic&#8221;</a>.</p>
-
-<p><a href='http://github.com/cyphactor/archaic'>Archaic</a> is a Rails application that provides archiving of IRC channel chats with a full text search interface as well as general developer helpers. It is composed of two pieces, an IRC Bot and the Rails application. Technically they both share the rails environment as the IRC Bot should be run with rails runner. You can checkout the project at the following: <a href='http://github.com/cyphactor/archaic'>http://github.com/cyphactor/archaic</a>.</p>
-
-<p>I plan to keep the master branch functional so feel free to use the master branch. It currently has the following features.</p>
-
-<ul>
-<li>IRC Chat Archiving</li>
-
-<li>Full Text Chat Archive Searching with Context (to expand context simply click on resulting match)</li>
-
-<li>Week number helper (when anyone in IRC channel types &#8220;weeknum&#8221; it replies with current week number)</li>
-
-<li>Ticket number helper (when anyone in IRC channel types &#8220;#\d+&#8221; it replies with link to that ticket)</li>
-</ul>
-
-<p>This is the initial introduction to this project and I am sure it has numerous directions that it can and will grow into. I very much welcome your thoughts, suggestions, feature requests, bug reports, testing, etc.</p>
-
-<p>I believe that having a good central place of communication for a team even if they are working in the same office helps at least as a mechanism for keeping your devs notified about repo pushes close to real time.</p>
-
-<p>Anyways, enjoy!</p>
-    <div style="clear: both;"></div>
-  </section>
-
-  <footer>
-    
-      <a class="tag" href="/tag/Cinch">Cinch</a>
-    
-      <a class="tag" href="/tag/IRC">IRC</a>
-    
-      <a class="tag" href="/tag/Ruby">Ruby</a>
-    
-      <a class="tag" href="/tag/Ruby on Rails">Ruby on Rails</a>
-    
-      <a class="tag" href="/tag/Applications">Applications</a>
-    
-      <a class="tag" href="/tag/Computers">Computers</a>
-    
-      <a class="tag" href="/tag/Manager">Manager</a>
-    
-      <a class="tag" href="/tag/Personal">Personal</a>
-    
-      <a class="tag" href="/tag/Project Management">Project Management</a>
-    
-      <a class="tag" href="/tag/Software Development">Software Development</a>
-    
-      <a class="tag" href="/tag/Software Projects">Software Projects</a>
-    
-  </footer>
-</article>
-
-
 
 <!-- Pagination links -->
 <div class="pagination">
@@ -321,7 +307,7 @@ Codes</code> so that the output is a bit cleaner.</li>
   
   <a class="tag" href="/tag/TextMate"><span class="tag_name">TextMate</span> <span class="tag_usage_count">(1)</span></a>
   
-  <a class="tag" href="/tag/Software Development"><span class="tag_name">Software Development</span> <span class="tag_usage_count">(23)</span></a>
+  <a class="tag" href="/tag/Software Development"><span class="tag_name">Software Development</span> <span class="tag_usage_count">(24)</span></a>
   
   <a class="tag" href="/tag/Media Management"><span class="tag_name">Media Management</span> <span class="tag_usage_count">(1)</span></a>
   
@@ -431,7 +417,7 @@ Codes</code> so that the output is a bit cleaner.</li>
   
   <a class="tag" href="/tag/Mac OS X"><span class="tag_name">Mac OS X</span> <span class="tag_usage_count">(3)</span></a>
   
-  <a class="tag" href="/tag/Ruby"><span class="tag_name">Ruby</span> <span class="tag_usage_count">(4)</span></a>
+  <a class="tag" href="/tag/Ruby"><span class="tag_name">Ruby</span> <span class="tag_usage_count">(5)</span></a>
   
   <a class="tag" href="/tag/Things"><span class="tag_name">Things</span> <span class="tag_usage_count">(1)</span></a>
   
@@ -599,11 +585,15 @@ Codes</code> so that the output is a bit cleaner.</li>
   
   <a class="tag" href="/tag/Guard"><span class="tag_name">Guard</span> <span class="tag_usage_count">(1)</span></a>
   
+  <a class="tag" href="/tag/Mac OS X Mountain Lion"><span class="tag_name">Mac OS X Mountain Lion</span> <span class="tag_usage_count">(1)</span></a>
+  
+  <a class="tag" href="/tag/Rails"><span class="tag_name">Rails</span> <span class="tag_usage_count">(1)</span></a>
+  
 </div>
 
         </div>
         <div>
-          <div class="archives_list"><h2>Archives</h2><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
+          <div class="archives_list"><h2>Archives</h2><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
         </div>
       </aside>
       <div style="clear: both;"></div>

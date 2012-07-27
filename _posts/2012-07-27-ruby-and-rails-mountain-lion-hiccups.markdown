@@ -43,8 +43,10 @@ is the latest version of the GCC compiler that apple provided before switching
 to clang/llvm. Anyways, you can install GCC 4.2 by doing the following with
 brew:
 
-    brew tap homebrew/dupes
-    brew install apple-gcc42
+{% highlight bash %}
+brew tap homebrew/dupes
+brew install apple-gcc42
+{% endhighlight %}
 
 The above will install the apple gcc-4.2 in a side by side fashion with XCode.
 This means that it won't mess up your existing XCode install like other
@@ -61,9 +63,11 @@ component of this preference pane. Don't worry though. Apache is still there
 and running. You just can't start it and stop it from the preferences pane
 anymore. You can use the following commands instead.
 
-    sudo apachectl stop
-    sudo apachectl start
-    sudo apachectl restart
+{% highlight bash %}
+sudo apachectl stop
+sudo apachectl start
+sudo apachectl restart
+{% endhighlight %}
 
 **Note:** When the upgrade happened it nuked all my `/etc/apache2/users/`
 configs and all my other apache configs. So, if you have any custom apache
@@ -78,3 +82,19 @@ you want and it is available freely at
 [http://xquartz.macosforge.org/landing/](http://xquartz.macosforge.org/landing/).
 Just install that bad boy and follow the on screen instructions to reboot when
 it is done and you should be good to go in terms of X11.
+
+## ImageMagick
+
+Before upgrading I had ImageMagick installed via Homebrew. After, the upgrade was finished my ImageMagick was exiting with failures about some dylib. To solve this problem I simply ran the following and I was back in running order with respect to ImageMagick:
+
+{% highlight bash %}
+brew upgrade imagemagick
+{% endhighlight %}
+
+## Pygments
+
+I use Pygments to handle syntax highlighting in my jekyll sites and it seemed to not be working after the upgrade. I believe this is because it is now using Python 2.7.2. To resolve this issue I just re-installed Pygments using the following:
+
+{% highlight bash %}
+sudo easy_install Pygments
+{% endhighlight %}

@@ -4,13 +4,29 @@
   <title>Drew's World</title>
   <link href="http://andrewdeponte.com/atom.xml" rel="self"/>
   <link href="http://andrewdeponte.com/"/>
-  <updated>2012-07-27T13:56:14-07:00</updated>
+  <updated>2012-08-07T15:28:19-07:00</updated>
   <id>http://andrewdeponte.com/</id>
   <author>
     <name>Andrew De Ponte</name>
     <email>cyphactor@gmail.com</email>
   </author>
 
+  
+    <entry>
+      <title>Sublime Text 2 Guard Plugin Updates</title>
+      <link href="http://andrewdeponte.com/2012/08/07/sublime-text-2-guard-plugin-updates.html"/>
+      <updated>2012-08-07T00:00:00-07:00</updated>
+      <id>http://andrewdeponte.com/2012/08/07/sublime-text-2-guard-plugin-updates</id>
+      <content type="html">&lt;p&gt;I woke up early this morning and thought it was time for a little &lt;a href='http://github.com/cyphactor/sublime_guard'&gt;sublime_guard&lt;/a&gt; love. I went through and tackled all of the syntax highlighting issues. This included the following issues (&lt;a href='https://github.com/cyphactor/sublime_guard/issues/27'&gt;#27&lt;/a&gt;, &lt;a href='https://github.com/cyphactor/sublime_guard/issues/30'&gt;#30&lt;/a&gt;, &lt;a href='https://github.com/cyphactor/sublime_guard/issues/31'&gt;#31&lt;/a&gt;, &lt;a href='https://github.com/cyphactor/sublime_guard/issues/38'&gt;#38&lt;/a&gt;, &lt;a href='https://github.com/cyphactor/sublime_guard/issues/43'&gt;#43&lt;/a&gt;, &lt;a href='https://github.com/cyphactor/sublime_guard/issues/29'&gt;#29&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;I also cleaned up a number of tickets that were lying around and had either been completed already or were tickets that were invalid.&lt;/p&gt;
+
+&lt;p&gt;I also started a branch for adding python3 support to the plugin. The branch is named &lt;strong&gt;python3_support&lt;/strong&gt;. I would love it if anyone out there in the ether would grab that branch, test it out, and give me some feedback.&lt;/p&gt;
+
+&lt;p&gt;Anyways, I hope you guys enjoy the updates. As usual if you installed from Package Control just restart Sublime Text 2. If you installed manually then just pull the latest version down with Git.&lt;/p&gt;
+
+&lt;p&gt;See you all next time.&lt;/p&gt;</content>
+    </entry>
   
     <entry>
       <title>Ruby and Rails Mountain Lion Hiccups</title>

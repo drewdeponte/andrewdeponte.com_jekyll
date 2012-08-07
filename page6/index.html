@@ -31,6 +31,51 @@
         
   <article class='blog-post'>
   <header>
+    <h2 class='title'><a href="/2010/07/28/Project-Management-Tool-Review.html">Project Management Tool Review</a></h2>
+    <div class='posted-info'>
+      <time datetime='2010-07-28T00:00:00Z' pubdate='pubdate' class='published-datetime'>July 28, 2010</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>When I took over the software engineering team at my job. I had the opportunity to start fresh with a new ticketing, bug tracking, and project management toolset. Over, the years I have used a number of different tools most recently Trac and Lighthouse. However, I can go on and on with the tools that I have tried. When, I came on board they were currently using Jira which I know is big in certain communities, however, everyone seemed to hate it and I have a bunch of issues with it that I don&#8217;t want to get into. Anyways, so I spent some time and reviewed the following project management and ticketing systems again to just get a refresher and see where they were at and if any of them would work for me and my team.</p>
+
+<ul>
+<li>Redmine - <a href='http://www.redmine.org/'>http://www.redmine.org/</a></li>
+
+<li>Basecamp - <a href='http://basecamphq.com/'>http://basecamphq.com/</a></li>
+
+<li>Devalot - <a href='http://projects.noscience.net/devalot'>http://projects.noscience.net/devalot</a></li>
+
+<li>ProjectPier - <a href='http://www.projectpier.org/'>http://www.projectpier.org/</a></li>
+
+<li>Trac - <a href='http://trac.edgewall.org/'>http://trac.edgewall.org/</a></li>
+
+<li>Jira - <a href='http://www.atlassian.com/software/jira/'>http://www.atlassian.com/software/jira/</a></li>
+
+<li>Collabtive - <a href='http://collabtive.o-dyn.de/'>http://collabtive.o-dyn.de/</a></li>
+
+<li>eGroupWare - <a href='http://www.egroupware.org/Home'>http://www.egroupware.org/Home</a></li>
+</ul>
+
+<p>So after heavy review of each of the above listed project management tools I decided on Redmine because it is hugely flexible, has a decent community behind it. It does have what I would consider some usability issues and some major design issues in the UI. However, once you learn those it is pretty much capable of everything I need it to do. When, you look at other solutions they all seem to be lacking very important features.</p>
+    <div style="clear: both;"></div>
+  </section>
+
+  <footer>
+    
+      <a class="tag" href="/tag/Project Management">Project Management</a>
+    
+      <a class="tag" href="/tag/Software Development">Software Development</a>
+    
+  </footer>
+</article>
+
+
+  <article class='blog-post'>
+  <header>
     <h2 class='title'><a href="/2010/07/20/My-New-Job.html">My New Job!</a></h2>
     <div class='posted-info'>
       <time datetime='2010-07-20T00:00:00Z' pubdate='pubdate' class='published-datetime'>July 20, 2010</time>
@@ -152,47 +197,6 @@
 </article>
 
 
-  <article class='blog-post'>
-  <header>
-    <h2 class='title'><a href="/2010/06/14/western-digital-mypassport.html">Western Digital MyPassport</a></h2>
-    <div class='posted-info'>
-      <time datetime='2010-06-14T00:00:00Z' pubdate='pubdate' class='published-datetime'>June 14, 2010</time>
-      <span>by</span>
-      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
-    </div>
-  </header>
-
-  <section>
-    <p>So, recently I bought a Western Digital (WD) MyPassport portable 500GB hard drive. I found when plugging it in that it had a very annoying Virtual CD built into its firmware called WD SmartWare which I was not the least bit interested in using. All, I wanted was an external USB hard drive that was portable and just worked. So, the first thing I tried was to reformat it to a Journaled Mac OS X file system. Once, I reformatted it, I was able to copy files too and from the external drive just like I wanted to be. However, every time I plugged the external drive in it would also mount this stupid Virtual CD which I didn&#8217;t want to deal with.</p>
-
-<p>So, I googled around a bit for a way to stop this thing from mounting and coming up every time I plug the external drive in. I found a bunch of articles outlining how to update the firmware on the external hard drive and a bunch of very long step by step processes all just to get this stupid Virtual CD to go away. Soon, enough I found the answer I was looking for. It was simply to grab the UUID of the Volume by using the following command:</p>
-
-<p><code>diskutil info /Volumes/WD\ SmartWare/</code></p>
-
-<p>Once, I had the UUID of the Volume then I created the /etc/fstab file and added the following line to it.</p>
-
-<p><code>UUID=84789472-2EB5-3C8E-BFC1-F554F91B026C none hfs rw,noauto 0 0</code></p>
-
-<p>In my opinion this was a much better solution as it just disabled the auto mounting of that volume and didn&#8217;t require a firmware flash or anything crazy just to get rid of the stupid Virtual CD. Anyways, I probably made this post more for me than any of you. Though, hopefully someone else finds this tid bit useful as well.</p>
-    <div style="clear: both;"></div>
-  </section>
-
-  <footer>
-    
-      <a class="tag" href="/tag/External Hard Drive">External Hard Drive</a>
-    
-      <a class="tag" href="/tag/Mac OS X">Mac OS X</a>
-    
-      <a class="tag" href="/tag/Virtual CD">Virtual CD</a>
-    
-      <a class="tag" href="/tag/WD MyPassport">WD MyPassport</a>
-    
-      <a class="tag" href="/tag/Computers">Computers</a>
-    
-  </footer>
-</article>
-
-
 
 <!-- Pagination links -->
 <div class="pagination">
@@ -242,7 +246,7 @@
   
   <a class="tag" href="/tag/TextMate"><span class="tag_name">TextMate</span> <span class="tag_usage_count">(1)</span></a>
   
-  <a class="tag" href="/tag/Software Development"><span class="tag_name">Software Development</span> <span class="tag_usage_count">(24)</span></a>
+  <a class="tag" href="/tag/Software Development"><span class="tag_name">Software Development</span> <span class="tag_usage_count">(25)</span></a>
   
   <a class="tag" href="/tag/Media Management"><span class="tag_name">Media Management</span> <span class="tag_usage_count">(1)</span></a>
   
@@ -480,7 +484,7 @@
   
   <a class="tag" href="/tag/Sublime Text 2"><span class="tag_name">Sublime Text 2</span> <span class="tag_usage_count">(7)</span></a>
   
-  <a class="tag" href="/tag/Sublime Text 2 Plugin"><span class="tag_name">Sublime Text 2 Plugin</span> <span class="tag_usage_count">(7)</span></a>
+  <a class="tag" href="/tag/Sublime Text 2 Plugin"><span class="tag_name">Sublime Text 2 Plugin</span> <span class="tag_usage_count">(8)</span></a>
   
   <a class="tag" href="/tag/Color"><span class="tag_name">Color</span> <span class="tag_usage_count">(3)</span></a>
   
@@ -518,7 +522,7 @@
   
   <a class="tag" href="/tag/Continuous Integration"><span class="tag_name">Continuous Integration</span> <span class="tag_usage_count">(1)</span></a>
   
-  <a class="tag" href="/tag/Guard"><span class="tag_name">Guard</span> <span class="tag_usage_count">(1)</span></a>
+  <a class="tag" href="/tag/Guard"><span class="tag_name">Guard</span> <span class="tag_usage_count">(2)</span></a>
   
   <a class="tag" href="/tag/Mac OS X Mountain Lion"><span class="tag_name">Mac OS X Mountain Lion</span> <span class="tag_usage_count">(1)</span></a>
   
@@ -528,7 +532,7 @@
 
         </div>
         <div>
-          <div class="archives_list"><h2>Archives</h2><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
+          <div class="archives_list"><h2>Archives</h2><a href="/2012/08" class="archive"><span class="archive_period">August 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
         </div>
       </aside>
       <div style="clear: both;"></div>

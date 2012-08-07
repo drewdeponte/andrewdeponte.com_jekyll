@@ -31,6 +31,47 @@
         
   <article class='blog-post'>
   <header>
+    <h2 class='title'><a href="/2010/06/14/western-digital-mypassport.html">Western Digital MyPassport</a></h2>
+    <div class='posted-info'>
+      <time datetime='2010-06-14T00:00:00Z' pubdate='pubdate' class='published-datetime'>June 14, 2010</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>So, recently I bought a Western Digital (WD) MyPassport portable 500GB hard drive. I found when plugging it in that it had a very annoying Virtual CD built into its firmware called WD SmartWare which I was not the least bit interested in using. All, I wanted was an external USB hard drive that was portable and just worked. So, the first thing I tried was to reformat it to a Journaled Mac OS X file system. Once, I reformatted it, I was able to copy files too and from the external drive just like I wanted to be. However, every time I plugged the external drive in it would also mount this stupid Virtual CD which I didn&#8217;t want to deal with.</p>
+
+<p>So, I googled around a bit for a way to stop this thing from mounting and coming up every time I plug the external drive in. I found a bunch of articles outlining how to update the firmware on the external hard drive and a bunch of very long step by step processes all just to get this stupid Virtual CD to go away. Soon, enough I found the answer I was looking for. It was simply to grab the UUID of the Volume by using the following command:</p>
+
+<p><code>diskutil info /Volumes/WD\ SmartWare/</code></p>
+
+<p>Once, I had the UUID of the Volume then I created the /etc/fstab file and added the following line to it.</p>
+
+<p><code>UUID=84789472-2EB5-3C8E-BFC1-F554F91B026C none hfs rw,noauto 0 0</code></p>
+
+<p>In my opinion this was a much better solution as it just disabled the auto mounting of that volume and didn&#8217;t require a firmware flash or anything crazy just to get rid of the stupid Virtual CD. Anyways, I probably made this post more for me than any of you. Though, hopefully someone else finds this tid bit useful as well.</p>
+    <div style="clear: both;"></div>
+  </section>
+
+  <footer>
+    
+      <a class="tag" href="/tag/External Hard Drive">External Hard Drive</a>
+    
+      <a class="tag" href="/tag/Mac OS X">Mac OS X</a>
+    
+      <a class="tag" href="/tag/Virtual CD">Virtual CD</a>
+    
+      <a class="tag" href="/tag/WD MyPassport">WD MyPassport</a>
+    
+      <a class="tag" href="/tag/Computers">Computers</a>
+    
+  </footer>
+</article>
+
+
+  <article class='blog-post'>
+  <header>
     <h2 class='title'><a href="/2010/05/31/flight-of-the-conchords-concert.html">Flight of the Conchords Concert</a></h2>
     <div class='posted-info'>
       <time datetime='2010-05-31T00:00:00Z' pubdate='pubdate' class='published-datetime'>May 31, 2010</time>
@@ -175,53 +216,6 @@
 </article>
 
 
-  <article class='blog-post'>
-  <header>
-    <h2 class='title'><a href="/2010/05/09/gas-pipes-%26-dumpster.html">Gas Pipes & Dumpster</a></h2>
-    <div class='posted-info'>
-      <time datetime='2010-05-09T00:00:00Z' pubdate='pubdate' class='published-datetime'>May 09, 2010</time>
-      <span>by</span>
-      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
-    </div>
-  </header>
-
-  <section>
-    <p>Few, I just completed a very exhausting weekend with Aly and my parents. This weekend I ordered a dumpster because my parents were coming down to help work on my house and I had a massive pile of rubble in the backyard RV parking spot that needed to go. Once we loaded the dumpster with all of the rubble (more than two rooms of plaster) we decided to demo another room as the allocated 18 inches of heavy material at the bottom wasn&#8217;t filled. This was crucial in my opinion because that damn dumpster cost so much.</p>
-
-<p>Once, we had completed the plaster portion of the dumpster loading my Dad and I went to finish running the new gas pipes to the tankless water heater and pressure test them while Aly and my Mom worked on the back yard patio. It took us all weekend to get the pipes in and pressure tested. There is still a small leak as it is dropping 2 10ths of a PSI in 15 mins. Hence, further pressure testing is needed to get to the required state of holding 15 PSI for 15 mins. We went through and tested all of the new joints numerous times but couldn&#8217;t find any leaks. Hence, we talked to some people we know in the industry and it seems that when you pressure test and find a leak you generally have to jack up the pressure pretty high 60 to 100 PSI and spray the entire joint not just the threading edges to find the leaks because some joints, elbows especially, tend to have pin holes due to imperfect manufacturing. We probably could have gotten this handled if it hadn&#8217;t been Mother&#8217;s Day on Sunday but it was nice to take a break and visit with family anyways.</p>
-
-<p>Little did my Dad and I know, while we were hard at work on the black iron pipes, Aly and my Mom had done a huge amount of cleanup on in the backyard, started tilling the grass we previously killed, and removed most of the old nasty fiber glass patio cover. I was amazed with how much they managed to get done.</p>
-
-<p>Thanks Girls!!</p>
-
-<p>As usual I took pictures to let you all in on the progress. You can see them <a href='http://www.facebook.com/media/set/?set=a.535700310430.2048932.30901409&amp;type=3&amp;l=2a1476b7e5'>here</a>.</p>
-
-<p>Oh, I also managed to replace the lighting boxes that were previously under the patio cover with outdoor boxes and light fixtures. Stay tuned for new developments with the house.</p>
-    <div style="clear: both;"></div>
-  </section>
-
-  <footer>
-    
-      <a class="tag" href="/tag/Black Iron Pipe">Black Iron Pipe</a>
-    
-      <a class="tag" href="/tag/Fiber Glass">Fiber Glass</a>
-    
-      <a class="tag" href="/tag/Grass">Grass</a>
-    
-      <a class="tag" href="/tag/Natural Gas">Natural Gas</a>
-    
-      <a class="tag" href="/tag/Patio">Patio</a>
-    
-      <a class="tag" href="/tag/Tilling">Tilling</a>
-    
-      <a class="tag" href="/tag/House">House</a>
-    
-      <a class="tag" href="/tag/Personal">Personal</a>
-    
-  </footer>
-</article>
-
-
 
 <!-- Pagination links -->
 <div class="pagination">
@@ -271,7 +265,7 @@
   
   <a class="tag" href="/tag/TextMate"><span class="tag_name">TextMate</span> <span class="tag_usage_count">(1)</span></a>
   
-  <a class="tag" href="/tag/Software Development"><span class="tag_name">Software Development</span> <span class="tag_usage_count">(24)</span></a>
+  <a class="tag" href="/tag/Software Development"><span class="tag_name">Software Development</span> <span class="tag_usage_count">(25)</span></a>
   
   <a class="tag" href="/tag/Media Management"><span class="tag_name">Media Management</span> <span class="tag_usage_count">(1)</span></a>
   
@@ -509,7 +503,7 @@
   
   <a class="tag" href="/tag/Sublime Text 2"><span class="tag_name">Sublime Text 2</span> <span class="tag_usage_count">(7)</span></a>
   
-  <a class="tag" href="/tag/Sublime Text 2 Plugin"><span class="tag_name">Sublime Text 2 Plugin</span> <span class="tag_usage_count">(7)</span></a>
+  <a class="tag" href="/tag/Sublime Text 2 Plugin"><span class="tag_name">Sublime Text 2 Plugin</span> <span class="tag_usage_count">(8)</span></a>
   
   <a class="tag" href="/tag/Color"><span class="tag_name">Color</span> <span class="tag_usage_count">(3)</span></a>
   
@@ -547,7 +541,7 @@
   
   <a class="tag" href="/tag/Continuous Integration"><span class="tag_name">Continuous Integration</span> <span class="tag_usage_count">(1)</span></a>
   
-  <a class="tag" href="/tag/Guard"><span class="tag_name">Guard</span> <span class="tag_usage_count">(1)</span></a>
+  <a class="tag" href="/tag/Guard"><span class="tag_name">Guard</span> <span class="tag_usage_count">(2)</span></a>
   
   <a class="tag" href="/tag/Mac OS X Mountain Lion"><span class="tag_name">Mac OS X Mountain Lion</span> <span class="tag_usage_count">(1)</span></a>
   
@@ -557,7 +551,7 @@
 
         </div>
         <div>
-          <div class="archives_list"><h2>Archives</h2><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
+          <div class="archives_list"><h2>Archives</h2><a href="/2012/08" class="archive"><span class="archive_period">August 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
         </div>
       </aside>
       <div style="clear: both;"></div>

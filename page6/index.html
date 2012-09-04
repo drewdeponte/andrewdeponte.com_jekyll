@@ -31,6 +31,41 @@
         
   <article class='blog-post'>
   <header>
+    <h2 class='title'><a href="/2010/07/30/Git-finding-abandoned-commits.html">Git, finding abandoned commits...</a></h2>
+    <div class='posted-info'>
+      <time datetime='2010-07-30T00:00:00Z' pubdate='pubdate' class='published-datetime'>July 30, 2010</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>So, as many of you may know I recently took a position heading up a new software engineering team that is responsible for producing the new products. One of my first actions when I came on board was switching my team over from SVN to Git. One of the engineers on the team abandoned a branch in one of our Git repositories because he didn&#8217;t think he would need it anymore. Soon, after he realized that he wanted something from that branch but now he couldn&#8217;t see the brach anymore in &#8216;gitk &#8211;all&#8217; or any of the other tools because he abandoned it. But, it has to still be there right, it is Git.</p>
+
+<p>I knew there was a way to do this in Git and I have done it in the past but I couldn&#8217;t remember how. After I explained a bit more to him about the internals of Git and he went off and did some exploration he came back to me with his found solution which follows:</p>
+
+<p><code>git fsck --unreachable| cut -f3 -d&#39; &#39;|xargs git rev-list --header|less</code></p>
+
+<p>I know there is some other way to find abandoned nodes in Git but I still can&#8217;t remember. Anyways, just figured I would share this method in the hopes that it would help someone out there. It may not be exactly what you want with respect to the &#8216;cut&#8217; or &#8216;xargs&#8217; but I will let you all play with it a bit to get exactly what you want.</p>
+    <div style="clear: both;"></div>
+  </section>
+
+  <footer>
+    
+      <a class="tag" href="/tag/Personal">Personal</a>
+    
+      <a class="tag" href="/tag/Git">Git</a>
+    
+      <a class="tag" href="/tag/Software Development">Software Development</a>
+    
+      <a class="tag" href="/tag/Source Control">Source Control</a>
+    
+  </footer>
+</article>
+
+
+  <article class='blog-post'>
+  <header>
     <h2 class='title'><a href="/2010/07/28/Project-Management-Tool-Review.html">Project Management Tool Review</a></h2>
     <div class='posted-info'>
       <time datetime='2010-07-28T00:00:00Z' pubdate='pubdate' class='published-datetime'>July 28, 2010</time>
@@ -164,39 +199,6 @@
 </article>
 
 
-  <article class='blog-post'>
-  <header>
-    <h2 class='title'><a href="/2010/06/26/100-amp-sub-panel.html">100 AMP Sub-Panel</a></h2>
-    <div class='posted-info'>
-      <time datetime='2010-06-26T00:00:00Z' pubdate='pubdate' class='published-datetime'>June 26, 2010</time>
-      <span>by</span>
-      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
-    </div>
-  </header>
-
-  <section>
-    <p>Well, I came back from my Kauai trip refreshed and ready to get some stuff done on the house. Today I worked with my Dad and Uncle to get the 100 AMP Sub-Panel run from the main panel with 2-3 Romex cable as well as rewire two of the bedrooms and one of the bathrooms. The 2-3 Romex is pretty expensive. I decided to get the 2-3 Romex rather than buying the individual conductors and conduit just because the price difference was relatively small and the 2-3 Romex is less work. Running the 2-3 was a bit of a pain given that the main panel is right were the eaves come down so I had to squeeze myself in real tight to get it run. But, I did it and now it is done. After a little exploration we also discovered that the main panel is only grounded to the cold water pipes in the attic which isn&#8217;t up to code. I am very happy with the progress we made and I will have to fix the grounding next weekend.</p>
-    <div style="clear: both;"></div>
-  </section>
-
-  <footer>
-    
-      <a class="tag" href="/tag/100 AMP">100 AMP</a>
-    
-      <a class="tag" href="/tag/2-3 Romex">2-3 Romex</a>
-    
-      <a class="tag" href="/tag/Electrical">Electrical</a>
-    
-      <a class="tag" href="/tag/Sub-Panel">Sub-Panel</a>
-    
-      <a class="tag" href="/tag/House">House</a>
-    
-      <a class="tag" href="/tag/Personal">Personal</a>
-    
-  </footer>
-</article>
-
-
 
 <!-- Pagination links -->
 <div class="pagination">
@@ -236,7 +238,7 @@
   
   <a class="tag" href="/tag/Vacation"><span class="tag_name">Vacation</span> <span class="tag_usage_count">(14)</span></a>
   
-  <a class="tag" href="/tag/Personal"><span class="tag_name">Personal</span> <span class="tag_usage_count">(45)</span></a>
+  <a class="tag" href="/tag/Personal"><span class="tag_name">Personal</span> <span class="tag_usage_count">(46)</span></a>
   
   <a class="tag" href="/tag/Autotools"><span class="tag_name">Autotools</span> <span class="tag_usage_count">(1)</span></a>
   
@@ -274,7 +276,7 @@
   
   <a class="tag" href="/tag/Prototype"><span class="tag_name">Prototype</span> <span class="tag_usage_count">(1)</span></a>
   
-  <a class="tag" href="/tag/House"><span class="tag_name">House</span> <span class="tag_usage_count">(20)</span></a>
+  <a class="tag" href="/tag/House"><span class="tag_name">House</span> <span class="tag_usage_count">(21)</span></a>
   
   <a class="tag" href="/tag/Google App Engine"><span class="tag_name">Google App Engine</span> <span class="tag_usage_count">(1)</span></a>
   
@@ -532,7 +534,7 @@
 
         </div>
         <div>
-          <div class="archives_list"><h2>Archives</h2><a href="/2012/08" class="archive"><span class="archive_period">August 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
+          <div class="archives_list"><h2>Archives</h2><a href="/2012/09" class="archive"><span class="archive_period">September 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/08" class="archive"><span class="archive_period">August 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
         </div>
       </aside>
       <div style="clear: both;"></div>

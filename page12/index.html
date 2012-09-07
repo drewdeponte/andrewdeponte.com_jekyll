@@ -31,6 +31,35 @@
         
   <article class='blog-post'>
   <header>
+    <h2 class='title'><a href="/2009/08/09/lazy-google-app-engine-model-migrations.html">Lazy Google App Engine Model Migrations</a></h2>
+    <div class='posted-info'>
+      <time datetime='2009-08-09T00:00:00Z' pubdate='pubdate' class='published-datetime'>August 09, 2009</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>I have been working on a side project for a bit now called We&#8217;reSICC (We are Sound Image Community &amp; Collaboration). It planned to be an online service that is specifically designed to allow music artists and graphic artists to come together and collaborate to create music merchandise. The idea is that We&#8217;reSICC will provide a community and the necessary tools for Musicians and Graphic Artists to collaborate easily to produce merchandise and also provide the necessary tools for both Musicians and Graphic Artists to sell the products. The business model is simply that each party involved gets a chunk of the each sales profit. Anyways, thats enough lead in on that project you will find more about it later.</p>
+
+<p>The reason I mentioned We&#8217;reSICC is because we recently started porting the Django code base over to Google App Engine. We soon found that it lacked support for the standard database migration support that is generally necessary when developing an application of this magnitude. Hence, after searching long and hard I came to the conclusion that I would have to throw together the basis for implementing Lazy Migrations for Google App Engine Models. Hence, I did and then handed a version with very basic functionality off to Patrick Murphy to flesh out further. Patrick Murphy is a software engineer friend of mine that is also working on We&#8217;reSICC. He has written a very nice blog post here that explains how these Lazy Google App Engine Model Migrations and provided all the code you need to get started with it. We like to give back to the community that has given so much to us, :-).</p>
+
+<p>If you are interested in simply learning more about Patrick Murphy then by all means check out his blog <a href='http://codekittens.wordpress.com/'>here</a>.</p>
+    <div style="clear: both;"></div>
+  </section>
+
+  <footer>
+    
+      <a class="tag" href="/tag/Google App Engine">Google App Engine</a>
+    
+      <a class="tag" href="/tag/Software Development">Software Development</a>
+    
+  </footer>
+</article>
+
+
+  <article class='blog-post'>
+  <header>
     <h2 class='title'><a href="/2009/07/26/house-demo-day-2.html">House Demo Day 2</a></h2>
     <div class='posted-info'>
       <time datetime='2009-07-26T00:00:00Z' pubdate='pubdate' class='published-datetime'>July 26, 2009</time>
@@ -205,31 +234,6 @@
 </article>
 
 
-  <article class='blog-post'>
-  <header>
-    <h2 class='title'><a href="/2009/06/21/iphone-app-loading-screen.html">iPhone App Loading Screen</a></h2>
-    <div class='posted-info'>
-      <time datetime='2009-06-21T00:00:00Z' pubdate='pubdate' class='published-datetime'>June 21, 2009</time>
-      <span>by</span>
-      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
-    </div>
-  </header>
-
-  <section>
-    <p>Hi all. If you don&#8217;t know already I have been playing with some iPhone app development pretty heavy lately. One of the interesting things which was some what more difficult to find was how to create a loading screens in iPhone apps. After I bit of googling and some reading of different forums I finally narrowed it down. It is handled automatically if you simply created a PNG file called Default.png that is 320 x 240 pixels with a 160 ppi and place it in your projects Resources file. Once in you Resources it will be displayed during the time that the application is loading. If you need to extend the time to get your splash screen to stay on the screen because your code is god like and fast simply tack a sleep or something in your applicationDidFinishLaunching method.</p>
-    <div style="clear: both;"></div>
-  </section>
-
-  <footer>
-    
-      <a class="tag" href="/tag/iPhone Development">iPhone Development</a>
-    
-      <a class="tag" href="/tag/Software Development">Software Development</a>
-    
-  </footer>
-</article>
-
-
 
 <!-- Pagination links -->
 <div class="pagination">
@@ -238,7 +242,7 @@
       <a href="/page11" class="previous">Prev</a>
     
   
-  <span class="page_number ">12 of 15</span>
+  <span class="page_number ">12 of 16</span>
   
     <a href="/page13" class="next ">Next</a>
   
@@ -565,7 +569,7 @@
 
         </div>
         <div>
-          <div class="archives_list"><h2>Archives</h2><a href="/2012/09" class="archive"><span class="archive_period">September 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/08" class="archive"><span class="archive_period">August 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
+          <div class="archives_list"><h2>Archives</h2><a href="/2012/09" class="archive"><span class="archive_period">September 2012 </span><span class="archive_count">(2)</span></a><a href="/2012/08" class="archive"><span class="archive_period">August 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
         </div>
       </aside>
       <div style="clear: both;"></div>

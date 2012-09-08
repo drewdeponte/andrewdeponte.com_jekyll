@@ -5,7 +5,7 @@
     <meta name="description" content="Andrew De Ponte's Blog on Ruby, Ruby on Rails, Javascript, jQuery, and software development and engineering in general." />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="-1" />
-    <title> Posts Tagged &ldquo;Upgrade&rdquo; |  Andrew De Ponte, Software Engineer</title>
+    <title> Posts Tagged &ldquo;SSL&rdquo; |  Andrew De Ponte, Software Engineer</title>
 
     <link rel="stylesheet" href="/css/all.css" />
     <script type="text/javascript" src="/javascript/all.js"></script>
@@ -31,32 +31,70 @@
         
   <article class='blog-post'>
   <header>
-    <h2 class='title'><a href="/2010/04/19/gas-meter-upgrade.html">Gas Meter Upgrade</a></h2>
+    <h2 class='title'><a href="/2012/09/07/rvm-installed-ruby-%28ssl-certificate-verify-failed%29.html">RVM Installed Ruby (SSL certificate verify failed)</a></h2>
     <div class='posted-info'>
-      <time datetime='2010-04-19T00:00:00Z' pubdate='pubdate' class='published-datetime'>April 19, 2010</time>
+      <time datetime='2012-09-07T00:00:00Z' pubdate='pubdate' class='published-datetime'>September 07, 2012</time>
       <span>by</span>
       <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
     </div>
   </header>
 
   <section>
-    <p>Woot woot! Another substantial step in the process of my house has been made today. The SoCal Gas Company came out and upgraded my Gas Meter to a higher BTU rating to support my new Tankless water heater which some of you may have seen pictures of in my Photo galleries. Anyways, I got a Noritz NR98-SV Natural Gas Tankless Water Heater. It has a rating of 199,900 BTUs with a required with a Natural Gas Supply Pressure of Min. 4&#8221; WC and a Max. 10.5&#8221; WC.</p>
+    <p>Recently a few of our developers were having problems getting SSL certificate verify failures in Ruby. The error was the following:</p>
+<div class='highlight'><pre><code class='text'>OpenSSL::SSL::SSLError: SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/net/http.rb:799:in `connect&#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/net/http.rb:799:in `block in connect&#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/timeout.rb:54:in `timeout&#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/timeout.rb:99:in `timeout&#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/net/http.rb:799:in `connect&#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/net/http.rb:755:in `do_start&#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/net/http.rb:744:in `start&#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/open-uri.rb:306:in `open_http&#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/open-uri.rb:775:in `buffer_open&#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/open-uri.rb:203:in `block in open_loop&#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/open-uri.rb:201:in `catch&#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/open-uri.rb:201:in `open_loop&#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/open-uri.rb:146:in `open_uri&#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/open-uri.rb:677:in `open&#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/open-uri.rb:33:in `open&#39;
+</code></pre>
+</div>
+<p>The error was reproducable by running the following Ruby snippet in an <strong>irb</strong> instance of the RVM installed Ruby version.</p>
+<div class='highlight'><pre><code class='ruby'><span class='nb'>require</span> <span class='s1'>&#39;open-uri&#39;</span>
+<span class='nb'>open</span> <span class='s1'>&#39;https://google.com&#39;</span>
+</code></pre>
+</div>
+<p>I spent a good amount of time digging into things and trying to figure out exactly what the issue was. I came to the conclusion that they either had an out of date Root CA Certificate Bundle or SSL couldn&#8217;t find it for some reason. So, I went down the path of trying to import cacert.pem from <a href='http://curl.haxx.se/ca/cacert.pem'>http://curl.haxx.se/ca/cacert.pem</a> (cURL&#8217;s website).</p>
 
-<p>Anyways, my meter was upgraded today to support enough BTUs to supply the Tankless Water Heater and the rest of the appliances in my house. SoCal Gas simply sent out a tech to come in and assess the load of the appliances and inspect that the appliances where all hooked up properly. After do the rough calculations the tech replaced my meter with another Regulator and Meter that would be substantial enough to supply all my appliances. She also increased the sizing of the reducer immediately after the Meter outlet to what looks like a 3/4&#8221; minimum size rather than 1/2&#8221; like it used to be.</p>
+<p>I went down this path because I vaguely remember doing this at some point in the past to solve the Twitter API SSL Verify fail issue when they changed their certs. I ran into a huge amount of difficulty trying to get the thing imported or converted into a format that Mac OS X Keychain Access would be happy with importing. I tried pem, crt, pck12, etc. Nothing I did seemed to make a difference.</p>
 
-<p>Anyways, I am one step closer, :-).</p>
+<p>This is when I saw a post of someone talking about SSL being installed inside of RVM and I looked at the latest output from <code>rvm requirements</code>. I quickly noticed that it now says to install SSL via the following command:</p>
+<div class='highlight'><pre><code class='text'>rvm pkg install openssl
+</code></pre>
+</div>
+<p>Come to find out if you have run the above command before installing your Ruby version it will be using the RVM packaged openssl instead of the system openssl. That also means that the Root CA Certificate Bundle is different, or in this case, <strong>missing completely</strong>.</p>
+
+<p>After discovering this and doing a little googling I found the solution to be as simple as the following command:</p>
+<div class='highlight'><pre><code class='text'>curl http://curl.haxx.se/ca/cacert.pem -o ~/.rvm/usr/ssl/cert.pem
+</code></pre>
+</div>
+<p>I found this solution on the following blog post <a href='http://fredwu.me/post/28834446907/fix-openssl-error-on-mountain-lion-and-rvm'>http://fredwu.me/post/28834446907/fix-openssl-error-on-mountain-lion-and-rvm</a>. Hopefully, writing another blog post on the subject and linking to this one will help it gain its ranks in google search so that other people can find it quicker.</p>
+
+<p>After running the above command you should now be able to restart your <strong>irb</strong> instance and re-run the test snippet described at the beginning of this post. This time you should get output looking similar to the following:</p>
+<div class='highlight'><pre><code class='text'> =&gt; #&lt;File:/var/folders/j_/9nxyjmd10js8g1sjx446vrsm0000gn/T/open-uri20120907-36935-4i4y64&gt; 
+</code></pre>
+</div>
+<p>Just like that your SSL woes are gone.</p>
     <div style="clear: both;"></div>
   </section>
 
   <footer>
     
-      <a class="tag" href="/tag/Meter">Meter</a>
+      <a class="tag" href="/tag/Ruby">Ruby</a>
     
-      <a class="tag" href="/tag/Natural Gas">Natural Gas</a>
+      <a class="tag" href="/tag/SSL">SSL</a>
     
-      <a class="tag" href="/tag/Upgrade">Upgrade</a>
-    
-      <a class="tag" href="/tag/House">House</a>
+      <a class="tag" href="/tag/Software Development">Software Development</a>
     
   </footer>
 </article>

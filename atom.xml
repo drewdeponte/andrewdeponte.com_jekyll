@@ -4,7 +4,7 @@
   <title>Drew's World</title>
   <link href="http://andrewdeponte.com/atom.xml" rel="self"/>
   <link href="http://andrewdeponte.com/"/>
-  <updated>2012-09-07T16:46:47-07:00</updated>
+  <updated>2012-09-07T17:07:46-07:00</updated>
   <id>http://andrewdeponte.com/</id>
   <author>
     <name>Andrew De Ponte</name>
@@ -17,25 +17,51 @@
       <link href="http://andrewdeponte.com/2012/09/07/rvm-installed-ruby-%28ssl-certificate-verify-failed%29.html"/>
       <updated>2012-09-07T00:00:00-07:00</updated>
       <id>http://andrewdeponte.com/2012/09/07/rvm-installed-ruby-(ssl-certificate-verify-failed)</id>
-      <content type="html">&lt;p&gt;Recently a few of our developers were having problems getting SSL Cert verify failures in Ruby. The error was the following:&lt;/p&gt;
-&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='text'&gt;SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed
+      <content type="html">&lt;p&gt;Recently a few of our developers were having problems getting SSL certificate verify failures in Ruby. The error was the following:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='text'&gt;OpenSSL::SSL::SSLError: SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/net/http.rb:799:in `connect&amp;#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/net/http.rb:799:in `block in connect&amp;#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/timeout.rb:54:in `timeout&amp;#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/timeout.rb:99:in `timeout&amp;#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/net/http.rb:799:in `connect&amp;#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/net/http.rb:755:in `do_start&amp;#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/net/http.rb:744:in `start&amp;#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/open-uri.rb:306:in `open_http&amp;#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/open-uri.rb:775:in `buffer_open&amp;#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/open-uri.rb:203:in `block in open_loop&amp;#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/open-uri.rb:201:in `catch&amp;#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/open-uri.rb:201:in `open_loop&amp;#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/open-uri.rb:146:in `open_uri&amp;#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/open-uri.rb:677:in `open&amp;#39;
+  from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/open-uri.rb:33:in `open&amp;#39;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;I spent a good amount of time digging into things and trying to figure out exactly what the issue was. I came to the conclusion that they either had an out of date Root CA Cert Bundle or SSL couldn&amp;#8217;t find it for some reason. So, I went down the path of trying to import cacert.pem from &lt;a href='http://curl.haxx.se/ca/cacert.pem'&gt;http://curl.haxx.se/ca/cacert.pem&lt;/a&gt; (cURL&amp;#8217;s website).&lt;/p&gt;
+&lt;p&gt;The error was reproducable by running the following Ruby snippet in an &lt;strong&gt;irb&lt;/strong&gt; instance of the RVM installed Ruby version.&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='ruby'&gt;&lt;span class='nb'&gt;require&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;open-uri&amp;#39;&lt;/span&gt;
+&lt;span class='nb'&gt;open&lt;/span&gt; &lt;span class='s1'&gt;&amp;#39;https://google.com&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;I spent a good amount of time digging into things and trying to figure out exactly what the issue was. I came to the conclusion that they either had an out of date Root CA Certificate Bundle or SSL couldn&amp;#8217;t find it for some reason. So, I went down the path of trying to import cacert.pem from &lt;a href='http://curl.haxx.se/ca/cacert.pem'&gt;http://curl.haxx.se/ca/cacert.pem&lt;/a&gt; (cURL&amp;#8217;s website).&lt;/p&gt;
 
 &lt;p&gt;I went down this path because I vaguely remember doing this at some point in the past to solve the Twitter API SSL Verify fail issue when they changed their certs. I ran into a huge amount of difficulty trying to get the thing imported or converted into a format that Mac OS X Keychain Access would be happy with importing. I tried pem, crt, pck12, etc. Nothing I did seemed to make a difference.&lt;/p&gt;
 
-&lt;p&gt;This is when saw a post of someone talking about SSL being installed inside of RVM and I looked at the latest output from &lt;code&gt;rvm requirements&lt;/code&gt; and noticed that it now says to install SSL via the following command:&lt;/p&gt;
+&lt;p&gt;This is when I saw a post of someone talking about SSL being installed inside of RVM and I looked at the latest output from &lt;code&gt;rvm requirements&lt;/code&gt;. I quickly noticed that it now says to install SSL via the following command:&lt;/p&gt;
 &lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='text'&gt;rvm pkg install openssl
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;Come to find out if you have run the above command before installing your ruby version the ruby version will be using the RVM packaged openssl instead of the system openssl. That also means that the Root CA Cert Bundle is different, or in this case, &lt;strong&gt;missing completely&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Come to find out if you have run the above command before installing your Ruby version it will be using the RVM packaged openssl instead of the system openssl. That also means that the Root CA Certificate Bundle is different, or in this case, &lt;strong&gt;missing completely&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;After discovering this and doing a little googling I found the solution to be as simple as the following command:&lt;/p&gt;
 &lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='text'&gt;curl http://curl.haxx.se/ca/cacert.pem -o ~/.rvm/usr/ssl/cert.pem
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;I found this solution on the following blog post &lt;a href='http://fredwu.me/post/28834446907/fix-openssl-error-on-mountain-lion-and-rvm'&gt;http://fredwu.me/post/28834446907/fix-openssl-error-on-mountain-lion-and-rvm&lt;/a&gt;. Hopefully, writing another blog post on the subject and linking to this one will help it gain its ranks in google search so that other people can find it quicker.&lt;/p&gt;</content>
+&lt;p&gt;I found this solution on the following blog post &lt;a href='http://fredwu.me/post/28834446907/fix-openssl-error-on-mountain-lion-and-rvm'&gt;http://fredwu.me/post/28834446907/fix-openssl-error-on-mountain-lion-and-rvm&lt;/a&gt;. Hopefully, writing another blog post on the subject and linking to this one will help it gain its ranks in google search so that other people can find it quicker.&lt;/p&gt;
+
+&lt;p&gt;After running the above command you should now be able to restart your &lt;strong&gt;irb&lt;/strong&gt; instance and re-run the test snippet described at the beginning of this post. This time you should get output looking similar to the following:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='text'&gt; =&amp;gt; #&amp;lt;File:/var/folders/j_/9nxyjmd10js8g1sjx446vrsm0000gn/T/open-uri20120907-36935-4i4y64&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Just like that your SSL woes are gone.&lt;/p&gt;</content>
     </entry>
   
     <entry>

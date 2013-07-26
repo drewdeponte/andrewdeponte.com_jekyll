@@ -11,7 +11,7 @@ It also depends on [Bundler](http://bundler.io) to manage all of its
 dependencies. Therefore, keep in mind you must have bundler installed in the
 Ruby version defined by the `.ruby-verison` file.
 
-To get things up and running you can follow the following steps:
+To get things up and running you can follow the steps below:
 
 1. Clone the git repository
 2. `cd` into the cloned repository (triggers RVM to set ruby version and

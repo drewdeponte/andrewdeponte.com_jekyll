@@ -14,8 +14,8 @@ Ruby version defined by the `.ruby-verison` file.
 To get things up and running you can follow the following steps:
 
 1. Clone the git repository
-2. `cd` into the cloned repository (this will trigger RVM to set ruby version
-   and gemset via `.ruby-version` file)
+2. `cd` into the cloned repository (triggers RVM to set ruby version and
+   gemset via `.ruby-version` file)
 3. `bundle`
 
 The above will install all the necessary tools in the proper Ruby version and

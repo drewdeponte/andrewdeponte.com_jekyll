@@ -31,4 +31,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  jekyll
   jekyll-minimagick

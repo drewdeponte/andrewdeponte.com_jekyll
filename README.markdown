@@ -61,4 +61,7 @@ you left off.
 1. Checkout the **jekyll-site-src** branch if not already on it.
 2. Make any changes to the templates or the site (this is too broad a topic to
    cover here, look into [Jekyll](http://jekyllrb.com) for more details).
-3. Publish the Site as described in the above section.
+3. Test the results `jekyll serve` and then `open http://localhost:4000`
+4. Rinse and repeat
+5. Publish the Site as described in the above section.
+

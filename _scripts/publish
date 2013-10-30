@@ -10,7 +10,7 @@ if [[ $num_uncommited -ne 0 ]]; then
 fi
 
 # Generate the site into _site
-jekyll
+jekyll build
 
 # Copy the generated site content to a temp folder
 TMPSITE=`mktemp -d /tmp/jekyll-cyph.XXXX`

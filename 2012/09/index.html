@@ -96,33 +96,28 @@
   from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/open-uri.rb:146:in `open_uri&#39;
   from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/open-uri.rb:677:in `open&#39;
   from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/open-uri.rb:33:in `open&#39;
-</code></pre>
-</div>
+</code></pre></div>
 <p>The error was reproducable by running the following Ruby snippet in an <strong>irb</strong> instance of the RVM installed Ruby version.</p>
 <div class='highlight'><pre><code class='ruby'><span class='nb'>require</span> <span class='s1'>&#39;open-uri&#39;</span>
 <span class='nb'>open</span> <span class='s1'>&#39;https://google.com&#39;</span>
-</code></pre>
-</div>
+</code></pre></div>
 <p>I spent a good amount of time digging into things and trying to figure out exactly what the issue was. I came to the conclusion that they either had an out of date Root CA Certificate Bundle or SSL couldn&#8217;t find it for some reason. So, I went down the path of trying to import cacert.pem from <a href='http://curl.haxx.se/ca/cacert.pem'>http://curl.haxx.se/ca/cacert.pem</a> (cURL&#8217;s website).</p>
 
 <p>I went down this path because I vaguely remember doing this at some point in the past to solve the Twitter API SSL Verify fail issue when they changed their certs. I ran into a huge amount of difficulty trying to get the thing imported or converted into a format that Mac OS X Keychain Access would be happy with importing. I tried pem, crt, pck12, etc. Nothing I did seemed to make a difference.</p>
 
 <p>This is when I saw a post of someone talking about SSL being installed inside of RVM and I looked at the latest output from <code>rvm requirements</code>. I quickly noticed that it now says to install SSL via the following command:</p>
 <div class='highlight'><pre><code class='text'>rvm pkg install openssl
-</code></pre>
-</div>
+</code></pre></div>
 <p>Come to find out if you have run the above command before installing your Ruby version it will be using the RVM packaged openssl instead of the system openssl. That also means that the Root CA Certificate Bundle is different, or in this case, <strong>missing completely</strong>.</p>
 
 <p>After discovering this and doing a little googling I found the solution to be as simple as the following command:</p>
 <div class='highlight'><pre><code class='text'>curl http://curl.haxx.se/ca/cacert.pem -o ~/.rvm/usr/ssl/cert.pem
-</code></pre>
-</div>
+</code></pre></div>
 <p>I found this solution on the following blog post <a href='http://fredwu.me/post/28834446907/fix-openssl-error-on-mountain-lion-and-rvm'>http://fredwu.me/post/28834446907/fix-openssl-error-on-mountain-lion-and-rvm</a>. Hopefully, writing another blog post on the subject and linking to this one will help it gain its ranks in google search so that other people can find it quicker.</p>
 
 <p>After running the above command you should now be able to restart your <strong>irb</strong> instance and re-run the test snippet described at the beginning of this post. This time you should get output looking similar to the following:</p>
 <div class='highlight'><pre><code class='text'> =&gt; #&lt;File:/var/folders/j_/9nxyjmd10js8g1sjx446vrsm0000gn/T/open-uri20120907-36935-4i4y64&gt; 
-</code></pre>
-</div>
+</code></pre></div>
 <p>Just like that your SSL woes are gone.</p>
     <div style="clear: both;"></div>
   </section>
@@ -175,7 +170,7 @@
   
   <a class="tag" href="/tag/TextMate"><span class="tag_name">TextMate</span> <span class="tag_usage_count">(1)</span></a>
   
-  <a class="tag" href="/tag/Software Development"><span class="tag_name">Software Development</span> <span class="tag_usage_count">(26)</span></a>
+  <a class="tag" href="/tag/Software Development"><span class="tag_name">Software Development</span> <span class="tag_usage_count">(27)</span></a>
   
   <a class="tag" href="/tag/Media Management"><span class="tag_name">Media Management</span> <span class="tag_usage_count">(1)</span></a>
   
@@ -459,11 +454,17 @@
   
   <a class="tag" href="/tag/SSL"><span class="tag_name">SSL</span> <span class="tag_usage_count">(1)</span></a>
   
+  <a class="tag" href="/tag/Vagrant"><span class="tag_name">Vagrant</span> <span class="tag_usage_count">(1)</span></a>
+  
+  <a class="tag" href="/tag/VMware"><span class="tag_name">VMware</span> <span class="tag_usage_count">(1)</span></a>
+  
+  <a class="tag" href="/tag/VirtualBox"><span class="tag_name">VirtualBox</span> <span class="tag_usage_count">(1)</span></a>
+  
 </div>
 
         </div>
         <div>
-          <div class="archives_list"><h2>Archives</h2><a href="/2013/01" class="archive"><span class="archive_period">January 2013 </span><span class="archive_count">(1)</span></a><a href="/2012/09" class="archive"><span class="archive_period">September 2012 </span><span class="archive_count">(2)</span></a><a href="/2012/08" class="archive"><span class="archive_period">August 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
+          <div class="archives_list"><h2>Archives</h2><a href="/2013/10" class="archive"><span class="archive_period">October 2013 </span><span class="archive_count">(1)</span></a><a href="/2013/01" class="archive"><span class="archive_period">January 2013 </span><span class="archive_count">(1)</span></a><a href="/2012/09" class="archive"><span class="archive_period">September 2012 </span><span class="archive_count">(2)</span></a><a href="/2012/08" class="archive"><span class="archive_period">August 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
         </div>
       </aside>
       <div style="clear: both;"></div>

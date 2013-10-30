@@ -31,6 +31,35 @@
         
   <article class='blog-post'>
   <header>
+    <h2 class='title'><a href="/2009/07/21/bought-my-first-house.html">Bought My First House</a></h2>
+    <div class='posted-info'>
+      <time datetime='2009-07-21T00:00:00Z' pubdate='pubdate' class='published-datetime'>July 21, 2009</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>Few, the stress and hesitation is over with. Today, I closed on my first house. I am now a home owner. Can you believe that? I can&#8217;t. It hasn&#8217;t really settled in yet that I now own my own home. Now, the excitement and overwhelming feeling comes of the massive project that is a fixer upper house. However, with that also comes the great satisfaction and feeling of accomplishment after I make every addition step towards my goals for this house.</p>
+
+<p>Everyone keeps telling me that the tasks around the house will never end. I am sure they are right, but that is also part of what I love about it. It continually evolves as technology and time progress just as any good software does. Beyond that, I now get to make sure that it is the way I want it. In fact the two primary factors I took into consideration while looking for houses were Location, Location, Location, Location and a good base (framing, foundation) to start from. Oh, and I of course had to consider the money part as well. Luckily I found a repo that needed a lot of work but had an awesome location and fell just within my budget.</p>
+
+<p>Buying this house was a very difficult decision to make as I am currently involved in a number of side software projects besides my normal full time job. However, everything seemed to fall into place and it felt like the right time. So, after weeks and weeks of contemplation and discussion with friends and family I finally decided to take the leap, and here I am now a home owner. Oh the life!</p>
+    <div style="clear: both;"></div>
+  </section>
+
+  <footer>
+    
+      <a class="tag" href="/tag/House">House</a>
+    
+      <a class="tag" href="/tag/Personal">Personal</a>
+    
+  </footer>
+</article>
+
+
+  <article class='blog-post'>
+  <header>
     <h2 class='title'><a href="/2009/07/01/ajax-request-generated-javascript.html">Ajax Request Generated JavaScript</a></h2>
     <div class='posted-info'>
       <time datetime='2009-07-01T00:00:00Z' pubdate='pubdate' class='published-datetime'>July 01, 2009</time>
@@ -90,8 +119,7 @@
     YAHOO.<span class='err'>&lt;</span>%= calendar_namespace %&gt;.<span class='err'>&lt;</span>%= calendar_id %&gt;.Cal.render();
   }
 <span class='nt'>&lt;/div&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 <p>This div with a unique id gives me the capability of pulling out the associated raw JavaScript that is the innerHTML content of this div in the top level document and having the top level documents JavaScript evaluate it. This can be done with a JavaScript function like the following:</p>
 <div class='highlight'><pre><code class='html'>function createRowEditCalendar(id) {
   var script = document.getElementById(&quot;cal_visited_on_&quot; + id + &quot;_script&quot;).innerHTML;
@@ -100,12 +128,10 @@
   eval(my_init_cmd);
   return true;
 }
-</code></pre>
-</div>
+</code></pre></div>
 <p>The next logical question of course is what event or callback launches the above JavaScript function in the top level document. The answer in this case is simply to use the Prototypes Ajax.Updater onComplete callback by having it first programatically figure out the name of the div using the reproducible naming scheme and then call the above JavaScript function passing it the necessary id to access the hidden JavaScript div. This might look something like the following:</p>
 <div class='highlight'><pre><code class='html'><span class='nt'>&lt;input</span> <span class='na'>type=</span><span class='s'>&quot;button&quot;</span> <span class='na'>id=</span><span class='s'>&quot;rowedit_create_button&quot;</span> <span class='na'>value=</span><span class='s'>&quot;Create&quot;</span> <span class='na'>onclick=</span><span class='s'>&quot;new Ajax.Updater(&lt;% if prefix %&gt; &#39;&lt;%= prefix %&gt;_rowedit_data_rows&#39; &lt;% else %&gt; &#39;rowedit_data_rows&#39; &lt;% end %&gt;, &#39;&lt;%= urls[:create] %&gt;&#39;, {asynchronous:true, parameters:$(&lt;% if prefix %&gt; &#39;&lt;%= prefix %&gt;_rowedit_create_form&#39; &lt;% else %&gt; &#39;rowedit_create_form&#39; &lt;% end %&gt;).serialize(), insertion: Insertion.Bottom, onComplete: function() { var drows = document.getElementById(&#39;rowedit_data_rows&#39;); var last_row_id = drows.lastChild.id; last_row_id = last_row_id.replace(&#39;edit_&#39;, &#39;&#39;); last_row_id = last_row_id.replace(&#39;_row&#39;, &#39;&#39;); createRowEditCalendar(last_row_id); } });&quot;</span><span class='nt'>/&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 <p>Assuming that you have those three components in place and properly setup with all the syntax correct you should have a working solution. Note: Be very careful of syntax errors in the JavaScript inside the eval() method because FireBug won&#8217;t detect them, or run-time errors in the JavaScript anywhere because not all of them will be detected by FireBug. Anyways, hope this helps someone out there, it sure would have helped me if I had it.</p>
     <div style="clear: both;"></div>
   </section>
@@ -215,38 +241,6 @@
 </article>
 
 
-  <article class='blog-post'>
-  <header>
-    <h2 class='title'><a href="/2007/09/05/textmate-autotools-screencast-%231.html">TextMate Autotools Screencast</a></h2>
-    <div class='posted-info'>
-      <time datetime='2007-09-05T00:00:00Z' pubdate='pubdate' class='published-datetime'>September 05, 2007</time>
-      <span>by</span>
-      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
-    </div>
-  </header>
-
-  <section>
-    <p>I just threw together a screencast that covers a little TextMate Bundle I have been working. The TextMate Autotools Bundle is an extension for the TextMate editor which integrates TextMate with the standard GNU Autotools suite with a specific emphasis on cross-platform building. Check it out below to see the features and how to use them in this alpha version.</p>
-<iframe allowFullScreen='allowFullScreen' frameborder='0' height='382' mozallowfullscreen='mozallowfullscreen' src='http://player.vimeo.com/video/10421190 ' webkitAllowFullScreen='webkitAllowFullScreen' width='680'>useless text to fix fail to render rest of post issue</iframe>
-    <div style="clear: both;"></div>
-  </section>
-
-  <footer>
-    
-      <a class="tag" href="/tag/Autotools">Autotools</a>
-    
-      <a class="tag" href="/tag/Bundle">Bundle</a>
-    
-      <a class="tag" href="/tag/Screencast">Screencast</a>
-    
-      <a class="tag" href="/tag/TextMate">TextMate</a>
-    
-      <a class="tag" href="/tag/Software Development">Software Development</a>
-    
-  </footer>
-</article>
-
-
 
 <!-- Pagination links -->
 <div class="pagination">
@@ -296,7 +290,7 @@
   
   <a class="tag" href="/tag/TextMate"><span class="tag_name">TextMate</span> <span class="tag_usage_count">(1)</span></a>
   
-  <a class="tag" href="/tag/Software Development"><span class="tag_name">Software Development</span> <span class="tag_usage_count">(26)</span></a>
+  <a class="tag" href="/tag/Software Development"><span class="tag_name">Software Development</span> <span class="tag_usage_count">(27)</span></a>
   
   <a class="tag" href="/tag/Media Management"><span class="tag_name">Media Management</span> <span class="tag_usage_count">(1)</span></a>
   
@@ -580,11 +574,17 @@
   
   <a class="tag" href="/tag/SSL"><span class="tag_name">SSL</span> <span class="tag_usage_count">(1)</span></a>
   
+  <a class="tag" href="/tag/Vagrant"><span class="tag_name">Vagrant</span> <span class="tag_usage_count">(1)</span></a>
+  
+  <a class="tag" href="/tag/VMware"><span class="tag_name">VMware</span> <span class="tag_usage_count">(1)</span></a>
+  
+  <a class="tag" href="/tag/VirtualBox"><span class="tag_name">VirtualBox</span> <span class="tag_usage_count">(1)</span></a>
+  
 </div>
 
         </div>
         <div>
-          <div class="archives_list"><h2>Archives</h2><a href="/2013/01" class="archive"><span class="archive_period">January 2013 </span><span class="archive_count">(1)</span></a><a href="/2012/09" class="archive"><span class="archive_period">September 2012 </span><span class="archive_count">(2)</span></a><a href="/2012/08" class="archive"><span class="archive_period">August 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
+          <div class="archives_list"><h2>Archives</h2><a href="/2013/10" class="archive"><span class="archive_period">October 2013 </span><span class="archive_count">(1)</span></a><a href="/2013/01" class="archive"><span class="archive_period">January 2013 </span><span class="archive_count">(1)</span></a><a href="/2012/09" class="archive"><span class="archive_period">September 2012 </span><span class="archive_count">(2)</span></a><a href="/2012/08" class="archive"><span class="archive_period">August 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
         </div>
       </aside>
       <div style="clear: both;"></div>

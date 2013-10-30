@@ -31,6 +31,53 @@
         
   <article class='blog-post'>
   <header>
+    <h2 class='title'><a href="/2010/04/11/white-lammi-pocket-door.html">White Lammi Pocket Door</a></h2>
+    <div class='posted-info'>
+      <time datetime='2010-04-11T00:00:00Z' pubdate='pubdate' class='published-datetime'>April 11, 2010</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>As some of you may already know. I recently bought a 2 ft. White Lammi Pocket Door for the front-left bedroom in my house. The reason I chose to replace the hinged door with a pocket door is because the bathroom is a relatively small bathroom and I want to make it as spacious as possible. I decided on White Lammi Glass for a number of reasons.</p>
+
+<ol>
+<li>You can&#8217;t see through it so it provides some privacy in the bathroom.</li>
+
+<li>It still allows light to go through it, and supposedly even intensifies the light that goes through it.</li>
+
+<li>It has a more modern look and feel.</li>
+</ol>
+
+<p>My buddy Dave and I started framing it into the wall last weekend but ran into a bit of snag. We had managed to make the jam and the track square such that the door closed properly. However, with the pocket frame as it came, the pocket portion wouldn&#8217;t sit parallel to the jam and square to the track. After, calling some people that I know in the industry and talking to them for a while they told me that generally the pocket door frames aren&#8217;t squared 100% when you get them. They said that this was due to a two main factors.</p>
+
+<ol>
+<li>The pocket door frames aren&#8217;t manufactured with enough precision.</li>
+
+<li>The pocket door frames are tossed around when they are shipped and transported.</li>
+</ol>
+
+<p>Anyways, after talking to these experts they basically told me that you have to work the frame back into square. So, today my buddy Dave and I went back at the frame and worked it and got it to finally be square with the help of a couple shims, some body weight, and a light crow bar. We also had to shim the track up on the back of the pocket side of the frame because the track part wouldn&#8217;t sit on the pocket when it was square with the door portion of the frame.</p>
+
+<p>Anyways, installing this pocket door was a bit of a pain but now I know for next time that I just need to force the frame into being square and tack it into place. Plus, I think the finished result now that it is square is well worth the effort. If you would like to see for yourself, check out the pics <a href='http://www.facebook.com/media/set/?set=a.535699227600.2048925.30901409&amp;type=3&amp;l=46b03e486a'>here</a>.</p>
+    <div style="clear: both;"></div>
+  </section>
+
+  <footer>
+    
+      <a class="tag" href="/tag/Pocket Door">Pocket Door</a>
+    
+      <a class="tag" href="/tag/White Lammi Glass">White Lammi Glass</a>
+    
+      <a class="tag" href="/tag/House">House</a>
+    
+  </footer>
+</article>
+
+
+  <article class='blog-post'>
+  <header>
     <h2 class='title'><a href="/2010/03/27/poker.html">Poker</a></h2>
     <div class='posted-info'>
       <time datetime='2010-03-27T00:00:00Z' pubdate='pubdate' class='published-datetime'>March 27, 2010</time>
@@ -205,130 +252,6 @@
 </article>
 
 
-  <article class='blog-post'>
-  <header>
-    <h2 class='title'><a href="/2009/10/31/jquery-comparative-histogram-plugin.html">jQuery Comparative Histogram Plugin</a></h2>
-    <div class='posted-info'>
-      <time datetime='2009-10-31T00:00:00Z' pubdate='pubdate' class='published-datetime'>October 31, 2009</time>
-      <span>by</span>
-      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
-    </div>
-  </header>
-
-  <section>
-    <p>I recently wrote a jQuery Plugin that I am calling jquery_comphist. It is a jQuery Plugin that draws a Comparative Histogram of a provided population divided into two major groups with any number of shared sub-groups. One of the most common uses for such a feature is when you are trying to display demographics data on some population. Anyways, as usual the code is available at my GitHub page here and you can see a demo of it below.</p>
-<div style='background-color: #f3f3f3; padding: 20px;'>
-<div id='comphist_example' style='width: 500px; height: 200px;'>&nbsp;</div>
-</div><script type='text/javascript'>
-$(function () {
-  function showCompHistTooltip(x, y, contents) {
-    $("<div id='comphist1tooltip'>" + contents + '</div>').css({ position: 'absolute', display: 'none', top: y - 20, left: x - 30, border: '1px solid #fdd', padding: '2px', 'background-color': '#fee', opacity: 1 }).appendTo("body").fadeIn(200);
-  }
-
-  var comphist_data = {
-    population_label: 'Active Fans This Week',
-    group_1_label: 'Male', group_2_label: 'Female',
-    subgroups: [
-    { label: '13-17', group_1_count: 3, group_2_count: 16 },
-    { label: '18-24', group_1_count: 7, group_2_count: 27 },
-    { label: '25-34', group_1_count: 3, group_2_count: 29 },
-    { label: '35-44', group_1_count: 2, group_2_count: 9 },
-    { label: '45-54', group_1_count: 0, group_2_count: 4 },
-    { label: '55+', group_1_count: 0, group_2_count: 0 }
-    ],
-    non_demo_count: 0
-  };
-  $("#comphist_example").comphist({}, comphist_data);
-
-  $("#comphist_example").bind("barover", function (e, perc, pos) {
-    $("#comphist1tooltip").remove();
-    showCompHistTooltip(pos.left, pos.top, perc);
-  });
-  
-  $("#comphist_example").bind("barout", function (e, perc, pos) {
-    $("#comphist1tooltip").remove();
-  });
-});
-</script>
-<p>With the jQuery Comparative Histogram (CompHist) Plugin you can easily represent populations and information about them. A prime usage exampe of this is demographics. All the styling is done via CSS. Hence the style is easily modified. It does the calculations for you and it allows for non listed group counts via a non_demo_count data option.</p>
-
-<p>The above demo was produced by defining a few code snippets. The first snippet is a snippet of HTML that includes the jQuery Comparative Histogram javascript source file and CSS style sheet. Note: The jQuery Comparative Histogram javascript source file needs to come after the standard jQuery javascript source file. An example of this snippet is as follows:</p>
-<div class='highlight'><pre><code class='html'><span class='nt'>&lt;script </span><span class='na'>type=</span><span class='s'>&quot;text/javascript&quot;</span> <span class='na'>src=</span><span class='s'>&quot;../jquery.comphist.js&quot;</span><span class='nt'>&gt;&lt;/script&gt;</span>
-<span class='nt'>&lt;link</span> <span class='na'>rel=</span><span class='s'>&quot;stylesheet&quot;</span> <span class='na'>type=</span><span class='s'>&quot;text/css&quot;</span> <span class='na'>href=</span><span class='s'>&quot;../stylesheets/jquery.comphist.css&quot;</span><span class='nt'>&gt;</span>
-</code></pre>
-</div>
-<p>Note: In the above snippet the href values are likely to be different in your case. The second code snippet is simply a single line of HTML where the div that is to be the Comparative Histogram. It is key that this div has an id that is easily referenced and a set height and width. An example of this snippet is as follows:</p>
-<div class='highlight'><pre><code class='html'><span class='nt'>&lt;div</span> <span class='na'>id=</span><span class='s'>&quot;compplaceholder&quot;</span> <span class='na'>style=</span><span class='s'>&quot;width: 375px; height: 200px;&quot;</span><span class='nt'>&gt;&lt;/div&gt;</span>
-</code></pre>
-</div>
-<p>The third code snippet needed is the javascript that defines the data, creates the Comparative Histogram in the specified div, and handles the hover functionality. An example of this is seen below.</p>
-<div class='highlight'><pre><code class='html'><span class='nt'>&lt;script </span><span class='na'>type=</span><span class='s'>&quot;text/javascript&quot;</span><span class='nt'>&gt;</span>
-<span class='nx'>$</span><span class='p'>(</span><span class='kd'>function</span> <span class='p'>()</span> <span class='p'>{</span>
-  <span class='kd'>function</span> <span class='nx'>showCompHistTooltip</span><span class='p'>(</span><span class='nx'>x</span><span class='p'>,</span> <span class='nx'>y</span><span class='p'>,</span> <span class='nx'>contents</span><span class='p'>)</span> <span class='p'>{</span>
-    <span class='nx'>console</span><span class='p'>.</span><span class='nx'>log</span><span class='p'>(</span><span class='s2'>&quot;called my shit&quot;</span><span class='p'>);</span>
-    <span class='nx'>$</span><span class='p'>(</span><span class='s1'>&#39;&lt;div id=&quot;comphist1tooltip&quot;&gt;&#39;</span> <span class='o'>+</span> <span class='nx'>contents</span> <span class='o'>+</span> <span class='s1'>&#39;&lt;/div&gt;&#39;</span><span class='p'>).</span><span class='nx'>css</span><span class='p'>({</span>
-      <span class='nx'>position</span><span class='o'>:</span> <span class='s1'>&#39;absolute&#39;</span><span class='p'>,</span>
-      <span class='nx'>display</span><span class='o'>:</span> <span class='s1'>&#39;none&#39;</span><span class='p'>,</span>
-      <span class='nx'>top</span><span class='o'>:</span> <span class='nx'>y</span> <span class='o'>-</span> <span class='mi'>20</span><span class='p'>,</span>
-      <span class='nx'>left</span><span class='o'>:</span> <span class='nx'>x</span> <span class='o'>-</span> <span class='mi'>30</span><span class='p'>,</span>
-      <span class='nx'>border</span><span class='o'>:</span> <span class='s1'>&#39;1px solid #fdd&#39;</span><span class='p'>,</span>
-      <span class='nx'>padding</span><span class='o'>:</span> <span class='s1'>&#39;2px&#39;</span><span class='p'>,</span>
-      <span class='s1'>&#39;background-color&#39;</span><span class='o'>:</span> <span class='s1'>&#39;#fee&#39;</span><span class='p'>,</span>
-      <span class='nx'>opacity</span><span class='o'>:</span> <span class='mi'>1</span>
-    <span class='p'>}).</span><span class='nx'>appendTo</span><span class='p'>(</span><span class='s2'>&quot;body&quot;</span><span class='p'>).</span><span class='nx'>fadeIn</span><span class='p'>(</span><span class='mi'>200</span><span class='p'>);</span>
-  <span class='p'>}</span>
-
-  <span class='kd'>var</span> <span class='nx'>comphist_data</span> <span class='o'>=</span> <span class='p'>{</span>
-    <span class='nx'>population_label</span><span class='o'>:</span> <span class='s1'>&#39;Active Fans This Week&#39;</span><span class='p'>,</span>
-    <span class='nx'>group_1_label</span><span class='o'>:</span> <span class='s1'>&#39;Male&#39;</span><span class='p'>,</span> <span class='nx'>group_2_label</span><span class='o'>:</span> <span class='s1'>&#39;Female&#39;</span><span class='p'>,</span>
-    <span class='nx'>subgroups</span><span class='o'>:</span> <span class='p'>[</span>
-    <span class='p'>{</span> <span class='nx'>label</span><span class='o'>:</span> <span class='s1'>&#39;13-17&#39;</span><span class='p'>,</span> <span class='nx'>group_1_count</span><span class='o'>:</span> <span class='mi'>3</span><span class='p'>,</span> <span class='nx'>group_2_count</span><span class='o'>:</span> <span class='mi'>16</span> <span class='p'>},</span>
-    <span class='p'>{</span> <span class='nx'>label</span><span class='o'>:</span> <span class='s1'>&#39;18-24&#39;</span><span class='p'>,</span> <span class='nx'>group_1_count</span><span class='o'>:</span> <span class='mi'>7</span><span class='p'>,</span> <span class='nx'>group_2_count</span><span class='o'>:</span> <span class='mi'>27</span> <span class='p'>},</span>
-    <span class='p'>{</span> <span class='nx'>label</span><span class='o'>:</span> <span class='s1'>&#39;25-34&#39;</span><span class='p'>,</span> <span class='nx'>group_1_count</span><span class='o'>:</span> <span class='mi'>3</span><span class='p'>,</span> <span class='nx'>group_2_count</span><span class='o'>:</span> <span class='mi'>29</span> <span class='p'>},</span>
-    <span class='p'>{</span> <span class='nx'>label</span><span class='o'>:</span> <span class='s1'>&#39;35-44&#39;</span><span class='p'>,</span> <span class='nx'>group_1_count</span><span class='o'>:</span> <span class='mi'>2</span><span class='p'>,</span> <span class='nx'>group_2_count</span><span class='o'>:</span> <span class='mi'>9</span> <span class='p'>},</span>
-    <span class='p'>{</span> <span class='nx'>label</span><span class='o'>:</span> <span class='s1'>&#39;45-54&#39;</span><span class='p'>,</span> <span class='nx'>group_1_count</span><span class='o'>:</span> <span class='mi'>0</span><span class='p'>,</span> <span class='nx'>group_2_count</span><span class='o'>:</span> <span class='mi'>4</span> <span class='p'>},</span>
-    <span class='p'>{</span> <span class='nx'>label</span><span class='o'>:</span> <span class='s1'>&#39;55+&#39;</span><span class='p'>,</span> <span class='nx'>group_1_count</span><span class='o'>:</span> <span class='mi'>0</span><span class='p'>,</span> <span class='nx'>group_2_count</span><span class='o'>:</span> <span class='mi'>0</span> <span class='p'>}</span>
-    <span class='p'>],</span>
-    <span class='nx'>non_demo_count</span><span class='o'>:</span> <span class='mi'>0</span>
-  <span class='p'>};</span>
-  <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#compplaceholder&quot;</span><span class='p'>).</span><span class='nx'>comphist</span><span class='p'>({},</span> <span class='nx'>comphist_data</span><span class='p'>);</span>
-
-  <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#compplaceholder&quot;</span><span class='p'>).</span><span class='nx'>bind</span><span class='p'>(</span><span class='s2'>&quot;barover&quot;</span><span class='p'>,</span> <span class='kd'>function</span> <span class='p'>(</span><span class='nx'>e</span><span class='p'>,</span> <span class='nx'>perc</span><span class='p'>,</span> <span class='nx'>pos</span><span class='p'>)</span> <span class='p'>{</span>
-    <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#comphist1tooltip&quot;</span><span class='p'>).</span><span class='nx'>remove</span><span class='p'>();</span>
-    <span class='nx'>showCompHistTooltip</span><span class='p'>(</span><span class='nx'>pos</span><span class='p'>.</span><span class='nx'>left</span><span class='p'>,</span> <span class='nx'>pos</span><span class='p'>.</span><span class='nx'>top</span><span class='p'>,</span> <span class='nx'>perc</span><span class='p'>);</span>
-  <span class='p'>});</span>
-  
-  <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#compplaceholder&quot;</span><span class='p'>).</span><span class='nx'>bind</span><span class='p'>(</span><span class='s2'>&quot;barout&quot;</span><span class='p'>,</span> <span class='kd'>function</span> <span class='p'>(</span><span class='nx'>e</span><span class='p'>,</span> <span class='nx'>perc</span><span class='p'>,</span> <span class='nx'>pos</span><span class='p'>)</span> <span class='p'>{</span>
-    <span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;#comphist1tooltip&quot;</span><span class='p'>).</span><span class='nx'>remove</span><span class='p'>();</span>
-  <span class='p'>});</span>
-<span class='p'>});</span>
-<span class='nt'>&lt;/script&gt;</span>
-</code></pre>
-</div>
-<p>Hopefully, the demo and quick code example helps get you up and running quickly.</p>
-    <div style="clear: both;"></div>
-  </section>
-
-  <footer>
-    
-      <a class="tag" href="/tag/Demographics">Demographics</a>
-    
-      <a class="tag" href="/tag/Graphing">Graphing</a>
-    
-      <a class="tag" href="/tag/Metrics">Metrics</a>
-    
-      <a class="tag" href="/tag/jQuery">jQuery</a>
-    
-      <a class="tag" href="/tag/JavaScript">JavaScript</a>
-    
-      <a class="tag" href="/tag/Software Development">Software Development</a>
-    
-      <a class="tag" href="/tag/Software Projects">Software Projects</a>
-    
-  </footer>
-</article>
-
-
 
 <!-- Pagination links -->
 <div class="pagination">
@@ -378,7 +301,7 @@ $(function () {
   
   <a class="tag" href="/tag/TextMate"><span class="tag_name">TextMate</span> <span class="tag_usage_count">(1)</span></a>
   
-  <a class="tag" href="/tag/Software Development"><span class="tag_name">Software Development</span> <span class="tag_usage_count">(26)</span></a>
+  <a class="tag" href="/tag/Software Development"><span class="tag_name">Software Development</span> <span class="tag_usage_count">(27)</span></a>
   
   <a class="tag" href="/tag/Media Management"><span class="tag_name">Media Management</span> <span class="tag_usage_count">(1)</span></a>
   
@@ -662,11 +585,17 @@ $(function () {
   
   <a class="tag" href="/tag/SSL"><span class="tag_name">SSL</span> <span class="tag_usage_count">(1)</span></a>
   
+  <a class="tag" href="/tag/Vagrant"><span class="tag_name">Vagrant</span> <span class="tag_usage_count">(1)</span></a>
+  
+  <a class="tag" href="/tag/VMware"><span class="tag_name">VMware</span> <span class="tag_usage_count">(1)</span></a>
+  
+  <a class="tag" href="/tag/VirtualBox"><span class="tag_name">VirtualBox</span> <span class="tag_usage_count">(1)</span></a>
+  
 </div>
 
         </div>
         <div>
-          <div class="archives_list"><h2>Archives</h2><a href="/2013/01" class="archive"><span class="archive_period">January 2013 </span><span class="archive_count">(1)</span></a><a href="/2012/09" class="archive"><span class="archive_period">September 2012 </span><span class="archive_count">(2)</span></a><a href="/2012/08" class="archive"><span class="archive_period">August 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
+          <div class="archives_list"><h2>Archives</h2><a href="/2013/10" class="archive"><span class="archive_period">October 2013 </span><span class="archive_count">(1)</span></a><a href="/2013/01" class="archive"><span class="archive_period">January 2013 </span><span class="archive_count">(1)</span></a><a href="/2012/09" class="archive"><span class="archive_period">September 2012 </span><span class="archive_count">(2)</span></a><a href="/2012/08" class="archive"><span class="archive_period">August 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
         </div>
       </aside>
       <div style="clear: both;"></div>

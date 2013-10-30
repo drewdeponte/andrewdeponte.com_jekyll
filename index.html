@@ -31,6 +31,65 @@
         
   <article class='blog-post'>
   <header>
+    <h2 class='title'><a href="/2013/10/29/shrinking-vagrant-linux-boxes.html">Shrinking Vagrant Linux Boxes</a></h2>
+    <div class='posted-info'>
+      <time datetime='2013-10-29T00:00:00Z' pubdate='pubdate' class='published-datetime'>October 29, 2013</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    <p>So, lately I have been using Virtual Machines via <a href='http://www.vagrantup.com/'>Vagrant</a> a siginificant amount as we are now using them to host our development environments and dependencies for all the development work we do. We have been using <a href='http://puppetlabs.com/'>Puppet</a> to automate the configuration of our environments and to make building our boxes easier.</p>
+
+<p>Once you have provisioned a VM and you have it all dialed, you will most likely want to create a <a href='http://docs.vagrantup.com/v2/boxes.html'>Vagrant Box</a> from that VM and host it up on S3 so that new developers can get started simply by installing <a href='http://www.vagrantup.com/'>Vagrant</a>, cloning your repository and running:</p>
+<div class='highlight'><pre><code class='text'>$ vagrant up
+</code></pre></div>
+<p>This actually works great. However, I found that the VM disks both for the <a href='http://docs.vagrantup.com/v2/vmware/index.html'>Vagrant VMware Provider</a> and the <a href='http://docs.vagrantup.com/v2/virtualbox/index.html'>VirtualBox Provider</a> grow dynamically, but they never shrink. So, when I was going through the process of building the VM and installing all the dependency software, etc. it was bloating the base machine. This was the case even though I removed the temporary cruft from the filesystem on the guest.</p>
+
+<p>With a little research and some trial and error I found that you can shrink these disks as long as they are ext3 or ext4 file systems with the help of the following command:</p>
+<div class='highlight'><pre><code class='text'>$ vagrant ssh
+$ sudo dd if=/dev/zero of=wipefile bs=1024x1024; rm wipefile
+</code></pre></div>
+<p>What the above command is doing is simply writing zero bytes to the wipefile in chunks of 1024 bytes until there is no disk space left in your VM&#8217;s disk. Then it is removing the wipefile. This basically leaves all those excess bytes zero&#8217;d out.</p>
+
+<p>This is necessary because the shrink/compaction tools provided by either <a href='http://www.vmware.com/'>VMWare</a> or <a href='https://www.virtualbox.org/'>VirtualBox</a> both have no way of identifying space they can free up in the disks unless they are zero&#8217;d out.</p>
+
+<p>Before shrinking/compacting you should always make sure to exit the guest machine using the following commands:</p>
+<div class='highlight'><pre><code class='text'>$ exit
+$ vagrant halt
+</code></pre></div>
+<p>With <a href='http://www.vmware.com/'>VMware</a> you can shrink the vmdk disk by doing the following:</p>
+<div class='highlight'><pre><code class='text'>$ vmware-vdiskmanager -d /path/to/main.vmdk
+$ vmware-vdiskmanager -k /path/to/main.vmdk
+</code></pre></div>
+<p>I discovered the above commands in the Vagrant VMware documentation, <a href='http://docs.vagrantup.com/v2/vmware/boxes.html'>http://docs.vagrantup.com/v2/vmware/boxes.html</a></p>
+
+<p>With <a href='https://www.virtualbox.org'>VirtualBox</a> the only way I was able to shrink the disk image was to clone it to a smaller copy using the following command:</p>
+<div class='highlight'><pre><code class='text'>$ VboxManage clonehd name-of-original-vm.vdi name-of-clone-vm.vdi
+</code></pre></div>
+<p>Once you have cloned the vdi you can then import it into the VM through VirtualBox and get rid of the original vdi.</p>
+
+<p>That is how you &#8220;Shrink Vagrant Linux Boxes!&#8221;</p>
+    <div style="clear: both;"></div>
+  </section>
+
+  <footer>
+    
+      <a class="tag" href="/tag/Vagrant">Vagrant</a>
+    
+      <a class="tag" href="/tag/VMware">VMware</a>
+    
+      <a class="tag" href="/tag/VirtualBox">VirtualBox</a>
+    
+      <a class="tag" href="/tag/Software Development">Software Development</a>
+    
+  </footer>
+</article>
+
+
+  <article class='blog-post'>
+  <header>
     <h2 class='title'><a href="/2013/01/06/at%26t-samsung-galaxy-s3-with-google-voice.html">AT&T Samsung Galaxy S3 with Google Voice</a></h2>
     <div class='posted-info'>
       <time datetime='2013-01-06T00:00:00Z' pubdate='pubdate' class='published-datetime'>January 06, 2013</time>
@@ -44,12 +103,10 @@
 
 <p>It seems there is a little hickup with the instructions google provides you with to &#8220;Activate Google voicemail no this phone&#8221;. That is at least for the instructions for AT&amp;T while trying to get Google Voice setup on an AT&amp;T Galaxy S3. The instructions Google provides say to enter the following exactly as written as if dialing someone.</p>
 <div class='highlight'><pre><code class='text'>*004*1&lt;your 10 digit phone number&gt;#
-</code></pre>
-</div>
+</code></pre></div>
 <p>Every time I tried the above instructions my phone would return an error code. I got so frustrated I even got online with AT&amp;T tech support so that they could verify the state of things as I was trying various other commands that I found on the web. None, of the ones that worked allowed me to setup Google Voice as my voicemail provider appropriately. After being online with AT&amp;T tech support for a while. I tried simply prepending another * character to the entire thing. Guess what, magically it worked. I even had AT&amp;T tech support verify that it made the proper configuration change on my account. So the correct command that Google should be telling people to enter exactly as written is really the following:</p>
 <div class='highlight'><pre><code class='text'>**004*1&lt;your 10 digit phone number&gt;#
-</code></pre>
-</div>
+</code></pre></div>
 <p>Anyways, hope this blog post helps some other people struggling with this out there. I know when I was searching I couldn&#8217;t find any solution though I did see a number of message boards with people looking for an answer to this problem. If I were a better person I would probably go back and update all those message boards with my solution. I just can&#8217;t bring myself to do it.</p>
     <div style="clear: both;"></div>
   </section>
@@ -88,33 +145,28 @@
   from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/open-uri.rb:146:in `open_uri&#39;
   from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/open-uri.rb:677:in `open&#39;
   from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/open-uri.rb:33:in `open&#39;
-</code></pre>
-</div>
+</code></pre></div>
 <p>The error was reproducable by running the following Ruby snippet in an <strong>irb</strong> instance of the RVM installed Ruby version.</p>
 <div class='highlight'><pre><code class='ruby'><span class='nb'>require</span> <span class='s1'>&#39;open-uri&#39;</span>
 <span class='nb'>open</span> <span class='s1'>&#39;https://google.com&#39;</span>
-</code></pre>
-</div>
+</code></pre></div>
 <p>I spent a good amount of time digging into things and trying to figure out exactly what the issue was. I came to the conclusion that they either had an out of date Root CA Certificate Bundle or SSL couldn&#8217;t find it for some reason. So, I went down the path of trying to import cacert.pem from <a href='http://curl.haxx.se/ca/cacert.pem'>http://curl.haxx.se/ca/cacert.pem</a> (cURL&#8217;s website).</p>
 
 <p>I went down this path because I vaguely remember doing this at some point in the past to solve the Twitter API SSL Verify fail issue when they changed their certs. I ran into a huge amount of difficulty trying to get the thing imported or converted into a format that Mac OS X Keychain Access would be happy with importing. I tried pem, crt, pck12, etc. Nothing I did seemed to make a difference.</p>
 
 <p>This is when I saw a post of someone talking about SSL being installed inside of RVM and I looked at the latest output from <code>rvm requirements</code>. I quickly noticed that it now says to install SSL via the following command:</p>
 <div class='highlight'><pre><code class='text'>rvm pkg install openssl
-</code></pre>
-</div>
+</code></pre></div>
 <p>Come to find out if you have run the above command before installing your Ruby version it will be using the RVM packaged openssl instead of the system openssl. That also means that the Root CA Certificate Bundle is different, or in this case, <strong>missing completely</strong>.</p>
 
 <p>After discovering this and doing a little googling I found the solution to be as simple as the following command:</p>
 <div class='highlight'><pre><code class='text'>curl http://curl.haxx.se/ca/cacert.pem -o ~/.rvm/usr/ssl/cert.pem
-</code></pre>
-</div>
+</code></pre></div>
 <p>I found this solution on the following blog post <a href='http://fredwu.me/post/28834446907/fix-openssl-error-on-mountain-lion-and-rvm'>http://fredwu.me/post/28834446907/fix-openssl-error-on-mountain-lion-and-rvm</a>. Hopefully, writing another blog post on the subject and linking to this one will help it gain its ranks in google search so that other people can find it quicker.</p>
 
 <p>After running the above command you should now be able to restart your <strong>irb</strong> instance and re-run the test snippet described at the beginning of this post. This time you should get output looking similar to the following:</p>
 <div class='highlight'><pre><code class='text'> =&gt; #&lt;File:/var/folders/j_/9nxyjmd10js8g1sjx446vrsm0000gn/T/open-uri20120907-36935-4i4y64&gt; 
-</code></pre>
-</div>
+</code></pre></div>
 <p>Just like that your SSL woes are gone.</p>
     <div style="clear: both;"></div>
   </section>
@@ -205,83 +257,6 @@
 </article>
 
 
-  <article class='blog-post'>
-  <header>
-    <h2 class='title'><a href="/2012/07/27/ruby-and-rails-mountain-lion-hiccups.html">Ruby and Rails Mountain Lion Hiccups</a></h2>
-    <div class='posted-info'>
-      <time datetime='2012-07-27T00:00:00Z' pubdate='pubdate' class='published-datetime'>July 27, 2012</time>
-      <span>by</span>
-      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
-    </div>
-  </header>
-
-  <section>
-    <p>So when Mac OS X Mountain Lion was released a few days ago I jumped on upgrading and got switched over as soon as I could. My mentality for upgrading is that I would much rather deal with the pain of upgrading in smaller chunks when needed rather than waiting. Plus, I just like to be on the latest and greatest in terms of the tools I use for my job.</p>
-
-<p>Anyways, below is going to be a listing of some of the hiccups that either I or other developers on my team have run into in terms of their Ruby and Rails development environment setups.</p>
-
-<h2 id='git'>Git</h2>
-
-<p>Some of the devs on my team had Git installed via the <a href='http://code.google.com/p/git-osx-installer/'>git-osx-installer</a>. These developers seemed to lose their Git installs when they upgraded. I was using a <a href='http://mxcl.github.com/homebrew/'>Homebrew</a> install of Git and it worked just fine for me after upgrading. So be aware of what your situation is and resort to brew because it is awesome.</p>
-
-<h2 id='xcode_44'>XCode 4.4</h2>
-
-<p>In order to build gems with the native exensions and just to have the basic development tools around I installed the latest XCode 4.4. Once installed I went to the preferences menu, in the download tab, and chose to install the <em>Command Line Tools</em> because that is really what I was looking for more than anything. I have read on other posts online that you can download the <em>Command Line Tools</em> alone and install just them. I personally chose to install XCode as I do use XCode and the native tools to work on iPhone/iPad app development as well.</p>
-
-<h2 id='gcc42'>gcc-4.2</h2>
-
-<p>The latest XCode now comes with clang/llvm which is a new C/C++/Objective-C compiler. The problem is that the Ruby language isn&#8217;t fully compatible with clang and llvm. Therefore, you need to install GCC 4.2 using Homebrew. GCC 4.2 is the latest version of the GCC compiler that apple provided before switching to clang/llvm. Anyways, you can install GCC 4.2 by doing the following with brew:</p>
-<div class='highlight'><pre><code class='bash'>brew tap homebrew/dupes
-brew install apple-gcc42
-</code></pre>
-</div>
-<p>The above will install the apple gcc-4.2 in a side by side fashion with XCode. This means that it won&#8217;t mess up your existing XCode install like other solutions.</p>
-
-<p>Once you install gcc-4.2 then you can install/reinstall your ruby version inside of RVM as needed.</p>
-
-<h2 id='apache_2_web_sharing'>Apache 2 (Web Sharing)</h2>
-
-<p>In the upgrade it seems that they have revamped the Sharing preference pane. In the process of this it seems that Apple has decided to remove the Web sharing component of this preference pane. Don&#8217;t worry though. Apache is still there and running. You just can&#8217;t start it and stop it from the preferences pane anymore. You can use the following commands instead.</p>
-<div class='highlight'><pre><code class='bash'>sudo apachectl stop
-sudo apachectl start
-sudo apachectl restart
-</code></pre>
-</div>
-<p><strong>Note:</strong> When the upgrade happened it nuked all my <code>/etc/apache2/users/</code> configs and all my other apache configs. So, if you have any custom apache configs as I did you should probably back them up before upgrading.</p>
-
-<h2 id='x11'>X11</h2>
-
-<p>It seems that another thing that was changed with the upgrade to Mac OS X Mountain Lion was that they removed the X11 that I had previously installed and seemed to no longer provide it. Thats ok though because XQuartz 2.7.2 is what you want and it is available freely at <a href='http://xquartz.macosforge.org/landing/'>http://xquartz.macosforge.org/landing/</a>. Just install that bad boy and follow the on screen instructions to reboot when it is done and you should be good to go in terms of X11.</p>
-
-<h2 id='imagemagick'>ImageMagick</h2>
-
-<p>Before upgrading I had ImageMagick installed via Homebrew. After, the upgrade was finished my ImageMagick was exiting with failures about some dylib. To solve this problem I simply ran the following and I was back in running order with respect to ImageMagick:</p>
-<div class='highlight'><pre><code class='bash'>brew upgrade imagemagick
-</code></pre>
-</div>
-<h2 id='pygments'>Pygments</h2>
-
-<p>I use Pygments to handle syntax highlighting in my jekyll sites and it seemed to not be working after the upgrade. I believe this is because it is now using Python 2.7.2. To resolve this issue I just re-installed Pygments using the following:</p>
-<div class='highlight'><pre><code class='bash'>sudo easy_install Pygments
-</code></pre>
-</div>
-    <div style="clear: both;"></div>
-  </section>
-
-  <footer>
-    
-      <a class="tag" href="/tag/Mac OS X Mountain Lion">Mac OS X Mountain Lion</a>
-    
-      <a class="tag" href="/tag/Ruby">Ruby</a>
-    
-      <a class="tag" href="/tag/Rails">Rails</a>
-    
-      <a class="tag" href="/tag/Software Development">Software Development</a>
-    
-  </footer>
-</article>
-
-
 
 <!-- Pagination links -->
 <div class="pagination">
@@ -329,7 +304,7 @@ sudo apachectl restart
   
   <a class="tag" href="/tag/TextMate"><span class="tag_name">TextMate</span> <span class="tag_usage_count">(1)</span></a>
   
-  <a class="tag" href="/tag/Software Development"><span class="tag_name">Software Development</span> <span class="tag_usage_count">(26)</span></a>
+  <a class="tag" href="/tag/Software Development"><span class="tag_name">Software Development</span> <span class="tag_usage_count">(27)</span></a>
   
   <a class="tag" href="/tag/Media Management"><span class="tag_name">Media Management</span> <span class="tag_usage_count">(1)</span></a>
   
@@ -613,11 +588,17 @@ sudo apachectl restart
   
   <a class="tag" href="/tag/SSL"><span class="tag_name">SSL</span> <span class="tag_usage_count">(1)</span></a>
   
+  <a class="tag" href="/tag/Vagrant"><span class="tag_name">Vagrant</span> <span class="tag_usage_count">(1)</span></a>
+  
+  <a class="tag" href="/tag/VMware"><span class="tag_name">VMware</span> <span class="tag_usage_count">(1)</span></a>
+  
+  <a class="tag" href="/tag/VirtualBox"><span class="tag_name">VirtualBox</span> <span class="tag_usage_count">(1)</span></a>
+  
 </div>
 
         </div>
         <div>
-          <div class="archives_list"><h2>Archives</h2><a href="/2013/01" class="archive"><span class="archive_period">January 2013 </span><span class="archive_count">(1)</span></a><a href="/2012/09" class="archive"><span class="archive_period">September 2012 </span><span class="archive_count">(2)</span></a><a href="/2012/08" class="archive"><span class="archive_period">August 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
+          <div class="archives_list"><h2>Archives</h2><a href="/2013/10" class="archive"><span class="archive_period">October 2013 </span><span class="archive_count">(1)</span></a><a href="/2013/01" class="archive"><span class="archive_period">January 2013 </span><span class="archive_count">(1)</span></a><a href="/2012/09" class="archive"><span class="archive_period">September 2012 </span><span class="archive_count">(2)</span></a><a href="/2012/08" class="archive"><span class="archive_period">August 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
         </div>
       </aside>
       <div style="clear: both;"></div>

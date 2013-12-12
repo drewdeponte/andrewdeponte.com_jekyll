@@ -31,6 +31,77 @@
         
   <article class='blog-post'>
   <header>
+    <h2 class='title'><a href="/2013/12/11/updesk-upwrite-initial-setup.html">The UpDesk UpWrite</a></h2>
+    <div class='posted-info'>
+      <time datetime='2013-12-11T00:00:00Z' pubdate='pubdate' class='published-datetime'>December 11, 2013</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    
+<h2 id="backstory">Backstory</h2>
+
+<p>Over the last few years I have been paying more and more attention to ergonamics in my workspace. It all began when I started having issues with my wrists and given I am a software developer I need my hands to work properly. This sent me down a path of exploring ergonomic keyboards and standing desks. I started trying out the cheaper ergonomic keyboards and never had any luck. Enter the Kinesis Advantage Pro, I finally decided to drop a chunk of change on it and I really haven’t looked back. My next exploration will be the ErgoDox which I recently ordered all the parts for.</p>
+
+<p>A little bit before I switched to the Kinesis Advantage Pro I switched to a fixed height standing desk which I bought from Ikea for approx. $150. I have been using the fixed height standing desk for over a year now and I love it. However, the more research I do around the topic the more I have found that it isn’t good to stand all day, which is what I currently do. Therefore, I started looking into motorized standing/sitting desks. After a lot of research I finally decided on the <a href="http://myupdesk.com/upwrite">UpDesk UpWrite</a>. It is at the lower end of the price range, $1,149.00, for motorized standing/sitting desks but it has the specs of a lot of the more expensive alternatives. It also has the added benefit that it is a dry erase/wet erase surface so you can scribble notes on it while working.</p>
+
+<h2 id="the_setup">The Setup</h2>
+
+<h3 id="putting_it_together">Putting it Together</h3>
+
+<p>My <a href="http://myupdesk.com/upwrite">UpDesk UpWrite</a> arrived tonight and it was actually very straightforward in terms of physical setup. The included instruction sheet explained things very well. It is actually much simpler in my opinion than most Ikea furniture. It probably took me 25 mins to get it put together. I was extremely impressed with the quality of packaging and the quality of the parts them selves. It seems to be an extremely solid piece of furniture that will last a long time.</p>
+
+<h3 id="initializing_and_calibrating">Initializing and Calibrating</h3>
+
+<p>Once I physically setup the desk I tried to initialize it and callibrate it. Initializing the desk was very straightforward on their instruction sheet and worked like a champ. Calibrating it on the other hand did not work following the instructions they provide. The instructions for calibration that were provided are as follows:</p>
+
+<ul>
+<li>At any height, measure the distance from the floor to the top of the desk.</li>
+
+<li>Press both the “UP” and “DOWN” arrows at the same time until the display shows three bars (—).</li>
+
+<li>Release and immediately set the correct height by pressing either the “UP” or “DOWN” arrow until the correct height is displayed.</li>
+</ul>
+
+<p>I tried the above steps numerous times and every time I got to the third step and pressed the “UP” or “DOWN” arrows to adjust the displayed height it would also move the desk up or down which made no sense if the goal of the process was to callibrate the height.</p>
+
+<p>So, it took a little playing around but I finally figured out how to properly callibrate it. The directions to calibrate it should really be as follows:</p>
+
+<ul>
+<li>At any height, measure the distance from the floor to the top of the desk.</li>
+
+<li>Press and hold both the “UP” and “DOWN” arrows at the same time, the display will immediately display three bars (—), continue to hold the “UP” and “DOWN” arrows until the display flashes from (—) to the displayed height.</li>
+
+<li>Release and immediately set the display to height you previously measured in the first step by pressing either the “UP” or “DOWN” arrow until the correct height is displayed.</li>
+</ul>
+
+<h3 id="dialing_in_presets">Dialing in Presets</h3>
+
+<p>Once I had it all calibrated I followed the rest of the instructions to set the presets to heights that I like for standing and sitting. All worked great.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>So far the <a href="https://myupdesk.com/upwrite">UpDesk UpWrite</a> seems like a great desk. It was a little frustrating that the directions weren’t clear enough, or rather just plain wrong, for how to calibrate it. However, I am willing to look past that small hickup and I hope this blog aids others in getting their desks calibrated quicker than I did.</p>
+
+    <div style="clear: both;"></div>
+  </section>
+
+  <footer>
+    
+      <a class="tag" href="/tag/ergonomics">ergonomics</a>
+    
+      <a class="tag" href="/tag/standing desk">standing desk</a>
+    
+      <a class="tag" href="/tag/sitting desk">sitting desk</a>
+    
+  </footer>
+</article>
+
+
+  <article class='blog-post'>
+  <header>
     <h2 class='title'><a href="/2013/10/29/shrinking-vagrant-linux-boxes.html">Shrinking Vagrant Linux Boxes</a></h2>
     <div class='posted-info'>
       <time datetime='2013-10-29T00:00:00Z' pubdate='pubdate' class='published-datetime'>October 29, 2013</time>
@@ -40,37 +111,39 @@
   </header>
 
   <section>
-    <p>So, lately I have been using Virtual Machines via <a href='http://www.vagrantup.com/'>Vagrant</a> a siginificant amount as we are now using them to host our development environments and dependencies for all the development work we do. We have been using <a href='http://puppetlabs.com/'>Puppet</a> to automate the configuration of our environments and to make building our boxes easier.</p>
+    
+<p>So, lately I have been using Virtual Machines via <a href="http://www.vagrantup.com/">Vagrant</a> a siginificant amount as we are now using them to host our development environments and dependencies for all the development work we do. We have been using <a href="http://puppetlabs.com/">Puppet</a> to automate the configuration of our environments and to make building our boxes easier.</p>
 
-<p>Once you have provisioned a VM and you have it all dialed, you will most likely want to create a <a href='http://docs.vagrantup.com/v2/boxes.html'>Vagrant Box</a> from that VM and host it up on S3 so that new developers can get started simply by installing <a href='http://www.vagrantup.com/'>Vagrant</a>, cloning your repository and running:</p>
+<p>Once you have provisioned a VM and you have it all dialed, you will most likely want to create a <a href="http://docs.vagrantup.com/v2/boxes.html">Vagrant Box</a> from that VM and host it up on S3 so that new developers can get started simply by installing <a href="http://www.vagrantup.com/">Vagrant</a>, cloning your repository and running:</p>
 <div class='highlight'><pre><code class='text'>$ vagrant up
 </code></pre></div>
-<p>This actually works great. However, I found that the VM disks both for the <a href='http://docs.vagrantup.com/v2/vmware/index.html'>Vagrant VMware Provider</a> and the <a href='http://docs.vagrantup.com/v2/virtualbox/index.html'>VirtualBox Provider</a> grow dynamically, but they never shrink. So, when I was going through the process of building the VM and installing all the dependency software, etc. it was bloating the base machine. This was the case even though I removed the temporary cruft from the filesystem on the guest.</p>
+<p>This actually works great. However, I found that the VM disks both for the <a href="http://docs.vagrantup.com/v2/vmware/index.html">Vagrant VMware Provider</a> and the <a href="http://docs.vagrantup.com/v2/virtualbox/index.html">VirtualBox Provider</a> grow dynamically, but they never shrink. So, when I was going through the process of building the VM and installing all the dependency software, etc. it was bloating the base machine. This was the case even though I removed the temporary cruft from the filesystem on the guest.</p>
 
 <p>With a little research and some trial and error I found that you can shrink these disks as long as they are ext3 or ext4 file systems with the help of the following command:</p>
 <div class='highlight'><pre><code class='text'>$ vagrant ssh
 $ sudo dd if=/dev/zero of=wipefile bs=1024x1024; rm wipefile
 </code></pre></div>
-<p>What the above command is doing is simply writing zero bytes to the wipefile in chunks of 1024 bytes until there is no disk space left in your VM&#8217;s disk. Then it is removing the wipefile. This basically leaves all those excess bytes zero&#8217;d out.</p>
+<p>What the above command is doing is simply writing zero bytes to the wipefile in chunks of 1024 bytes until there is no disk space left in your VM’s disk. Then it is removing the wipefile. This basically leaves all those excess bytes zero’d out.</p>
 
-<p>This is necessary because the shrink/compaction tools provided by either <a href='http://www.vmware.com/'>VMWare</a> or <a href='https://www.virtualbox.org/'>VirtualBox</a> both have no way of identifying space they can free up in the disks unless they are zero&#8217;d out.</p>
+<p>This is necessary because the shrink/compaction tools provided by either <a href="http://www.vmware.com/">VMWare</a> or <a href="https://www.virtualbox.org/">VirtualBox</a> both have no way of identifying space they can free up in the disks unless they are zero’d out.</p>
 
 <p>Before shrinking/compacting you should always make sure to exit the guest machine using the following commands:</p>
 <div class='highlight'><pre><code class='text'>$ exit
 $ vagrant halt
 </code></pre></div>
-<p>With <a href='http://www.vmware.com/'>VMware</a> you can shrink the vmdk disk by doing the following:</p>
+<p>With <a href="http://www.vmware.com/">VMware</a> you can shrink the vmdk disk by doing the following:</p>
 <div class='highlight'><pre><code class='text'>$ vmware-vdiskmanager -d /path/to/main.vmdk
 $ vmware-vdiskmanager -k /path/to/main.vmdk
 </code></pre></div>
-<p>I discovered the above commands in the Vagrant VMware documentation, <a href='http://docs.vagrantup.com/v2/vmware/boxes.html'>http://docs.vagrantup.com/v2/vmware/boxes.html</a></p>
+<p>I discovered the above commands in the Vagrant VMware documentation, <a href="http://docs.vagrantup.com/v2/vmware/boxes.html">http://docs.vagrantup.com/v2/vmware/boxes.html</a></p>
 
-<p>With <a href='https://www.virtualbox.org'>VirtualBox</a> the only way I was able to shrink the disk image was to clone it to a smaller copy using the following command:</p>
+<p>With <a href="https://www.virtualbox.org">VirtualBox</a> the only way I was able to shrink the disk image was to clone it to a smaller copy using the following command:</p>
 <div class='highlight'><pre><code class='text'>$ VboxManage clonehd name-of-original-vm.vdi name-of-clone-vm.vdi
 </code></pre></div>
 <p>Once you have cloned the vdi you can then import it into the VM through VirtualBox and get rid of the original vdi.</p>
 
-<p>That is how you &#8220;Shrink Vagrant Linux Boxes!&#8221;</p>
+<p>That is how you “Shrink Vagrant Linux Boxes!”</p>
+
     <div style="clear: both;"></div>
   </section>
 
@@ -99,15 +172,17 @@ $ vmware-vdiskmanager -k /path/to/main.vmdk
   </header>
 
   <section>
-    <p>Hi All,</p>
+    
+<p>Hi All,</p>
 
-<p>It seems there is a little hickup with the instructions google provides you with to &#8220;Activate Google voicemail no this phone&#8221;. That is at least for the instructions for AT&amp;T while trying to get Google Voice setup on an AT&amp;T Galaxy S3. The instructions Google provides say to enter the following exactly as written as if dialing someone.</p>
+<p>It seems there is a little hickup with the instructions google provides you with to “Activate Google voicemail no this phone”. That is at least for the instructions for AT&amp;T while trying to get Google Voice setup on an AT&amp;T Galaxy S3. The instructions Google provides say to enter the following exactly as written as if dialing someone.</p>
 <div class='highlight'><pre><code class='text'>*004*1&lt;your 10 digit phone number&gt;#
 </code></pre></div>
 <p>Every time I tried the above instructions my phone would return an error code. I got so frustrated I even got online with AT&amp;T tech support so that they could verify the state of things as I was trying various other commands that I found on the web. None, of the ones that worked allowed me to setup Google Voice as my voicemail provider appropriately. After being online with AT&amp;T tech support for a while. I tried simply prepending another * character to the entire thing. Guess what, magically it worked. I even had AT&amp;T tech support verify that it made the proper configuration change on my account. So the correct command that Google should be telling people to enter exactly as written is really the following:</p>
 <div class='highlight'><pre><code class='text'>**004*1&lt;your 10 digit phone number&gt;#
 </code></pre></div>
-<p>Anyways, hope this blog post helps some other people struggling with this out there. I know when I was searching I couldn&#8217;t find any solution though I did see a number of message boards with people looking for an answer to this problem. If I were a better person I would probably go back and update all those message boards with my solution. I just can&#8217;t bring myself to do it.</p>
+<p>Anyways, hope this blog post helps some other people struggling with this out there. I know when I was searching I couldn’t find any solution though I did see a number of message boards with people looking for an answer to this problem. If I were a better person I would probably go back and update all those message boards with my solution. I just can’t bring myself to do it.</p>
+
     <div style="clear: both;"></div>
   </section>
 
@@ -128,7 +203,8 @@ $ vmware-vdiskmanager -k /path/to/main.vmdk
   </header>
 
   <section>
-    <p>Recently a few of our developers were having problems getting SSL certificate verify failures in Ruby. The error was the following:</p>
+    
+<p>Recently a few of our developers were having problems getting SSL certificate verify failures in Ruby. The error was the following:</p>
 <div class='highlight'><pre><code class='text'>OpenSSL::SSL::SSLError: SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed
   from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/net/http.rb:799:in `connect&#39;
   from /Users/adeponte/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/net/http.rb:799:in `block in connect&#39;
@@ -150,7 +226,7 @@ $ vmware-vdiskmanager -k /path/to/main.vmdk
 <div class='highlight'><pre><code class='ruby'><span class='nb'>require</span> <span class='s1'>&#39;open-uri&#39;</span>
 <span class='nb'>open</span> <span class='s1'>&#39;https://google.com&#39;</span>
 </code></pre></div>
-<p>I spent a good amount of time digging into things and trying to figure out exactly what the issue was. I came to the conclusion that they either had an out of date Root CA Certificate Bundle or SSL couldn&#8217;t find it for some reason. So, I went down the path of trying to import cacert.pem from <a href='http://curl.haxx.se/ca/cacert.pem'>http://curl.haxx.se/ca/cacert.pem</a> (cURL&#8217;s website).</p>
+<p>I spent a good amount of time digging into things and trying to figure out exactly what the issue was. I came to the conclusion that they either had an out of date Root CA Certificate Bundle or SSL couldn’t find it for some reason. So, I went down the path of trying to import cacert.pem from <a href="http://curl.haxx.se/ca/cacert.pem">http://curl.haxx.se/ca/cacert.pem</a> (cURL’s website).</p>
 
 <p>I went down this path because I vaguely remember doing this at some point in the past to solve the Twitter API SSL Verify fail issue when they changed their certs. I ran into a huge amount of difficulty trying to get the thing imported or converted into a format that Mac OS X Keychain Access would be happy with importing. I tried pem, crt, pck12, etc. Nothing I did seemed to make a difference.</p>
 
@@ -162,12 +238,13 @@ $ vmware-vdiskmanager -k /path/to/main.vmdk
 <p>After discovering this and doing a little googling I found the solution to be as simple as the following command:</p>
 <div class='highlight'><pre><code class='text'>curl http://curl.haxx.se/ca/cacert.pem -o ~/.rvm/usr/ssl/cert.pem
 </code></pre></div>
-<p>I found this solution on the following blog post <a href='http://fredwu.me/post/28834446907/fix-openssl-error-on-mountain-lion-and-rvm'>http://fredwu.me/post/28834446907/fix-openssl-error-on-mountain-lion-and-rvm</a>. Hopefully, writing another blog post on the subject and linking to this one will help it gain its ranks in google search so that other people can find it quicker.</p>
+<p>I found this solution on the following blog post <a href="http://fredwu.me/post/28834446907/fix-openssl-error-on-mountain-lion-and-rvm">http://fredwu.me/post/28834446907/fix-openssl-error-on-mountain-lion-and-rvm</a>. Hopefully, writing another blog post on the subject and linking to this one will help it gain its ranks in google search so that other people can find it quicker.</p>
 
 <p>After running the above command you should now be able to restart your <strong>irb</strong> instance and re-run the test snippet described at the beginning of this post. This time you should get output looking similar to the following:</p>
 <div class='highlight'><pre><code class='text'> =&gt; #&lt;File:/var/folders/j_/9nxyjmd10js8g1sjx446vrsm0000gn/T/open-uri20120907-36935-4i4y64&gt; 
 </code></pre></div>
 <p>Just like that your SSL woes are gone.</p>
+
     <div style="clear: both;"></div>
   </section>
 
@@ -194,21 +271,23 @@ $ vmware-vdiskmanager -k /path/to/main.vmdk
   </header>
 
   <section>
-    <p>Well, it has been a while since I posted any of my progress on the house. So here is a little update.</p>
+    
+<p>Well, it has been a while since I posted any of my progress on the house. So here is a little update.</p>
 
 <p>This weekend I finished laying all the tile in the bathroom shower, the bullnosed tiles for the baseboard and setting the shelf in the shower. If you want to see some pics of the state of it when I finished laying all the tile check out the link below.</p>
 
-<p><a href='http://adoberevel.com/shares/aeb62c90ae424a1d8764bdabd73de954'>Bathroom Tiling Pictures</a></p>
+<p><a href="http://adoberevel.com/shares/aeb62c90ae424a1d8764bdabd73de954">Bathroom Tiling Pictures</a></p>
 
 <p>I also bought a wash tub for the garage. I did this so I can scrub my hands and my tools without having to come inside the house. Tonight I constructed the pipe system to connect from the wash tub to the existing drain system in the garage. If you would like to see how I tied the wash tub drain into the existing drain system you can check out the pictures below.</p>
 
-<p><a href='http://adoberevel.com/shares/399cf69494ba4bc1a61814191312e3ca'>Wash Tub Drain Connection</a></p>
+<p><a href="http://adoberevel.com/shares/399cf69494ba4bc1a61814191312e3ca">Wash Tub Drain Connection</a></p>
 
 <p>Anyways, my next steps for the bathroom are to clean all the tiles and make sure the grout paths are clear. Once, I have cleaned up the tile and grout paths I will be ready to grout the tiles. I will be using a polyblend sanded grout and a color matched caulk in the inner corners of the shower. I was told that I should use the caulk in the inner corners because the walls expand and shrink as the temperature changes and it usually causes grout in the inner corners to crack. Hence, use caulk because it is more flexible and can absorb the expansion and contraction of the walls.</p>
 
-<p>I feel pretty good about all the progress I have made this weekend and can&#8217;t wait for the shelf to finish setting so that I can clean up all the tile and get to grouting. The vision of the bathroom is finally starting to come together and I can&#8217;t wait to get it finished.</p>
+<p>I feel pretty good about all the progress I have made this weekend and can’t wait for the shelf to finish setting so that I can clean up all the tile and get to grouting. The vision of the bathroom is finally starting to come together and I can’t wait to get it finished.</p>
 
 <p>Till next time.</p>
+
     <div style="clear: both;"></div>
   </section>
 
@@ -217,41 +296,6 @@ $ vmware-vdiskmanager -k /path/to/main.vmdk
       <a class="tag" href="/tag/Personal">Personal</a>
     
       <a class="tag" href="/tag/House">House</a>
-    
-  </footer>
-</article>
-
-
-  <article class='blog-post'>
-  <header>
-    <h2 class='title'><a href="/2012/08/07/sublime-text-2-guard-plugin-updates.html">Sublime Text 2 Guard Plugin Updates</a></h2>
-    <div class='posted-info'>
-      <time datetime='2012-08-07T00:00:00Z' pubdate='pubdate' class='published-datetime'>August 07, 2012</time>
-      <span>by</span>
-      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
-    </div>
-  </header>
-
-  <section>
-    <p>I woke up early this morning and thought it was time for a little <a href='http://github.com/cyphactor/sublime_guard'>sublime_guard</a> love. I went through and tackled all of the syntax highlighting issues. This included the following issues (<a href='https://github.com/cyphactor/sublime_guard/issues/27'>#27</a>, <a href='https://github.com/cyphactor/sublime_guard/issues/30'>#30</a>, <a href='https://github.com/cyphactor/sublime_guard/issues/31'>#31</a>, <a href='https://github.com/cyphactor/sublime_guard/issues/38'>#38</a>, <a href='https://github.com/cyphactor/sublime_guard/issues/43'>#43</a>, <a href='https://github.com/cyphactor/sublime_guard/issues/29'>#29</a>).</p>
-
-<p>I also cleaned up a number of tickets that were lying around and had either been completed already or were tickets that were invalid.</p>
-
-<p>I also started a branch for adding python3 support to the plugin. The branch is named <strong>python3_support</strong>. I would love it if anyone out there in the ether would grab that branch, test it out, and give me some feedback.</p>
-
-<p>Anyways, I hope you guys enjoy the updates. As usual if you installed from Package Control just restart Sublime Text 2. If you installed manually then just pull the latest version down with Git.</p>
-
-<p>See you all next time.</p>
-    <div style="clear: both;"></div>
-  </section>
-
-  <footer>
-    
-      <a class="tag" href="/tag/Sublime Text 2 Plugin">Sublime Text 2 Plugin</a>
-    
-      <a class="tag" href="/tag/Guard">Guard</a>
-    
-      <a class="tag" href="/tag/Software Development">Software Development</a>
     
   </footer>
 </article>
@@ -594,11 +638,17 @@ $ vmware-vdiskmanager -k /path/to/main.vmdk
   
   <a class="tag" href="/tag/VirtualBox"><span class="tag_name">VirtualBox</span> <span class="tag_usage_count">(1)</span></a>
   
+  <a class="tag" href="/tag/ergonomics"><span class="tag_name">ergonomics</span> <span class="tag_usage_count">(1)</span></a>
+  
+  <a class="tag" href="/tag/standing desk"><span class="tag_name">standing desk</span> <span class="tag_usage_count">(1)</span></a>
+  
+  <a class="tag" href="/tag/sitting desk"><span class="tag_name">sitting desk</span> <span class="tag_usage_count">(1)</span></a>
+  
 </div>
 
         </div>
         <div>
-          <div class="archives_list"><h2>Archives</h2><a href="/2013/10" class="archive"><span class="archive_period">October 2013 </span><span class="archive_count">(1)</span></a><a href="/2013/01" class="archive"><span class="archive_period">January 2013 </span><span class="archive_count">(1)</span></a><a href="/2012/09" class="archive"><span class="archive_period">September 2012 </span><span class="archive_count">(2)</span></a><a href="/2012/08" class="archive"><span class="archive_period">August 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
+          <div class="archives_list"><h2>Archives</h2><a href="/2013/12" class="archive"><span class="archive_period">December 2013 </span><span class="archive_count">(1)</span></a><a href="/2013/10" class="archive"><span class="archive_period">October 2013 </span><span class="archive_count">(1)</span></a><a href="/2013/01" class="archive"><span class="archive_period">January 2013 </span><span class="archive_count">(1)</span></a><a href="/2012/09" class="archive"><span class="archive_period">September 2012 </span><span class="archive_count">(2)</span></a><a href="/2012/08" class="archive"><span class="archive_period">August 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
         </div>
       </aside>
       <div style="clear: both;"></div>

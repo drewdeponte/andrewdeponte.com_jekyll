@@ -31,6 +31,49 @@
         
   <article class='blog-post'>
   <header>
+    <h2 class='title'><a href="/2010/06/14/western-digital-mypassport.html">Western Digital MyPassport</a></h2>
+    <div class='posted-info'>
+      <time datetime='2010-06-14T00:00:00Z' pubdate='pubdate' class='published-datetime'>June 14, 2010</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    
+<p>So, recently I bought a Western Digital (WD) MyPassport portable 500GB hard drive. I found when plugging it in that it had a very annoying Virtual CD built into its firmware called WD SmartWare which I was not the least bit interested in using. All, I wanted was an external USB hard drive that was portable and just worked. So, the first thing I tried was to reformat it to a Journaled Mac OS X file system. Once, I reformatted it, I was able to copy files too and from the external drive just like I wanted to be. However, every time I plugged the external drive in it would also mount this stupid Virtual CD which I didn’t want to deal with.</p>
+
+<p>So, I googled around a bit for a way to stop this thing from mounting and coming up every time I plug the external drive in. I found a bunch of articles outlining how to update the firmware on the external hard drive and a bunch of very long step by step processes all just to get this stupid Virtual CD to go away. Soon, enough I found the answer I was looking for. It was simply to grab the UUID of the Volume by using the following command:</p>
+
+<p><code>diskutil info /Volumes/WD\ SmartWare/</code></p>
+
+<p>Once, I had the UUID of the Volume then I created the /etc/fstab file and added the following line to it.</p>
+
+<p><code>UUID=84789472-2EB5-3C8E-BFC1-F554F91B026C none hfs rw,noauto 0 0</code></p>
+
+<p>In my opinion this was a much better solution as it just disabled the auto mounting of that volume and didn’t require a firmware flash or anything crazy just to get rid of the stupid Virtual CD. Anyways, I probably made this post more for me than any of you. Though, hopefully someone else finds this tid bit useful as well.</p>
+
+    <div style="clear: both;"></div>
+  </section>
+
+  <footer>
+    
+      <a class="tag" href="/tag/External Hard Drive">External Hard Drive</a>
+    
+      <a class="tag" href="/tag/Mac OS X">Mac OS X</a>
+    
+      <a class="tag" href="/tag/Virtual CD">Virtual CD</a>
+    
+      <a class="tag" href="/tag/WD MyPassport">WD MyPassport</a>
+    
+      <a class="tag" href="/tag/Computers">Computers</a>
+    
+  </footer>
+</article>
+
+
+  <article class='blog-post'>
+  <header>
     <h2 class='title'><a href="/2010/05/31/flight-of-the-conchords-concert.html">Flight of the Conchords Concert</a></h2>
     <div class='posted-info'>
       <time datetime='2010-05-31T00:00:00Z' pubdate='pubdate' class='published-datetime'>May 31, 2010</time>
@@ -40,7 +83,9 @@
   </header>
 
   <section>
-    <p>Woot woot! Aly and I just got back from an awesome Flight of the Conchords Concert at the Hollywood Bowl. I was very impressed with how they sounded live. Their stage presence and performance in general is just amazing. When I think about them, I always group them conceptually with parity bands. However, I think the thing I love the most about them is their raw musical talent and abilities to playing a vast number of genres really well while still doing intelligent comedy. Anyways, I had a blast and I strongly recommend going to see them live if you get the chance.</p>
+    
+<p>Woot woot! Aly and I just got back from an awesome Flight of the Conchords Concert at the Hollywood Bowl. I was very impressed with how they sounded live. Their stage presence and performance in general is just amazing. When I think about them, I always group them conceptually with parity bands. However, I think the thing I love the most about them is their raw musical talent and abilities to playing a vast number of genres really well while still doing intelligent comedy. Anyways, I had a blast and I strongly recommend going to see them live if you get the chance.</p>
+
     <div style="clear: both;"></div>
   </section>
 
@@ -71,15 +116,17 @@
   </header>
 
   <section>
-    <p>So, if you recall I few posts back I wrote about how I had run the new gas pipes for the new laundry room and the tankless water heater. I also pressure tested the system but found it was still dropping 1 to 2 10ths of a PSI in about 15 mins. This Saturday my goal was to go through and find the leaks in the branches one by one and fix them and retest.</p>
+    
+<p>So, if you recall I few posts back I wrote about how I had run the new gas pipes for the new laundry room and the tankless water heater. I also pressure tested the system but found it was still dropping 1 to 2 10ths of a PSI in about 15 mins. This Saturday my goal was to go through and find the leaks in the branches one by one and fix them and retest.</p>
 
 <p>I did exactly that, I pressurized the gas lines up to 100 PSI and soap tested and to my wonder none of the new piping I added had any leaks. So, I then started testing all the other branches. I found leaks in the Tanked Water Heater branch, Stove branch, Old Stove Branch, and the Furnace Branch. Hence, I took apart all of these branches and cleaned the joints and reconnected all of the piping and then re-pressurized the system to 100 PSI found no leaks in those branches. That took me about all day to get that much done. Then I did a 15 PSI test for 15 minutes as required to pass inspection and found that it was now dropping just 1 10th of a PSI in 15 mins. I was done for the day though and frustrated after spending the entire day fixing and testing leaks one by one.</p>
 
-<p>Sunday I called my buddy Dave and had him come over at 9:00 am to help me accomplish my goal for Sunday which was to take all the gas piping out and put it all back in cleaning and fixing each of the joints. The reason this was my goal was because Saturday night when I was burnt out I did a 100 PSI soap test again and found a bunch of leaks up in the attic in the mainline. Luckily it ended up that whoever did the gas lines before wasn&#8217;t a complete idiot because they put a union right in the middle of the gas lines which allowed me to basically split the house in two halves and only have to redo one half on Sunday.</p>
+<p>Sunday I called my buddy Dave and had him come over at 9:00 am to help me accomplish my goal for Sunday which was to take all the gas piping out and put it all back in cleaning and fixing each of the joints. The reason this was my goal was because Saturday night when I was burnt out I did a 100 PSI soap test again and found a bunch of leaks up in the attic in the mainline. Luckily it ended up that whoever did the gas lines before wasn’t a complete idiot because they put a union right in the middle of the gas lines which allowed me to basically split the house in two halves and only have to redo one half on Sunday.</p>
 
 <p>Dave and I redid the the kitchen half of the house on Sunday and soap tested and pressure tested it and all is good on that half of the house we are losing 0 PSI in all of pressure testing. That half covers the Tanked Water Heater, Stove, New Laundry Hookup, and Tankless Water Heater. Next weekend the plan is to finish the other half of the house which covers the Current Laundry, Fire Place, and Furnace.</p>
 
 <p>Let the adventure continue, :-)</p>
+
     <div style="clear: both;"></div>
   </section>
 
@@ -114,11 +161,13 @@
   </header>
 
   <section>
-    <p>Well, I got back early Monday morning from a little trip to Humboldt County, CA to see my friend Bethany graduate from Humboldt State University. If you didn&#8217;t know already, Humboldt State University is where I graduated from years ago. Anyways, it was very nice to take some time off from my busy life and just relax and enjoy the Humboldt environment. It is most definitely a place I will always love because of the calm and the nature that surrounds you.</p>
+    
+<p>Well, I got back early Monday morning from a little trip to Humboldt County, CA to see my friend Bethany graduate from Humboldt State University. If you didn’t know already, Humboldt State University is where I graduated from years ago. Anyways, it was very nice to take some time off from my busy life and just relax and enjoy the Humboldt environment. It is most definitely a place I will always love because of the calm and the nature that surrounds you.</p>
 
-<p>While there I also had the pleasure of spending time with Bethany&#8217;s brother and parents. I have been friends with them since I can remember and it seems like as of late with the house and everything else I haven&#8217;t had much time to see them. Hence, it was very nice to visit with them. We drove up to Patrick&#8217;s Point on Sunday and walked around. If you aren&#8217;t familiar with Patrick&#8217;s Point it is a State Park and is a beautiful place to visit. Pictures of our visit to Patrick&#8217;s Point can be found <a href='http://www.facebook.com/media/set/?set=a.535700569910.2048934.30901409&amp;type=3&amp;l=d725d324ac'>here</a>.</p>
+<p>While there I also had the pleasure of spending time with Bethany’s brother and parents. I have been friends with them since I can remember and it seems like as of late with the house and everything else I haven’t had much time to see them. Hence, it was very nice to visit with them. We drove up to Patrick’s Point on Sunday and walked around. If you aren’t familiar with Patrick’s Point it is a State Park and is a beautiful place to visit. Pictures of our visit to Patrick’s Point can be found <a href="http://www.facebook.com/media/set/?set=a.535700569910.2048934.30901409&type=3&l=d725d324ac">here</a>.</p>
 
 <p>Sadly, toward the end of this trip I caught a very nasty cold and have been sick since. Sometimes things just have to go that way. Oh well, soon enough I will be to my normal self and kicking ass and taking names, :-).</p>
+
     <div style="clear: both;"></div>
   </section>
 
@@ -149,13 +198,15 @@
   </header>
 
   <section>
-    <p>As some of you already know I recently bought a new MacBook Air and with it I bought the MacBook Air SuperDrive. The MacBook Air SuperDrive is the first Apple product I bought and feel stupider for buying it. Obviously, because I am stupid and assumed that apple would create a good external CD/DVD drive that would work with the MacBook Air.</p>
+    
+<p>As some of you already know I recently bought a new MacBook Air and with it I bought the MacBook Air SuperDrive. The MacBook Air SuperDrive is the first Apple product I bought and feel stupider for buying it. Obviously, because I am stupid and assumed that apple would create a good external CD/DVD drive that would work with the MacBook Air.</p>
 
-<p>It seems that the MacBook Air SuperDrive only works when directly connected to the MacBook Air. Hence, no using the external SuperDrive with USB hubs. Beyond that the MacBook Air SuperDrive doesn&#8217;t work on non MacBook Air laptops. After googling a bit some people think this is because Mac is using it as a loss leader for the Air and don&#8217;t want to support it as a general external drive. I think this horrible from a product perspective because the MacBook Air only has 1, thats right 1 USB port.</p>
+<p>It seems that the MacBook Air SuperDrive only works when directly connected to the MacBook Air. Hence, no using the external SuperDrive with USB hubs. Beyond that the MacBook Air SuperDrive doesn’t work on non MacBook Air laptops. After googling a bit some people think this is because Mac is using it as a loss leader for the Air and don’t want to support it as a general external drive. I think this horrible from a product perspective because the MacBook Air only has 1, thats right 1 USB port.</p>
 
 <p>Hence, when you run into a situation like today where I was installing some printer drivers and software and their installer expects you to be able to plug in the printer as a step in the wizard it gets a little tricky. Luckily, I was able to quit out of the installer disconnect the MacBook Air SuperDrive and connect the printer and get it working with some extra effort.</p>
 
 <p>Anyways, the point of this story is that if you buy a MacBook Air, do not, I repeat DO NOT, buy a MacBook Air SuperDrive. You are much better off just going and buying some other external DVD ROM/Burner that will work on all your machines and via a hub.</p>
+
     <div style="clear: both;"></div>
   </section>
 
@@ -170,53 +221,6 @@
       <a class="tag" href="/tag/USB Hub">USB Hub</a>
     
       <a class="tag" href="/tag/Apple">Apple</a>
-    
-  </footer>
-</article>
-
-
-  <article class='blog-post'>
-  <header>
-    <h2 class='title'><a href="/2010/05/09/gas-pipes-%26-dumpster.html">Gas Pipes & Dumpster</a></h2>
-    <div class='posted-info'>
-      <time datetime='2010-05-09T00:00:00Z' pubdate='pubdate' class='published-datetime'>May 09, 2010</time>
-      <span>by</span>
-      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
-    </div>
-  </header>
-
-  <section>
-    <p>Few, I just completed a very exhausting weekend with Aly and my parents. This weekend I ordered a dumpster because my parents were coming down to help work on my house and I had a massive pile of rubble in the backyard RV parking spot that needed to go. Once we loaded the dumpster with all of the rubble (more than two rooms of plaster) we decided to demo another room as the allocated 18 inches of heavy material at the bottom wasn&#8217;t filled. This was crucial in my opinion because that damn dumpster cost so much.</p>
-
-<p>Once, we had completed the plaster portion of the dumpster loading my Dad and I went to finish running the new gas pipes to the tankless water heater and pressure test them while Aly and my Mom worked on the back yard patio. It took us all weekend to get the pipes in and pressure tested. There is still a small leak as it is dropping 2 10ths of a PSI in 15 mins. Hence, further pressure testing is needed to get to the required state of holding 15 PSI for 15 mins. We went through and tested all of the new joints numerous times but couldn&#8217;t find any leaks. Hence, we talked to some people we know in the industry and it seems that when you pressure test and find a leak you generally have to jack up the pressure pretty high 60 to 100 PSI and spray the entire joint not just the threading edges to find the leaks because some joints, elbows especially, tend to have pin holes due to imperfect manufacturing. We probably could have gotten this handled if it hadn&#8217;t been Mother&#8217;s Day on Sunday but it was nice to take a break and visit with family anyways.</p>
-
-<p>Little did my Dad and I know, while we were hard at work on the black iron pipes, Aly and my Mom had done a huge amount of cleanup on in the backyard, started tilling the grass we previously killed, and removed most of the old nasty fiber glass patio cover. I was amazed with how much they managed to get done.</p>
-
-<p>Thanks Girls!!</p>
-
-<p>As usual I took pictures to let you all in on the progress. You can see them <a href='http://www.facebook.com/media/set/?set=a.535700310430.2048932.30901409&amp;type=3&amp;l=2a1476b7e5'>here</a>.</p>
-
-<p>Oh, I also managed to replace the lighting boxes that were previously under the patio cover with outdoor boxes and light fixtures. Stay tuned for new developments with the house.</p>
-    <div style="clear: both;"></div>
-  </section>
-
-  <footer>
-    
-      <a class="tag" href="/tag/Black Iron Pipe">Black Iron Pipe</a>
-    
-      <a class="tag" href="/tag/Fiber Glass">Fiber Glass</a>
-    
-      <a class="tag" href="/tag/Grass">Grass</a>
-    
-      <a class="tag" href="/tag/Natural Gas">Natural Gas</a>
-    
-      <a class="tag" href="/tag/Patio">Patio</a>
-    
-      <a class="tag" href="/tag/Tilling">Tilling</a>
-    
-      <a class="tag" href="/tag/House">House</a>
-    
-      <a class="tag" href="/tag/Personal">Personal</a>
     
   </footer>
 </article>
@@ -561,11 +565,17 @@
   
   <a class="tag" href="/tag/VirtualBox"><span class="tag_name">VirtualBox</span> <span class="tag_usage_count">(1)</span></a>
   
+  <a class="tag" href="/tag/ergonomics"><span class="tag_name">ergonomics</span> <span class="tag_usage_count">(1)</span></a>
+  
+  <a class="tag" href="/tag/standing desk"><span class="tag_name">standing desk</span> <span class="tag_usage_count">(1)</span></a>
+  
+  <a class="tag" href="/tag/sitting desk"><span class="tag_name">sitting desk</span> <span class="tag_usage_count">(1)</span></a>
+  
 </div>
 
         </div>
         <div>
-          <div class="archives_list"><h2>Archives</h2><a href="/2013/10" class="archive"><span class="archive_period">October 2013 </span><span class="archive_count">(1)</span></a><a href="/2013/01" class="archive"><span class="archive_period">January 2013 </span><span class="archive_count">(1)</span></a><a href="/2012/09" class="archive"><span class="archive_period">September 2012 </span><span class="archive_count">(2)</span></a><a href="/2012/08" class="archive"><span class="archive_period">August 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
+          <div class="archives_list"><h2>Archives</h2><a href="/2013/12" class="archive"><span class="archive_period">December 2013 </span><span class="archive_count">(1)</span></a><a href="/2013/10" class="archive"><span class="archive_period">October 2013 </span><span class="archive_count">(1)</span></a><a href="/2013/01" class="archive"><span class="archive_period">January 2013 </span><span class="archive_count">(1)</span></a><a href="/2012/09" class="archive"><span class="archive_period">September 2012 </span><span class="archive_count">(2)</span></a><a href="/2012/08" class="archive"><span class="archive_period">August 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
         </div>
       </aside>
       <div style="clear: both;"></div>

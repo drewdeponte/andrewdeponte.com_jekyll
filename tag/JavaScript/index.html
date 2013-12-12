@@ -40,10 +40,11 @@
   </header>
 
   <section>
-    <p>I recently wrote a jQuery Plugin that I am calling jquery_comphist. It is a jQuery Plugin that draws a Comparative Histogram of a provided population divided into two major groups with any number of shared sub-groups. One of the most common uses for such a feature is when you are trying to display demographics data on some population. Anyways, as usual the code is available at my GitHub page here and you can see a demo of it below.</p>
+    
+<p>I recently wrote a jQuery Plugin that I am calling jquery_comphist. It is a jQuery Plugin that draws a Comparative Histogram of a provided population divided into two major groups with any number of shared sub-groups. One of the most common uses for such a feature is when you are trying to display demographics data on some population. Anyways, as usual the code is available at my GitHub page here and you can see a demo of it below.</p>
 <div style='background-color: #f3f3f3; padding: 20px;'>
 <div id='comphist_example' style='width: 500px; height: 200px;'>&nbsp;</div>
-</div><script type='text/javascript'>
+</div><script type='text/javascript'><![CDATA[
 $(function () {
   function showCompHistTooltip(x, y, contents) {
     $("<div id='comphist1tooltip'>" + contents + '</div>').css({ position: 'absolute', display: 'none', top: y - 20, left: x - 30, border: '1px solid #fdd', padding: '2px', 'background-color': '#fee', opacity: 1 }).appendTo("body").fadeIn(200);
@@ -73,7 +74,7 @@ $(function () {
     $("#comphist1tooltip").remove();
   });
 });
-</script>
+]]></script>
 <p>With the jQuery Comparative Histogram (CompHist) Plugin you can easily represent populations and information about them. A prime usage exampe of this is demographics. All the styling is done via CSS. Hence the style is easily modified. It does the calculations for you and it allows for non listed group counts via a non_demo_count data option.</p>
 
 <p>The above demo was produced by defining a few code snippets. The first snippet is a snippet of HTML that includes the jQuery Comparative Histogram javascript source file and CSS style sheet. Note: The jQuery Comparative Histogram javascript source file needs to come after the standard jQuery javascript source file. An example of this snippet is as follows:</p>
@@ -127,6 +128,7 @@ $(function () {
 <span class='nt'>&lt;/script&gt;</span>
 </code></pre></div>
 <p>Hopefully, the demo and quick code example helps get you up and running quickly.</p>
+
     <div style="clear: both;"></div>
   </section>
 
@@ -161,12 +163,13 @@ $(function () {
   </header>
 
   <section>
-    <p>Hey boys and girls. I just got finished coding support for Multi-series bar graphs into Flot (a jQuery based JavaScript graphing library). Hence, I figured I would share not only the code but a little preview of it below. The code for it can be found at my GitHub account here. Please enjoy the little demo below.</p>
+    
+<p>Hey boys and girls. I just got finished coding support for Multi-series bar graphs into Flot (a jQuery based JavaScript graphing library). Hence, I figured I would share not only the code but a little preview of it below. The code for it can be found at my GitHub account here. Please enjoy the little demo below.</p>
 <div style='background-color: #f3f3f3; padding: 20px;'>
 <div id='placeholder' style='width:500px;height:200px;'>&nbsp;</div>
 </div><p id='hoverdata'>Mouse hovers at (<span id='x'>0</span>, <span id='y'>0</span>). <span id='clickdata' /></p>
 <p>With the multi-series bar graph support, you can have Flot display the series side by side. This is useful when you are interested in visually comparing series and grouping segments you want to columns in series that you are specifically interested in comparing.</p>
-<script id='source'>
+<script id='source'><![CDATA[
 $(function () {
   var ms_data = [{"label":"FOO","data":[[0,80],[1,70],[2,100],[3,60],[4,102]]},
                  {"label":"BAR","data":[[0,10],[1,20],[2,30],[3,40],[4,80]]},
@@ -214,7 +217,7 @@ $(function () {
         }
     });
 });
-</script>
+]]></script>
 <p>The above demo was produced by defining a few code snippets. The first snippet is a snippet of HTML that includes the customized Flot javascript source file. Note: The Flot javascript source file needs to come after the standard jQuery javascript source file. An example of this snippet is as follows:</p>
 <div class='highlight'><pre><code class='html'><span class='c'>&lt;!--[if IE]&gt;&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot; src=&quot;../excanvas.min.js&quot;&gt;&lt;/script&gt;&lt;![endif]--&gt;</span>
 <span class='nt'>&lt;script </span><span class='na'>language=</span><span class='s'>&quot;javascript&quot;</span> <span class='na'>type=</span><span class='s'>&quot;text/javascript&quot;</span> <span class='na'>src=</span><span class='s'>&quot;../jquery.js&quot;</span><span class='nt'>&gt;&lt;/script&gt;</span>
@@ -284,6 +287,7 @@ $(function () {
 <span class='nt'>&lt;/script&gt;</span>
 </code></pre></div>
 <p>Hopefully, the demo and quick code example helps get you up and running.</p>
+
     <div style="clear: both;"></div>
   </section>
 
@@ -320,7 +324,8 @@ $(function () {
   </header>
 
   <section>
-    <p>Hi all. Recently I was working on a web application that utilized JavaScript and AJAX. Who would have guessed. Anyways, I ran into a bit of a snag when I had the AJAX requests result defining a JavaScript snippet. The problem was that AJAX requests strip out script tags and don&#8217;t let them get inserted into the DOM tree. I am not sure why this is the case, maybe for some security reason that I have yet to see. Anyways, this creates a bit of a problem when you are trying to do things like use a JavaScript calendar widget inside the AJAX result set when the calendar widget needs to be initialized by some JavaScript code that is unique to that calendar.</p>
+    
+<p>Hi all. Recently I was working on a web application that utilized JavaScript and AJAX. Who would have guessed. Anyways, I ran into a bit of a snag when I had the AJAX requests result defining a JavaScript snippet. The problem was that AJAX requests strip out script tags and don’t let them get inserted into the DOM tree. I am not sure why this is the case, maybe for some security reason that I have yet to see. Anyways, this creates a bit of a problem when you are trying to do things like use a JavaScript calendar widget inside the AJAX result set when the calendar widget needs to be initialized by some JavaScript code that is unique to that calendar.</p>
 
 <p>Despite all my efforts in googling I failed to find a clearly defined solution. Bits of the sites have clues but none of them had actual solutions with enough detail to make it reproducible. Hence, after exploring all of these hints and all of the combinations of the hints I managed to find a working solution for using JavaScript that is dynamically generated as part of the result of an AJAX call.</p>
 
@@ -383,7 +388,8 @@ $(function () {
 <p>The next logical question of course is what event or callback launches the above JavaScript function in the top level document. The answer in this case is simply to use the Prototypes Ajax.Updater onComplete callback by having it first programatically figure out the name of the div using the reproducible naming scheme and then call the above JavaScript function passing it the necessary id to access the hidden JavaScript div. This might look something like the following:</p>
 <div class='highlight'><pre><code class='html'><span class='nt'>&lt;input</span> <span class='na'>type=</span><span class='s'>&quot;button&quot;</span> <span class='na'>id=</span><span class='s'>&quot;rowedit_create_button&quot;</span> <span class='na'>value=</span><span class='s'>&quot;Create&quot;</span> <span class='na'>onclick=</span><span class='s'>&quot;new Ajax.Updater(&lt;% if prefix %&gt; &#39;&lt;%= prefix %&gt;_rowedit_data_rows&#39; &lt;% else %&gt; &#39;rowedit_data_rows&#39; &lt;% end %&gt;, &#39;&lt;%= urls[:create] %&gt;&#39;, {asynchronous:true, parameters:$(&lt;% if prefix %&gt; &#39;&lt;%= prefix %&gt;_rowedit_create_form&#39; &lt;% else %&gt; &#39;rowedit_create_form&#39; &lt;% end %&gt;).serialize(), insertion: Insertion.Bottom, onComplete: function() { var drows = document.getElementById(&#39;rowedit_data_rows&#39;); var last_row_id = drows.lastChild.id; last_row_id = last_row_id.replace(&#39;edit_&#39;, &#39;&#39;); last_row_id = last_row_id.replace(&#39;_row&#39;, &#39;&#39;); createRowEditCalendar(last_row_id); } });&quot;</span><span class='nt'>/&gt;</span>
 </code></pre></div>
-<p>Assuming that you have those three components in place and properly setup with all the syntax correct you should have a working solution. Note: Be very careful of syntax errors in the JavaScript inside the eval() method because FireBug won&#8217;t detect them, or run-time errors in the JavaScript anywhere because not all of them will be detected by FireBug. Anyways, hope this helps someone out there, it sure would have helped me if I had it.</p>
+<p>Assuming that you have those three components in place and properly setup with all the syntax correct you should have a working solution. Note: Be very careful of syntax errors in the JavaScript inside the eval() method because FireBug won’t detect them, or run-time errors in the JavaScript anywhere because not all of them will be detected by FireBug. Anyways, hope this helps someone out there, it sure would have helped me if I had it.</p>
+
     <div style="clear: both;"></div>
   </section>
 
@@ -727,11 +733,17 @@ $(function () {
   
   <a class="tag" href="/tag/VirtualBox"><span class="tag_name">VirtualBox</span> <span class="tag_usage_count">(1)</span></a>
   
+  <a class="tag" href="/tag/ergonomics"><span class="tag_name">ergonomics</span> <span class="tag_usage_count">(1)</span></a>
+  
+  <a class="tag" href="/tag/standing desk"><span class="tag_name">standing desk</span> <span class="tag_usage_count">(1)</span></a>
+  
+  <a class="tag" href="/tag/sitting desk"><span class="tag_name">sitting desk</span> <span class="tag_usage_count">(1)</span></a>
+  
 </div>
 
         </div>
         <div>
-          <div class="archives_list"><h2>Archives</h2><a href="/2013/10" class="archive"><span class="archive_period">October 2013 </span><span class="archive_count">(1)</span></a><a href="/2013/01" class="archive"><span class="archive_period">January 2013 </span><span class="archive_count">(1)</span></a><a href="/2012/09" class="archive"><span class="archive_period">September 2012 </span><span class="archive_count">(2)</span></a><a href="/2012/08" class="archive"><span class="archive_period">August 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
+          <div class="archives_list"><h2>Archives</h2><a href="/2013/12" class="archive"><span class="archive_period">December 2013 </span><span class="archive_count">(1)</span></a><a href="/2013/10" class="archive"><span class="archive_period">October 2013 </span><span class="archive_count">(1)</span></a><a href="/2013/01" class="archive"><span class="archive_period">January 2013 </span><span class="archive_count">(1)</span></a><a href="/2012/09" class="archive"><span class="archive_period">September 2012 </span><span class="archive_count">(2)</span></a><a href="/2012/08" class="archive"><span class="archive_period">August 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
         </div>
       </aside>
       <div style="clear: both;"></div>

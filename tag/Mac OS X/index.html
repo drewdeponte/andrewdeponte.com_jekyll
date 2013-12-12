@@ -40,7 +40,8 @@
   </header>
 
   <section>
-    <p>So, recently I bought a Western Digital (WD) MyPassport portable 500GB hard drive. I found when plugging it in that it had a very annoying Virtual CD built into its firmware called WD SmartWare which I was not the least bit interested in using. All, I wanted was an external USB hard drive that was portable and just worked. So, the first thing I tried was to reformat it to a Journaled Mac OS X file system. Once, I reformatted it, I was able to copy files too and from the external drive just like I wanted to be. However, every time I plugged the external drive in it would also mount this stupid Virtual CD which I didn&#8217;t want to deal with.</p>
+    
+<p>So, recently I bought a Western Digital (WD) MyPassport portable 500GB hard drive. I found when plugging it in that it had a very annoying Virtual CD built into its firmware called WD SmartWare which I was not the least bit interested in using. All, I wanted was an external USB hard drive that was portable and just worked. So, the first thing I tried was to reformat it to a Journaled Mac OS X file system. Once, I reformatted it, I was able to copy files too and from the external drive just like I wanted to be. However, every time I plugged the external drive in it would also mount this stupid Virtual CD which I didn’t want to deal with.</p>
 
 <p>So, I googled around a bit for a way to stop this thing from mounting and coming up every time I plug the external drive in. I found a bunch of articles outlining how to update the firmware on the external hard drive and a bunch of very long step by step processes all just to get this stupid Virtual CD to go away. Soon, enough I found the answer I was looking for. It was simply to grab the UUID of the Volume by using the following command:</p>
 
@@ -50,7 +51,8 @@
 
 <p><code>UUID=84789472-2EB5-3C8E-BFC1-F554F91B026C none hfs rw,noauto 0 0</code></p>
 
-<p>In my opinion this was a much better solution as it just disabled the auto mounting of that volume and didn&#8217;t require a firmware flash or anything crazy just to get rid of the stupid Virtual CD. Anyways, I probably made this post more for me than any of you. Though, hopefully someone else finds this tid bit useful as well.</p>
+<p>In my opinion this was a much better solution as it just disabled the auto mounting of that volume and didn’t require a firmware flash or anything crazy just to get rid of the stupid Virtual CD. Anyways, I probably made this post more for me than any of you. Though, hopefully someone else finds this tid bit useful as well.</p>
+
     <div style="clear: both;"></div>
   </section>
 
@@ -81,15 +83,17 @@
   </header>
 
   <section>
-    <p>So I setup my MacBook Air right after I got it and was just using the basic functionality. I then realized that I needed root to do something. Yep, you guessed it, I some how managed to to fat finger my root password when I setup the initial Admin user in the setup process. This is normally not a big deal as you can always put the DVD back in and rerun the setup wizard to create a new user. However when you are a MacBook Air and have no DVD drive it gets to be a tad bit more complex.</p>
+    
+<p>So I setup my MacBook Air right after I got it and was just using the basic functionality. I then realized that I needed root to do something. Yep, you guessed it, I some how managed to to fat finger my root password when I setup the initial Admin user in the setup process. This is normally not a big deal as you can always put the DVD back in and rerun the setup wizard to create a new user. However when you are a MacBook Air and have no DVD drive it gets to be a tad bit more complex.</p>
 
-<p>The key is single user mode. After some googling I found that you can easily get into single user mode on Mac OS X simply by rebooting and right after the Chime noise holding Command-S and it will start you up into single user mode. For details on single user mode please go <a href='http://support.apple.com/kb/HT1492'>here</a>.</p>
+<p>The key is single user mode. After some googling I found that you can easily get into single user mode on Mac OS X simply by rebooting and right after the Chime noise holding Command-S and it will start you up into single user mode. For details on single user mode please go <a href="http://support.apple.com/kb/HT1492">here</a>.</p>
 
 <p>When you see the prompt for single user mode it will tell you two commands to run to make it so that you can modify the file system. One is a fsck command and the other is a mount command. I simply ran the two commands as the info above the prompt instructed me to. Once it was done running those commands, I ran the following command and rebooted so that it would start the initial setup process over again. I did this because I knew that if I created a new Admin user and knew its password I could then sudo in and change the password of my existing Admin user that I previously fat fingered the password for.</p>
 
 <p><code>$ rm /var/db/.AppleSetupDone</code></p>
 
-<p>I know that there are command line tools that allow you to change passwords, etc. in Mac OS X, but for some reason I wasn&#8217;t feeling like looking up the directions on how to use them. Hence, I just did it this way. Figured I would share my find on Single User Mode, :-). I am sure someone has already found it, but it is new to me.</p>
+<p>I know that there are command line tools that allow you to change passwords, etc. in Mac OS X, but for some reason I wasn’t feeling like looking up the directions on how to use them. Hence, I just did it this way. Figured I would share my find on Single User Mode, :-). I am sure someone has already found it, but it is new to me.</p>
+
     <div style="clear: both;"></div>
   </section>
 
@@ -122,7 +126,8 @@
   </header>
 
   <section>
-    <p>Today was one of those days where I woke up and something was just off with respect to my workflow for some reason. I was frustrated with the fact that I had to load a browser and go to a website to see what my tickets were for the day. Instinctively I just wanted my tickets to magically be in my head so I didn&#8217;t have to go through all those steps. So, I started thinking about this problem more and more as the day went by and I came to the conclusion that I really have two problems.</p>
+    
+<p>Today was one of those days where I woke up and something was just off with respect to my workflow for some reason. I was frustrated with the fact that I had to load a browser and go to a website to see what my tickets were for the day. Instinctively I just wanted my tickets to magically be in my head so I didn’t have to go through all those steps. So, I started thinking about this problem more and more as the day went by and I came to the conclusion that I really have two problems.</p>
 
 <ol>
 <li>I have tickets dispersed through multiple ticketing system.</li>
@@ -133,16 +138,16 @@
 <p>When I started thinking about my two problems I realized that I have my tickets in roughly four different applications/services. These applications/services are as follows:</p>
 
 <ul>
-<li><a href='http://trac.edgewall.org/'>Trac</a> - Web based project management/task management tool</li>
+<li><a href="http://trac.edgewall.org/">Trac</a> - Web based project management/task management tool</li>
 
-<li><a href='http://lighthouseapp.com/'>Lighthouse</a> - Web based project management/task management tool</li>
+<li><a href="http://lighthouseapp.com/">Lighthouse</a> - Web based project management/task management tool</li>
 
-<li><a href='http://github.com/'>GitHub</a> - Web based Git repository management system and issue tracking tool</li>
+<li><a href="http://github.com/">GitHub</a> - Web based Git repository management system and issue tracking tool</li>
 
-<li><a href='http://culturedcode.com/things/'>Things</a> - Desktop task management system</li>
+<li><a href="http://culturedcode.com/things/">Things</a> - Desktop task management system</li>
 </ul>
 
-<p>Beyond having multiple ticket sources, most of them have multiple accounts for various reasons (contract jobs I have done, etc.). Being in a specific environment while working within that scope/environment is fine. For example if I am working on Project X it makes sense that I be in project X&#8217;s environment. However, the situation that I am frustrated with is the initialization and transition periods which exist before you start working on a project and when you are switching from one project to the next project.</p>
+<p>Beyond having multiple ticket sources, most of them have multiple accounts for various reasons (contract jobs I have done, etc.). Being in a specific environment while working within that scope/environment is fine. For example if I am working on Project X it makes sense that I be in project X’s environment. However, the situation that I am frustrated with is the initialization and transition periods which exist before you start working on a project and when you are switching from one project to the next project.</p>
 
 <p>Based on my issues and the situation I am frustrated with I have come up with a small set of requirements for a solution. These requirements are listed below.</p>
 
@@ -154,11 +159,11 @@
 <li>This dashboard must automatically update with zero effort/steps</li>
 </ol>
 
-<p>As many of you know despite the fact that I write software for various platforms and in various languages my platform for development is generally Mac OS X. Given that Mac OS X was my environment, I started thinking about this requirement set and thinking about how I could make something that required zero effort/steps to view it. The closest thing I could come up with was having my tickets displayed on my desktop. After a few minutes of googling based on that idea I found an awesome tool for Mac OS X called <a href='http://projects.tynsoe.org/en/geektool/'>GeekTool</a>. Among other things, <a href='http://projects.tynsoe.org/en/geektool/'>GeekTool</a> will run shell scripts/console applications for you on a set frequency and display their output to a defined section of your desktop. This was perfect in my opinion so I played with it for a few minutes and decide that I was going to use <a href='http://projects.tynsoe.org/en/geektool/'>GeekTool</a>.</p>
+<p>As many of you know despite the fact that I write software for various platforms and in various languages my platform for development is generally Mac OS X. Given that Mac OS X was my environment, I started thinking about this requirement set and thinking about how I could make something that required zero effort/steps to view it. The closest thing I could come up with was having my tickets displayed on my desktop. After a few minutes of googling based on that idea I found an awesome tool for Mac OS X called <a href="http://projects.tynsoe.org/en/geektool/">GeekTool</a>. Among other things, <a href="http://projects.tynsoe.org/en/geektool/">GeekTool</a> will run shell scripts/console applications for you on a set frequency and display their output to a defined section of your desktop. This was perfect in my opinion so I played with it for a few minutes and decide that I was going to use <a href="http://projects.tynsoe.org/en/geektool/">GeekTool</a>.</p>
 
-<p>Given the functionality of <a href='http://projects.tynsoe.org/en/geektool/'>GeekTool</a> all that was really left was to write shell scripts/console applications that output all of my tickets from the various ticket sources and I would have a very quick and functional solution to my issue. Hence, I got to writing and pumped out the following short little Ruby scripts, and one AppleScript script to provide output of all my tickets from the various sources.</p>
+<p>Given the functionality of <a href="http://projects.tynsoe.org/en/geektool/">GeekTool</a> all that was really left was to write shell scripts/console applications that output all of my tickets from the various ticket sources and I would have a very quick and functional solution to my issue. Hence, I got to writing and pumped out the following short little Ruby scripts, and one AppleScript script to provide output of all my tickets from the various sources.</p>
 
-<p>The following is a ruby script that pulls all my tickets in from all of my various <a href='http://lighthouseapp.com/'>Lighthouse</a> accounts and projects.</p>
+<p>The following is a ruby script that pulls all my tickets in from all of my various <a href="http://lighthouseapp.com/">Lighthouse</a> accounts and projects.</p>
 <div class='highlight'><pre><code class='ruby'><span class='c1'>#!/usr/bin/env ruby</span>
 <span class='nb'>require</span> <span class='s1'>&#39;rubygems&#39;</span>
 <span class='nb'>require</span> <span class='s1'>&#39;lighthouse-api&#39;</span>
@@ -187,7 +192,7 @@
   <span class='p'>}</span>
 <span class='p'>}</span>
 </code></pre></div>
-<p>The following is a ruby script that pulls all my tickets in from all of my various <a href='http://github.com/'>GitHub</a> accounts and projects.</p>
+<p>The following is a ruby script that pulls all my tickets in from all of my various <a href="http://github.com/">GitHub</a> accounts and projects.</p>
 <div class='highlight'><pre><code class='ruby'><span class='c1'>#!/usr/bin/env ruby</span>
 
 <span class='nb'>require</span> <span class='s1'>&#39;rubygems&#39;</span>
@@ -221,7 +226,7 @@
   <span class='k'>end</span>
 <span class='p'>}</span>
 </code></pre></div>
-<p>The following is a AppleScript script that pulls all my tickets in from <a href='http://culturedcode.com/things/'>Things</a>.</p>
+<p>The following is a AppleScript script that pulls all my tickets in from <a href="http://culturedcode.com/things/">Things</a>.</p>
 <div class='highlight'><pre><code class='applescript'><span class='k'>tell</span> <span class='nb'>application</span> <span class='s2'>&quot;Things&quot;</span>
   <span class='k'>set</span> <span class='nv'>nl</span> <span class='k'>to</span> <span class='s2'>&quot;\n&quot;</span>
   <span class='k'>set</span> <span class='nv'>output</span> <span class='k'>to</span> <span class='s2'>&quot;Things Tasks in Today\n--------------------------\n&quot;</span>
@@ -232,7 +237,7 @@
 <span class='k'>end</span> <span class='k'>tell</span>
 <span class='nv'>output</span>
 </code></pre></div>
-<p>The following is a Python script that pulls all my tickets in from <a href='http://trac.edgewall.org/'>Trac</a> when your <a href='http://trac.edgewall.org/'>Trac</a> environment has the <a href='http://trac-hacks.org/wiki/XmlRpcPlugin'>Trac XML RPC plugin</a> installed.</p>
+<p>The following is a Python script that pulls all my tickets in from <a href="http://trac.edgewall.org/">Trac</a> when your <a href="http://trac.edgewall.org/">Trac</a> environment has the <a href="http://trac-hacks.org/wiki/XmlRpcPlugin">Trac XML RPC plugin</a> installed.</p>
 <div class='highlight'><pre><code class='python'><span class='c'>#!/usr/bin/env python</span>
 
 <span class='kn'>import</span> <span class='nn'>xmlrpclib</span>
@@ -274,7 +279,8 @@
     <span class='n'>pri_num</span> <span class='o'>=</span> <span class='mi'>4</span>
   <span class='k'>print</span> <span class='nb'>str</span><span class='p'>(</span><span class='n'>cur_id</span><span class='p'>)</span><span class='o'>.</span><span class='n'>rjust</span><span class='p'>(</span><span class='mi'>6</span><span class='p'>)</span> <span class='o'>+</span>  <span class='s'>&quot; | &quot;</span> <span class='o'>+</span> <span class='nb'>str</span><span class='p'>(</span><span class='n'>pri_num</span><span class='p'>)</span><span class='o'>.</span><span class='n'>center</span><span class='p'>(</span><span class='mi'>3</span><span class='p'>)</span> <span class='o'>+</span> <span class='s'>&quot; | &quot;</span> <span class='o'>+</span> <span class='nb'>str</span><span class='p'>(</span><span class='n'>cur_summary</span><span class='p'>)</span>
 </code></pre></div>
-<p>After coding the above scripts I simply set them up through the <a href='http://projects.tynsoe.org/en/geektool/'>GeekTool</a> UI and like magic within 15 mins or so I had a working solution to my issue, thanks to the power of REST based Web Services, Ruby, the Ruby Community, and Things AppleScript integration. Checkout a screenshot <a href='https://www.facebook.com/media/set/?set=a.629955991290.2070660.30901409&amp;type=1&amp;l=d6d8aefeb9'>here</a>.</p>
+<p>After coding the above scripts I simply set them up through the <a href="http://projects.tynsoe.org/en/geektool/">GeekTool</a> UI and like magic within 15 mins or so I had a working solution to my issue, thanks to the power of REST based Web Services, Ruby, the Ruby Community, and Things AppleScript integration. Checkout a screenshot <a href="https://www.facebook.com/media/set/?set=a.629955991290.2070660.30901409&type=1&l=d6d8aefeb9">here</a>.</p>
+
     <div style="clear: both;"></div>
   </section>
 
@@ -632,11 +638,17 @@
   
   <a class="tag" href="/tag/VirtualBox"><span class="tag_name">VirtualBox</span> <span class="tag_usage_count">(1)</span></a>
   
+  <a class="tag" href="/tag/ergonomics"><span class="tag_name">ergonomics</span> <span class="tag_usage_count">(1)</span></a>
+  
+  <a class="tag" href="/tag/standing desk"><span class="tag_name">standing desk</span> <span class="tag_usage_count">(1)</span></a>
+  
+  <a class="tag" href="/tag/sitting desk"><span class="tag_name">sitting desk</span> <span class="tag_usage_count">(1)</span></a>
+  
 </div>
 
         </div>
         <div>
-          <div class="archives_list"><h2>Archives</h2><a href="/2013/10" class="archive"><span class="archive_period">October 2013 </span><span class="archive_count">(1)</span></a><a href="/2013/01" class="archive"><span class="archive_period">January 2013 </span><span class="archive_count">(1)</span></a><a href="/2012/09" class="archive"><span class="archive_period">September 2012 </span><span class="archive_count">(2)</span></a><a href="/2012/08" class="archive"><span class="archive_period">August 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
+          <div class="archives_list"><h2>Archives</h2><a href="/2013/12" class="archive"><span class="archive_period">December 2013 </span><span class="archive_count">(1)</span></a><a href="/2013/10" class="archive"><span class="archive_period">October 2013 </span><span class="archive_count">(1)</span></a><a href="/2013/01" class="archive"><span class="archive_period">January 2013 </span><span class="archive_count">(1)</span></a><a href="/2012/09" class="archive"><span class="archive_period">September 2012 </span><span class="archive_count">(2)</span></a><a href="/2012/08" class="archive"><span class="archive_period">August 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
         </div>
       </aside>
       <div style="clear: both;"></div>

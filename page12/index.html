@@ -31,6 +31,33 @@
         
   <article class='blog-post'>
   <header>
+    <h2 class='title'><a href="/2009/12/06/a-go-at-graphics.html">A Go at Graphics</a></h2>
+    <div class='posted-info'>
+      <time datetime='2009-12-06T00:00:00Z' pubdate='pubdate' class='published-datetime'>December 06, 2009</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    
+<p>Hi all. I recently tried my hand at a little graphic design work. A while back I came up with the domain name lusciousbits.com and bought it. I had a couple different ideas for that domain. However, I ran into a very difficult time coming up with the concept for a logo for the site. After a while of contemplating various concepts for logos and failing to come up with anything useful, I started asking people what they thought of when they heard the word luscious. It was astounding to me that the vast majority of people specifically said “You know the Hot Chick Mud Flaps on Trucks?” So, I finally decided that despite the fact that some may take it to be sexist I was going to use that and attempt a little graphics work. I did not intend it to be sexist so please don’t take it that way. The tag line was lovingly donated by another Software Engineer friend of mine (Patrick Murphy). Anyways, below is a wallpaper I created based on this concept for lusciousbits.com. You can get the wallpaper <a href="http://www.facebook.com/media/set/?set=a.629963920400.2070661.30901409&type=3&l=d82a9c683d">here</a>.</p>
+
+    <div style="clear: both;"></div>
+  </section>
+
+  <footer>
+    
+      <a class="tag" href="/tag/Graphic Design">Graphic Design</a>
+    
+      <a class="tag" href="/tag/Wallpaper">Wallpaper</a>
+    
+  </footer>
+</article>
+
+
+  <article class='blog-post'>
+  <header>
     <h2 class='title'><a href="/2009/10/31/jquery-comparative-histogram-plugin.html">jQuery Comparative Histogram Plugin</a></h2>
     <div class='posted-info'>
       <time datetime='2009-10-31T00:00:00Z' pubdate='pubdate' class='published-datetime'>October 31, 2009</time>
@@ -40,10 +67,11 @@
   </header>
 
   <section>
-    <p>I recently wrote a jQuery Plugin that I am calling jquery_comphist. It is a jQuery Plugin that draws a Comparative Histogram of a provided population divided into two major groups with any number of shared sub-groups. One of the most common uses for such a feature is when you are trying to display demographics data on some population. Anyways, as usual the code is available at my GitHub page here and you can see a demo of it below.</p>
+    
+<p>I recently wrote a jQuery Plugin that I am calling jquery_comphist. It is a jQuery Plugin that draws a Comparative Histogram of a provided population divided into two major groups with any number of shared sub-groups. One of the most common uses for such a feature is when you are trying to display demographics data on some population. Anyways, as usual the code is available at my GitHub page here and you can see a demo of it below.</p>
 <div style='background-color: #f3f3f3; padding: 20px;'>
 <div id='comphist_example' style='width: 500px; height: 200px;'>&nbsp;</div>
-</div><script type='text/javascript'>
+</div><script type='text/javascript'><![CDATA[
 $(function () {
   function showCompHistTooltip(x, y, contents) {
     $("<div id='comphist1tooltip'>" + contents + '</div>').css({ position: 'absolute', display: 'none', top: y - 20, left: x - 30, border: '1px solid #fdd', padding: '2px', 'background-color': '#fee', opacity: 1 }).appendTo("body").fadeIn(200);
@@ -73,7 +101,7 @@ $(function () {
     $("#comphist1tooltip").remove();
   });
 });
-</script>
+]]></script>
 <p>With the jQuery Comparative Histogram (CompHist) Plugin you can easily represent populations and information about them. A prime usage exampe of this is demographics. All the styling is done via CSS. Hence the style is easily modified. It does the calculations for you and it allows for non listed group counts via a non_demo_count data option.</p>
 
 <p>The above demo was produced by defining a few code snippets. The first snippet is a snippet of HTML that includes the jQuery Comparative Histogram javascript source file and CSS style sheet. Note: The jQuery Comparative Histogram javascript source file needs to come after the standard jQuery javascript source file. An example of this snippet is as follows:</p>
@@ -127,6 +155,7 @@ $(function () {
 <span class='nt'>&lt;/script&gt;</span>
 </code></pre></div>
 <p>Hopefully, the demo and quick code example helps get you up and running quickly.</p>
+
     <div style="clear: both;"></div>
   </section>
 
@@ -161,12 +190,13 @@ $(function () {
   </header>
 
   <section>
-    <p>Hey boys and girls. I just got finished coding support for Multi-series bar graphs into Flot (a jQuery based JavaScript graphing library). Hence, I figured I would share not only the code but a little preview of it below. The code for it can be found at my GitHub account here. Please enjoy the little demo below.</p>
+    
+<p>Hey boys and girls. I just got finished coding support for Multi-series bar graphs into Flot (a jQuery based JavaScript graphing library). Hence, I figured I would share not only the code but a little preview of it below. The code for it can be found at my GitHub account here. Please enjoy the little demo below.</p>
 <div style='background-color: #f3f3f3; padding: 20px;'>
 <div id='placeholder' style='width:500px;height:200px;'>&nbsp;</div>
 </div><p id='hoverdata'>Mouse hovers at (<span id='x'>0</span>, <span id='y'>0</span>). <span id='clickdata' /></p>
 <p>With the multi-series bar graph support, you can have Flot display the series side by side. This is useful when you are interested in visually comparing series and grouping segments you want to columns in series that you are specifically interested in comparing.</p>
-<script id='source'>
+<script id='source'><![CDATA[
 $(function () {
   var ms_data = [{"label":"FOO","data":[[0,80],[1,70],[2,100],[3,60],[4,102]]},
                  {"label":"BAR","data":[[0,10],[1,20],[2,30],[3,40],[4,80]]},
@@ -214,7 +244,7 @@ $(function () {
         }
     });
 });
-</script>
+]]></script>
 <p>The above demo was produced by defining a few code snippets. The first snippet is a snippet of HTML that includes the customized Flot javascript source file. Note: The Flot javascript source file needs to come after the standard jQuery javascript source file. An example of this snippet is as follows:</p>
 <div class='highlight'><pre><code class='html'><span class='c'>&lt;!--[if IE]&gt;&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot; src=&quot;../excanvas.min.js&quot;&gt;&lt;/script&gt;&lt;![endif]--&gt;</span>
 <span class='nt'>&lt;script </span><span class='na'>language=</span><span class='s'>&quot;javascript&quot;</span> <span class='na'>type=</span><span class='s'>&quot;text/javascript&quot;</span> <span class='na'>src=</span><span class='s'>&quot;../jquery.js&quot;</span><span class='nt'>&gt;&lt;/script&gt;</span>
@@ -284,6 +314,7 @@ $(function () {
 <span class='nt'>&lt;/script&gt;</span>
 </code></pre></div>
 <p>Hopefully, the demo and quick code example helps get you up and running.</p>
+
     <div style="clear: both;"></div>
   </section>
 
@@ -320,11 +351,13 @@ $(function () {
   </header>
 
   <section>
-    <p>I have been working on a side project for a bit now called We&#8217;reSICC (We are Sound Image Community &amp; Collaboration). It planned to be an online service that is specifically designed to allow music artists and graphic artists to come together and collaborate to create music merchandise. The idea is that We&#8217;reSICC will provide a community and the necessary tools for Musicians and Graphic Artists to collaborate easily to produce merchandise and also provide the necessary tools for both Musicians and Graphic Artists to sell the products. The business model is simply that each party involved gets a chunk of the each sales profit. Anyways, thats enough lead in on that project you will find more about it later.</p>
+    
+<p>I have been working on a side project for a bit now called We’reSICC (We are Sound Image Community &amp; Collaboration). It planned to be an online service that is specifically designed to allow music artists and graphic artists to come together and collaborate to create music merchandise. The idea is that We’reSICC will provide a community and the necessary tools for Musicians and Graphic Artists to collaborate easily to produce merchandise and also provide the necessary tools for both Musicians and Graphic Artists to sell the products. The business model is simply that each party involved gets a chunk of the each sales profit. Anyways, thats enough lead in on that project you will find more about it later.</p>
 
-<p>The reason I mentioned We&#8217;reSICC is because we recently started porting the Django code base over to Google App Engine. We soon found that it lacked support for the standard database migration support that is generally necessary when developing an application of this magnitude. Hence, after searching long and hard I came to the conclusion that I would have to throw together the basis for implementing Lazy Migrations for Google App Engine Models. Hence, I did and then handed a version with very basic functionality off to Patrick Murphy to flesh out further. Patrick Murphy is a software engineer friend of mine that is also working on We&#8217;reSICC. He has written a very nice blog post here that explains how these Lazy Google App Engine Model Migrations and provided all the code you need to get started with it. We like to give back to the community that has given so much to us, :-).</p>
+<p>The reason I mentioned We’reSICC is because we recently started porting the Django code base over to Google App Engine. We soon found that it lacked support for the standard database migration support that is generally necessary when developing an application of this magnitude. Hence, after searching long and hard I came to the conclusion that I would have to throw together the basis for implementing Lazy Migrations for Google App Engine Models. Hence, I did and then handed a version with very basic functionality off to Patrick Murphy to flesh out further. Patrick Murphy is a software engineer friend of mine that is also working on We’reSICC. He has written a very nice blog post here that explains how these Lazy Google App Engine Model Migrations and provided all the code you need to get started with it. We like to give back to the community that has given so much to us, :-).</p>
 
-<p>If you are interested in simply learning more about Patrick Murphy then by all means check out his blog <a href='http://codekittens.wordpress.com/'>here</a>.</p>
+<p>If you are interested in simply learning more about Patrick Murphy then by all means check out his blog <a href="http://codekittens.wordpress.com/">here</a>.</p>
+
     <div style="clear: both;"></div>
   </section>
 
@@ -349,34 +382,9 @@ $(function () {
   </header>
 
   <section>
-    <p>Well, as expected the demo was continued today as well and will probably be continued for a while after that. Aly and I decided to put together another quick little HD video so you could see the progress if you were interested. So, here you go.</p>
+    
+<p>Well, as expected the demo was continued today as well and will probably be continued for a while after that. Aly and I decided to put together another quick little HD video so you could see the progress if you were interested. So, here you go.</p>
 <iframe allowFullScreen='allowFullScreen' frameborder='0' height='382' mozallowfullscreen='mozallowfullscreen' src='http://player.vimeo.com/video/10447915 ' webkitAllowFullScreen='webkitAllowFullScreen' width='680'>useless text to fix fail to render rest of post issue</iframe>
-    <div style="clear: both;"></div>
-  </section>
-
-  <footer>
-    
-      <a class="tag" href="/tag/House">House</a>
-    
-      <a class="tag" href="/tag/Personal">Personal</a>
-    
-  </footer>
-</article>
-
-
-  <article class='blog-post'>
-  <header>
-    <h2 class='title'><a href="/2009/07/25/house-demo-day-1.html">House Demo Day 1</a></h2>
-    <div class='posted-info'>
-      <time datetime='2009-07-25T00:00:00Z' pubdate='pubdate' class='published-datetime'>July 25, 2009</time>
-      <span>by</span>
-      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
-    </div>
-  </header>
-
-  <section>
-    <p>As some of you may know from previous posts. I recently bought my first house which is very much a fixer upper. Anyways, today Aly and I just completed the first day of demo and here is a small walk through with Aly&#8217;s new HD Flip.</p>
-<iframe allowFullScreen='allowFullScreen' frameborder='0' height='382' mozallowfullscreen='mozallowfullscreen' src='http://player.vimeo.com/video/10447735 ' webkitAllowFullScreen='webkitAllowFullScreen' width='680'>useless text to fix fail to render rest of post issue</iframe>
     <div style="clear: both;"></div>
   </section>
 
@@ -729,11 +737,17 @@ $(function () {
   
   <a class="tag" href="/tag/VirtualBox"><span class="tag_name">VirtualBox</span> <span class="tag_usage_count">(1)</span></a>
   
+  <a class="tag" href="/tag/ergonomics"><span class="tag_name">ergonomics</span> <span class="tag_usage_count">(1)</span></a>
+  
+  <a class="tag" href="/tag/standing desk"><span class="tag_name">standing desk</span> <span class="tag_usage_count">(1)</span></a>
+  
+  <a class="tag" href="/tag/sitting desk"><span class="tag_name">sitting desk</span> <span class="tag_usage_count">(1)</span></a>
+  
 </div>
 
         </div>
         <div>
-          <div class="archives_list"><h2>Archives</h2><a href="/2013/10" class="archive"><span class="archive_period">October 2013 </span><span class="archive_count">(1)</span></a><a href="/2013/01" class="archive"><span class="archive_period">January 2013 </span><span class="archive_count">(1)</span></a><a href="/2012/09" class="archive"><span class="archive_period">September 2012 </span><span class="archive_count">(2)</span></a><a href="/2012/08" class="archive"><span class="archive_period">August 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
+          <div class="archives_list"><h2>Archives</h2><a href="/2013/12" class="archive"><span class="archive_period">December 2013 </span><span class="archive_count">(1)</span></a><a href="/2013/10" class="archive"><span class="archive_period">October 2013 </span><span class="archive_count">(1)</span></a><a href="/2013/01" class="archive"><span class="archive_period">January 2013 </span><span class="archive_count">(1)</span></a><a href="/2012/09" class="archive"><span class="archive_period">September 2012 </span><span class="archive_count">(2)</span></a><a href="/2012/08" class="archive"><span class="archive_period">August 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
         </div>
       </aside>
       <div style="clear: both;"></div>

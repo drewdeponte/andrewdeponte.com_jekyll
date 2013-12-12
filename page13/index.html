@@ -31,6 +31,33 @@
         
   <article class='blog-post'>
   <header>
+    <h2 class='title'><a href="/2009/07/25/house-demo-day-1.html">House Demo Day 1</a></h2>
+    <div class='posted-info'>
+      <time datetime='2009-07-25T00:00:00Z' pubdate='pubdate' class='published-datetime'>July 25, 2009</time>
+      <span>by</span>
+      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
+    </div>
+  </header>
+
+  <section>
+    
+<p>As some of you may know from previous posts. I recently bought my first house which is very much a fixer upper. Anyways, today Aly and I just completed the first day of demo and here is a small walk through with Aly’s new HD Flip.</p>
+<iframe allowFullScreen='allowFullScreen' frameborder='0' height='382' mozallowfullscreen='mozallowfullscreen' src='http://player.vimeo.com/video/10447735 ' webkitAllowFullScreen='webkitAllowFullScreen' width='680'>useless text to fix fail to render rest of post issue</iframe>
+    <div style="clear: both;"></div>
+  </section>
+
+  <footer>
+    
+      <a class="tag" href="/tag/House">House</a>
+    
+      <a class="tag" href="/tag/Personal">Personal</a>
+    
+  </footer>
+</article>
+
+
+  <article class='blog-post'>
+  <header>
     <h2 class='title'><a href="/2009/07/21/bought-my-first-house.html">Bought My First House</a></h2>
     <div class='posted-info'>
       <time datetime='2009-07-21T00:00:00Z' pubdate='pubdate' class='published-datetime'>July 21, 2009</time>
@@ -40,11 +67,13 @@
   </header>
 
   <section>
-    <p>Few, the stress and hesitation is over with. Today, I closed on my first house. I am now a home owner. Can you believe that? I can&#8217;t. It hasn&#8217;t really settled in yet that I now own my own home. Now, the excitement and overwhelming feeling comes of the massive project that is a fixer upper house. However, with that also comes the great satisfaction and feeling of accomplishment after I make every addition step towards my goals for this house.</p>
+    
+<p>Few, the stress and hesitation is over with. Today, I closed on my first house. I am now a home owner. Can you believe that? I can’t. It hasn’t really settled in yet that I now own my own home. Now, the excitement and overwhelming feeling comes of the massive project that is a fixer upper house. However, with that also comes the great satisfaction and feeling of accomplishment after I make every addition step towards my goals for this house.</p>
 
 <p>Everyone keeps telling me that the tasks around the house will never end. I am sure they are right, but that is also part of what I love about it. It continually evolves as technology and time progress just as any good software does. Beyond that, I now get to make sure that it is the way I want it. In fact the two primary factors I took into consideration while looking for houses were Location, Location, Location, Location and a good base (framing, foundation) to start from. Oh, and I of course had to consider the money part as well. Luckily I found a repo that needed a lot of work but had an awesome location and fell just within my budget.</p>
 
 <p>Buying this house was a very difficult decision to make as I am currently involved in a number of side software projects besides my normal full time job. However, everything seemed to fall into place and it felt like the right time. So, after weeks and weeks of contemplation and discussion with friends and family I finally decided to take the leap, and here I am now a home owner. Oh the life!</p>
+
     <div style="clear: both;"></div>
   </section>
 
@@ -69,7 +98,8 @@
   </header>
 
   <section>
-    <p>Hi all. Recently I was working on a web application that utilized JavaScript and AJAX. Who would have guessed. Anyways, I ran into a bit of a snag when I had the AJAX requests result defining a JavaScript snippet. The problem was that AJAX requests strip out script tags and don&#8217;t let them get inserted into the DOM tree. I am not sure why this is the case, maybe for some security reason that I have yet to see. Anyways, this creates a bit of a problem when you are trying to do things like use a JavaScript calendar widget inside the AJAX result set when the calendar widget needs to be initialized by some JavaScript code that is unique to that calendar.</p>
+    
+<p>Hi all. Recently I was working on a web application that utilized JavaScript and AJAX. Who would have guessed. Anyways, I ran into a bit of a snag when I had the AJAX requests result defining a JavaScript snippet. The problem was that AJAX requests strip out script tags and don’t let them get inserted into the DOM tree. I am not sure why this is the case, maybe for some security reason that I have yet to see. Anyways, this creates a bit of a problem when you are trying to do things like use a JavaScript calendar widget inside the AJAX result set when the calendar widget needs to be initialized by some JavaScript code that is unique to that calendar.</p>
 
 <p>Despite all my efforts in googling I failed to find a clearly defined solution. Bits of the sites have clues but none of them had actual solutions with enough detail to make it reproducible. Hence, after exploring all of these hints and all of the combinations of the hints I managed to find a working solution for using JavaScript that is dynamically generated as part of the result of an AJAX call.</p>
 
@@ -132,7 +162,8 @@
 <p>The next logical question of course is what event or callback launches the above JavaScript function in the top level document. The answer in this case is simply to use the Prototypes Ajax.Updater onComplete callback by having it first programatically figure out the name of the div using the reproducible naming scheme and then call the above JavaScript function passing it the necessary id to access the hidden JavaScript div. This might look something like the following:</p>
 <div class='highlight'><pre><code class='html'><span class='nt'>&lt;input</span> <span class='na'>type=</span><span class='s'>&quot;button&quot;</span> <span class='na'>id=</span><span class='s'>&quot;rowedit_create_button&quot;</span> <span class='na'>value=</span><span class='s'>&quot;Create&quot;</span> <span class='na'>onclick=</span><span class='s'>&quot;new Ajax.Updater(&lt;% if prefix %&gt; &#39;&lt;%= prefix %&gt;_rowedit_data_rows&#39; &lt;% else %&gt; &#39;rowedit_data_rows&#39; &lt;% end %&gt;, &#39;&lt;%= urls[:create] %&gt;&#39;, {asynchronous:true, parameters:$(&lt;% if prefix %&gt; &#39;&lt;%= prefix %&gt;_rowedit_create_form&#39; &lt;% else %&gt; &#39;rowedit_create_form&#39; &lt;% end %&gt;).serialize(), insertion: Insertion.Bottom, onComplete: function() { var drows = document.getElementById(&#39;rowedit_data_rows&#39;); var last_row_id = drows.lastChild.id; last_row_id = last_row_id.replace(&#39;edit_&#39;, &#39;&#39;); last_row_id = last_row_id.replace(&#39;_row&#39;, &#39;&#39;); createRowEditCalendar(last_row_id); } });&quot;</span><span class='nt'>/&gt;</span>
 </code></pre></div>
-<p>Assuming that you have those three components in place and properly setup with all the syntax correct you should have a working solution. Note: Be very careful of syntax errors in the JavaScript inside the eval() method because FireBug won&#8217;t detect them, or run-time errors in the JavaScript anywhere because not all of them will be detected by FireBug. Anyways, hope this helps someone out there, it sure would have helped me if I had it.</p>
+<p>Assuming that you have those three components in place and properly setup with all the syntax correct you should have a working solution. Note: Be very careful of syntax errors in the JavaScript inside the eval() method because FireBug won’t detect them, or run-time errors in the JavaScript anywhere because not all of them will be detected by FireBug. Anyways, hope this helps someone out there, it sure would have helped me if I had it.</p>
+
     <div style="clear: both;"></div>
   </section>
 
@@ -161,7 +192,9 @@
   </header>
 
   <section>
-    <p>Hi all. If you don&#8217;t know already I have been playing with some iPhone app development pretty heavy lately. One of the interesting things which was some what more difficult to find was how to create a loading screens in iPhone apps. After I bit of googling and some reading of different forums I finally narrowed it down. It is handled automatically if you simply created a PNG file called Default.png that is 320 x 240 pixels with a 160 ppi and place it in your projects Resources file. Once in you Resources it will be displayed during the time that the application is loading. If you need to extend the time to get your splash screen to stay on the screen because your code is god like and fast simply tack a sleep or something in your applicationDidFinishLaunching method.</p>
+    
+<p>Hi all. If you don’t know already I have been playing with some iPhone app development pretty heavy lately. One of the interesting things which was some what more difficult to find was how to create a loading screens in iPhone apps. After I bit of googling and some reading of different forums I finally narrowed it down. It is handled automatically if you simply created a PNG file called Default.png that is 320 x 240 pixels with a 160 ppi and place it in your projects Resources file. Once in you Resources it will be displayed during the time that the application is loading. If you need to extend the time to get your splash screen to stay on the screen because your code is god like and fast simply tack a sleep or something in your applicationDidFinishLaunching method.</p>
+
     <div style="clear: both;"></div>
   </section>
 
@@ -186,11 +219,13 @@
   </header>
 
   <section>
-    <p>Hello all. I have been using Trac for many years now and I have always had one issue with. Creation of large numbers of tickets, large numbers being 10 to 20. The interface just doesn&#8217;t make it easy. So early this evening I finally decided I was going to do something about it. So, I went to <a href='http://trac-hacks.org/wiki/XmlRpcPlugin'>http://trac-hacks.org/wiki/XmlRpcPlugin</a> and checkout out and installed the code on one of our Trac servers. Then, I wrote a simple python wxWidgets script that connects via XML RPC to the Trac environment and provides a much quicker and easier interface for creating large numbers of tickets.</p>
+    
+<p>Hello all. I have been using Trac for many years now and I have always had one issue with. Creation of large numbers of tickets, large numbers being 10 to 20. The interface just doesn’t make it easy. So early this evening I finally decided I was going to do something about it. So, I went to <a href="http://trac-hacks.org/wiki/XmlRpcPlugin">http://trac-hacks.org/wiki/XmlRpcPlugin</a> and checkout out and installed the code on one of our Trac servers. Then, I wrote a simple python wxWidgets script that connects via XML RPC to the Trac environment and provides a much quicker and easier interface for creating large numbers of tickets.</p>
 
 <p>The interface simply provides a milestone dropdown and then a textbox and that is it. Once you have selected a milestone you want the tickets to be associated with (generally a batch of tickets is associated with a milestone), you can type your ticket summary into the text box and simply press enter to create the ticket. Once you press enter and it creates the ticket it will clear the text box so that you can type the next ticket summary in and hit enter to create the next ticket.</p>
 
 <p>Soon enough I will clean this script up and officially release it as on an open source app on the main site. If you are interested in this app before that time, feel free to hit me up.</p>
+
     <div style="clear: both;"></div>
   </section>
 
@@ -207,35 +242,6 @@
       <a class="tag" href="/tag/Project Management">Project Management</a>
     
       <a class="tag" href="/tag/Software Development">Software Development</a>
-    
-  </footer>
-</article>
-
-
-  <article class='blog-post'>
-  <header>
-    <h2 class='title'><a href="/2007/09/11/songbird.html">Songbird</a></h2>
-    <div class='posted-info'>
-      <time datetime='2007-09-11T00:00:00Z' pubdate='pubdate' class='published-datetime'>September 11, 2007</time>
-      <span>by</span>
-      <a href="http://github.com/cyphactor">Andrew De Ponte ( @cyphactor )</a>
-    </div>
-  </header>
-
-  <section>
-    <p>Just to let you all know. I finally found a media manager/player for Mac OS X that supports practically every file format including iTunes DRM based media files. Beyond that, it lets you play the web which is freaking amazing. It is something you have to see to believe. Check it out at the <a href='http://songbirdnest.com/'>birdnest</a>. Beyond that it is cross-platform so it works on Windows, Linux, and Mac OS X. It is currently only available by developer pre-release which is pretty functional as it is. It will be even more amazing as time goes on. A simple glance at their screencast on their site will show you what it is all about and how it works in general.</p>
-    <div style="clear: both;"></div>
-  </section>
-
-  <footer>
-    
-      <a class="tag" href="/tag/Media Management">Media Management</a>
-    
-      <a class="tag" href="/tag/Media Player">Media Player</a>
-    
-      <a class="tag" href="/tag/Songbird">Songbird</a>
-    
-      <a class="tag" href="/tag/Applications">Applications</a>
     
   </footer>
 </article>
@@ -580,11 +586,17 @@
   
   <a class="tag" href="/tag/VirtualBox"><span class="tag_name">VirtualBox</span> <span class="tag_usage_count">(1)</span></a>
   
+  <a class="tag" href="/tag/ergonomics"><span class="tag_name">ergonomics</span> <span class="tag_usage_count">(1)</span></a>
+  
+  <a class="tag" href="/tag/standing desk"><span class="tag_name">standing desk</span> <span class="tag_usage_count">(1)</span></a>
+  
+  <a class="tag" href="/tag/sitting desk"><span class="tag_name">sitting desk</span> <span class="tag_usage_count">(1)</span></a>
+  
 </div>
 
         </div>
         <div>
-          <div class="archives_list"><h2>Archives</h2><a href="/2013/10" class="archive"><span class="archive_period">October 2013 </span><span class="archive_count">(1)</span></a><a href="/2013/01" class="archive"><span class="archive_period">January 2013 </span><span class="archive_count">(1)</span></a><a href="/2012/09" class="archive"><span class="archive_period">September 2012 </span><span class="archive_count">(2)</span></a><a href="/2012/08" class="archive"><span class="archive_period">August 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
+          <div class="archives_list"><h2>Archives</h2><a href="/2013/12" class="archive"><span class="archive_period">December 2013 </span><span class="archive_count">(1)</span></a><a href="/2013/10" class="archive"><span class="archive_period">October 2013 </span><span class="archive_count">(1)</span></a><a href="/2013/01" class="archive"><span class="archive_period">January 2013 </span><span class="archive_count">(1)</span></a><a href="/2012/09" class="archive"><span class="archive_period">September 2012 </span><span class="archive_count">(2)</span></a><a href="/2012/08" class="archive"><span class="archive_period">August 2012 </span><span class="archive_count">(1)</span></a><a href="/2012/07" class="archive"><span class="archive_period">July 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/04" class="archive"><span class="archive_period">April 2012 </span><span class="archive_count">(3)</span></a><a href="/2012/02" class="archive"><span class="archive_period">February 2012 </span><span class="archive_count">(4)</span></a><a href="/2012/01" class="archive"><span class="archive_period">January 2012 </span><span class="archive_count">(2)</span></a><a href="/2011/03" class="archive"><span class="archive_period">March 2011 </span><span class="archive_count">(1)</span></a><a href="/2010/12" class="archive"><span class="archive_period">December 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/10" class="archive"><span class="archive_period">October 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/09" class="archive"><span class="archive_period">September 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/08" class="archive"><span class="archive_period">August 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/07" class="archive"><span class="archive_period">July 2010 </span><span class="archive_count">(4)</span></a><a href="/2010/06" class="archive"><span class="archive_period">June 2010 </span><span class="archive_count">(3)</span></a><a href="/2010/05" class="archive"><span class="archive_period">May 2010 </span><span class="archive_count">(10)</span></a><a href="/2010/04" class="archive"><span class="archive_period">April 2010 </span><span class="archive_count">(6)</span></a><a href="/2010/03" class="archive"><span class="archive_period">March 2010 </span><span class="archive_count">(2)</span></a><a href="/2010/02" class="archive"><span class="archive_period">February 2010 </span><span class="archive_count">(1)</span></a><a href="/2009/12" class="archive"><span class="archive_period">December 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/10" class="archive"><span class="archive_period">October 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/08" class="archive"><span class="archive_period">August 2009 </span><span class="archive_count">(2)</span></a><a href="/2009/07" class="archive"><span class="archive_period">July 2009 </span><span class="archive_count">(4)</span></a><a href="/2009/06" class="archive"><span class="archive_period">June 2009 </span><span class="archive_count">(1)</span></a><a href="/2009/02" class="archive"><span class="archive_period">February 2009 </span><span class="archive_count">(1)</span></a><a href="/2007/09" class="archive"><span class="archive_period">September 2007 </span><span class="archive_count">(2)</span></a><a href="/2007/07" class="archive"><span class="archive_period">July 2007 </span><span class="archive_count">(12)</span></a></div>
         </div>
       </aside>
       <div style="clear: both;"></div>

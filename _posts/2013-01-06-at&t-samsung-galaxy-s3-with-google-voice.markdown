@@ -31,8 +31,16 @@ written is really the following:
 **004*1<your 10 digit phone number>#
 {% endhighlight %}
 
+To disable voicemail forwarding I used the following MMI code.
+
+{% highlight text %}
+##004#
+{% endhighlight %}
+
 Anyways, hope this blog post helps some other people struggling with this out
 there. I know when I was searching I couldn't find any solution though I did
 see a number of message boards with people looking for an answer to this
 problem. If I were a better person I would probably go back and update all
 those message boards with my solution. I just can't bring myself to do it.
+
+

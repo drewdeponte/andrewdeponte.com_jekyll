@@ -4,7 +4,7 @@
   <title>Drew's World</title>
   <link href="http://andrewdeponte.com/atom.xml" rel="self"/>
   <link href="http://andrewdeponte.com/"/>
-  <updated>2013-12-11T19:46:08-08:00</updated>
+  <updated>2014-03-11T16:06:37-07:00</updated>
   <id>http://andrewdeponte.com/</id>
   <author>
     <name>Andrew De Ponte</name>
@@ -117,6 +117,9 @@ $ vmware-vdiskmanager -k /path/to/main.vmdk
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Every time I tried the above instructions my phone would return an error code. I got so frustrated I even got online with AT&amp;amp;T tech support so that they could verify the state of things as I was trying various other commands that I found on the web. None, of the ones that worked allowed me to setup Google Voice as my voicemail provider appropriately. After being online with AT&amp;amp;T tech support for a while. I tried simply prepending another * character to the entire thing. Guess what, magically it worked. I even had AT&amp;amp;T tech support verify that it made the proper configuration change on my account. So the correct command that Google should be telling people to enter exactly as written is really the following:&lt;/p&gt;
 &lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;text&#39;&gt;**004*1&amp;lt;your 10 digit phone number&amp;gt;#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To disable voicemail forwarding I used the following MMI code.&lt;/p&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;text&#39;&gt;##004#
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Anyways, hope this blog post helps some other people struggling with this out there. I know when I was searching I couldn’t find any solution though I did see a number of message boards with people looking for an answer to this problem. If I were a better person I would probably go back and update all those message boards with my solution. I just can’t bring myself to do it.&lt;/p&gt;
 </content>
@@ -987,9 +990,9 @@ Codes&lt;/code&gt; so that the output is a bit cleaner.&lt;/li&gt;
       <updated>2010-05-09T00:00:00-07:00</updated>
       <id>http://andrewdeponte.com/2010/05/09/gas-pipes-&-dumpster</id>
       <content type="html">
-&lt;p&gt;Few, I just completed a very exhausting weekend with Aly and my parents. This weekend I ordered a dumpster because my parents were coming down to help work on my house and I had a massive pile of rubble in the backyard RV parking spot that needed to go. Once we loaded the dumpster with all of the rubble (more than two rooms of plaster) we decided to demo another room as the allocated 18 inches of heavy material at the bottom wasn’t filled. This was crucial in my opinion because that damn dumpster cost so much.&lt;/p&gt;
+&lt;p&gt;Phew, I just completed a very exhausting weekend with Aly and my parents. This weekend I ordered a dumpster because my parents were coming down to help work on my house and I had a massive pile of rubble in the backyard RV parking spot that needed to go. Once we loaded the dumpster with all of the rubble (more than two rooms of plaster) we decided to demo another room as the allocated 18 inches of heavy material at the bottom wasn’t filled. This was crucial in my opinion because that damn dumpster cost so much.&lt;/p&gt;
 
-&lt;p&gt;Once, we had completed the plaster portion of the dumpster loading my Dad and I went to finish running the new gas pipes to the tankless water heater and pressure test them while Aly and my Mom worked on the back yard patio. It took us all weekend to get the pipes in and pressure tested. There is still a small leak as it is dropping 2 10ths of a PSI in 15 mins. Hence, further pressure testing is needed to get to the required state of holding 15 PSI for 15 mins. We went through and tested all of the new joints numerous times but couldn’t find any leaks. Hence, we talked to some people we know in the industry and it seems that when you pressure test and find a leak you generally have to jack up the pressure pretty high 60 to 100 PSI and spray the entire joint not just the threading edges to find the leaks because some joints, elbows especially, tend to have pin holes due to imperfect manufacturing. We probably could have gotten this handled if it hadn’t been Mother’s Day on Sunday but it was nice to take a break and visit with family anyways.&lt;/p&gt;
+&lt;p&gt;Once we had completed the plaster portion of the dumpster loading my Dad and I went to finish running the new gas pipes to the tankless water heater and pressure test them while Aly and my Mom worked on the back yard patio. It took us all weekend to get the pipes in and pressure tested. There is still a small leak as it is dropping 2 10ths of a PSI in 15 mins. Hence, further pressure testing is needed to get to the required state of holding 15 PSI for 15 mins. We went through and tested all of the new joints numerous times but couldn’t find any leaks. Hence, we talked to some people we know in the industry and it seems that when you pressure test and find a leak you generally have to jack up the pressure pretty high 60 to 100 PSI and spray the entire joint not just the threading edges to find the leaks because some joints, elbows especially, tend to have pin holes due to imperfect manufacturing. We probably could have gotten this handled if it hadn’t been Mother’s Day on Sunday but it was nice to take a break and visit with family anyways.&lt;/p&gt;
 
 &lt;p&gt;Little did my Dad and I know, while we were hard at work on the black iron pipes, Aly and my Mom had done a huge amount of cleanup on in the backyard, started tilling the grass we previously killed, and removed most of the old nasty fiber glass patio cover. I was amazed with how much they managed to get done.&lt;/p&gt;
 
@@ -1717,7 +1720,7 @@ $(function () {
       <updated>2009-07-21T00:00:00-07:00</updated>
       <id>http://andrewdeponte.com/2009/07/21/bought-my-first-house</id>
       <content type="html">
-&lt;p&gt;Few, the stress and hesitation is over with. Today, I closed on my first house. I am now a home owner. Can you believe that? I can’t. It hasn’t really settled in yet that I now own my own home. Now, the excitement and overwhelming feeling comes of the massive project that is a fixer upper house. However, with that also comes the great satisfaction and feeling of accomplishment after I make every addition step towards my goals for this house.&lt;/p&gt;
+&lt;p&gt;Phew, the stress and hesitation is over with. Today, I closed on my first house. I am now a home owner. Can you believe that? I can’t. It hasn’t really settled in yet that I now own my own home. Now, the excitement and overwhelming feeling comes of the massive project that is a fixer upper house. However, with that also comes the great satisfaction and feeling of accomplishment after I make every addition step towards my goals for this house.&lt;/p&gt;
 
 &lt;p&gt;Everyone keeps telling me that the tasks around the house will never end. I am sure they are right, but that is also part of what I love about it. It continually evolves as technology and time progress just as any good software does. Beyond that, I now get to make sure that it is the way I want it. In fact the two primary factors I took into consideration while looking for houses were Location, Location, Location, Location and a good base (framing, foundation) to start from. Oh, and I of course had to consider the money part as well. Luckily I found a repo that needed a lot of work but had an awesome location and fell just within my budget.&lt;/p&gt;
 

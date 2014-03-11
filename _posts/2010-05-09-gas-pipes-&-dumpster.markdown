@@ -4,7 +4,7 @@ title: Gas Pipes & Dumpster
 date: 2010-05-09
 tags: [Black Iron Pipe, Fiber Glass, Grass, Natural Gas, Patio, Tilling, House, Personal]
 ---
-Few, I just completed a very exhausting weekend with Aly and my parents. This
+Phew, I just completed a very exhausting weekend with Aly and my parents. This
 weekend I ordered a dumpster because my parents were coming down to help work
 on my house and I had a massive pile of rubble in the backyard RV parking spot
 that needed to go. Once we loaded the dumpster with all of the rubble (more
@@ -12,7 +12,7 @@ than two rooms of plaster) we decided to demo another room as the allocated 18
 inches of heavy material at the bottom wasn't filled. This was crucial in my
 opinion because that damn dumpster cost so much.
 
-Once, we had completed the plaster portion of the dumpster loading my Dad and I
+Once we had completed the plaster portion of the dumpster loading my Dad and I
 went to finish running the new gas pipes to the tankless water heater and
 pressure test them while Aly and my Mom worked on the back yard patio. It took
 us all weekend to get the pipes in and pressure tested. There is still a small

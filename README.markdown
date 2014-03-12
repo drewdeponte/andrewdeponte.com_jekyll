@@ -1,26 +1,26 @@
 # Personal Site
 
-This repository houses my personal site using GitHub Pages. The following will
-provide all the details on how have set it up and what the everyday use of it
-should look like.
+This repository houses my personal site using Jekyll as a static site
+generator. The following will provide all the details on how I have set it up
+and what the everyday use of it should look like.
 
 ## Getting Up & Running
 
-My personal site depends on [RVM](http://rvm.io) so it must be installed and working properly.
-It also depends on [Bundler](http://bundler.io) to manage all of its
+My personal site generation depends on Ruby which I recommend installing via
+[RVM](http://rvm.io) or [rbenv](https://github.com/sstephenson/rbenv).  It
+also depends on [Bundler](http://bundler.io) to manage all of its
 dependencies. Therefore, keep in mind you must have bundler installed in the
 Ruby version defined by the `.ruby-verison` file.
 
 To get things up and running you can follow the steps below:
 
 1. Clone the git repository
-2. `cd` into the cloned repository (triggers RVM to set ruby version and
+2. `cd` into the cloned repository (triggers RVM or rbenv to set ruby version and
    gemset via `.ruby-version` file)
 3. `bundle`
 
-The above will install all the necessary tools in the proper Ruby version and
-gemset. At this point you should be ready to move on and get into normal
-usage.
+The above will install all the necessary tools in the proper Ruby version. At
+this point you should be ready to move on and get into normal usage.
 
 ## Branches
 
@@ -52,9 +52,12 @@ There are two important branches is this repository.
 
 The above helper script should handle building the static html site from the
 jekyll sources, copying that generated static html site over to the **master**
-branch, committing the changes, pushing the changes up to GitHub, and
-checking back out the **jekyll-site-src** branch to allow you to pickup where
-you left off.
+branch, committing the changes, pushing the changes up to the **origin**
+remote, and checking back out the **jekyll-site-src** branch to allow you to
+pickup where you left off.
+
+4. Copy the files as they exist in the **master** branch into your static site
+   hosting location, maybe an S3 bucket.
 
 ## Editing the Site
 
